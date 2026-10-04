@@ -11,7 +11,7 @@ Custom development for businesses, creators, communities and ambitious projects.
 ![CUSTOM DEVELOPMENT](https://img.shields.io/badge/CUSTOM%20DEVELOPMENT-7C3AED?style=for-the-badge&logoColor=white)
 ![FROM IDEA TO LAUNCH](https://img.shields.io/badge/FROM%20IDEA%20TO%20LAUNCH-0891B2?style=for-the-badge&logoColor=white)
 
-![Profile views](https://komarev.com/ghpvc/?username=yavordfgggdag&style=for-the-badge&color=7c3aed)
+![Profile views](https://visitor-badge.laobi.icu/badge?page_id=yavordfgggdag.yavordfgggdag&left_color=334155&right_color=7c3aed)
 ![GitHub followers](https://img.shields.io/github/followers/yavordfgggdag?style=for-the-badge&label=FOLLOWERS&color=0891b2)
 
 [Services](#-what-you-can-hire-me-for) · [Projects](#-selected-work) · [Technology](#-languages--technology) · [Process](#-from-your-idea-to-a-working-product)
