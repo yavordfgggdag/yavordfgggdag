@@ -282,16 +282,13 @@ A broader view of the languages I explore and consider for project work. The rig
 ### A website, a custom tool, a bot or your next big idea.
 **Tell me what you want to build. Let's work out how to make it happen.**
 
-[![Email Yavor](https://img.shields.io/badge/EMAIL-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:Fraisbg1@gmail.com)
-[![Call Yavor](https://img.shields.io/badge/CALL_ME-16A34A?style=for-the-badge)](tel:+359898634678)
-[![Instagram](https://img.shields.io/badge/INSTAGRAM-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/y.yakowvw.sales/)
-![Discord Fraisbg](https://img.shields.io/badge/DISCORD-Fraisbg-5865F2?style=for-the-badge&logo=discord&logoColor=white)
+<img src="assets/contact.svg" alt="Contact: +359 898 634 678 · Fraisbg1@gmail.com · Discord Fraisbg · Instagram @y.yakowvw.sales" width="100%" />
 
 </div>
 
 | Contact | Find me here |
 | :--- | :--- |
-| 📞 **Phone** | [+359 898 634 678](tel:+359898634678) |
+| 📞 **Phone** | +359 898 634 678 |
 | ✉️ **Email** | [Fraisbg1@gmail.com](mailto:Fraisbg1@gmail.com) |
 | 💬 **Discord** | **Fraisbg** |
 | 📸 **Instagram** | [@y.yakowvw.sales](https://www.instagram.com/y.yakowvw.sales/) |
