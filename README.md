@@ -1,3 +1,8 @@
+<p align="center">
+<a href="https://github.com/yavordfgggdag"><img src="assets/languages/en.svg" alt="English" width="146" height="42" /></a>
+<a href="https://github.com/yavordfgggdag/yavordfgggdag/blob/main/README.bg.md"><img src="assets/languages/bg.svg" alt="Български" width="166" height="42" /></a>
+</p>
+
 <div align="center">
 
 <img src="assets/banner.svg" alt="Yavor — Websites. Software. Games. Built around your vision." width="100%" />
@@ -163,7 +168,7 @@ Internal management workflows for employee profiles, departments, ranks, callsig
 <td width="50%" valign="top">
 
 ### 🟠 Client Web Projects
-Web work for a driving instructor and an educational organization. Public case studies are awaiting verified project URLs and approved screenshots.
+Websites for **„Помощ от приятел“** (educational centre) and **„Автоинструктор Господинов“** (driving instructor). [See the client projects below](#client-websites).
 
 **Business websites · UI/UX · Custom functionality**
 
@@ -215,23 +220,11 @@ A native macOS application for reviewing local web projects, understanding warni
 
 ## The Last Republic
 
-**A community website with a clear route from discovery to application.**
+**Community infrastructure connecting the website, Discord and operational tools.**
 
-I developed the public web experience, rules pages and Discord-connected whitelist journey for a FiveM roleplay community. The interface brings the community identity, onboarding information and application entry into one site.
+My work includes the public interface, rules and Discord-connected application journeys for the FiveM community.
 
-<a href="https://the-last-republic.netlify.app/"><img src="assets/screens/tlr-home.jpg" alt="The Last Republic live homepage: monochrome city illustration, large editorial typography, whitelist and Discord calls to action." width="100%" /></a>
-
-**Built with:** TypeScript · Next.js · React · Tailwind CSS · Netlify<br>
-**Implemented connections:** Discord sign-in and an application workflow with staff review.
-
-[Visit the website →](https://the-last-republic.netlify.app/) · [View the application entry →](https://the-last-republic.netlify.app/whitelist)
-
-<details>
-<summary><b>See the public whitelist entry screen</b></summary>
-
-<img src="assets/screens/tlr-whitelist.jpg" alt="Live whitelist entry explaining Discord sign-in, the exam and the decision process. No application has been submitted for this capture." width="100%" />
-
-</details>
+<sub>The current main-site URL and version are being confirmed. Earlier homepage captures are not presented as the current website.</sub>
 
 ## TLR Police Portal
 
@@ -239,7 +232,7 @@ I developed the public web experience, rules pages and Discord-connected whiteli
 
 An internal portal for the TLR roleplay police department. I developed the dashboard, searchable staff directory, rank hierarchy, handbook and management workflows for certificates, strikes and callsigns, with server-side access checks and audit records.
 
-<a href="https://the-last-republic.netlify.app/police"><img src="assets/screens/police-dashboard.jpg" alt="Actual authenticated TLR Police Portal dashboard with handbook, radio codes, districts and roster widgets. Profile names and avatars are visibly redacted." width="100%" /></a>
+<img src="assets/screens/police-dashboard.jpg" alt="Actual authenticated TLR Police Portal dashboard with handbook, radio codes, districts and roster widgets. Profile names and avatars are visibly redacted." width="100%" />
 
 **The engineering decision:** Discord membership events need a persistent connection. A separate Node.js bot handles the Gateway connection and synchronizes Discord-owned roster fields into Postgres. The Next.js website handles authorized management actions. Both use a shared role map.
 
@@ -276,7 +269,7 @@ An internal portal for the TLR roleplay police department. I developed the dashb
 
 </details>
 
-[Open the portal →](https://the-last-republic.netlify.app/police) · Discord authentication and department membership required. Source is private.
+<sub>Portal captures from the earlier review. Discord authentication and department membership required. Current entry URL is being confirmed; source is private.</sub>
 
 <img src="assets/section-divider.svg" alt="" width="100%" />
 
@@ -284,9 +277,14 @@ An internal portal for the TLR roleplay police department. I developed the dashb
 
 **A shared entry point for a gaming community, its rules and player journeys.**
 
-The public `chillrp-website` repository contains a separate React implementation whose current interface is branded TLR RP and focuses on Minecraft SMP and Factions. The frontend brings server discovery, topic-based rules and application routes into one consistent navigation system.
+The public `chillrp-website` repository contains a separate React implementation whose current interface is branded TLR RP and focuses on Minecraft SMP and Factions. The frontend brings server discovery, topic-based rules and application routes into one consistent navigation system. This is a local source-code showcase, not the current main website of The Last Republic.
+
+<details>
+<summary><b>View the local interface from the public source</b></summary>
 
 <img src="assets/screens/community-platform.jpg" alt="Actual local TLR RP interface from chillrp-website: green Minecraft community homepage with SMP and Factions messaging. Repository defaults are shown." width="100%" />
+
+</details>
 
 **Technical detail:** React Router handles the page journeys, route components load on demand, and React Query manages remote data caching. The repository also contains Supabase-backed authentication, data access and server functions.
 
@@ -315,6 +313,31 @@ A browser-based interface experiment exploring simulated resource monitoring and
 
 <img src="assets/section-divider.svg" alt="" width="100%" />
 
+## Client websites
+
+### Помощ от приятел · Educational centre
+
+A client website that helps parents explore Bulgarian-language and mathematics lessons and reach the centre through a clear enquiry path. The live interface includes course formats, an FAQ and an enquiry form.
+
+<img src="assets/screens/client-education.jpg" alt="Real homepage detail from Помощ от приятел: educational centre branding, lesson introduction and enquiry call to action. Public presenter video and contact strip excluded from this crop." width="100%" />
+
+**Verified platform components:** WordPress · WPForms. The enquiry interface was inspected without submitting personal data.
+
+<details>
+<summary><b>Explore the interactive FAQ</b></summary>
+
+<img src="assets/screens/client-education-faq.jpg" alt="Live FAQ with an expanded answer about the supported school grades." width="100%" />
+
+</details>
+
+[Visit Помощ от приятел →](https://pomoshtotpriyatel.com/)
+
+### Автоинструктор Господинов · Driving instructor
+
+Client website for a driving instructor, providing an online presence for the business.
+
+<sub>Website link, current screenshots, implementation details and technology are awaiting verification.</sub>
+
 ## 🌈 Languages & Technology
 
 ### Technologies Behind the Featured Products
@@ -322,7 +345,7 @@ A browser-based interface experiment exploring simulated resource monitoring and
 <img src="assets/technology-map.svg" alt="Verified project technology: SwiftUI and Node.js for Before I Deploy; Next.js, React, Tailwind, PostgreSQL and Discord integrations for TLR." width="100%" />
 
 **Before I Deploy:** Swift · SwiftUI · JavaScript · Node.js · Supabase · PostgreSQL · Deno Edge Functions<br>
-**The Last Republic & Police Portal:** TypeScript · React · Next.js · Tailwind CSS · Drizzle · Neon / PostgreSQL · discord.js<br>
+**Reviewed TLR implementation & Police Portal:** TypeScript · React · Next.js · Tailwind CSS · Drizzle · Neon / PostgreSQL · discord.js<br>
 **Community platform:** React · Vite · shadcn/ui · React Router · TanStack Query · Supabase<br>
 **Space Control experiment:** HTML · JavaScript · Canvas
 
