@@ -34,3 +34,9 @@ The README keeps essential descriptions and contact information as selectable te
 - Before I Deploy is described as actively developed. No public download, release certification, customer metric or end-to-end validation of external providers is claimed.
 - TLR's public website and authenticated Police Portal were opened for the captures. The police section concerns a FiveM roleplay community, not a real law-enforcement deployment.
 - Private repository URLs are not presented as public code links. Unverified client projects and template-only repositories are not presented as completed original products.
+
+## Additional public work
+
+`community-platform.jpg` and `community-rules.jpg` are real browser screenshots of the unmodified `yavordfgggdag/chillrp-website` frontend running locally on 2026-10-05. Production Supabase configuration was overridden with empty environment values. No account was used; server addresses and status labels are repository defaults, not verified live claims. Public source is linked in the profile.
+
+`fraisbg1` is listed as a source-only experiment because referenced CSS/JS assets are absent from the public checkout. No replacement interface was fabricated.
