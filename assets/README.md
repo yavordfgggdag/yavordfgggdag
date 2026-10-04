@@ -44,3 +44,9 @@ The README keeps essential descriptions and contact information as selectable te
 ## Languages and client website
 
 English lives in README.md; Bulgarian lives in README.bg.md. Local SVG link buttons connect the two GitHub views. The original banner and captured UI remain unchanged. `client-education.jpg` and `client-education-faq.jpg` were captured from https://pomoshtotpriyatel.com/ on 2026-10-05. The homepage crop excludes the presenter video and contact strip; FAQ capture follows a real click. No form was submitted. WordPress and WPForms are evidenced by public page assets and the form markup. The TLR main-site gallery was withdrawn pending the owner’s current URL; local chillrp screenshots are explicitly distinguished from the current site.
+
+## Studio visual system
+
+The `studio/` directory contains original, repository-local SVG diagrams and chapter panels, plus a composition of existing genuine captures. CSS animations use slow orbits, paths and opacity changes; `prefers-reduced-motion` disables them. Manifesto and selected-work art have dedicated narrow-screen variants via `picture`. Real screenshots have not been replaced with generated interfaces. The original banner and contact panel remain intact.
+
+On 2026-10-05 all other owned repositories were made private at the owner's request. Any earlier references to public source describe visibility at capture time. The portfolio no longer links visitors to those private repositories.
