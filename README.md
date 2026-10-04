@@ -18,8 +18,8 @@ My work includes native developer tools, community websites and operational soft
 <img src="assets/portfolio-signal.svg" alt="Selected work: native software, community websites and connected workflows." width="100%" />
 
 <p align="center">
-<a href="#before-i-deploy"><img src="assets/screens/before-i-deploy.jpg" alt="Before I Deploy: real release checks and launch workflow. Open the case study below." width="49%" /></a>
-<a href="#tlr-police-portal"><img src="assets/screens/police-dashboard.jpg" alt="TLR Police Portal: real operations dashboard, with identities redacted. Open the case study below." width="49%" /></a>
+<a href="#before-i-deploy"><img src="assets/screens/before-i-deploy-preview.jpg" alt="Before I Deploy: real release checks and launch workflow. Open the case study below." width="49%" /></a>
+<a href="#tlr-police-portal"><img src="assets/screens/police-dashboard-preview.jpg" alt="TLR Police Portal: real operations dashboard, with identities redacted. Open the case study below." width="49%" /></a>
 </p>
 
 **[01 — Before I Deploy](#before-i-deploy)** · Native macOS tooling<br>
