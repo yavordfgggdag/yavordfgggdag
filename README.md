@@ -3,220 +3,54 @@
 <a href="https://github.com/yavordfgggdag/yavordfgggdag/blob/main/README.bg.md"><img src="assets/languages/bg.svg" alt="Български" width="166" height="42" /></a>
 </p>
 
+<div align="center">
+
 <img src="assets/banner.svg" alt="Yavor — Websites. Software. Games. Built around your vision." width="100%" />
 
-<p align="center"><b>Yavor Yakow · Full-stack developer · Available for paid projects</b></p>
+### Full-Stack Developer · Software Builder · Creative Technologist
 
-[Selected work](#work) · [Clients](#clients) · [Services](#services) · [Technology](#technology) · [Contact](#contact)
+**I turn ideas into websites, software, bots and interactive experiences.**<br>
+Custom development for businesses, creators, communities and ambitious projects.
+
+![AVAILABLE FOR PAID PROJECTS](https://img.shields.io/badge/AVAILABLE%20FOR%20PAID%20PROJECTS-22C55E?style=for-the-badge&logoColor=white)
+![CUSTOM DEVELOPMENT](https://img.shields.io/badge/CUSTOM%20DEVELOPMENT-7C3AED?style=for-the-badge&logoColor=white)
+![FROM IDEA TO LAUNCH](https://img.shields.io/badge/FROM%20IDEA%20TO%20LAUNCH-0891B2?style=for-the-badge&logoColor=white)
+
+![Profile views](https://visitor-badge.laobi.icu/badge?page_id=yavordfgggdag.yavordfgggdag&left_color=334155&right_color=7c3aed)
+![GitHub followers](https://img.shields.io/github/followers/yavordfgggdag?style=for-the-badge&label=FOLLOWERS&color=0891b2)
+
+[Services](#-what-you-can-hire-me-for) · [Projects](#-selected-work) · [Technology](#-languages--technology) · [Process](#-from-your-idea-to-a-working-product) · [Contact](#-lets-talk-about-your-project)
+
+</div>
+
+---
+
+## 👋 Hi, I'm Yavor
+
+I build digital products that connect design, code and real-world workflows. My work spans web development, custom software, Discord bots, games, FiveM systems, automation and developer tools.
+
+**I take on paid development projects** — from a focused feature or a new website to a complete custom platform. I can help turn an early idea into a clear scope, build the product, connect its systems and prepare it for launch.
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/studio/manifesto-en-mobile.svg" />
 <img src="assets/studio/manifesto-en.svg" alt="The interface is only the beginning. Design, logic and connected systems." width="100%" />
 </picture>
 
-I build the interface, the logic and the connections between systems. Below are the actual applications, client websites and engineering decisions behind the work.
-
-<a name="work"></a>
-
-<picture>
-<source media="(max-width: 600px)" srcset="assets/studio/chapter-01-en-mobile.svg" />
-<img src="assets/studio/chapter-01-en.svg" alt="" width="100%" />
-</picture>
+### A closer look at the work
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/studio/work-en-mobile.jpg" />
-<img src="assets/studio/work-en.jpg" alt="Real captures from Before I Deploy, TLR Police Portal and Pomosht ot Priyatel." width="100%" />
+<img src="assets/studio/work-en.jpg" alt="Before I Deploy · TLR Police Portal · Помощ от приятел" width="100%" />
 </picture>
 
-[01 / Before I Deploy](#before-i-deploy) · [02 / TLR Police Portal](#tlr-police-portal) · [03 / Client websites](#clients)
 
-## Before I Deploy
 
-**Make release preparation understandable, from the first check to the next action.**
-
-A native macOS application for reviewing local web projects, understanding warnings and preparing a preview or production release. I developed the SwiftUI interface, the Node.js command engine and the connections between project checks, hosting and cloud services.
-
-<img src="assets/screens/before-i-deploy.jpg" alt="Before I Deploy running on macOS: a demo project with a Ready with warnings verdict, check controls and a step-by-step launch checklist." width="100%" />
-
-**What is behind the screen**
-
-- **One check pipeline:** Git state, secrets, dependencies, lint, types, build and hosting readiness, with results returned to the app as NDJSON events.
-- **Release safeguards:** the engine checks for changed project fingerprints and requires explicit confirmation before production deployment.
-- **A useful control centre:** project status, site monitoring, SSL information and a command palette for moving between tasks.
-- **AI-assisted repair:** an implemented review-and-apply workflow for proposed file changes. Provider setup and service availability determine what can run.
-
-**Built with:** Swift · SwiftUI · JavaScript · Node.js · Supabase · PostgreSQL · Deno Edge Functions
-
-<img src="assets/bid-architecture.svg" alt="Architecture diagram: SwiftUI communicates with a Node.js engine through NDJSON. The engine handles local checks and connects to hosting and optional cloud services." width="100%" />
-
-<details>
-<summary><b>Explore the application — Mission Control & keyboard navigation</b></summary>
-
-### Mission Control
-
-<img src="assets/screens/bid-mission-control.jpg" alt="Live Mission Control showing a demo project, monitoring status and an HTTP 404 incident; this is a captured development state, not a success metric." width="100%" />
-
-### Command palette
-
-<img src="assets/screens/bid-command-palette.jpg" alt="Actual Before I Deploy command palette with Mission Control, Domains, Costs, Setup, AI, Settings and History actions." width="100%" />
-
-</details>
-
-<sub>Actively developed product. Screens show the installed application with a demo project; they do not imply a public release or that every external integration has been validated. Source is private.</sub>
-
-[Discuss the product or a similar tool →](mailto:Fraisbg1@gmail.com?subject=Before%20I%20Deploy)
-
-<img src="assets/section-divider.svg" alt="" width="100%" />
-
-## TLR Police Portal
-
-**Turn a community's staff structure into a usable operations workspace.**
-
-An internal portal for the TLR roleplay police department. I developed the dashboard, searchable staff directory, rank hierarchy, handbook and management workflows for certificates, strikes and callsigns, with server-side access checks and audit records.
-
-<img src="assets/screens/police-dashboard.jpg" alt="Actual authenticated TLR Police Portal dashboard with handbook, radio codes, districts and roster widgets. Profile names and avatars are visibly redacted." width="100%" />
-
-**The engineering decision:** Discord membership events need a persistent connection. A separate Node.js bot handles the Gateway connection and synchronizes Discord-owned roster fields into Postgres. The Next.js website handles authorized management actions. Both use a shared role map.
-
-**Built with:** TypeScript · Next.js · React · PostgreSQL / Neon · Drizzle ORM · Node.js · discord.js
-
-<img src="assets/tlr-architecture.svg" alt="Architecture diagram: a persistent Discord bot synchronizes roster data to Postgres; the Next.js portal reads that data and handles operations with server-side permissions." width="100%" />
-
-### Inside the portal
-
-<img src="assets/screens/police-employees.jpg" alt="Live employee management screen with search, rank and department filters. Individual identities, badge details and personal records are fully redacted." width="100%" />
-
-<details>
-<summary><b>Open the gallery — rank hierarchy & interactive handbook</b></summary>
-
-### Rank hierarchy
-
-<img src="assets/screens/police-ranks.jpg" alt="Live rank hierarchy for the Commissioner's Office, Los Santos Police Department and Blaine County Sheriff's Office." width="100%" />
-
-### Interactive handbook
-
-<img src="assets/screens/police-handbook.jpg" alt="Live police handbook showing The Mission, chapter tabs, page controls and structured procedure content." width="100%" />
-
-</details>
-
-<details>
-<summary><b>Play the short handbook navigation demo (animated GIF)</b></summary>
-
-<picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="assets/screens/police-handbook.jpg" />
-  <img src="assets/screens/handbook-navigation.gif" alt="Recorded navigation through three real handbook pages: The Mission, Culture and Welcome to the LSPD. Static screenshot shown when reduced motion is supported." width="100%" />
-</picture>
-
-<sub>Three captured states from real page navigation, with pauses for readability. No interface or data has been fabricated.</sub>
-
-</details>
-
-<sub>Portal captures from the earlier review. Discord authentication and department membership required. Current entry URL is being confirmed; source is private.</sub>
-
-<img src="assets/section-divider.svg" alt="" width="100%" />
-
-## The Last Republic
-
-**Community infrastructure connecting the website, Discord and operational tools.**
-
-My work includes the public interface, rules and Discord-connected application journeys for the FiveM community.
-
-<sub>The current main-site URL and version are being confirmed. Earlier homepage captures are not presented as the current website.</sub>
-
-<details>
-<summary><b>More work — community platform & experiments</b></summary>
-
-## Community platform
-
-**A shared entry point for a gaming community, its rules and player journeys.**
-
-The `chillrp-website` repository contains a separate React implementation whose current interface is branded TLR RP and focuses on Minecraft SMP and Factions. The frontend brings server discovery, topic-based rules and application routes into one consistent navigation system. This is a local source-code showcase, not the current main website of The Last Republic.
-
-<details>
-<summary><b>View the local interface from the reviewed source</b></summary>
-
-<img src="assets/screens/community-platform.jpg" alt="Actual local TLR RP interface from chillrp-website: green Minecraft community homepage with SMP and Factions messaging. Repository defaults are shown." width="100%" />
-
-</details>
-
-**Technical detail:** React Router handles the page journeys, route components load on demand, and React Query manages remote data caching. The repository also contains Supabase-backed authentication, data access and server functions.
-
-**Built with:** TypeScript · React · Vite · Tailwind CSS · shadcn/ui · React Router · TanStack Query · Supabase
-
-<details>
-<summary><b>Explore the rules hub</b></summary>
-
-<img src="assets/screens/community-rules.jpg" alt="Real locally rendered rules hub with navigation cards for general rules, chat, SMP, Factions and Discord." width="100%" />
-
-</details>
-
-**Source code is private.**
-
-<sub>Captured from the unmodified frontend running locally, with production services disconnected. Placeholder addresses and status text are repository defaults. These images demonstrate the interface, not a verified live server, checkout or authentication deployment.</sub>
-
-### Code experiment — Space Control
-
-A browser-based interface experiment exploring simulated resource monitoring and control feedback. The reviewed `fraisbg1` checkout includes HTML screens and Canvas elements, with references to JavaScript files for the intended interactions.
-
-**Technology:** HTML · JavaScript · Canvas API
-
-**Source code is private.**
-
-<sub>Source preview only: the reviewed checkout is missing referenced styling and script assets. A complete visual demo is pending those assets or a working demo URL.</sub>
-
-<img src="assets/section-divider.svg" alt="" width="100%" />
-
-
-</details>
-
-<a name="clients"></a>
-
-<picture>
-<source media="(max-width: 600px)" srcset="assets/studio/chapter-02-en-mobile.svg" />
-<img src="assets/studio/chapter-02-en.svg" alt="" width="100%" />
-</picture>
-
-## Client websites
-
-### Помощ от приятел · Educational centre
-
-A client website that helps parents explore Bulgarian-language and mathematics lessons and reach the centre through a clear enquiry path. The live interface includes course formats, an FAQ and an enquiry form.
-
-<img src="assets/screens/client-education.jpg" alt="Real homepage detail from Помощ от приятел: educational centre branding, lesson introduction and enquiry call to action. Public presenter video and contact strip excluded from this crop." width="100%" />
-
-**Verified platform components:** WordPress · WPForms. The enquiry interface was inspected without submitting personal data.
-
-<details>
-<summary><b>Explore the interactive FAQ</b></summary>
-
-<img src="assets/screens/client-education-faq.jpg" alt="Live FAQ with an expanded answer about the supported school grades." width="100%" />
-
-</details>
-
-[Visit Помощ от приятел →](https://pomoshtotpriyatel.com/)
-
-### Автоинструктор Господинов · Driving instructor
-
-Client website for a driving instructor, providing an online presence for the business.
-
-<sub>Website link, current screenshots, implementation details and technology are awaiting verification.</sub>
-
-<a name="services"></a>
+[Before I Deploy](#before-i-deploy) · [The Last Republic](#the-last-republic) · [Police Portal](#tlr-police-portal) · [Community platform](#community-platform)
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/studio/chapter-03-en-mobile.svg" />
 <img src="assets/studio/chapter-03-en.svg" alt="" width="100%" />
 </picture>
-
-<picture>
-<source media="(max-width: 600px)" srcset="assets/studio/capabilities-en-mobile.svg" />
-<img src="assets/studio/capabilities-en.svg" alt="Websites, commerce, software, portals, Discord, games, FiveM, APIs, automation, AI and maintenance." width="100%" />
-</picture>
-
-**Websites & stores · Web & desktop apps · Admin panels · Discord & FiveM · APIs & AI · Maintenance**
-
-<details>
-<summary><b>Explore services and the full development catalogue</b></summary>
 
 ## 💼 What You Can Hire Me For
 
@@ -309,10 +143,222 @@ New features, bug fixes, refactoring, performance improvements, migrations, inte
 
 > **Have something different in mind?** I also consider custom development outside this list. Start with the problem, the users and what a successful result should do.
 
+---
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/studio/chapter-01-en-mobile.svg" />
+<img src="assets/studio/chapter-01-en.svg" alt="" width="100%" />
+</picture>
+
+## 🚀 Selected Work
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🟣 Before I Deploy
+**Know before you ship.**
+
+Developer tooling focused on checking projects before production: environments, dependencies, linting, types, tests, builds, security and configuration.
+
+**Developer tools · Automation · Release readiness**
+
+</td>
+<td width="50%" valign="top">
+
+### 🔵 The Last Republic
+Connected gaming and community infrastructure bringing together FiveM, web applications, Discord, databases, staff tools and permissions.
+
+**Full-stack systems · Gaming · Community infrastructure**
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 🟢 TLR Police Portal
+Internal management workflows for employee profiles, departments, ranks, callsigns, certificates and strikes, with permissions and audit logs.
+
+**Management software · Role-based access · Integrations**
+
+</td>
+<td width="50%" valign="top">
+
+### 🟠 Client Web Projects
+Websites for **„Помощ от приятел“** (educational centre) and **„Автоинструктор Господинов“** (driving instructor). [See the client projects below](#client-websites).
+
+**Business websites · UI/UX · Custom functionality**
+
+</td>
+</tr>
+</table>
+
+Much of my project source code is private. This profile presents the work, the capabilities and the approach behind it.
+
+---
+
+## Before I Deploy
+
+**Make release preparation understandable, from the first check to the next action.**
+
+A native macOS application for reviewing local web projects, understanding warnings and preparing a preview or production release. I developed the SwiftUI interface, the Node.js command engine and the connections between project checks, hosting and cloud services.
+
+<img src="assets/screens/before-i-deploy.jpg" alt="Before I Deploy running on macOS: a demo project with a Ready with warnings verdict, check controls and a step-by-step launch checklist." width="100%" />
+
+**What is behind the screen**
+
+- **One check pipeline:** Git state, secrets, dependencies, lint, types, build and hosting readiness, with results returned to the app as NDJSON events.
+- **Release safeguards:** the engine checks for changed project fingerprints and requires explicit confirmation before production deployment.
+- **A useful control centre:** project status, site monitoring, SSL information and a command palette for moving between tasks.
+- **AI-assisted repair:** an implemented review-and-apply workflow for proposed file changes. Provider setup and service availability determine what can run.
+
+**Built with:** Swift · SwiftUI · JavaScript · Node.js · Supabase · PostgreSQL · Deno Edge Functions
+
+<img src="assets/bid-architecture.svg" alt="Architecture diagram: SwiftUI communicates with a Node.js engine through NDJSON. The engine handles local checks and connects to hosting and optional cloud services." width="100%" />
+
+<details>
+<summary><b>Explore the application — Mission Control & keyboard navigation</b></summary>
+
+### Mission Control
+
+<img src="assets/screens/bid-mission-control.jpg" alt="Live Mission Control showing a demo project, monitoring status and an HTTP 404 incident; this is a captured development state, not a success metric." width="100%" />
+
+### Command palette
+
+<img src="assets/screens/bid-command-palette.jpg" alt="Actual Before I Deploy command palette with Mission Control, Domains, Costs, Setup, AI, Settings and History actions." width="100%" />
 
 </details>
 
-<a name="technology"></a>
+<sub>Actively developed product. Screens show the installed application with a demo project; they do not imply a public release or that every external integration has been validated. Source is private.</sub>
+
+[Discuss the product or a similar tool →](mailto:Fraisbg1@gmail.com?subject=Before%20I%20Deploy)
+
+<img src="assets/section-divider.svg" alt="" width="100%" />
+
+## The Last Republic
+
+**Community infrastructure connecting the website, Discord and operational tools.**
+
+My work includes the public interface, rules and Discord-connected application journeys for the FiveM community.
+
+<sub>The current main-site URL and version are being confirmed. Earlier homepage captures are not presented as the current website.</sub>
+
+## TLR Police Portal
+
+**Turn a community's staff structure into a usable operations workspace.**
+
+An internal portal for the TLR roleplay police department. I developed the dashboard, searchable staff directory, rank hierarchy, handbook and management workflows for certificates, strikes and callsigns, with server-side access checks and audit records.
+
+<img src="assets/screens/police-dashboard.jpg" alt="Actual authenticated TLR Police Portal dashboard with handbook, radio codes, districts and roster widgets. Profile names and avatars are visibly redacted." width="100%" />
+
+**The engineering decision:** Discord membership events need a persistent connection. A separate Node.js bot handles the Gateway connection and synchronizes Discord-owned roster fields into Postgres. The Next.js website handles authorized management actions. Both use a shared role map.
+
+**Built with:** TypeScript · Next.js · React · PostgreSQL / Neon · Drizzle ORM · Node.js · discord.js
+
+<img src="assets/tlr-architecture.svg" alt="Architecture diagram: a persistent Discord bot synchronizes roster data to Postgres; the Next.js portal reads that data and handles operations with server-side permissions." width="100%" />
+
+### Inside the portal
+
+<img src="assets/screens/police-employees.jpg" alt="Live employee management screen with search, rank and department filters. Individual identities, badge details and personal records are fully redacted." width="100%" />
+
+<details>
+<summary><b>Open the gallery — rank hierarchy & interactive handbook</b></summary>
+
+### Rank hierarchy
+
+<img src="assets/screens/police-ranks.jpg" alt="Live rank hierarchy for the Commissioner's Office, Los Santos Police Department and Blaine County Sheriff's Office." width="100%" />
+
+### Interactive handbook
+
+<img src="assets/screens/police-handbook.jpg" alt="Live police handbook showing The Mission, chapter tabs, page controls and structured procedure content." width="100%" />
+
+</details>
+
+<details>
+<summary><b>Play the short handbook navigation demo (animated GIF)</b></summary>
+
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="assets/screens/police-handbook.jpg" />
+  <img src="assets/screens/handbook-navigation.gif" alt="Recorded navigation through three real handbook pages: The Mission, Culture and Welcome to the LSPD. Static screenshot shown when reduced motion is supported." width="100%" />
+</picture>
+
+<sub>Three captured states from real page navigation, with pauses for readability. No interface or data has been fabricated.</sub>
+
+</details>
+
+<sub>Portal captures from the earlier review. Discord authentication and department membership required. Current entry URL is being confirmed; source is private.</sub>
+
+<img src="assets/section-divider.svg" alt="" width="100%" />
+
+## Community platform
+
+**A shared entry point for a gaming community, its rules and player journeys.**
+
+The `chillrp-website` repository contains a separate React implementation whose current interface is branded TLR RP and focuses on Minecraft SMP and Factions. The frontend brings server discovery, topic-based rules and application routes into one consistent navigation system. This is a local source-code showcase, not the current main website of The Last Republic.
+
+<details>
+<summary><b>View the local interface from the reviewed source</b></summary>
+
+<img src="assets/screens/community-platform.jpg" alt="Actual local TLR RP interface from chillrp-website: green Minecraft community homepage with SMP and Factions messaging. Repository defaults are shown." width="100%" />
+
+</details>
+
+**Technical detail:** React Router handles the page journeys, route components load on demand, and React Query manages remote data caching. The repository also contains Supabase-backed authentication, data access and server functions.
+
+**Built with:** TypeScript · React · Vite · Tailwind CSS · shadcn/ui · React Router · TanStack Query · Supabase
+
+<details>
+<summary><b>Explore the rules hub</b></summary>
+
+<img src="assets/screens/community-rules.jpg" alt="Real locally rendered rules hub with navigation cards for general rules, chat, SMP, Factions and Discord." width="100%" />
+
+</details>
+
+**Source code is private.**
+
+<sub>Captured from the unmodified frontend running locally, with production services disconnected. Placeholder addresses and status text are repository defaults. These images demonstrate the interface, not a verified live server, checkout or authentication deployment.</sub>
+
+### Code experiment — Space Control
+
+A browser-based interface experiment exploring simulated resource monitoring and control feedback. The reviewed `fraisbg1` checkout includes HTML screens and Canvas elements, with references to JavaScript files for the intended interactions.
+
+**Technology:** HTML · JavaScript · Canvas API
+
+**Source code is private.**
+
+<sub>Source preview only: the reviewed checkout is missing referenced styling and script assets. A complete visual demo is pending those assets or a working demo URL.</sub>
+
+<img src="assets/section-divider.svg" alt="" width="100%" />
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/studio/chapter-02-en-mobile.svg" />
+<img src="assets/studio/chapter-02-en.svg" alt="" width="100%" />
+</picture>
+
+## Client websites
+
+### Помощ от приятел · Educational centre
+
+A client website that helps parents explore Bulgarian-language and mathematics lessons and reach the centre through a clear enquiry path. The live interface includes course formats, an FAQ and an enquiry form.
+
+<img src="assets/screens/client-education.jpg" alt="Real homepage detail from Помощ от приятел: educational centre branding, lesson introduction and enquiry call to action. Public presenter video and contact strip excluded from this crop." width="100%" />
+
+**Verified platform components:** WordPress · WPForms. The enquiry interface was inspected without submitting personal data.
+
+<details>
+<summary><b>Explore the interactive FAQ</b></summary>
+
+<img src="assets/screens/client-education-faq.jpg" alt="Live FAQ with an expanded answer about the supported school grades." width="100%" />
+
+</details>
+
+[Visit Помощ от приятел →](https://pomoshtotpriyatel.com/)
+
+### Автоинструктор Господинов · Driving instructor
+
+Client website for a driving instructor, providing an online presence for the business.
+
+<sub>Website link, current screenshots, implementation details and technology are awaiting verification.</sub>
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/studio/chapter-04-en-mobile.svg" />
@@ -425,16 +471,13 @@ A broader view of the languages I explore and consider for project work. The rig
 
 </details>
 
-<a name="process"></a>
+---
+
+<img src="assets/development-flow.svg" alt="Animated development journey: discover, design, develop, test and launch" width="100%" />
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/studio/chapter-05-en-mobile.svg" />
 <img src="assets/studio/chapter-05-en.svg" alt="" width="100%" />
-</picture>
-
-<picture>
-<source media="(max-width: 600px)" srcset="assets/studio/pipeline-en-mobile.svg" />
-<img src="assets/studio/pipeline-en.svg" alt="Scope, design, logic, verification and release." width="100%" />
 </picture>
 
 ## 🧭 From Your Idea to a Working Product
@@ -451,8 +494,6 @@ A broader view of the languages I explore and consider for project work. The rig
 **🧪 Practical quality checks** — testing, diagnostics and validation before release.<br>
 **🔁 Useful automation** — fewer repetitive steps and more consistent workflows.<br>
 **🤝 Clear project scope** — agreed requirements, deliverables and expectations.
-
-<a name="contact"></a>
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/studio/chapter-06-en-mobile.svg" />
@@ -481,11 +522,18 @@ A broader view of the languages I explore and consider for project work. The rig
 
 Send me your idea, the main features, your preferred timeline and your budget range. We can define the right scope and a custom quote.
 
+---
 
-<p align="center">
-<a href="https://github.com/yavordfgggdag"><img src="assets/languages/en.svg" alt="English" width="146" height="42" /></a>
-<a href="https://github.com/yavordfgggdag/yavordfgggdag/blob/main/README.bg.md"><img src="assets/languages/bg.svg" alt="Български" width="166" height="42" /></a>
-</p>
+<div align="center">
 
+![WEBSITES](https://img.shields.io/badge/WEBSITES-2563EB?style=for-the-badge&logoColor=white) ![SOFTWARE](https://img.shields.io/badge/SOFTWARE-7C3AED?style=for-the-badge&logoColor=white) ![BOTS](https://img.shields.io/badge/BOTS-5865F2?style=for-the-badge&logoColor=white) ![GAMES](https://img.shields.io/badge/GAMES-E11D48?style=for-the-badge&logoColor=white) ![AUTOMATION](https://img.shields.io/badge/AUTOMATION-059669?style=for-the-badge&logoColor=white)
 
-<sub>Project source is private. This portfolio presents selected real interfaces. [Media notes](assets/README.md).</sub>
+### Your idea. A clear plan. Software that works.
+
+**BUILD · TEST · VERIFY · DEPLOY · IMPROVE**
+
+</div>
+
+<sub>Real captures and locally stored visuals. [Screenshot provenance and accessibility notes](assets/README.md).</sub>
+
+<sub>Project source code is private; this profile presents selected real interfaces.</sub>
