@@ -36,6 +36,31 @@ I build digital products that connect design, code and real-world workflows. My 
 <img src="assets/studio/manifesto-en.svg" alt="The interface is only the beginning. Design, logic and connected systems." width="100%" />
 </picture>
 
+## 📊 Activity & language mix
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/metrics/activity-en-mobile.svg" />
+<img src="assets/metrics/activity-en.svg" alt="Contributions, active days, current and longest streak, last contribution and contribution calendar." width="100%" />
+</picture>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/metrics/languages-en-mobile.svg" />
+<img src="assets/metrics/languages-en.svg" alt="Languages by aggregate code volume across project repositories, including private projects, without repository names or contents." width="100%" />
+</picture>
+
+<details>
+<summary><b>How these numbers are calculated</b></summary>
+
+Activity refreshes daily from the public GitHub contribution calendar. Contributions are not just commits and do not measure hours worked. “Last contribution” is the last active calendar day, not the last login. GitHub may update the calendar with a delay.
+
+The current streak counts consecutive active days ending today, or yesterday when today has no contribution yet. Longest streak, contribution totals and active days refer to the displayed annual window. The mobile heatmap shows the last 26 weeks; headline totals still use the annual window.
+
+Language shares are a separate 2026-10-05 snapshot of GitHub-reported code bytes, including private projects and excluding this profile repository. They do not measure frequency, time or proficiency. The language snapshot is not refreshed automatically: the public workflow has no access to private code.
+
+[GitHub contribution rules](https://docs.github.com/en/account-and-profile/reference/profile-contributions-reference) · [Metrics source](scripts/update_metrics.py)
+
+</details>
+
 ### A closer look at the work
 
 <picture>
