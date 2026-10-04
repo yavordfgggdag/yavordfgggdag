@@ -14,6 +14,8 @@ Captured and checked on **5 October 2026** (Europe/Sofia).
 | `screens/police-ranks.jpg` | https://the-last-republic.netlify.app/police/ranks | Authenticated screen; profile header excluded |
 | `screens/police-handbook.jpg`, `screens/handbook-navigation.gif` | https://the-last-republic.netlify.app/police/handbook | Authenticated screen; profile header excluded; GIF shows three captured navigation states |
 
+The two `*-preview.jpg` files are cropped thumbnail versions of their matching full-size captures.
+
 The interfaces are genuine. Frames and English captions are presentation elements. Redactions are visibly labelled; they do not replace private data with fictional records. Unredacted source captures are not stored in this repository. Application counts, warnings and incident status are the captured UI state, not portfolio performance claims.
 
 ## Diagrams and animation
