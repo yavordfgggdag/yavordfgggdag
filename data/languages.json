@@ -1,0 +1,76 @@
+{
+  "snapshot_date": "2026-10-05",
+  "method": "GitHub language bytes across owned project repositories; profile repository excluded. This measures code volume, not time or proficiency.",
+  "languages": [
+    {
+      "name": "TypeScript",
+      "bytes": 3770524,
+      "color": "#3178c6"
+    },
+    {
+      "name": "HTML",
+      "bytes": 2120845,
+      "color": "#e34c26"
+    },
+    {
+      "name": "JavaScript",
+      "bytes": 2106677,
+      "color": "#f1e05a"
+    },
+    {
+      "name": "CSS",
+      "bytes": 853766,
+      "color": "#663399"
+    },
+    {
+      "name": "Swift",
+      "bytes": 754067,
+      "color": "#F05138"
+    },
+    {
+      "name": "PLpgSQL",
+      "bytes": 419855,
+      "color": "#336790"
+    },
+    {
+      "name": "Astro",
+      "bytes": 115289,
+      "color": "#ff5a03"
+    },
+    {
+      "name": "Shell",
+      "bytes": 42699,
+      "color": "#89e051"
+    },
+    {
+      "name": "Python",
+      "bytes": 18326,
+      "color": "#3572A5"
+    },
+    {
+      "name": "Java",
+      "bytes": 10542,
+      "color": "#b07219"
+    },
+    {
+      "name": "Rust",
+      "bytes": 9130,
+      "color": "#dea584"
+    },
+    {
+      "name": "PowerShell",
+      "bytes": 8518,
+      "color": "#012456"
+    },
+    {
+      "name": "Batchfile",
+      "bytes": 3377,
+      "color": "#C1F12E"
+    },
+    {
+      "name": "Go Template",
+      "bytes": 808,
+      "color": "#00ADD8"
+    }
+  ]
+}
