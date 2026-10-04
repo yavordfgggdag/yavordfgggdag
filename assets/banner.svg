@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="460" viewBox="0 0 1440 460" role="img" aria-labelledby="title desc">
+<title id="title">Yavor — Custom development</title><desc id="desc">Websites. Software. Games. Built around your vision. Available for paid projects.</desc>
+<defs>
+<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#0B1025"/><stop offset=".55" stop-color="#171338"/><stop offset="1" stop-color="#082B3C"/></linearGradient>
+<linearGradient id="accent"><stop stop-color="#A78BFA"/><stop offset=".5" stop-color="#38BDF8"/><stop offset="1" stop-color="#2DD4BF"/></linearGradient>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#8093C0" stroke-opacity=".075"/></pattern>
+</defs>
+<rect width="1440" height="460" rx="24" fill="url(#bg)"/>
+<rect width="1440" height="460" rx="24" fill="url(#grid)"/>
+<circle cx="1330" cy="90" r="235" fill="#22D3EE" opacity=".045"/><circle cx="1240" cy="320" r="280" fill="#8B5CF6" opacity=".055"/>
+<rect x="60" y="56" width="5" height="30" rx="2" fill="url(#accent)"/>
+<text x="82" y="77" fill="#B6C5E0" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" letter-spacing="4">IDEAS INTO DIGITAL PRODUCTS</text>
+<text x="60" y="191" fill="white" font-family="Arial,Helvetica,sans-serif" font-size="104" font-weight="800" letter-spacing="6">YAVOR<tspan fill="#38BDF8">.</tspan></text>
+<text x="65" y="251" fill="url(#accent)" font-family="Arial,Helvetica,sans-serif" font-size="33" font-weight="700">Websites. Software. Games.</text>
+<text x="65" y="295" fill="#BCC9E1" font-family="Arial,Helvetica,sans-serif" font-size="23">Built around your vision. Engineered for real use.</text>
+<rect x="65" y="344" width="308" height="44" rx="22" fill="#0C352F" stroke="#237D65"/>
+<circle cx="89" cy="366" r="5" fill="#4ADE80"/>
+<text x="105" y="372" fill="#B3F6D2" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" letter-spacing="1">AVAILABLE FOR PAID PROJECTS</text>
+<text x="398" y="372" fill="#9CACCC" font-family="Arial,Helvetica,sans-serif" font-size="16">FULL-STACK · BOTS · AUTOMATION · AI</text>
+<g transform="translate(1018 89)">
+<rect width="345" height="273" rx="18" fill="#0A132A" stroke="#314363"/>
+<path d="M0 47H345" stroke="#314363"/><circle cx="24" cy="24" r="5" fill="#FB7185"/><circle cx="43" cy="24" r="5" fill="#FBBF24"/><circle cx="62" cy="24" r="5" fill="#34D399"/>
+<text x="26" y="94" fill="#A78BFA" font-family="monospace" font-size="18">const yourNextProject = {</text>
+<text x="43" y="133" fill="#7DD3FC" font-family="monospace" font-size="17">  idea: <tspan fill="#86EFAC">"something great"</tspan>,</text>
+<text x="43" y="170" fill="#7DD3FC" font-family="monospace" font-size="17">  builtBy: <tspan fill="#FDE68A">"Yavor"</tspan>,</text>
+<text x="43" y="207" fill="#7DD3FC" font-family="monospace" font-size="17">  madeFor: <tspan fill="#FDA4AF">"you"</tspan></text>
+<text x="26" y="244" fill="#A78BFA" font-family="monospace" font-size="18">};</text>
+</g>
+<rect x="60" y="425" width="1320" height="3" rx="1.5" fill="url(#accent)"/>
+</svg>
