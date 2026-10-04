@@ -14,7 +14,7 @@ Custom development for businesses, creators, communities and ambitious projects.
 ![Profile views](https://visitor-badge.laobi.icu/badge?page_id=yavordfgggdag.yavordfgggdag&left_color=334155&right_color=7c3aed)
 ![GitHub followers](https://img.shields.io/github/followers/yavordfgggdag?style=for-the-badge&label=FOLLOWERS&color=0891b2)
 
-[Services](#-what-you-can-hire-me-for) · [Projects](#-selected-work) · [Technology](#-languages--technology) · [Process](#-from-your-idea-to-a-working-product)
+[Services](#-what-you-can-hire-me-for) · [Projects](#-selected-work) · [Technology](#-languages--technology) · [Process](#-from-your-idea-to-a-working-product) · [Contact](#-lets-talk-about-your-project)
 
 </div>
 
@@ -258,6 +258,8 @@ A broader view of the languages I explore and consider for project work. The rig
 
 ---
 
+<img src="assets/development-flow.svg" alt="Animated development journey: discover, design, develop, test and launch" width="100%" />
+
 ## 🧭 From Your Idea to a Working Product
 
 | 01 · Discover | 02 · Design | 03 · Build | 04 · Validate | 05 · Launch |
@@ -273,11 +275,32 @@ A broader view of the languages I explore and consider for project work. The rig
 **🔁 Useful automation** — fewer repetitive steps and more consistent workflows.  
 **🤝 Clear project scope** — agreed requirements, deliverables and expectations.
 
-## ✨ Let's Build Your Next Project
+## 📬 Let's Talk About Your Project
+
+<div align="center">
+
+### A website, a custom tool, a bot or your next big idea.
+**Tell me what you want to build. Let's work out how to make it happen.**
+
+[![Email Yavor](https://img.shields.io/badge/EMAIL-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:Fraisbg1@gmail.com)
+[![Call Yavor](https://img.shields.io/badge/CALL_ME-16A34A?style=for-the-badge)](tel:+359898634678)
+[![Instagram](https://img.shields.io/badge/INSTAGRAM-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/y.yakowvw.sales/)
+![Discord Fraisbg](https://img.shields.io/badge/DISCORD-Fraisbg-5865F2?style=for-the-badge&logo=discord&logoColor=white)
+
+</div>
+
+| Contact | Find me here |
+| :--- | :--- |
+| 📞 **Phone** | [+359 898 634 678](tel:+359898634678) |
+| ✉️ **Email** | [Fraisbg1@gmail.com](mailto:Fraisbg1@gmail.com) |
+| 💬 **Discord** | **Fraisbg** |
+| 📸 **Instagram** | [@y.yakowvw.sales](https://www.instagram.com/y.yakowvw.sales/) |
 
 **Available for paid websites, custom software, Discord bots, games and development work.**
 
-A useful project brief includes what you want to build, who it is for, the features you need, your timeline and your budget range. From there, we can define a practical scope and a custom quote.
+Send me your idea, the main features, your preferred timeline and your budget range. We can define the right scope and a custom quote.
+
+---
 
 <div align="center">
 
