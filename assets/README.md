@@ -150,3 +150,7 @@ Regenerating the visuals needs Pillow and fontTools (`pip install pillow fonttoo
 ## Before I Deploy metrics
 
 `motion/under-hood-*.svg` are generated from `data/bid-metrics.json`: aggregate counts measured on the private repository's main branch (5 Oct 2026) — non-blank lines per language, the eight-step check pipeline, engine commands, platforms, edge functions, templates and UI languages. "172 automated tests passing" is the result of running the engine suites that CI runs (119 + 53, 0 failed). The terminal shows the engine's real NDJSON event format (`step`, `log`, `result`) with illustrative values. No source code is published.
+
+## The Last Republic (current site)
+
+`screens/tlr/*.jpg` were captured on 5 Oct 2026 from the current The Last Republic codebase (Next.js 16) running locally: home, application path, rules hub, server rules and the Police Portal sign-in terminal. The Next.js development indicator was hidden; no data was changed. Discord sign-in is not configured locally, so no authenticated or personal data appears. `screens/framed/tlr-home.jpg` is the framed narrow-screen fallback. The whitelist flow illustration and the "Decisions in the code" notes follow the implementation and project documentation (exam timer and attempts, signed interactions, HMAC relay, role-ID authorization). The earlier green community-site captures are no longer shown.

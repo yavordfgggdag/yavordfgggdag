@@ -675,12 +675,12 @@ TS = {
     'en': {'count': '{n} technologies', 'legend': 'used in the featured products', 'used_title': 'Used in the featured products',
            'used_sub': 'Verified in the inspected implementations. The same tools carry a mint ring in the panels below.',
            'kinds': {'bid': 'native macOS app', 'police': 'web portal + Discord bot', 'community': 'React frontend · source showcase',
-                     'client': 'client website', 'space': 'browser experiment'},
+                     'client': 'client website', 'space': 'browser experiment', 'tlr': 'Next.js site + Discord platform'},
            'names': {'community': 'Community platform'}, 'group_desc': 'Interests and possible project choices: {names}.'},
     'bg': {'count': '{n} технологии', 'legend': 'използвано в представените проекти', 'used_title': 'Използвано в представените проекти',
            'used_sub': 'Проверено в прегледаните реализации. Същите инструменти имат ментов кръг в панелите по-долу.',
            'kinds': {'bid': 'нативно macOS приложение', 'police': 'уеб портал + Discord бот', 'community': 'React интерфейс · преглед на кода',
-                     'client': 'клиентски сайт', 'space': 'браузърен експеримент'},
+                     'client': 'клиентски сайт', 'space': 'браузърен експеримент', 'tlr': 'Next.js сайт + Discord платформа'},
            'names': {'community': 'Общностна платформа'}, 'group_desc': 'Интереси и възможни избори: {names}.'},
 }
 
@@ -1229,7 +1229,14 @@ SCENES = {
                         ('bid-mission-control', {'en': 'Mission Control', 'bg': 'Mission Control'}),
                         ('bid-command-palette', {'en': 'Command palette', 'bg': 'Командна палитра'})],
             'title': {'en': 'Before I Deploy — real screens', 'bg': 'Before I Deploy — реални екрани'}},
-    'police': {'device': 'browser', 'accent': (C['cyan'], C['mint']),
+    'tlr': {'device': 'browser', 'bar': 'The Last Republic', 'accent': (C['pink'], C['violet']),
+            'screens': [('tlr/home', {'en': 'Home', 'bg': 'Начало'}),
+                        ('tlr/application-path', {'en': 'Application path', 'bg': 'Път до кандидатстване'}),
+                        ('tlr/rules-hub', {'en': 'Rules hub', 'bg': 'Правила'}),
+                        ('tlr/server-rules', {'en': 'Server rules with search', 'bg': 'Правилник с търсене'}),
+                        ('tlr/police-entry', {'en': 'Police Portal entry', 'bg': 'Вход в полицейския портал'})],
+            'title': {'en': 'The Last Republic — real screens', 'bg': 'The Last Republic — реални екрани'}},
+    'police': {'device': 'browser', 'bar': 'TLR Police Portal', 'shield': True, 'accent': (C['cyan'], C['mint']),
                'screens': [('police-dashboard', {'en': 'Dashboard', 'bg': 'Табло'}),
                            ('police-employees', {'en': 'Staff directory', 'bg': 'Служители'}),
                            ('police-ranks', {'en': 'Rank hierarchy', 'bg': 'Звания'}),
@@ -1247,7 +1254,7 @@ def screen_data(name):
     from PIL import Image
     from frame_screens import inner_area
     image = Image.open(ROOT / f'assets/screens/{name}.jpg').convert('RGB')
-    crop = image.crop(inner_area(image))
+    crop = image if '/' in name else image.crop(inner_area(image))
     crop = crop.resize((1100, round(crop.height * 1100 / crop.width)), Image.LANCZOS)
     buffer = io.BytesIO()
     crop.save(buffer, 'JPEG', quality=74, optimize=True, progressive=True)
@@ -1309,8 +1316,9 @@ def scene(key, lang):
               f'<circle cx="{sx + 24}" cy="{sy - 23}" r="6.5" fill="#FF5F57"/><circle cx="{sx + 46}" cy="{sy - 23}" r="6.5" fill="#FEBC2E"/>'
               f'<circle cx="{sx + 68}" cy="{sy - 23}" r="6.5" fill="#28C840"/>'
               f'<rect x="{w / 2 - 210}" y="{sy - 37}" width="420" height="28" rx="14" fill="#161A2C"/>')
-        b += shield(w / 2 - 186, sy - 22, C['mint'])
-        b += text(w / 2 + 6, sy - 17, 'TLR Police Portal', 15, C['soft'], 600, anchor='middle')
+        if cfg.get('shield'):
+            b += shield(w / 2 - 186, sy - 22, C['mint'])
+        b += text(w / 2 + 6, sy - 17, cfg['bar'], 15, C['soft'], 600, anchor='middle')
     # screens
     b += f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" fill="#05060C"/><g clip-path="url(#screen)">'
     for i, (name, _labels) in enumerate(screens):
@@ -1460,6 +1468,80 @@ def under_hood(lang, mobile):
     return document(w, h, t['title'], desc, b, defs, motion, css)
 
 
+# ---------------------------------------------------------------- whitelist flow (The Last Republic)
+WF = {
+    'en': {'kicker': 'WHITELIST FLOW · ARCHITECTURE',
+           'top': [('Applicant', 'Discord sign-in'), ('Whitelist exam', '2 h · 3 attempts'), ('Postgres', 'application saved'),
+                   ('Discord bot', 'always-on Gateway'), ('Staff', 'accept / reject + reason')],
+           'bottom': [('Signed relay', 'HMAC-SHA256 + time'), ('Next.js site', 'applies the decision'), ('Applicant', 'channel post + DM')],
+           'gate': ['Police Portal gate: a fresh Discord member lookup on every request,', 'matched by role ID only, never by name. Any error denies access.'],
+           'title': 'The Last Republic whitelist flow',
+           'desc': 'Illustration of the implemented flow: the applicant signs in with Discord and takes a two-hour exam with three attempts per account; the application is saved in Postgres; an always-on Discord bot posts it with accept and reject buttons; staff decide with a mandatory reason; the bot relays the decision to the site with an HMAC-SHA256 signature and timestamp; the site applies it and the applicant gets a channel post and a direct message. The Police Portal checks Discord role IDs server-side on every request and fails closed.'},
+    'bg': {'kicker': 'ПЪТ НА КАНДИДАТУРАТА · АРХИТЕКТУРА',
+           'top': [('Кандидат', 'вход с Discord'), ('Whitelist изпит', '2 часа · 3 опита'), ('Postgres', 'записана кандидатура'),
+                   ('Discord бот', 'постоянен Gateway'), ('Екип', 'решение + причина')],
+           'bottom': [('Подписан relay', 'HMAC-SHA256 + час'), ('Next.js сайт', 'прилага решението'), ('Кандидат', 'канал + лично съобщение')],
+           'gate': ['Полицейски портал: нова проверка в Discord при всяка заявка,', 'само по ID на ролята, никога по име. Всяка грешка отказва достъпа.'],
+           'title': 'Път на кандидатурата в The Last Republic',
+           'desc': 'Илюстрация на реализирания поток: кандидатът влиза с Discord и решава двучасов изпит с три опита на акаунт; кандидатурата се записва в Postgres; постоянно свързан Discord бот я публикува с бутони за приемане и отказ; екипът решава със задължителна причина; ботът препраща решението към сайта с HMAC-SHA256 подпис и час; сайтът го прилага, а кандидатът получава публикация и лично съобщение. Полицейският портал проверява ID на ролите в Discord на сървъра при всяка заявка и отказва при грешка.'},
+}
+
+
+def packet_svg(path, period):
+    return (f'<g class="live"><g><circle r="18" fill="{C["pink"]}" opacity=".3"/><circle r="7" fill="#FFF0F7"/>'
+            f'<animateMotion dur="{period}s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.85;1" calcMode="linear" path="{path}"/></g></g>')
+
+
+def arch_whitelist(lang, mobile):
+    t = WF[lang]
+    period = 14.0
+    steps = t['top'] + t['bottom']
+    cols = [C['lilac'], C['pink'], '#4F7BFF', '#7C8BFF', C['amber'], C['mint'], C['cyan'], C['lilac2']]
+    if mobile:
+        w, h = 600, 1220
+        defs, b = arch_frame(w, h, t['kicker'], C['pink'])
+        ys = [86 + i * 104 for i in range(8)]
+        path = f'M300 {ys[0] + 40}V{ys[-1] + 40}'
+        for i, ((title, sub), col) in enumerate(zip(steps, cols)):
+            b += box(40, ys[i], 520, 80, title, sub, col, None, 22, sub_size=17)
+        b += '<!--packet-->'
+        for i in range(7):
+            b += f'<path d="M300 {ys[i] + 80}V{ys[i + 1]}" stroke="{cols[i + 1]}" stroke-opacity=".7" stroke-width="2" stroke-dasharray="3 5"/>'
+        gy = ys[-1] + 112
+        b += f'<rect x="40" y="{gy}" width="520" height="120" rx="18" fill="none" stroke="{C["amber"]}" stroke-opacity=".6" stroke-dasharray="6 6"/>'
+        b += shield(76, gy + 40, C['amber'])
+        for i, line in enumerate(wrap(' '.join(t['gate']), 40)):
+            b += text(110, gy + 34 + i * 24, line, 16, '#FDE68A' if i else C['amber'])
+        b += text(w / 2, h - 20, T[lang]['illus'], 15, C['muted'], anchor='middle')
+        lens = [ys[i] - ys[0] for i in range(8)]
+        total = ys[-1] - ys[0]
+        anchors = [(300, y + 40) for y in ys]
+    else:
+        w, h = 1200, 520
+        defs, b = arch_frame(w, h, t['kicker'], C['pink'])
+        cx = [145, 375, 605, 835, 1065]
+        top_y, bot_y = 92, 262
+        path = f'M{cx[0]} {top_y + 44}H{cx[4]}V{bot_y + 44}H{cx[0]}'
+        b += f'<path d="{path}" fill="none" stroke="url(#chain)" stroke-width="2.4" opacity=".5"/>' + '<!--packet-->'
+        for i, (title, sub) in enumerate(t['top']):
+            b += box(cx[i] - 105, top_y, 210, 88, title, sub, cols[i], None, 18, sub_size=13)
+        for j, (title, sub) in enumerate(t['bottom']):
+            x = [cx[4], cx[2], cx[0]][j]
+            b += box(x - 105, bot_y, 210, 88, title, sub, cols[5 + j], None, 18, sub_size=13)
+        gy = 392
+        b += f'<rect x="40" y="{gy}" width="1120" height="76" rx="18" fill="none" stroke="{C["amber"]}" stroke-opacity=".6" stroke-dasharray="6 6"/>'
+        b += shield(80, gy + 38, C['amber'])
+        b += text(112, gy + 32, t['gate'][0], 16, C['amber'], 600) + text(112, gy + 56, t['gate'][1], 16, '#FDE68A')
+        b += text(w - 40, h - 14, T[lang]['illus'], 13, C['muted'], anchor='end')
+        seg_top = cx[4] - cx[0]
+        lens = [cx[i] - cx[0] for i in range(5)] + [seg_top + 170, seg_top + 170 + (cx[4] - cx[2]), seg_top + 170 + (cx[4] - cx[0])]
+        total = seg_top * 2 + 170
+        anchors = [(x, top_y + 44) for x in cx] + [(cx[4], bot_y + 44), (cx[2], bot_y + 44), (cx[0], bot_y + 44)]
+    b = b.replace('<!--packet-->', packet_svg(path, period))
+    defs += linear('chain', [(0, C['lilac']), (.5, C['pink']), (1, C['mint'])], x2=1 if not mobile else 0, y2=0 if not mobile else 1)
+    return document(w, h, t['title'], t['desc'], b, defs)
+
+
 # ---------------------------------------------------------------- main
 def main():
     count = 0
@@ -1479,6 +1561,7 @@ def main():
                 for key in SCENES:
                     files[f'scene-{key}-{lang}.svg'] = scene(key, lang)
             files[f'under-hood-{sfx}'] = under_hood(lang, mobile)
+            files[f'arch-whitelist-{sfx}'] = arch_whitelist(lang, mobile)
             files[f'certificates-{sfx}'] = certificates(lang, mobile)
             files[f'lessons-{sfx}'] = lessons_panel(lang, mobile)
             if not mobile:
