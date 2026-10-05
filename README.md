@@ -47,20 +47,12 @@ Internal management for employee profiles, departments, ranks, callsigns, certif
 </td>
 </tr>
 <tr>
-<td width="50%" valign="top">
+<td colspan="2" valign="top">
 
 ### 🩷 [The Last Republic](#the-last-republic)
 Connected gaming and community infrastructure bringing together FiveM, web applications, Discord, databases, staff tools and permissions.
 
 **Full-stack systems · Gaming · Community infrastructure**
-
-</td>
-<td width="50%" valign="top">
-
-### 🟢 [Community platform](#community-platform)
-A separate React frontend for a gaming community: server discovery, topic-based rules and application routes in one navigation system.
-
-**React · Supabase · Source showcase**
 
 </td>
 </tr>
@@ -176,40 +168,6 @@ An internal portal for the TLR roleplay police department. **My contribution:** 
 
 <sub>The current main-site URL and version are being confirmed. Earlier homepage captures are not presented as the current website.</sub>
 
-<picture>
-<source media="(max-width: 600px)" srcset="assets/motion/project-community-en-mobile.svg" />
-<img src="assets/motion/project-community-en.svg" alt="04 · Source showcase · React" width="100%" />
-</picture>
-
-## Community platform
-
-**A shared entry point for a gaming community, its rules and player journeys.**
-
-A separate React implementation whose interface is branded TLR RP and focuses on Minecraft SMP and Factions. The frontend brings server discovery, topic-based rules and application routes into one consistent navigation system. This is a local source-code showcase, not the current main website of The Last Republic.
-
-<details>
-<summary><b>View the local interface from the reviewed source</b></summary>
-
-<img src="assets/screens/framed/community-platform.jpg" alt="Actual local TLR RP interface: green Minecraft community homepage with SMP and Factions messaging. Repository defaults are shown." width="100%" />
-
-<img src="assets/screens/framed/community-rules.jpg" alt="Real locally rendered rules hub with navigation cards for general rules, chat, SMP, Factions and Discord." width="100%" />
-
-</details>
-
-**Technical detail:** React Router handles the page journeys, route components load on demand, and React Query manages remote data caching. The repository also contains Supabase-backed authentication, data access and server functions.
-
-**Built with:** TypeScript · React · Vite · Tailwind CSS · shadcn/ui · React Router · TanStack Query · Supabase
-
-<sub>Captured from the unmodified frontend running locally, with production services disconnected. Placeholder addresses and status text are repository defaults. These images demonstrate the interface, not a verified live server, checkout or authentication deployment. Source code is private.</sub>
-
-### Code experiment — Space Control
-
-A browser-based interface experiment exploring simulated resource monitoring and control feedback. The reviewed source includes HTML screens and Canvas elements, with references to JavaScript files for the intended interactions.
-
-**Technology:** HTML · JavaScript · Canvas API
-
-<sub>Source preview only: the reviewed checkout is missing referenced styling and script assets. A complete visual demo is pending those assets or a working demo URL. Source code is private.</sub>
-
 <a name="services"></a>
 
 <picture>
@@ -321,7 +279,7 @@ New features, bug fixes, refactoring, performance improvements, migrations, inte
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/stack-used-en-mobile.svg" />
-<img src="assets/motion/stack-used-en.svg" alt="Used in the featured products. Before I Deploy: Swift, SwiftUI, JavaScript, Node.js, Supabase, PostgreSQL, Deno Edge Functions. TLR Police Portal: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, discord.js. Community platform: React, Vite, Tailwind CSS, shadcn/ui, React Router, TanStack Query, Supabase. Space Control: HTML, JavaScript, Canvas API." width="100%" />
+<img src="assets/motion/stack-used-en.svg" alt="Used in the featured products. Before I Deploy: Swift, SwiftUI, JavaScript, Node.js, Supabase, PostgreSQL, Deno Edge Functions. TLR Police Portal: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, discord.js." width="100%" />
 </picture>
 
 The 68 technologies below are the original technology collection: additional interests and possible project choices. It is not a claim of completed products or equal experience with every tool. A **mint ring** marks the tools verified in the products above.
