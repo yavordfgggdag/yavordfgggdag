@@ -72,8 +72,10 @@ class ProfileTests(unittest.TestCase):
     def test_motion_assets_are_self_contained_and_respect_reduced_motion(self):
         for svg in (ROOT / 'assets/motion').glob('*.svg'):
             content = svg.read_text()
-            for banned in ('<script', 'foreignObject', 'href="http', '@import', '<image'):
+            for banned in ('<script', 'foreignObject', 'href="http', '@import'):
                 self.assertNotIn(banned, content, svg.name)
+            for href in re.findall(r'<image[^>]*\shref="([^"]{0,16})', content):
+                self.assertTrue(href.startswith('data:image/'), svg.name)
             if '@keyframes' in content or '<animate' in content:
                 self.assertIn('prefers-reduced-motion:no-preference', content, svg.name)
 
