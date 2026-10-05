@@ -47,20 +47,12 @@
 </td>
 </tr>
 <tr>
-<td width="50%" valign="top">
+<td colspan="2" valign="top">
 
 ### 🩷 [The Last Republic](#the-last-republic)
 Свързана общностна инфраструктура с FiveM, уеб приложения, Discord, бази данни, инструменти и права за екипа.
 
 **Уеб системи · Игрови общности · Интеграции**
-
-</td>
-<td width="50%" valign="top">
-
-### 🟢 [Общностна платформа](#общностна-платформа)
-Отделен React интерфейс за игрова общност: сървъри, правила по теми и страници за кандидатстване в обща навигация.
-
-**React · Supabase · Преглед на кода**
 
 </td>
 </tr>
@@ -176,40 +168,6 @@
 
 <sub>Актуалният адрес и правилната версия на основния сайт се уточняват. Предишните снимки няма да бъдат представяни като актуален сайт.</sub>
 
-<picture>
-<source media="(max-width: 600px)" srcset="assets/motion/project-community-bg-mobile.svg" />
-<img src="assets/motion/project-community-bg.svg" alt="04 · Преглед на кода · React" width="100%" />
-</picture>
-
-## Общностна платформа
-
-**Общо място за информацията, правилата и потребителските пътища на игрова общност.**
-
-Отделна React реализация с TLR RP брандинг и Minecraft SMP и Factions интерфейс. Интерфейсът събира сървърите, правилата по теми и страниците за кандидатстване в обща навигация. Тази галерия показва локално стартирания код, а не актуалния основен сайт на The Last Republic.
-
-<details>
-<summary><b>Разгледайте локалния интерфейс от прегледания код</b></summary>
-
-<img src="assets/screens/framed/community-platform.jpg" alt="Локален TLR RP интерфейс: зелена начална страница с Minecraft SMP и Factions. Показани са стойности по подразбиране от кода." width="100%" />
-
-<img src="assets/screens/framed/community-rules.jpg" alt="Локален център с правила и връзки към общи правила, чат, SMP, Factions и Discord." width="100%" />
-
-</details>
-
-**Технически решения:** React Router за навигацията, зареждане на страниците при нужда и React Query за кеширане на отдалечените данни. Кодът включва Supabase интеграции за вход, данни и сървърни функции.
-
-**Технологии:** TypeScript · React · Vite · Tailwind CSS · shadcn/ui · React Router · TanStack Query · Supabase
-
-<sub>Снимките са от непроменения интерфейс, стартиран локално без продукционните услуги. Адресите и статусите са стойности по подразбиране от кода. Не представят проверен работещ сървър, плащане или публичен вход. Изходният код е частен.</sub>
-
-### Експеримент — Space Control
-
-Браузърен експеримент за симулирано наблюдение на ресурси и управление. Прегледаният код съдържа HTML екрани, Canvas елементи и препратки към JavaScript файлове за предвидените взаимодействия.
-
-**Технологии:** HTML · JavaScript · Canvas API
-
-<sub>Представяне само на кода: липсват посочени файлове за оформление и скриптове. За пълна визуална демонстрация са нужни тези файлове или работещ адрес. Изходният код е частен.</sub>
-
 <a name="услуги"></a>
 
 <picture>
@@ -321,7 +279,7 @@
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/stack-used-bg-mobile.svg" />
-<img src="assets/motion/stack-used-bg.svg" alt="Използвано в представените проекти. Before I Deploy: Swift, SwiftUI, JavaScript, Node.js, Supabase, PostgreSQL, Deno Edge Functions. TLR Police Portal: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, discord.js. Общностна платформа: React, Vite, Tailwind CSS, shadcn/ui, React Router, TanStack Query, Supabase. Space Control: HTML, JavaScript, Canvas API." width="100%" />
+<img src="assets/motion/stack-used-bg.svg" alt="Използвано в представените проекти. Before I Deploy: Swift, SwiftUI, JavaScript, Node.js, Supabase, PostgreSQL, Deno Edge Functions. TLR Police Portal: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, discord.js." width="100%" />
 </picture>
 
 Колекцията от 68 технологии по-долу показва допълнителни интереси и възможни технологични избори. Тя не означава завършени продукти или еднакъв опит с всеки инструмент. **Ментовият кръг** отбелязва инструментите, проверени в проектите по-горе.
