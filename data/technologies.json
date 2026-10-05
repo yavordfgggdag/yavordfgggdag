@@ -621,60 +621,6 @@
      "discorddotjs"
     ]
    ]
-  },
-  {
-   "key": "community",
-   "name": "Community platform",
-   "items": [
-    [
-     "React",
-     "react"
-    ],
-    [
-     "Vite",
-     "vite"
-    ],
-    [
-     "Tailwind CSS",
-     "tailwindcss"
-    ],
-    [
-     "shadcn/ui",
-     "shadcnui"
-    ],
-    [
-     "React Router",
-     "reactrouter"
-    ],
-    [
-     "TanStack Query",
-     "reactquery"
-    ],
-    [
-     "Supabase",
-     "supabase"
-    ]
-   ]
-  },
-  {
-   "key": "space",
-   "name": "Space Control",
-   "items": [
-    [
-     "HTML",
-     "html5"
-    ],
-    [
-     "JavaScript",
-     "javascript"
-    ],
-    [
-     "Canvas API",
-     null,
-     "#7C3AED",
-     "CVS"
-    ]
-   ]
   }
  ]
 }

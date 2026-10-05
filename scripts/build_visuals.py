@@ -336,9 +336,6 @@ PROJECTS = {
     'tlr': {'n': '03', 'accent': ('#F472B6', '#8B5CF6'), 'motif': 'network',
             'en': ('COMMUNITY INFRASTRUCTURE', 'Public interface · rules · Discord-connected applications'),
             'bg': ('ОБЩНОСТНА ИНФРАСТРУКТУРА', 'Публичен интерфейс · правила · кандидатстване чрез Discord')},
-    'community': {'n': '04', 'accent': ('#34D399', '#A78BFA'), 'motif': 'hex',
-                  'en': ('SOURCE SHOWCASE · REACT', 'Server discovery · topic-based rules · application routes'),
-                  'bg': ('ПРЕГЛЕД НА КОДА · REACT', 'Сървъри · правила по теми · страници за кандидатстване')},
 }
 
 
