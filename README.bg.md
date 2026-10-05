@@ -323,7 +323,6 @@ Mission Control обединява състоянието на проектит�
 Изпратете **идеята, основните функции, желания срок и ориентировъчния бюджет**. Ще уточним обхвата и индивидуална оферта.
 
 **[Fraisbg1@gmail.com](mailto:Fraisbg1@gmail.com)**  
-Телефон: **+359898634678**  
 Discord: **Fraisbg**  
 Instagram: **[@y.yakowvw.sales](https://www.instagram.com/y.yakowvw.sales/)**
 

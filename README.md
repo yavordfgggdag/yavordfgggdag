@@ -323,7 +323,6 @@ Purposeful design · Clear architecture · Thoughtful permissions and access con
 Send your **idea, main features, preferred timeline and budget range**. We can define the scope and a custom quote.
 
 **[Fraisbg1@gmail.com](mailto:Fraisbg1@gmail.com)**  
-Phone: **+359898634678**  
 Discord: **Fraisbg**  
 Instagram: **[@y.yakowvw.sales](https://www.instagram.com/y.yakowvw.sales/)**
 
