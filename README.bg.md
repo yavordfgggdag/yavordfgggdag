@@ -177,15 +177,33 @@
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/project-tlr-bg-mobile.svg" />
-<img src="assets/motion/project-tlr-bg.svg" alt="03 · Общностна инфраструктура" width="100%" />
+<img src="assets/motion/project-tlr-bg.svg" alt="03 · The Last Republic · общностна инфраструктура" width="100%" />
 </picture>
 
+**Официалният сайт и защитена платформа за whitelisted FiveM roleplay общност.**
 
-**Общностен сайт с път от първото посещение до кандидатстването.**
+**Моят принос:** една Next.js система за публичния сайт, правилата, изпит с таймер за whitelist с кандидатури, преглеждани в Discord, и защитения полицейски портал.
 
-**Моят принос:** публичен интерфейс, правила и кандидатстване за FiveM общността, свързано с Discord.
+<picture>
+<source media="(max-width: 600px)" srcset="assets/screens/framed/tlr-home.jpg" />
+<img src="assets/motion/scene-tlr-bg.svg" alt="The Last Republic, актуален сайт: кинематографична начална страница с град от линии, път до кандидатстване, илюстрирани правила, правилник с търсене и терминалът за вход в полицейския портал." width="100%" />
+</picture>
 
-<sub>Актуалният адрес и правилната версия на основния сайт се уточняват. Предишните снимки няма да бъдат представяни като актуален сайт.</sub>
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/arch-whitelist-bg-mobile.svg" />
+<img src="assets/motion/arch-whitelist-bg.svg" alt="Път на кандидатурата: вход с Discord, двучасов изпит с три опита, кандидатура в Postgres, постоянно свързан Discord бот с бутони за приемане и отказ, решение на екипа с причина, подписано с HMAC препращане към сайта и публикация плюс лично съобщение до кандидата. Достъпът до полицейския портал се проверява по ID на ролята при всяка заявка и се отказва при грешка." width="100%" />
+</picture>
+
+**Решения в кода**
+
+- **Достъп по ID на ролята при всяка заявка.** Полицейският портал пита Discord за текущите роли на сървъра, сравнява само ID-та — никога имена — и отказва достъп при всяка грешка.
+- **Всяко входящо действие е подписано.** Действията от Discord се проверяват с подписа на Discord; тъй като Discord позволява един канал за действия на приложение, постоянно свързаният бот препраща решенията към сайта с HMAC-SHA256 подпис и часови прозорец.
+- **Постоянните връзки са извън serverless.** Сайтът работи в Netlify, а връзките с Discord Gateway — в постоянно работещ бот и Cloudflare Durable Object.
+- **Решенията са документирани:** 4 архитектурни решения (ADR) и 21 проектни документа.
+
+**Технологии:** TypeScript · Next.js 16 · React 19 · Tailwind CSS 4 · Drizzle ORM · Neon Postgres · Netlify · discord-interactions · discord.js · Cloudflare Workers
+
+<sub>22 страници · 23 API маршрута · 4 миграции на базата · 11 автоматични теста минават. Заснето от актуалния код, стартиран локално на 5 окт 2026; входът с Discord не е настроен локално. Кодът е частен.</sub>
 
 <a name="услуги"></a>
 
@@ -298,7 +316,7 @@
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/stack-used-bg-mobile.svg" />
-<img src="assets/motion/stack-used-bg.svg" alt="Използвано в представените проекти. Before I Deploy: Swift, SwiftUI, JavaScript, Node.js, Supabase, PostgreSQL, Deno Edge Functions. TLR Police Portal: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, discord.js." width="100%" />
+<img src="assets/motion/stack-used-bg.svg" alt="Използвано в представените проекти. Before I Deploy: Swift, SwiftUI, JavaScript, Node.js, Supabase, PostgreSQL, Deno Edge Functions. The Last Republic: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, Netlify. TLR Police Portal: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, discord.js." width="100%" />
 </picture>
 
 Колекцията от 68 технологии по-долу показва допълнителни интереси и възможни технологични избори. Тя не означава завършени продукти или еднакъв опит с всеки инструмент. **Ментовият кръг** отбелязва инструментите, проверени в проектите по-горе.

@@ -177,15 +177,33 @@ An internal portal for the TLR roleplay police department. **My contribution:** 
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/project-tlr-en-mobile.svg" />
-<img src="assets/motion/project-tlr-en.svg" alt="03 · Community infrastructure" width="100%" />
+<img src="assets/motion/project-tlr-en.svg" alt="03 · The Last Republic · community infrastructure" width="100%" />
 </picture>
 
+**The official website and protected platform for a whitelisted FiveM roleplay community.**
 
-**Community infrastructure connecting the website, Discord and operational tools.**
+**My contribution:** one Next.js codebase for the public site, the rules hub, a timed whitelist exam with applications reviewed in Discord, and the protected Police Portal.
 
-**My contribution:** the public interface, rules and Discord-connected application journeys for the FiveM community.
+<picture>
+<source media="(max-width: 600px)" srcset="assets/screens/framed/tlr-home.jpg" />
+<img src="assets/motion/scene-tlr-en.svg" alt="The Last Republic, current site: cinematic line-art city homepage, application path, illustrated rules hub, server rules with search and the Police Portal sign-in terminal." width="100%" />
+</picture>
 
-<sub>The current main-site URL and version are being confirmed. Earlier homepage captures are not presented as the current website.</sub>
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/arch-whitelist-en-mobile.svg" />
+<img src="assets/motion/arch-whitelist-en.svg" alt="Whitelist flow: Discord sign-in, a two-hour exam with three attempts, the application saved in Postgres, an always-on Discord bot posting it with accept and reject buttons, staff deciding with a reason, an HMAC-signed relay back to the site, and a channel post plus direct message to the applicant. Police Portal access is checked by Discord role ID on every request and fails closed." width="100%" />
+</picture>
+
+**Decisions in the code**
+
+- **Access by role ID, checked on every request.** The Police Portal asks Discord for the member's current roles on the server side, matches role IDs only — never names — and denies access on any error.
+- **Every inbound action is signed.** Discord interactions are verified with Discord's signature; because Discord allows one interaction transport per application, the always-on bot relays decisions to the site with an HMAC-SHA256 signature and a timestamp window.
+- **Long-lived connections live outside serverless.** The site runs on Netlify, while Discord Gateway connections run in an always-on bot process and a Cloudflare Durable Object.
+- **Decisions are written down:** 4 architecture decision records and 21 project documents.
+
+**Built with:** TypeScript · Next.js 16 · React 19 · Tailwind CSS 4 · Drizzle ORM · Neon Postgres · Netlify · discord-interactions · discord.js · Cloudflare Workers
+
+<sub>22 pages · 23 API route handlers · 4 database migrations · 11 automated tests passing. Captured from the current codebase running locally on 5 Oct 2026; Discord sign-in is not configured locally. Source is private.</sub>
 
 <a name="services"></a>
 
@@ -298,7 +316,7 @@ New features, bug fixes, refactoring, performance improvements, migrations, inte
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/stack-used-en-mobile.svg" />
-<img src="assets/motion/stack-used-en.svg" alt="Used in the featured products. Before I Deploy: Swift, SwiftUI, JavaScript, Node.js, Supabase, PostgreSQL, Deno Edge Functions. TLR Police Portal: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, discord.js." width="100%" />
+<img src="assets/motion/stack-used-en.svg" alt="Used in the featured products. Before I Deploy: Swift, SwiftUI, JavaScript, Node.js, Supabase, PostgreSQL, Deno Edge Functions. The Last Republic: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, Netlify. TLR Police Portal: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, discord.js." width="100%" />
 </picture>
 
 The 68 technologies below are the original technology collection: additional interests and possible project choices. It is not a claim of completed products or equal experience with every tool. A **mint ring** marks the tools verified in the products above.
