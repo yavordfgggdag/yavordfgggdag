@@ -1,239 +1,310 @@
-<p align="right"><a href="https://github.com/yavordfgggdag">EN · English</a> &nbsp; / &nbsp; <b>BG · Български</b></p>
+<p align="center">
+<a href="https://github.com/yavordfgggdag"><img src="assets/languages/en.svg" alt="English" width="146" height="42" /></a>
+<a href="https://github.com/yavordfgggdag/yavordfgggdag/blob/main/README.bg.md"><img src="assets/languages/bg.svg" alt="Български" width="166" height="42" /></a>
+</p>
 
-<img src="assets/banner.svg" alt="Yavor — Websites. Software. Games. Available for paid projects." width="100%" />
-
-**Аз съм Явор.** Разработвам уеб и настолен софтуер, сайтове и инструменти за бизнеси и общности.
-
-**Приемам платени проекти.** [Нека обсъдим вашия →](mailto:Fraisbg1@gmail.com)
-
-[Работа](#work) · [Езици и инструменти](#toolkit) · [Услуги](#services) · [Активност](#activity) · [Контакт](#contact)
+<img src="assets/banner.svg" alt="Явор — сайтове, софтуер и игри, създадени около вашата идея. Приемам платени поръчки." width="100%" />
 
 <picture>
-<source media="(max-width: 600px)" srcset="assets/journal/intro-bg-mobile.svg" />
-<img src="assets/journal/intro-bg.svg" alt="Цветна анимирана композиция: уеб, софтуер, общности." width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/hero-bg-mobile.svg" />
+<img src="assets/motion/hero-bg.svg" alt="Явор (Yavor Yakow), независим разработчик. Продукти със системи зад тях: сайтове, онлайн магазини, уеб и настолен софтуер, админ панели, Discord ботове, игри и FiveM, API и AI. Избрано: Before I Deploy, TLR Police Portal, клиентски сайтове. Контакт: Fraisbg1@gmail.com · Discord Fraisbg · Instagram @y.yakowvw.sales." width="100%" />
 </picture>
 
-<a name="work"></a><a name="before-i-deploy"></a>
+<p align="center"><b><a href="#проекти">Проекти</a> · <a href="#услуги">Услуги</a> · <a href="#технологии">Технологии</a> · <a href="#активност">Активност</a> · <a href="#процес">Процес</a> · <a href="#контакт">Контакт</a></b></p>
+
+## 👋 Здравейте, аз съм Явор
+
+Създавам дигитални продукти, които свързват дизайн, код и реални работни процеси. Работя по уеб приложения, индивидуален софтуер, Discord ботове, игри, FiveM системи, автоматизации и инструменти за разработчици.
+
+**Приемам платени поръчки** — от конкретна функционалност или нов сайт до цялостна платформа. Помагам с уточняването на обхвата, разработката, интеграциите и подготовката за публикуване.
+
+<a name="проекти"></a>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/divider-01-bg-mobile.svg" />
+<img src="assets/motion/divider-01-bg.svg" alt="" width="100%" />
+</picture>
+
+## 🚀 Избрани проекти
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🟣 [Before I Deploy](#before-i-deploy)
+**Проверете, преди да публикувате.** Нативно macOS приложение за проверка на проекти преди публикуване: среди, зависимости, статичен анализ, типове, тестове, компилация, сигурност и конфигурация.
+
+**Инструменти за разработчици · Автоматизация · Подготовка за публикуване**
+
+</td>
+<td width="50%" valign="top">
+
+### 🔵 [TLR Police Portal](#tlr-police-portal)
+Вътрешен портал за служители, отдели, звания, позивни, сертификати и наказания с права и журнал на действията.
+
+**Управление · Достъп според роля · Интеграции**
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 🩷 [The Last Republic](#the-last-republic)
+Свързана общностна инфраструктура с FiveM, уеб приложения, Discord, бази данни, инструменти и права за екипа.
+
+**Уеб системи · Игрови общности · Интеграции**
+
+</td>
+<td width="50%" valign="top">
+
+### 🟠 Клиентски сайтове
+Сайтове за **„Помощ от приятел“** (образователен център) и **„Автоинструктор Господинов“** (шофьорски курсове). [Към клиентските проекти](#клиентски-сайтове).
+
+**Бизнес сайтове · UI/UX · Индивидуална разработка**
+
+</td>
+</tr>
+</table>
+
+Голяма част от изходния код е частен. Тук представям конкретната работа, техническите решения и начина си на работа.
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/project-bid-bg-mobile.svg" />
+<img src="assets/motion/project-bid-bg.svg" alt="01 · Нативно macOS приложение" width="100%" />
+</picture>
 
 ## Before I Deploy
 
+**Ясна подготовка за публикуване — от първата проверка до следващото действие.**
+
+Нативно приложение за macOS за преглед на локални уеб проекти, разбиране на предупрежденията и подготовка на тестова или продукционна версия. **Моят принос:** разработих SwiftUI интерфейса, командния Node.js модул и връзките между проверките, хостинга и облачните услуги.
+
+<img src="assets/screens/framed/before-i-deploy.jpg" alt="Работещ Before I Deploy на macOS: демонстрационен проект с предупреждения, проверки и списък със стъпки за публикуване." width="100%" />
+
+- **Общ процес за проверки:** Git, тайни ключове, зависимости, статичен анализ, типове, компилация и готовност на хостинга. Резултатите стигат до приложението като NDJSON събития.
+- **Защити при публикуване:** проверка дали файловете са променени след анализа и изрично потвърждение преди продукционно публикуване.
+- **Център за управление:** състояние на проектите, наблюдение на сайтове, SSL информация и командна палитра.
+- **AI помощ при поправки:** преглед и прилагане на предложени промени. Работата зависи от настройката на доставчика и достъпността на услугите.
+
 <picture>
-<source media="(max-width: 600px)" srcset="assets/journal/screens/bid-mobile.svg" />
-<img src="assets/journal/screens/bid.svg" alt="Реален Before I Deploy с демонстрационен проект; на тесен екран се показва детайл от същия desktop кадър." width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/arch-bid-bg-mobile.svg" />
+<img src="assets/motion/arch-bid-bg.svg" alt="Илюстрация на архитектурата: SwiftUI приложението изпраща команди към Node.js модул и получава NDJSON събития. Една верига от проверки — Git, тайни, зависимости, lint, типове, build, хостинг — завършва с изрично потвърждение преди продукционно публикуване. Файловете и Keychain остават локално; Supabase, Postgres и Deno Edge Functions са облачни услуги по избор." width="100%" />
 </picture>
-
-Нативно macOS приложение за проверки и подготовка на уеб проекти за публикуване.
-
-<sub>Реален кадър от разработката. При тесен екран: увеличен детайл от desktop интерфейса. [Целият кадър](assets/screens/before-i-deploy.jpg).</sub>
-
-**Нативен интерфейс. Отделен модул за проверки.** Разработих SwiftUI интерфейса, командния Node.js модул и връзките между проверките, хостинга и облачните услуги. Резултатите достигат до приложението като NDJSON събития.
-
-<picture>
-<source media="(max-width: 600px)" srcset="assets/journal/native-bg-mobile.svg" />
-<img src="assets/journal/native-bg.svg" alt="Обяснителна схема: SwiftUI изпраща команди към Node.js и получава NDJSON събития; модулът проверява локалния проект. Движението не показва жив статус." width="100%" />
-</picture>
-
-**Техническите решения:** Git състояние, тайни ключове, зависимости, статичен анализ, типове, компилация и готовност на хостинга в общ процес; проверка за променени файлове след анализа; изрично потвърждение преди продукционно публикуване.
 
 **Технологии:** Swift · SwiftUI · JavaScript · Node.js · Supabase · PostgreSQL · Deno Edge Functions
 
 <details>
-<summary><b>Галерия и още функционалности</b></summary>
+<summary><b>Разгледайте приложението — Mission Control и командна палитра</b></summary>
 
-Mission Control обединява състоянието на проектите, наблюдението на сайтове и SSL информацията. Командната палитра предоставя бърза навигация.
+### Mission Control
 
-<img src="assets/screens/bid-mission-control.jpg" alt="Mission Control с демонстрационен проект и HTTP 404 инцидент; заснето състояние, не показател за резултат." width="100%" />
+<img src="assets/screens/framed/bid-mission-control.jpg" alt="Реален Mission Control с демонстрационен проект и HTTP 404 инцидент. Заснето състояние по време на разработка." width="100%" />
 
-<img src="assets/screens/bid-command-palette.jpg" alt="Реалната командна палитра на Before I Deploy." width="100%" />
+### Командна палитра
 
-**AI помощ:** преглед и прилагане на предложени промени. Достъпността зависи от настройките на доставчика и външните услуги.
+<img src="assets/screens/framed/bid-command-palette.jpg" alt="Командна палитра с достъп до Mission Control, домейни, разходи, настройки, AI и история." width="100%" />
 
 </details>
 
-<sub>Продукт в активно развитие, с частен код. Снимките не означават публично издание или проверка на всяка външна интеграция.</sub>
+<sub>Продукт в активно развитие. Снимките са от инсталираното приложение с демонстрационен проект и не означават публично издание или проверка на всяка външна интеграция. Кодът е частен.</sub>
 
----
+[Обсъдете продукта или подобен инструмент →](mailto:Fraisbg1@gmail.com?subject=Before%20I%20Deploy)
 
-<a name="tlr-police-portal"></a>
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/project-police-bg-mobile.svg" />
+<img src="assets/motion/project-police-bg.svg" alt="02 · Операции за FiveM общност" width="100%" />
+</picture>
 
 ## TLR Police Portal
 
-Вътрешен портал за полицейския отдел на FiveM roleplay общността The Last Republic. Разработих таблото, търсачката на служители, йерархията на званията, наръчника и управлението на сертификати, наказания и позивни.
+**Структурата на екипа, превърната в работно пространство.**
+
+Вътрешен портал за полицейския отдел на TLR. **Моят принос:** разработих табло, търсачка на служители, йерархия на званията, наръчник и управление на сертификати, наказания и позивни, със сървърни проверки на правата и журнал на действията.
+
+<img src="assets/screens/framed/police-dashboard.jpg" alt="Заснето табло на TLR Police Portal с наръчник, радиокодове, райони и състав. Имената и аватарите са скрити." width="100%" />
+
+**Техническо решение:** събитията за членство в Discord изискват постоянна връзка. Отделен Node.js бот поддържа Gateway връзката и синхронизира данните за състава в Postgres. Next.js сайтът обработва разрешените административни действия. Двата компонента използват обща карта на ролите.
 
 <picture>
-<source media="(max-width: 600px)" srcset="assets/journal/screens/police-mobile.svg" />
-<img src="assets/journal/screens/police.svg" alt="Реално табло на TLR Police Portal със скрити лични данни. Мобилният вариант е детайл с радиокодовете от desktop кадъра." width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/arch-tlr-bg-mobile.svg" />
+<img src="assets/motion/arch-tlr-bg.svg" alt="Илюстрация на архитектурата: постоянен Discord Gateway бот синхронизира състава в Postgres; Next.js порталът чете данните и изпълнява разрешени действия след проверка на правата на сървъра, като записва журнал. Ботът и порталът използват обща карта на ролите; служителите влизат с Discord." width="100%" />
 </picture>
 
-<sub>На тесен екран: детайл с радиокодовете от същия кадър. [Цялото табло](assets/screens/police-dashboard.jpg).</sub>
+**Технологии:** TypeScript · Next.js · React · PostgreSQL / Neon · Drizzle ORM · Node.js · discord.js
 
-**Постоянната връзка има собствен процес.** Отделен Node.js бот поддържа Discord Gateway връзката и синхронизира данните за състава в Postgres. Next.js порталът извършва административните действия със сървърни проверки на правата и журнал. Двата компонента използват обща карта на ролите.
+### Вътре в портала
 
-<picture>
-<source media="(max-width: 600px)" srcset="assets/journal/sync-bg-mobile.svg" />
-<img src="assets/journal/sync-bg.svg" alt="Архитектура: Discord бот, Postgres и Next.js портал. Схематична синхронизация, не жива активност." width="100%" />
-</picture>
-
-**Технологии:** TypeScript · Next.js · React · Tailwind CSS · PostgreSQL / Neon · Drizzle ORM · Node.js · discord.js
+<img src="assets/screens/framed/police-employees.jpg" alt="Управление на служители с търсене и филтри по звание и отдел. Личните данни са скрити." width="100%" />
 
 <details>
-<summary><b>Галерия — състав, звания и наръчник</b></summary>
+<summary><b>Отворете галерията — звания и интерактивен наръчник</b></summary>
 
-<img src="assets/screens/police-employees.jpg" alt="Управление на състава; личните записи са скрити." width="100%" />
+### Йерархия на званията
 
-<img src="assets/screens/police-ranks.jpg" alt="Реална йерархия на званията." width="100%" />
+<img src="assets/screens/framed/police-ranks.jpg" alt="Реална страница със званията на полицейските структури в TLR." width="100%" />
 
-<img src="assets/screens/police-handbook.jpg" alt="Реален интерактивен наръчник." width="100%" />
+### Интерактивен наръчник
+
+<img src="assets/screens/framed/police-handbook.jpg" alt="Реален наръчник с глави, управление на страниците и структурирани процедури." width="100%" />
 
 </details>
 
 <details>
-<summary><b>Реална навигация в наръчника — кратък GIF</b></summary>
+<summary><b>Кратка демонстрация на навигацията в наръчника — GIF</b></summary>
 
 <picture>
-<source media="(prefers-reduced-motion: reduce)" srcset="assets/screens/police-handbook.jpg" />
-<img src="assets/screens/handbook-navigation.gif" alt="Три реално заснети страници от навигацията в наръчника." width="100%" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="assets/screens/police-handbook.jpg" />
+  <img src="assets/screens/handbook-navigation.gif" alt="Три реално заснети страници на наръчника при навигация. При поддръжка на намалено движение се показва статична снимка." width="100%" />
 </picture>
 
-[Статичен кадър](assets/screens/police-handbook.jpg).
+<sub>Три състояния от реална навигация с паузи за четене. Интерфейсът и данните не са измислени.</sub>
 
 </details>
 
-<sub>Кадри от предишната проверка. Достъпът изисква Discord вход и членство в отдела. Актуалният вход се уточнява; кодът е частен.</sub>
+<sub>Снимки от предишната проверка на портала. Достъпът изисква Discord вход и членство в отдела. Актуалната връзка се уточнява; кодът е частен.</sub>
 
----
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/project-tlr-bg-mobile.svg" />
+<img src="assets/motion/project-tlr-bg.svg" alt="03 · Общностна инфраструктура" width="100%" />
+</picture>
 
-<a name="client-websites"></a>
+## The Last Republic
 
-## Клиентска работа
+**Общностен сайт с път от първото посещение до кандидатстването.**
+
+**Моят принос:** публичен интерфейс, правила и кандидатстване за FiveM общността, свързано с Discord.
+
+<sub>Актуалният адрес и правилната версия на основния сайт се уточняват. Предишните снимки няма да бъдат представяни като актуален сайт.</sub>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/project-community-bg-mobile.svg" />
+<img src="assets/motion/project-community-bg.svg" alt="04 · Преглед на кода · React" width="100%" />
+</picture>
+
+## Общностна платформа
+
+**Общо място за информацията, правилата и потребителските пътища на игрова общност.**
+
+Отделна React реализация с TLR RP брандинг и Minecraft SMP и Factions интерфейс. Интерфейсът събира сървърите, правилата по теми и страниците за кандидатстване в обща навигация. Тази галерия показва локално стартирания код, а не актуалния основен сайт на The Last Republic.
+
+<details>
+<summary><b>Разгледайте локалния интерфейс от прегледания код</b></summary>
+
+<img src="assets/screens/framed/community-platform.jpg" alt="Локален TLR RP интерфейс: зелена начална страница с Minecraft SMP и Factions. Показани са стойности по подразбиране от кода." width="100%" />
+
+<img src="assets/screens/framed/community-rules.jpg" alt="Локален център с правила и връзки към общи правила, чат, SMP, Factions и Discord." width="100%" />
+
+</details>
+
+**Технически решения:** React Router за навигацията, зареждане на страниците при нужда и React Query за кеширане на отдалечените данни. Кодът включва Supabase интеграции за вход, данни и сървърни функции.
+
+**Технологии:** TypeScript · React · Vite · Tailwind CSS · shadcn/ui · React Router · TanStack Query · Supabase
+
+<sub>Снимките са от непроменения интерфейс, стартиран локално без продукционните услуги. Адресите и статусите са стойности по подразбиране от кода. Не представят проверен работещ сървър, плащане или публичен вход. Изходният код е частен.</sub>
+
+### Експеримент — Space Control
+
+Браузърен експеримент за симулирано наблюдение на ресурси и управление. Прегледаният код съдържа HTML екрани, Canvas елементи и препратки към JavaScript файлове за предвидените взаимодействия.
+
+**Технологии:** HTML · JavaScript · Canvas API
+
+<sub>Представяне само на кода: липсват посочени файлове за оформление и скриптове. За пълна визуална демонстрация са нужни тези файлове или работещ адрес. Изходният код е частен.</sub>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/project-client-bg-mobile.svg" />
+<img src="assets/motion/project-client-bg.svg" alt="05 · Клиентски сайтове" width="100%" />
+</picture>
+
+## Клиентски сайтове
 
 ### Помощ от приятел · Образователен център
 
-Сайт, който помага на родителите да разгледат уроците по БЕЛ и математика и да изпратят запитване. Включва формати на обучение, често задавани въпроси и форма за контакт.
+Клиентски сайт, който помага на родителите да разгледат уроците по БЕЛ и математика и да изпратят запитване. Публичният интерфейс включва формати на обучение, често задавани въпроси и форма за контакт.
 
-<picture>
-<source media="(max-width: 600px)" srcset="assets/journal/screens/education-mobile.svg" />
-<img src="assets/journal/screens/education.svg" alt="Реален кадър от Помощ от приятел; тесният вариант е детайл от същата снимка." width="680" />
-</picture>
-
-**Компоненти, документирани при предишния преглед:** WordPress · WPForms. Формата е разгледана без изпращане на лични данни.
-
-[Посетете сайта →](https://pomoshtotpriyatel.com/) · [Целият кадър](assets/screens/client-education.jpg)
+**Проверени компоненти:** WordPress · WPForms. Формата е прегледана без изпращане на лични данни.
 
 <details>
-<summary><b>Въпроси и отговори — реален кадър</b></summary>
+<summary><b>Разгледайте интерактивните въпроси</b></summary>
 
-<img src="assets/screens/client-education-faq.jpg" alt="Често задавани въпроси с разгънат отговор." width="100%" />
+<img src="assets/screens/framed/client-education-faq.jpg" alt="Реална секция с въпроси и разгънат отговор за възрастовите групи." width="100%" />
 
 </details>
 
-### Автоинструктор Господинов
+[Посетете Помощ от приятел →](https://pomoshtotpriyatel.com/)
 
-Клиентски сайт за онлайн представяне на автоинструктор. **Очаква потвърждение:** точен адрес, актуални снимки, обхват и технологии.
+### Автоинструктор Господинов · Шофьорски курсове
 
-<a name="the-last-republic"></a>
+Клиентски сайт за онлайн представяне на автоинструктор.
 
-### The Last Republic
+<sub>Връзката, актуалните снимки, точният обхват и технологиите предстои да бъдат проверени.</sub>
 
-Основен сайт за FiveM общността. Работата включва публичен интерфейс, правила и кандидатстване, свързано с Discord. **Актуалният адрес и версия предстои да се потвърдят.** Старите начални страници и Minecraft интерфейсът не се представят като текущия основен сайт.
-
-<details>
-<summary><b>Допълнителна работа и експерименти</b></summary>
-
-**Общностна платформа.** Отделна React реализация с Minecraft SMP и Factions интерфейс. Техническите решения включват React Router, зареждане на страници при нужда, TanStack Query и Supabase интеграции. Снимките са от локален преглед без продукционните услуги; не доказват работещ сървър, плащане или публичен вход.
-
-<img src="assets/screens/community-platform.jpg" alt="Локален Minecraft интерфейс; не е актуалният основен сайт на The Last Republic." width="100%" />
-
-<img src="assets/screens/community-rules.jpg" alt="Локален център с правила на общностната платформа." width="100%" />
-
-**Технологии:** TypeScript · React · Vite · Tailwind CSS · shadcn/ui · React Router · TanStack Query · Supabase.
-
-**Space Control.** Експеримент с HTML, JavaScript и Canvas API. В предишния преглед липсват посочени файлове за оформление и скриптове; не е представен като завършен продукт. Кодът на тези проекти е частен.
-
-</details>
-
----
-
-<a name="toolkit"></a>
-
-## Езици, инструменти и среда за разработка
+<a name="услуги"></a>
 
 <picture>
-<source media="(max-width: 600px)" srcset="assets/journal/toolkit-bg-mobile.svg" />
-<img src="assets/journal/toolkit-bg.svg" alt="Технологии от представените проекти: Swift и SwiftUI; TypeScript, React и Next.js; Postgres, Drizzle, Supabase и discord.js." width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/divider-02-bg-mobile.svg" />
+<img src="assets/motion/divider-02-bg.svg" alt="" width="100%" />
 </picture>
 
-### Реализиран опит — свързан с конкретна работа
+## 💼 За какво можете да ме наемете
 
-| Контекст | Инструменти и роля |
-| :--- | :--- |
-| Нативно приложение | Swift / SwiftUI — macOS интерфейс; Node.js / JavaScript — проверки; NDJSON — събития |
-| Портал и интеграции | TypeScript / React / Next.js — интерфейс и сървърна логика; Tailwind CSS — оформление; discord.js — бот |
-| Данни и облачни услуги | PostgreSQL / Neon / Drizzle; Supabase / Deno Edge Functions — според проекта |
-| Клиентски сайт | WordPress / WPForms — документираните компоненти на „Помощ от приятел“ |
+<table>
+<tr>
+<td width="50%" valign="top">
 
-### Пълна колекция — допълнителни технологии и интереси
+### 🌐 Сайтове и онлайн бизнес
+Фирмени сайтове, целеви страници, портфолиа, онлайн магазини, интерфейси за резервации и обновяване на съществуващи сайтове.
 
-Запазен е целият набор от езици и инструменти от профила. Тази колекция включва допълнителни интереси и възможни технологични избори; не означава еднакъв опит или завършени продукти с всеки инструмент. Реализираният опит е посочен по-горе.
+**Адаптивен дизайн · UI/UX · Интеграции · Производителност**
 
-### Допълнителни инструменти и интереси
+</td>
+<td width="50%" valign="top">
 
-<picture>
-<source media="(max-width: 600px)" srcset="assets/journal/collection-0-bg-mobile.svg" />
-<img src="assets/journal/collection-0-bg.svg" alt="TypeScript, JavaScript, Python, Lua, HTML5, CSS3, SQL, Node.js, Astro, MySQL, MariaDB, Git, GitHub" width="100%" />
-</picture>
+### ⚙️ Софтуер и платформи
+Уеб и настолни приложения, табла, административни панели, клиентски портали и вътрешни бизнес инструменти.
 
-<sub>TypeScript · JavaScript · Python · Lua · HTML5 · CSS3 · SQL · Node.js · Astro · MySQL · MariaDB · Git · GitHub</sub>
+**Интерфейс · Сървърна логика · Бази данни · Вход**
 
-### Други програмни езици
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
 
-<picture>
-<source media="(max-width: 600px)" srcset="assets/journal/collection-1-bg-mobile.svg" />
-<img src="assets/journal/collection-1-bg.svg" alt="C, C++, C#, Java, Kotlin, Swift, Go, Rust, PHP, Ruby, Dart, Scala, R, Bash, PowerShell, Elixir, Erlang, Haskell, Clojure, F#, Julia, Zig, Solidity, GDScript, Objective-C, Perl, OCaml" width="100%" />
-</picture>
+### 💬 Discord ботове и общности
+Команди, тикети, модерация, роли, известия, дневници на събитията и свързани административни табла.
 
-<sub>C · C++ · C# · Java · Kotlin · Swift · Go · Rust · PHP · Ruby · Dart · Scala · R · Bash · PowerShell · Elixir · Erlang · Haskell · Clojure · F# · Julia · Zig · Solidity · GDScript · Objective-C · Perl · OCaml</sub>
+**Ботове · API · Автоматизация · Сървърни интеграции**
 
-### Уеб технологии и приложения
+</td>
+<td width="50%" valign="top">
 
-<picture>
-<source media="(max-width: 600px)" srcset="assets/journal/collection-2-bg-mobile.svg" />
-<img src="assets/journal/collection-2-bg.svg" alt="React, Next.js, Vue.js, Svelte, Vite, Tailwind CSS, Express, Electron, Flutter, .NET" width="100%" />
-</picture>
+### 🎮 Игри и FiveM системи
+Игри и прототипи, игрови механики, сървърни ресурси, NUI интерфейси, професии, инвентари и инструменти за екипа.
 
-<sub>React · Next.js · Vue.js · Svelte · Vite · Tailwind CSS · Express · Electron · Flutter · .NET</sub>
+**Игрова логика · Клиент и сървър · Съхранение на данни**
 
-### Данни, инфраструктура и публикуване
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
 
-<picture>
-<source media="(max-width: 600px)" srcset="assets/journal/collection-3-bg-mobile.svg" />
-<img src="assets/journal/collection-3-bg.svg" alt="PostgreSQL, SQLite, MongoDB, Redis, Docker, Linux, macOS, Netlify, GitHub Actions, NGINX" width="100%" />
-</picture>
+### 🤖 Автоматизации и AI
+Скриптове за повтарящи се задачи, AI функционалности, асистенти, обработка на данни и свързване на услуги.
 
-<sub>PostgreSQL · SQLite · MongoDB · Redis · Docker · Linux · macOS · Netlify · GitHub Actions · NGINX</sub>
+**API · Webhooks · Скриптове · AI интеграции**
 
-### Игри, общности и AI
+</td>
+<td width="50%" valign="top">
 
-<picture>
-<source media="(max-width: 600px)" srcset="assets/journal/collection-4-bg-mobile.svg" />
-<img src="assets/journal/collection-4-bg.svg" alt="Discord, FiveM, Godot, Unity, Unreal Engine, OpenAI, Claude, Cursor" width="100%" />
-</picture>
+### 🛠️ Поддръжка и развитие
+Нови функции, поправка на грешки, преработка на код, оптимизация, миграции, подобрения на интерфейса и подготовка за публикуване.
 
-<sub>Discord · FiveM · Godot · Unity · Unreal Engine · OpenAI · Claude · Cursor</sub>
+**Съществуващи проекти · Технически подобрения · Поддръжка**
 
----
+</td>
+</tr>
+</table>
 
-<a name="services"></a>
-
-## За какво можете да ме наемете
-
-- **Сайтове и онлайн магазини:** фирмено представяне, каталози, поръчки и резервации.
-- **Уеб и настолен софтуер:** административни панели, портали и вътрешни инструменти.
-- **Discord, игри и FiveM:** ботове, игрови системи и инструменти за общности.
-- **API, автоматизации и AI:** свързване на услуги, обработка на данни и AI функционалности.
-- **Поддръжка и развитие:** нови функции, поправки, оптимизация и подготовка за публикуване.
-
-Това са **предлагани услуги**. Обхватът, срокът и цената се уточняват за конкретния проект.
+**Предлагам · доказано · проучвам.** Картите по-горе са услугите, които предлагам. Проектите показват вече реализирания опит. Панелите с технологии по-долу отделят използваното в тези продукти от по-широките интереси.
 
 <details>
 <summary><b>Разгледайте пълния каталог с услуги</b></summary>
@@ -261,24 +332,72 @@ Mission Control обединява състоянието на проектит�
 | 🧪 **Качество** | Тестове, статичен анализ, типове, компилация и диагностика |
 | 🚀 **Публикуване и поддръжка** | Среди, CI/CD, наблюдение и последващи подобрения |
 
-**Обхватът се уточнява за всеки проект.** Функциите, платформите, срокът и цената зависят от договорените изисквания. Това са предлагани услуги; конкретният реализиран опит е показан в проектите по-долу.
+**Обхватът се уточнява за всеки проект.** Функциите, платформите, срокът и цената зависят от договорените изисквания. Това са предлагани услуги; конкретният реализиран опит е показан в проектите по-горе.
 
 </details>
 
----
+> **Имате друга идея?** Разглеждам и разработка извън този списък. Опишете проблема, потребителите и какво трябва да прави решението.
 
-<a name="activity"></a>
-
-## Активност и обем код
+<a name="технологии"></a>
 
 <picture>
-<source media="(max-width: 600px)" srcset="assets/journal/metrics/activity-bg-mobile.svg" />
-<img src="assets/journal/metrics/activity-bg.svg" alt="GitHub приноси: текущ и най-дълъг streak, активни дни, последен принос, 30-дневна активност и календар." width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/divider-03-bg-mobile.svg" />
+<img src="assets/motion/divider-03-bg.svg" alt="" width="100%" />
+</picture>
+
+## 🌈 Езици и технологии
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/stack-used-bg-mobile.svg" />
+<img src="assets/motion/stack-used-bg.svg" alt="Използвано в представените проекти. Before I Deploy: Swift, SwiftUI, JavaScript, Node.js, Supabase, PostgreSQL, Deno Edge Functions. TLR Police Portal: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, discord.js. Общностна платформа: React, Vite, Tailwind CSS, shadcn/ui, React Router, TanStack Query, Supabase. Помощ от приятел: WordPress, WPForms. Space Control: HTML, JavaScript, Canvas API." width="100%" />
+</picture>
+
+Колекцията от 68 технологии по-долу показва допълнителни интереси и възможни технологични избори. Тя не означава завършени продукти или еднакъв опит с всеки инструмент. **Ментовият кръг** отбелязва инструментите, проверени в проектите по-горе.
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/stack-tools-bg-mobile.svg" />
+<img src="assets/motion/stack-tools-bg.svg" alt="Допълнителни инструменти и интереси, 13: TypeScript (използвано в проектите), JavaScript (използвано), Python, Lua, HTML5 (използвано), CSS3, SQL, Node.js (използвано), Astro, MySQL, MariaDB, Git, GitHub." width="100%" />
 </picture>
 
 <picture>
-<source media="(max-width: 600px)" srcset="assets/journal/metrics/languages-bg-mobile.svg" />
-<img src="assets/journal/metrics/languages-bg.svg" alt="Датирана снимка на езиците по обем код, не по време или умения." width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/stack-languages-bg-mobile.svg" />
+<img src="assets/motion/stack-languages-bg.svg" alt="Други програмни езици, 27: C, C++, C#, Java, Kotlin, Swift (използвано в проектите), Go, Rust, PHP, Ruby, Dart, Scala, R, Bash, PowerShell, Elixir, Erlang, Haskell, Clojure, F#, Julia, Zig, Solidity, GDScript, Objective-C, Perl, OCaml." width="100%" />
+</picture>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/stack-web-bg-mobile.svg" />
+<img src="assets/motion/stack-web-bg.svg" alt="Уеб технологии и приложения, 10: React (използвано в проектите), Next.js (използвано), Vue.js, Svelte, Vite (използвано), Tailwind CSS (използвано), Express, Electron, Flutter, .NET." width="100%" />
+</picture>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/stack-data-bg-mobile.svg" />
+<img src="assets/motion/stack-data-bg.svg" alt="Данни, инфраструктура и публикуване, 10: PostgreSQL (използвано в проектите), SQLite, MongoDB, Redis, Docker, Linux, macOS (използвано), Netlify, GitHub Actions, NGINX." width="100%" />
+</picture>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/stack-games-bg-mobile.svg" />
+<img src="assets/motion/stack-games-bg.svg" alt="Игри, общности и AI, 8: Discord (използвано в проектите), FiveM, Godot, Unity, Unreal Engine, OpenAI, Claude, Cursor." width="100%" />
+</picture>
+
+<sub>Подходящият избор зависи от продукта; панелите не означават еднаква специализация. Конкретните инструменти и обхват се уточняват за всеки проект. Логата са в оригиналните цветове на марките чрез <a href="https://simpleicons.org">Simple Icons</a> (CC0); SQL, C#, PowerShell, Objective-C и OpenAI са текстови плочки, както в оригиналните значки.</sub>
+
+<a name="активност"></a>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/divider-04-bg-mobile.svg" />
+<img src="assets/motion/divider-04-bg.svg" alt="" width="100%" />
+</picture>
+
+## 📊 Активност и езици
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/metrics/activity-bg-mobile.svg" />
+<img src="assets/metrics/activity-bg.svg" alt="Приноси, активни дни, текуща и най-дълга поредица, последен принос и календар." width="100%" />
+</picture>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/metrics/languages-bg-mobile.svg" />
+<img src="assets/metrics/languages-bg.svg" alt="Езици по обем код в проектите, включително частни хранилища, без имена и съдържание." width="100%" />
 </picture>
 
 <details>
@@ -294,39 +413,52 @@ Mission Control обединява състоянието на проектит�
 
 </details>
 
----
+<a name="процес"></a>
 
-<a name="process"></a>
-
-## Как работим заедно
+## 🧭 От вашата идея до работещ продукт
 
 <picture>
-<source media="(max-width: 600px)" srcset="assets/journal/process-bg-mobile.svg" />
-<img src="assets/journal/process-bg.svg" alt="Обхват, дизайн, разработка, проверка и публикуване. Декоративно движение, не отчет за напредък." width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/process-bg-mobile.svg" />
+<img src="assets/motion/process-bg.svg" alt="01 Проучване: цели, потребители и изисквания. 02 Дизайн: интерфейс, архитектура и обхват. 03 Разработка: функции и интеграции. 04 Проверка: поведение, грешки и готовност. 05 Публикуване: публикуване, документация и следващи подобрения." width="100%" />
 </picture>
 
-Започваме с целите, потребителите и изискванията. Уточняваме интерфейса, архитектурата и обхвата; разработваме функциите и интеграциите; проверяваме поведението и подготовката за публикуване. Следват документация и договорените подобрения.
+### Какво е важно в работата ми
 
-<details>
-<summary><b>Принципи на работа</b></summary>
+**🎯 Дизайн с цел** — интерфейс според нуждите на хората.<br>
+**🧱 Ясна архитектура** — разбираем код, който може да се развива.<br>
+**🔐 Обмислени права** — проверки и контрол на достъпа.<br>
+**🧪 Практически проверки** — тестове и диагностика преди публикуване.<br>
+**🔁 Полезна автоматизация** — по-малко повтаряща се работа.<br>
+**🤝 Ясен обхват** — договорени изисквания, резултати и очаквания.
 
-Дизайн според нуждите на хората · Ясна архитектура · Обмислени права и контрол на достъпа · Практически проверки · Полезна автоматизация · Договорени изисквания и очаквания.
+<a name="контакт"></a>
 
-</details>
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/divider-05-bg-mobile.svg" />
+<img src="assets/motion/divider-05-bg.svg" alt="" width="100%" />
+</picture>
 
----
+## 📬 Нека обсъдим вашия проект
 
-<a name="contact"></a>
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/finale-bg-mobile.svg" />
+<img src="assets/motion/finale-bg.svg" alt="Приемам платени проекти. Какво да създадем следващо? Сайт, инструмент, бот или следващата ви идея." width="100%" />
+</picture>
 
-## Нека обсъдим вашия проект.
+<p align="center">
+<a href="mailto:Fraisbg1@gmail.com"><img src="assets/motion/contact-mail-bg.svg" alt="Имейл Fraisbg1@gmail.com" height="46" /></a>
+<img src="assets/motion/contact-discord-bg.svg" alt="Discord: Fraisbg" height="46" />
+<a href="https://www.instagram.com/y.yakowvw.sales/"><img src="assets/motion/contact-instagram-bg.svg" alt="Instagram @y.yakowvw.sales" height="46" /></a>
+</p>
 
-Изпратете **идеята, основните функции, желания срок и ориентировъчния бюджет**. Ще уточним обхвата и индивидуална оферта.
+<p align="center"><b>Приемам платени поръчки за сайтове, софтуер, Discord ботове, игри и индивидуална разработка.</b><br>
+Изпратете идеята, основните функции, желания срок и ориентировъчен бюджет. Ще уточним обхвата и индивидуална оферта.</p>
 
-**[Fraisbg1@gmail.com](mailto:Fraisbg1@gmail.com)**  
-Телефон: **+359898634678**  
-Discord: **Fraisbg**  
-Instagram: **[@y.yakowvw.sales](https://www.instagram.com/y.yakowvw.sales/)**
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/footer-bg-mobile.svg" />
+<img src="assets/motion/footer-bg.svg" alt="Сайтове · Софтуер · Ботове · Игри · Автоматизации. Вашата идея. Ясен план. Работещ софтуер. Създаване · Тестване · Проверка · Публикуване · Развитие." width="100%" />
+</picture>
 
-[EN · English](https://github.com/yavordfgggdag) · **BG · Български**
+<sub>Реални снимки и локално съхранени визуализации; декоративното движение никога не представя активност на живо и спира при настройка за намалено движение. [Произход на снимките и бележки за достъпност](assets/README.md).</sub>
 
-<sub>Изходният код на проектите е частен. [Произход на кадрите и бележки за достъпност](assets/README.md). Оригиналният банер и оригиналните изображения са запазени.</sub>
+<sub>Изходният код на проектите е частен; профилът представя избрани реални интерфейси.</sub>
