@@ -444,19 +444,18 @@ Language shares are a separate 2026-10-05 snapshot of GitHub-reported code bytes
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/finale-en-mobile.svg" />
-<img src="assets/motion/finale-en.svg" alt="Available for paid projects. What should we build next? A website, a custom tool, a bot or your next big idea. Phone +359 898 634 678 · Email Fraisbg1@gmail.com · Discord Fraisbg · Instagram @y.yakowvw.sales" width="100%" />
+<img src="assets/motion/finale-en.svg" alt="Available for paid projects. What should we build next? A website, a custom tool, a bot or your next big idea." width="100%" />
 </picture>
 
-| Contact | Find me here |
-| :--- | :--- |
-| 📞 **Phone** | [+359 898 634 678](tel:+359898634678) |
-| ✉️ **Email** | [Fraisbg1@gmail.com](mailto:Fraisbg1@gmail.com) |
-| 💬 **Discord** | **Fraisbg** |
-| 📸 **Instagram** | [@y.yakowvw.sales](https://www.instagram.com/y.yakowvw.sales/) |
+<p align="center">
+<a href="tel:+359898634678"><img src="assets/motion/contact-phone-en.svg" alt="Call +359 898 634 678" height="46" /></a>
+<a href="mailto:Fraisbg1@gmail.com"><img src="assets/motion/contact-mail-en.svg" alt="Email Fraisbg1@gmail.com" height="46" /></a>
+<img src="assets/motion/contact-discord-en.svg" alt="Discord: Fraisbg" height="46" />
+<a href="https://www.instagram.com/y.yakowvw.sales/"><img src="assets/motion/contact-instagram-en.svg" alt="Instagram @y.yakowvw.sales" height="46" /></a>
+</p>
 
-**Available for paid websites, custom software, Discord bots, games and development work.**
-
-Send me your idea, the main features, your preferred timeline and your budget range. We can define the right scope and a custom quote.
+<p align="center"><b>Available for paid websites, custom software, Discord bots, games and development work.</b><br>
+Send me your idea, the main features, your preferred timeline and your budget range. We can define the right scope and a custom quote.</p>
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/footer-en-mobile.svg" />
