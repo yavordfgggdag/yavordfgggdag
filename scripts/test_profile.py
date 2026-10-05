@@ -33,7 +33,7 @@ class ProfileTests(unittest.TestCase):
         self.assertEqual(en, bg)
 
     def test_same_sections_galleries_and_links(self):
-        for token in ('<details>', '<picture>', '](mailto:', 'pomoshtotpriyatel.com', 'instagram.com/y.yakowvw.sales', 'tel:+359898634678'):
+        for token in ('<details>', '<picture>', '](mailto:', 'pomoshtotpriyatel.com', 'instagram.com/y.yakowvw.sales'):
             self.assertEqual(EN.count(token), BG.count(token), token)
 
     def test_all_68_technologies_are_rendered(self):
@@ -47,8 +47,13 @@ class ProfileTests(unittest.TestCase):
 
     def test_contacts_present_in_both(self):
         for markdown in (EN, BG):
-            for value in ('+359 898 634 678', 'Fraisbg1@gmail.com', 'Fraisbg', '@y.yakowvw.sales'):
+            for value in ('Fraisbg1@gmail.com', 'Fraisbg', '@y.yakowvw.sales'):
                 self.assertIn(value, markdown)
+
+    def test_phone_number_is_not_published(self):
+        for path in [ROOT / 'README.md', ROOT / 'README.bg.md', *(ROOT / 'assets').rglob('*.svg')]:
+            text = path.read_text()
+            self.assertIsNone(re.search(r'898.?634.?678|359898634678', text), path)
 
     def test_no_private_repository_names_or_remote_widgets(self):
         for markdown in (EN, BG):
