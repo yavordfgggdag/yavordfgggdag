@@ -19,6 +19,7 @@ ACCENTS = {
     'police': ('#22D3EE', '#34D399'),
     'client': ('#FBBF24', '#F472B6'),
     'community': ('#34D399', '#A78BFA'),
+    'tlr': ('#F472B6', '#8B5CF6'),
 }
 SHOTS = {
     'before-i-deploy.jpg': 'bid', 'bid-mission-control.jpg': 'bid', 'bid-command-palette.jpg': 'bid',
@@ -58,9 +59,9 @@ def gradient(size, start, end):
     return strip.resize(size)
 
 
-def frame(name, accent):
+def frame(name, accent, full=False, out_name=None):
     original = Image.open(SRC / name).convert('RGB')
-    shot = original.crop(inner_area(original))
+    shot = original if full else original.crop(inner_area(original))
     width, height = shot.size
     canvas_size = (width + PAD * 2, height + PAD * 2)
     start, end = ACCENTS[accent]
@@ -79,10 +80,15 @@ def frame(name, accent):
     ImageDraw.Draw(mask).rounded_rectangle((0, 0, width - 1, height - 1), RADIUS, fill=255)
     stage.paste(shot, (PAD, PAD), mask)
     OUT.mkdir(exist_ok=True)
-    stage.save(OUT / name, quality=84, optimize=True, progressive=True)
+    stage.save(OUT / (out_name or name), quality=84, optimize=True, progressive=True)
     return stage.size
 
+
+# Current The Last Republic site, captured from the codebase running locally (no presentation frame).
+FULL = {'tlr/home.jpg': ('tlr', 'tlr-home.jpg')}
 
 if __name__ == '__main__':
     for file_name, accent_name in SHOTS.items():
         print(file_name, frame(file_name, accent_name))
+    for file_name, (accent_name, out_name) in FULL.items():
+        print(file_name, frame(file_name, accent_name, full=True, out_name=out_name))
