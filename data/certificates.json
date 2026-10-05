@@ -1,0 +1,719 @@
+{
+ "note": "Certificates and credentials shown in the profile. Add new entries to 'featured' (or lessons to a collection) and run scripts/build_visuals.py. Certificate IDs, QR codes and original files are intentionally not published.",
+ "featured": [
+  {
+   "id": "gemini-educator",
+   "title": "Gemini Certified Educator",
+   "issuer": "Google for Education",
+   "icon": "googlegemini",
+   "color": "#A78BFA",
+   "issued": "2026-07-23",
+   "valid_until": "2029-07-23",
+   "kind": "certification"
+  },
+  {
+   "id": "ai-performance-ads",
+   "title": "AI-Powered Performance Ads",
+   "issuer": "Google Ads",
+   "icon": "googleads",
+   "color": "#4285F4",
+   "issued": "2026-07-21",
+   "valid_until": "2027-07-21",
+   "kind": "certification"
+  },
+  {
+   "id": "hubspot-digital-marketing",
+   "title": "Digital Marketing Certified",
+   "issuer": "HubSpot Academy",
+   "icon": "hubspot",
+   "color": "#FF7A59",
+   "issued": "2026-07-24",
+   "valid_until": "2027-08-23",
+   "kind": "certification"
+  },
+  {
+   "id": "advance-digital-marketing-specialist",
+   "title": "Digital Marketing Specialist",
+   "issuer": "Advance Academy",
+   "icon": null,
+   "monogram": "AA",
+   "color": "#38BDF8",
+   "issued": "2026-04-30",
+   "period": "2026-02/2026-04",
+   "kind": "course"
+  },
+  {
+   "id": "google-digital-marketing-fundamentals",
+   "title": "Fundamentals of Digital Marketing",
+   "issuer": "Google",
+   "icon": "google",
+   "color": "#34D399",
+   "issued": "2026-07-27",
+   "kind": "course"
+  },
+  {
+   "id": "intro-to-gemini",
+   "title": "Intro to Gemini",
+   "issuer": "Google AI Educator Series",
+   "icon": "googlegemini",
+   "color": "#F472B6",
+   "kind": "badge",
+   "level": "Foundational"
+  }
+ ],
+ "collections": [
+  {
+   "id": "google-applied-digital-skills",
+   "title": "Google Applied Digital Skills",
+   "issuer": "Google for Education",
+   "icon": "google",
+   "lessons": [
+    {
+     "title": "Analyze Data from Images in Google Earth Engine",
+     "date": "2026-07-24",
+     "topic": "data_logic"
+    },
+    {
+     "title": "Annotate Text in Google Docs",
+     "date": "2026-07-24",
+     "topic": "workspace"
+    },
+    {
+     "title": "Ask Someone to Be a Reference",
+     "date": "2026-07-24",
+     "topic": "career"
+    },
+    {
+     "title": "Ask for Feedback",
+     "date": "2026-07-24",
+     "topic": "career"
+    },
+    {
+     "title": "Avoid Online Scams",
+     "date": "2026-07-24",
+     "topic": "ai_safety"
+    },
+    {
+     "title": "Build Healthy Digital Habits",
+     "date": "2026-07-24",
+     "topic": "ai_safety"
+    },
+    {
+     "title": "Build Your Professional Brand",
+     "date": "2026-07-24",
+     "topic": "career"
+    },
+    {
+     "title": "Build Your Professional Network",
+     "date": "2026-07-24",
+     "topic": "career"
+    },
+    {
+     "title": "Build a Logo to Express Who You Are",
+     "date": "2026-07-24",
+     "topic": "creative"
+    },
+    {
+     "title": "Build a Portfolio with Google Sites",
+     "date": "2026-07-23",
+     "topic": "career"
+    },
+    {
+     "title": "Calculate Percentages in Google Sheets",
+     "date": "2026-07-24",
+     "topic": "data_logic"
+    },
+    {
+     "title": "Calculate Probability with Google Sheets",
+     "date": "2026-07-24",
+     "topic": "data_logic"
+    },
+    {
+     "title": "Code a Joke-Telling Talkbot",
+     "date": "2026-07-24",
+     "topic": "data_logic"
+    },
+    {
+     "title": "Create Papel Picado in Google Slides",
+     "date": "2026-07-27",
+     "topic": "workspace"
+    },
+    {
+     "title": "Create Quizzes in Google Forms",
+     "date": "2026-07-27",
+     "topic": "workspace"
+    },
+    {
+     "title": "Create a Brochure",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Create a Budget in Google Sheets",
+     "date": "2026-07-24",
+     "topic": "data_logic"
+    },
+    {
+     "title": "Create a Clickable Map in Google Slides",
+     "date": "2026-07-24",
+     "topic": "workspace"
+    },
+    {
+     "title": "Create a Collaborative Study Guide",
+     "date": "2026-07-24",
+     "topic": "creative"
+    },
+    {
+     "title": "Create a Collage in Google Drawings",
+     "date": "2026-07-25",
+     "topic": "workspace"
+    },
+    {
+     "title": "Create a Comic Strip in Google Drawings",
+     "date": "2026-07-25",
+     "topic": "workspace"
+    },
+    {
+     "title": "Create a Community My Map",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Create a Crossword Puzzle",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Create a Digital Picture Book",
+     "date": "2026-07-24",
+     "topic": "creative"
+    },
+    {
+     "title": "Create a Digital Postcard",
+     "date": "2026-07-24",
+     "topic": "creative"
+    },
+    {
+     "title": "Create a Flyer for a Juneteenth Celebration",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Create a Guessing Game",
+     "date": "2026-07-25",
+     "topic": "data_logic"
+    },
+    {
+     "title": "Create a Guide to an Area",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Create a Meme with Google Drawings",
+     "date": "2026-07-25",
+     "topic": "workspace"
+    },
+    {
+     "title": "Create a Mind Map in Google Drawings",
+     "date": "2026-07-25",
+     "topic": "workspace"
+    },
+    {
+     "title": "Create a Personal Timeline in Google Drawings",
+     "date": "2026-07-25",
+     "topic": "workspace"
+    },
+    {
+     "title": "Create a Photo Journal in Google Docs",
+     "date": "2026-07-25",
+     "topic": "workspace"
+    },
+    {
+     "title": "Create a Presentation \"All About a Topic\"",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Create a Responsible Blog with Google Sites",
+     "date": "2026-07-25",
+     "topic": "ai_safety"
+    },
+    {
+     "title": "Create a Resume in Google Docs",
+     "date": "2026-07-23",
+     "topic": "career"
+    },
+    {
+     "title": "Create a Schedule to Meet Your Goals",
+     "date": "2026-07-24",
+     "topic": "workspace"
+    },
+    {
+     "title": "Create a Scrapbook",
+     "date": "2026-07-27",
+     "topic": "creative"
+    },
+    {
+     "title": "Create a Slogan for Earth Day",
+     "date": "2026-07-27",
+     "topic": "creative"
+    },
+    {
+     "title": "Create a Travel Brochure for an Exoplanet",
+     "date": "2026-07-27",
+     "topic": "creative"
+    },
+    {
+     "title": "Create a Virtual Family Reunion in Google Slides",
+     "date": "2026-07-27",
+     "topic": "workspace"
+    },
+    {
+     "title": "Create a Vision Board",
+     "date": "2026-07-27",
+     "topic": "creative"
+    },
+    {
+     "title": "Create an Animation in Google Slides",
+     "date": "2026-07-27",
+     "topic": "workspace"
+    },
+    {
+     "title": "Create an Annotated Playlist",
+     "date": "2026-07-27",
+     "topic": "creative"
+    },
+    {
+     "title": "Create and Safeguard Passwords",
+     "date": "2026-07-23",
+     "topic": "ai_safety"
+    },
+    {
+     "title": "Design a Poster About You",
+     "date": "2026-07-27",
+     "topic": "creative"
+    },
+    {
+     "title": "Design a Website to Promote a Project",
+     "date": "2026-07-27",
+     "topic": "creative"
+    },
+    {
+     "title": "Design an Infographic in Google Drawings",
+     "date": "2026-07-27",
+     "topic": "workspace"
+    },
+    {
+     "title": "Design and Share a Digital Badge",
+     "date": "2026-07-27",
+     "topic": "creative"
+    },
+    {
+     "title": "Discover AI in Daily Life",
+     "date": "2026-07-23",
+     "topic": "ai_safety"
+    },
+    {
+     "title": "Draft an Application Essay",
+     "date": "2026-07-25",
+     "topic": "career"
+    },
+    {
+     "title": "Evaluate Credibility of Online Sources",
+     "date": "2026-07-25",
+     "topic": "ai_safety"
+    },
+    {
+     "title": "Explore Careers by Interviewing Professionals",
+     "date": "2026-07-25",
+     "topic": "career"
+    },
+    {
+     "title": "Explore a Topic: Celebrate Black History",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Explore a Topic: Celebrate Latinx History",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Explore a Topic: Earth Day",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Explore a Topic: Equal Access to Technology",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Explore a Topic: Generative AI",
+     "date": "2026-07-25",
+     "topic": "ai_safety"
+    },
+    {
+     "title": "Explore a Topic: Innovators",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Explore a Topic: Technology at Work",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Explore a Topic: Technology's Role in Current Events",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Explore a Topic: Technology, Ethics, and Security",
+     "date": "2026-07-25",
+     "topic": "ai_safety"
+    },
+    {
+     "title": "Explore a Topic: Women's History",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Explore the History of Humankind in Kenya",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Find the Mean, Median, or Mode of a Data Set",
+     "date": "2026-07-27",
+     "topic": "data_logic"
+    },
+    {
+     "title": "Gmail for Beginners",
+     "date": "2026-07-25",
+     "topic": "workspace"
+    },
+    {
+     "title": "Go on a Scavenger Hunt Through Italy",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Google Calendar for Beginners",
+     "date": "2026-07-23",
+     "topic": "workspace"
+    },
+    {
+     "title": "Google Docs for Beginners",
+     "date": "2026-07-25",
+     "topic": "workspace"
+    },
+    {
+     "title": "Google Drive for Beginners",
+     "date": "2026-07-25",
+     "topic": "workspace"
+    },
+    {
+     "title": "Google Meet for Beginners",
+     "date": "2026-07-23",
+     "topic": "workspace"
+    },
+    {
+     "title": "Google Search for Beginners",
+     "date": "2026-07-23",
+     "topic": "workspace"
+    },
+    {
+     "title": "Google Sheets for Beginners",
+     "date": "2026-07-23",
+     "topic": "workspace"
+    },
+    {
+     "title": "Google Workspace: Docs - Part 1",
+     "date": "2026-07-23",
+     "topic": "workspace"
+    },
+    {
+     "title": "Google Workspace: Docs - Part 2",
+     "date": "2026-07-23",
+     "topic": "workspace"
+    },
+    {
+     "title": "Google Workspace: Drive",
+     "date": "2026-07-23",
+     "topic": "workspace"
+    },
+    {
+     "title": "Google Workspace: Gmail",
+     "date": "2026-07-23",
+     "topic": "workspace"
+    },
+    {
+     "title": "Google Workspace: Sheets - Part 1",
+     "date": "2026-07-23",
+     "topic": "workspace"
+    },
+    {
+     "title": "Google Workspace: Sheets - Part 2",
+     "date": "2026-07-23",
+     "topic": "workspace"
+    },
+    {
+     "title": "Google Workspace: Sheets - Part 3",
+     "date": "2026-07-23",
+     "topic": "workspace"
+    },
+    {
+     "title": "Google Workspace: Slides - Part 1",
+     "date": "2026-07-23",
+     "topic": "workspace"
+    },
+    {
+     "title": "Google Workspace: Slides - Part 2",
+     "date": "2026-07-23",
+     "topic": "workspace"
+    },
+    {
+     "title": "Google Workspace: Slides - Part 3",
+     "date": "2026-07-23",
+     "topic": "workspace"
+    },
+    {
+     "title": "Identify Cyberbullying",
+     "date": "2026-07-25",
+     "topic": "ai_safety"
+    },
+    {
+     "title": "Introduce Yourself in Google Slides",
+     "date": "2026-07-27",
+     "topic": "workspace"
+    },
+    {
+     "title": "Introduce Yourself to Potential Employers",
+     "date": "2026-07-27",
+     "topic": "career"
+    },
+    {
+     "title": "Learn New Vocabulary with Flash cards",
+     "date": "2026-07-27",
+     "topic": "creative"
+    },
+    {
+     "title": "Make Art Inspired by Frida Kahlo and Mexico",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Make Art with Google Sheets",
+     "date": "2026-07-27",
+     "topic": "workspace"
+    },
+    {
+     "title": "Make Pop Art in Google Drawings",
+     "date": "2026-07-27",
+     "topic": "workspace"
+    },
+    {
+     "title": "Make Your Own Space Shuttle Adventure",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Make a Flowchart",
+     "date": "2026-07-25",
+     "topic": "data_logic"
+    },
+    {
+     "title": "Make a Promotional Flyer",
+     "date": "2026-07-27",
+     "topic": "creative"
+    },
+    {
+     "title": "Make a Word Game",
+     "date": "2026-07-27",
+     "topic": "data_logic"
+    },
+    {
+     "title": "Manage Your Time With Google Sheets",
+     "date": "2026-07-24",
+     "topic": "workspace"
+    },
+    {
+     "title": "Memorize Facts with a Visual Mnemonic",
+     "date": "2026-07-27",
+     "topic": "creative"
+    },
+    {
+     "title": "Organize College Applications in Google Sheets",
+     "date": "2026-07-27",
+     "topic": "career"
+    },
+    {
+     "title": "Organize College Information in Google Sheets",
+     "date": "2026-07-27",
+     "topic": "career"
+    },
+    {
+     "title": "Organize Your Time with a Digital Agenda",
+     "date": "2026-07-24",
+     "topic": "creative"
+    },
+    {
+     "title": "Pick the Next Box Office Hit",
+     "date": "2026-07-24",
+     "topic": "data_logic"
+    },
+    {
+     "title": "Plan and Promote an Event",
+     "date": "2026-07-24",
+     "topic": "creative"
+    },
+    {
+     "title": "Prepare for Your First Day of Work",
+     "date": "2026-07-24",
+     "topic": "career"
+    },
+    {
+     "title": "Prepare for a College Interview",
+     "date": "2026-07-24",
+     "topic": "career"
+    },
+    {
+     "title": "Prepare for the FAFSA",
+     "date": "2026-07-24",
+     "topic": "career"
+    },
+    {
+     "title": "Present Your Ideas for Classroom Expectations",
+     "date": "2026-07-24",
+     "topic": "creative"
+    },
+    {
+     "title": "Program a Progress Bar",
+     "date": "2026-07-24",
+     "topic": "data_logic"
+    },
+    {
+     "title": "Quiz Your Classmates About the Palace of Versailles",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Research Career Paths",
+     "date": "2026-07-26",
+     "topic": "career"
+    },
+    {
+     "title": "Research and Develop a Topic",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Research and Interview a Person From History",
+     "date": "2026-07-27",
+     "topic": "career"
+    },
+    {
+     "title": "Respond to a Question in Google Classroom",
+     "date": "2026-07-26",
+     "topic": "creative"
+    },
+    {
+     "title": "Schedule Emails for Goal-Setting",
+     "date": "2026-07-24",
+     "topic": "creative"
+    },
+    {
+     "title": "Search for Colleges Online",
+     "date": "2026-07-26",
+     "topic": "career"
+    },
+    {
+     "title": "Search for Scholarships",
+     "date": "2026-07-26",
+     "topic": "career"
+    },
+    {
+     "title": "Search for a Part-Time or Summer Job",
+     "date": "2026-07-24",
+     "topic": "career"
+    },
+    {
+     "title": "Show Appreciation with Google Slides",
+     "date": "2026-07-25",
+     "topic": "workspace"
+    },
+    {
+     "title": "Take Notes in a Table",
+     "date": "2026-07-25",
+     "topic": "creative"
+    },
+    {
+     "title": "Track Due Dates and Tasks in Gmail",
+     "date": "2026-07-25",
+     "topic": "workspace"
+    },
+    {
+     "title": "Track Graduation Requirements",
+     "date": "2026-07-24",
+     "topic": "career"
+    },
+    {
+     "title": "Understand Your Digital Footprint",
+     "date": "2026-07-24",
+     "topic": "ai_safety"
+    },
+    {
+     "title": "Use Drive to Organize Files",
+     "date": "2026-07-24",
+     "topic": "workspace"
+    },
+    {
+     "title": "Wage a Sea Battle with Google Sheets",
+     "date": "2026-07-24",
+     "topic": "data_logic"
+    },
+    {
+     "title": "Welcome New Students with a Presentation",
+     "date": "2026-07-24",
+     "topic": "creative"
+    },
+    {
+     "title": "Work with Fractions In Google Sheets",
+     "date": "2026-07-24",
+     "topic": "data_logic"
+    },
+    {
+     "title": "Write Effectively for Your Audience",
+     "date": "2026-07-24",
+     "topic": "creative"
+    },
+    {
+     "title": "Write a Cover Letter for Your First Job",
+     "date": "2026-07-24",
+     "topic": "career"
+    },
+    {
+     "title": "Write a Press Release",
+     "date": "2026-07-24",
+     "topic": "creative"
+    },
+    {
+     "title": "Write a Story Using Emojis",
+     "date": "2026-07-24",
+     "topic": "creative"
+    },
+    {
+     "title": "Write an If-Then Adventure Story",
+     "date": "2026-07-24",
+     "topic": "creative"
+    },
+    {
+     "title": "Write the Lyrics for a Song",
+     "date": "2026-07-24",
+     "topic": "creative"
+    }
+   ]
+  }
+ ]
+}

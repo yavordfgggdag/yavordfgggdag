@@ -1047,6 +1047,157 @@ def contact_button(kind, lang):
     return document(w, h, f'{label}: {value}', f'{label}: {value}', b, defs)
 
 
+# ---------------------------------------------------------------- certificates
+CERTS = json.loads((ROOT / 'data/certificates.json').read_text())
+MONTHS = {'en': 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(),
+          'bg': 'яну фев мар апр май юни юли авг сеп окт ное дек'.split()}
+CT = {
+    'en': {'kicker': 'CREDENTIALS · {n} CERTIFICATES · {m} LESSONS', 'lead': 'Issued by Google, HubSpot Academy and Advance Academy.',
+           'issued': 'Issued', 'valid': 'valid until', 'badge': 'Badge', 'cert': 'CERTIFICATION', 'course': 'COURSE',
+           'program': 'Program', 'lessons_title': 'Google Applied Digital Skills', 'lessons_sub': 'project-based lessons, each with its own Google credential',
+           'lessons_date': 'Completed {a} – {b}',
+           'topics': {'workspace': 'Google Workspace', 'creative': 'Creative & research', 'career': 'Career & professional',
+                      'data_logic': 'Data & logic', 'ai_safety': 'AI & digital safety'},
+           'title': 'Certificates', 'lessons_alt': 'Google Applied Digital Skills lessons'},
+    'bg': {'kicker': 'КВАЛИФИКАЦИИ · {n} СЕРТИФИКАТА · {m} УРОКА', 'lead': 'Издадени от Google, HubSpot Academy и Advance Academy.',
+           'issued': 'Издаден', 'valid': 'валиден до', 'badge': 'Значка', 'cert': 'СЕРТИФИКАЦИЯ', 'course': 'КУРС',
+           'program': 'Програма', 'lessons_title': 'Google Applied Digital Skills', 'lessons_sub': 'практически урока, всеки със собствен Google документ',
+           'lessons_date': 'Завършени {a} – {b}',
+           'topics': {'workspace': 'Google Workspace', 'creative': 'Творчество и проучване', 'career': 'Кариера и професия',
+                      'data_logic': 'Данни и логика', 'ai_safety': 'AI и дигитална сигурност'},
+           'title': 'Сертификати', 'lessons_alt': 'Уроци от Google Applied Digital Skills'},
+}
+TOPIC_COLORS = {'workspace': '#38BDF8', 'creative': '#F472B6', 'career': '#FBBF24', 'data_logic': '#34D399', 'ai_safety': '#A78BFA'}
+
+
+def fmt_date(value, lang):
+    y, m, d = value.split('-')
+    return f'{int(d)} {MONTHS[lang][int(m) - 1]} {y}'
+
+
+def cert_card(c, x, y, w, h, lang, idx, mobile):
+    t = CT[lang]
+    col = c['color']
+    gid = f'cg{idx}'
+    out = (f'<linearGradient id="{gid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{col}" stop-opacity=".22"/>'
+           f'<stop offset=".55" stop-color="#0E0B2C" stop-opacity=".92"/><stop offset="1" stop-color="#0E0B2C" stop-opacity=".96"/></linearGradient>')
+    out += (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="24" fill="url(#{gid})" stroke="{col}" stroke-opacity=".6" stroke-width="1.6"/>'
+            f'<rect x="{x + 24}" y="{y}" width="{w - 48}" height="3" rx="1.5" fill="{col}"/>')
+    mx, my, r = x + 54, y + 58, 30
+    out += (f'<circle cx="{mx}" cy="{my}" r="{r + 14}" fill="{col}" opacity=".12"/>'
+            f'<circle class="medal" cx="{mx}" cy="{my}" r="{r + 7}" fill="none" stroke="{col}" stroke-opacity=".7" stroke-dasharray="3 6"/>'
+            f'<circle cx="{mx}" cy="{my}" r="{r}" fill="#0B0824" stroke="{col}" stroke-width="2"/>')
+    if c.get('icon'):
+        out += icon(c['icon'], mx - 15, my - 15, 30, col if c['icon'] != 'google' else '#fff')
+    else:
+        out += text(mx, my + 8, c['monogram'], 21, col, 800, anchor='middle')
+    kind = {'certification': t['cert'], 'course': t['course'], 'badge': t['badge'].upper()}[c['kind']]
+    out += text(x + 100, y + 50, c['issuer'].upper(), 12 if not mobile else 15, col, 800, spacing=1.4)
+    out += text(x + 100, y + 72, kind, 11 if not mobile else 14, C['muted'], 700, spacing=2)
+    lines = wrap(c['title'], 22 if not mobile else 28)
+    for i, line in enumerate(lines):
+        out += text(x + 26, y + 130 + i * 30, line, 25 if not mobile else 28, C['text'], 800)
+    if c.get('valid_until'):
+        foot = f"{t['issued']} {fmt_date(c['issued'], lang)} · {t['valid']} {fmt_date(c['valid_until'], lang)}"
+    elif c.get('period'):
+        a, b2 = c['period'].split('/')
+        foot = f"{t['program']} {MONTHS[lang][int(a[5:]) - 1]}–{MONTHS[lang][int(b2[5:]) - 1]} {b2[:4]} · {t['issued']} {fmt_date(c['issued'], lang)}"
+    elif c.get('issued'):
+        foot = f"{t['issued']} {fmt_date(c['issued'], lang)}"
+    else:
+        foot = f"{c.get('level', '')} · Google for Education"
+    out += text(x + 26, y + h - 26, foot, 14 if not mobile else 17, C['soft'])
+    out += (f'<g class="live"><clipPath id="cl{idx}"><rect x="{x}" y="{y}" width="{w}" height="{h}" rx="24"/></clipPath>'
+            f'<g clip-path="url(#cl{idx})"><rect class="shine" style="animation-delay:{idx * 1.6:.1f}s" x="{x - 160}" y="{y - 40}" width="110" height="{h + 80}" '
+            f'fill="url(#shine)" transform="skewX(-16)"/></g></g>')
+    return out
+
+
+def certificates(lang, mobile):
+    t = CT[lang]
+    feats = CERTS['featured']
+    lessons = sum(len(c['lessons']) for c in CERTS['collections'])
+    w = 600 if mobile else 1200
+    if mobile:
+        cw, ch, cols, gap, x0, top = 536, 228, 1, 18, 32, 168
+    else:
+        cw, ch, cols, gap, x0, top = 352, 250, 3, 24, 48, 150
+    rows = math.ceil(len(feats) / cols)
+    h = top + rows * ch + (rows - 1) * gap + 40
+    n = len(feats)
+    defs = (linear('bg', [(0, C['night']), (.55, '#170F45'), (1, C['deep'])], x2=1, y2=1)
+            + linear('g', [(0, C['amber']), (.5, C['pink']), (1, C['violet'])])
+            + linear('shine', [(0, '#fff', 0), (.5, '#fff', .16), (1, '#fff', 0)])
+            + radial('au1', C['violet'], .4) + radial('au2', C['amber2'], .28))
+    motion = (f'.shine{{animation:shine {n * 1.6:.1f}s ease-in-out infinite}}'
+              f'@keyframes shine{{0%{{transform:translateX(0) skewX(-16deg)}}{100 / n * 1.4:.1f}%,100%{{transform:translateX({cw + 320}px) skewX(-16deg)}}}}'
+              '.medal{transform-box:fill-box;transform-origin:center;animation:spin 40s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}'
+              '.aur{animation:aur 30s ease-in-out infinite}@keyframes aur{50%{transform:translate(-80px,40px)}}')
+    b = frame(w, h, 30) + '<g clip-path="url(#frame)">'
+    b += f'<g class="aur"><circle cx="{w * .85:.0f}" cy="{h * .1:.0f}" r="{w * .5:.0f}" fill="url(#au1)"/></g><circle cx="{w * .1:.0f}" cy="{h:.0f}" r="{w * .45:.0f}" fill="url(#au2)"/>'
+    b += f'<rect width="{w}" height="4" fill="url(#g)"/>'
+    b += text(x0, 58, t['kicker'].format(n=n, m=lessons), 17 if mobile else 13, C['amber'], 800, spacing=2.4)
+    for i, line in enumerate(wrap(t['lead'], 40) if mobile else [t['lead']]):
+        b += text(x0, (100 if mobile else 100) + i * 30, line, 24 if mobile else 26, C['text'], 800)
+    for i, c in enumerate(feats):
+        r_, c_ = divmod(i, cols)
+        b += cert_card(c, x0 + c_ * (cw + gap), top + r_ * (ch + gap), cw, ch, lang, i, mobile)
+    b += '</g>'
+    desc = '; '.join(f"{c['title']} — {c['issuer']}" + (f", {c['issued']}" if c.get('issued') else '') for c in feats)
+    return document(w, h, t['title'], desc, b, defs, motion)
+
+
+def lessons_panel(lang, mobile):
+    t = CT[lang]
+    col = CERTS['collections'][0]
+    items = col['lessons']
+    n = len(items)
+    counts = {k: sum(1 for l in items if l['topic'] == k) for k in t['topics']}
+    order = sorted(counts, key=lambda k: -counts[k])
+    dates = sorted(l['date'] for l in items)
+    w, h = (600, 640) if mobile else (1200, 272)
+    defs = (linear('bg', [(0, C['ink']), (.6, '#160F42'), (1, C['deep'])], x2=1, y2=1)
+            + linear('num', [(0, C['cyan']), (.5, C['lilac']), (1, C['pink'])], x2=1, y2=1)
+            + linear('sweep', [(0, '#fff', 0), (.5, '#fff', .5), (1, '#fff', 0)]) + radial('au', C['cyan'], .3))
+    x0 = 32 if mobile else 48
+    bw = w - 2 * x0 if mobile else 580
+    bx = x0 if mobile else w - 48 - bw
+    by = 330 if mobile else 92
+    motion = (f'.sweep{{animation:sweep 8s ease-in-out infinite}}@keyframes sweep{{0%,10%{{transform:translateX(0)}}60%,100%{{transform:translateX({bw + 200}px)}}}}'
+              '.aur{animation:aur 28s ease-in-out infinite}@keyframes aur{50%{transform:translate(60px,-30px)}}')
+    b = frame(w, h, 28) + '<g clip-path="url(#frame)">'
+    b += f'<g class="aur"><circle cx="{w * .2:.0f}" cy="{h * .5:.0f}" r="{w * .4:.0f}" fill="url(#au)"/></g>'
+    b += icon('google', x0, 40, 22, '#fff') + text(x0 + 34, 58, t['lessons_title'].upper(), 15 if mobile else 13, C['cyan'], 800, spacing=2)
+    b += text(x0 - 4, 178 if mobile else 172, str(n), 120 if mobile else 112, 'url(#num)', 800)
+    sub = wrap(t['lessons_sub'], 30 if mobile else 26)
+    for i, line in enumerate(sub):
+        b += text(x0 + (0 if mobile else 220), (220 if mobile else 128) + i * 28, line, 21 if mobile else 20, C['text'], 700)
+    b += text(x0 + (0 if mobile else 220), (220 if mobile else 128) + len(sub) * 28 + 6,
+              t['lessons_date'].format(a=fmt_date(dates[0], lang), b=fmt_date(dates[-1], lang)), 17 if mobile else 15, C['muted'])
+    if mobile:
+        by = 220 + len(sub) * 28 + 60
+    b += f'<clipPath id="bar"><rect x="{bx}" y="{by}" width="{bw}" height="26" rx="13"/></clipPath><g clip-path="url(#bar)">'
+    x = bx
+    for k in order:
+        seg = bw * counts[k] / n
+        b += f'<rect x="{x:.1f}" y="{by}" width="{seg + .6:.1f}" height="26" fill="{TOPIC_COLORS[k]}"/>'
+        x += seg
+    b += f'<rect class="live sweep" x="{bx - 140}" y="{by}" width="140" height="26" fill="url(#sweep)"/></g>'
+    for i, k in enumerate(order):
+        if mobile:
+            lx, ly = bx, by + 64 + i * 40
+        else:
+            lx, ly = bx + (i % 2) * (bw / 2 + 12), by + 62 + (i // 2) * 38
+        cw_ = bw if mobile else bw / 2 - 12
+        b += f'<circle cx="{lx + 8}" cy="{ly - 6}" r="8" fill="{TOPIC_COLORS[k]}"/>'
+        b += text(lx + 26, ly, f"{t['topics'][k]}", 18 if mobile else 16, C['soft'], 600)
+        b += f'<path d="M{lx + 26} {ly + 9}H{lx + cw_}" stroke="#fff" stroke-opacity=".08"/>'
+        b += text(lx + cw_, ly, str(counts[k]), 18 if mobile else 16, TOPIC_COLORS[k], 800, anchor='end')
+    b += '</g>'
+    desc = f"{n} {t['lessons_alt']}: " + ', '.join(f"{t['topics'][k]} {counts[k]}" for k in order)
+    return document(w, h, t['lessons_alt'], desc, b, defs, motion)
+
+
 # ---------------------------------------------------------------- main
 def main():
     count = 0
@@ -1062,6 +1213,8 @@ def main():
                 files[f'project-{key}-{sfx}'] = project_marker(key, lang, mobile)
             for v, group in enumerate(GROUPS):
                 files[f'stack-{group}-{sfx}'] = stack_group(group, v, lang, mobile)
+            files[f'certificates-{sfx}'] = certificates(lang, mobile)
+            files[f'lessons-{sfx}'] = lessons_panel(lang, mobile)
             if not mobile:
                 for kind in BUTTONS:
                     files[f'contact-{kind}-{lang}.svg'] = contact_button(kind, lang)
