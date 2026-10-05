@@ -12,7 +12,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
-USER = 'yavordfgggdag'
+USER = 'yyakowvw'
 
 class CalendarParser(HTMLParser):
     def __init__(self):
