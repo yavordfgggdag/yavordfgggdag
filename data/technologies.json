@@ -589,6 +589,40 @@
    ]
   },
   {
+   "key": "tlr",
+   "name": "The Last Republic",
+   "items": [
+    [
+     "TypeScript",
+     "typescript"
+    ],
+    [
+     "Next.js",
+     "nextdotjs"
+    ],
+    [
+     "React",
+     "react"
+    ],
+    [
+     "Tailwind CSS",
+     "tailwindcss"
+    ],
+    [
+     "Drizzle",
+     "drizzle"
+    ],
+    [
+     "Neon Postgres",
+     "neon"
+    ],
+    [
+     "Netlify",
+     "netlify"
+    ]
+   ]
+  },
+  {
    "key": "police",
    "name": "TLR Police Portal",
    "items": [
