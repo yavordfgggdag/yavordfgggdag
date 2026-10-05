@@ -7,7 +7,7 @@
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/hero-bg-mobile.svg" />
-<img src="assets/motion/hero-bg.svg" alt="Явор (Yavor Yakow), независим разработчик. Продукти със системи зад тях: сайтове, онлайн магазини, уеб и настолен софтуер, админ панели, Discord ботове, игри и FiveM, API и AI. Избрано: Before I Deploy, TLR Police Portal, клиентски сайтове. Контакт: Fraisbg1@gmail.com · Discord Fraisbg · Instagram @y.yakowvw.sales." width="100%" />
+<img src="assets/motion/hero-bg.svg" alt="Явор (Yavor Yakow), независим разработчик. Продукти със системи зад тях: сайтове, онлайн магазини, уеб и настолен софтуер, админ панели, Discord ботове, игри и FiveM, API и AI. Избрано: Before I Deploy, TLR Police Portal, The Last Republic. Контакт: Fraisbg1@gmail.com · Discord Fraisbg · Instagram @y.yakowvw.sales." width="100%" />
 </picture>
 
 <p align="center"><b><a href="#проекти">Проекти</a> · <a href="#услуги">Услуги</a> · <a href="#технологии">Технологии</a> · <a href="#активност">Активност</a> · <a href="#процес">Процес</a> · <a href="#контакт">Контакт</a></b></p>
@@ -57,10 +57,10 @@
 </td>
 <td width="50%" valign="top">
 
-### 🟠 Клиентски сайтове
-Сайтове за **„Помощ от приятел“** (образователен център) и **„Автоинструктор Господинов“** (шофьорски курсове). [Към клиентските проекти](#клиентски-сайтове).
+### 🟢 [Общностна платформа](#общностна-платформа)
+Отделен React интерфейс за игрова общност: сървъри, правила по теми и страници за кандидатстване в обща навигация.
 
-**Бизнес сайтове · UI/UX · Индивидуална разработка**
+**React · Supabase · Преглед на кода**
 
 </td>
 </tr>
@@ -210,34 +210,6 @@
 
 <sub>Представяне само на кода: липсват посочени файлове за оформление и скриптове. За пълна визуална демонстрация са нужни тези файлове или работещ адрес. Изходният код е частен.</sub>
 
-<picture>
-<source media="(max-width: 600px)" srcset="assets/motion/project-client-bg-mobile.svg" />
-<img src="assets/motion/project-client-bg.svg" alt="05 · Клиентски сайтове" width="100%" />
-</picture>
-
-## Клиентски сайтове
-
-### Помощ от приятел · Образователен център
-
-Клиентски сайт, който помага на родителите да разгледат уроците по БЕЛ и математика и да изпратят запитване. Публичният интерфейс включва формати на обучение, често задавани въпроси и форма за контакт.
-
-**Проверени компоненти:** WordPress · WPForms. Формата е прегледана без изпращане на лични данни.
-
-<details>
-<summary><b>Разгледайте интерактивните въпроси</b></summary>
-
-<img src="assets/screens/framed/client-education-faq.jpg" alt="Реална секция с въпроси и разгънат отговор за възрастовите групи." width="100%" />
-
-</details>
-
-[Посетете Помощ от приятел →](https://pomoshtotpriyatel.com/)
-
-### Автоинструктор Господинов · Шофьорски курсове
-
-Клиентски сайт за онлайн представяне на автоинструктор.
-
-<sub>Връзката, актуалните снимки, точният обхват и технологиите предстои да бъдат проверени.</sub>
-
 <a name="услуги"></a>
 
 <picture>
@@ -349,7 +321,7 @@
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/stack-used-bg-mobile.svg" />
-<img src="assets/motion/stack-used-bg.svg" alt="Използвано в представените проекти. Before I Deploy: Swift, SwiftUI, JavaScript, Node.js, Supabase, PostgreSQL, Deno Edge Functions. TLR Police Portal: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, discord.js. Общностна платформа: React, Vite, Tailwind CSS, shadcn/ui, React Router, TanStack Query, Supabase. Помощ от приятел: WordPress, WPForms. Space Control: HTML, JavaScript, Canvas API." width="100%" />
+<img src="assets/motion/stack-used-bg.svg" alt="Използвано в представените проекти. Before I Deploy: Swift, SwiftUI, JavaScript, Node.js, Supabase, PostgreSQL, Deno Edge Functions. TLR Police Portal: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, discord.js. Общностна платформа: React, Vite, Tailwind CSS, shadcn/ui, React Router, TanStack Query, Supabase. Space Control: HTML, JavaScript, Canvas API." width="100%" />
 </picture>
 
 Колекцията от 68 технологии по-долу показва допълнителни интереси и възможни технологични избори. Тя не означава завършени продукти или еднакъв опит с всеки инструмент. **Ментовият кръг** отбелязва инструментите, проверени в проектите по-горе.
