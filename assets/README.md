@@ -154,3 +154,7 @@ Regenerating the visuals needs Pillow and fontTools (`pip install pillow fonttoo
 ## The Last Republic (current site)
 
 `screens/tlr/*.jpg` were captured on 5 Oct 2026 from the current The Last Republic codebase (Next.js 16) running locally: home, application path, rules hub, server rules and the Police Portal sign-in terminal. The Next.js development indicator was hidden; no data was changed. Discord sign-in is not configured locally, so no authenticated or personal data appears. `screens/framed/tlr-home.jpg` is the framed narrow-screen fallback. The whitelist flow illustration and the "Decisions in the code" notes follow the implementation and project documentation (exam timer and attempts, signed interactions, HMAC relay, role-ID authorization). The earlier green community-site captures are no longer shown.
+
+## Bento overview and services
+
+`motion/bento-*.svg` replaces the plain "Selected Work" table with a bento composition: real thumbnails of Before I Deploy, TLR Police Portal and The Last Republic, plus measured facts (tests, checks, lines of code, certificates, technologies). `motion/services-*.svg` presents the six service areas from `data/services.json` (the same wording as before). Both have narrow-screen variants and follow the reduced-motion contract.
