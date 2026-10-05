@@ -1461,14 +1461,18 @@
     {
       "date": "2026-10-04",
       "count": 11
+    },
+    {
+      "date": "2026-10-05",
+      "count": 8
     }
   ],
   "summary": {
-    "total": 233,
-    "active": 19,
+    "total": 241,
+    "active": 20,
     "longest": 5,
-    "current": 4,
-    "last": "2026-10-04",
-    "month": 60
+    "current": 5,
+    "last": "2026-10-05",
+    "month": 68
   }
 }
