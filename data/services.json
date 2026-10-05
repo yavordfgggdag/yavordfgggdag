@@ -1,0 +1,78 @@
+{
+ "en": [
+  {
+   "emoji": "🌐",
+   "title": "Websites & Online Businesses",
+   "desc": "Business websites, landing pages, portfolios, online stores, booking interfaces, content-driven sites and complete website redesigns.",
+   "tags": "Responsive design · UI/UX · Integrations · Performance"
+  },
+  {
+   "emoji": "⚙️",
+   "title": "Custom Software & Platforms",
+   "desc": "Web applications, desktop utilities, dashboards, admin panels, customer portals, internal tools and business management systems.",
+   "tags": "Frontend · Backend · Databases · Authentication"
+  },
+  {
+   "emoji": "💬",
+   "title": "Discord Bots & Communities",
+   "desc": "Custom bots, slash commands, ticket systems, moderation, roles, notifications, logging, community workflows and connected dashboards.",
+   "tags": "Bot development · APIs · Automation · Server integrations"
+  },
+  {
+   "emoji": "🎮",
+   "title": "Games & FiveM Systems",
+   "desc": "Custom games and prototypes, gameplay systems, server resources, NUI interfaces, jobs, inventories, staff tools and community infrastructure.",
+   "tags": "Game logic · Client/server systems · Persistence · Tooling"
+  },
+  {
+   "emoji": "🤖",
+   "title": "Automation & AI Integrations",
+   "desc": "Workflow automation, repetitive-task scripts, AI-powered features, assistant integrations, data-processing utilities and connected services.",
+   "tags": "APIs · Webhooks · Scripting · AI-assisted workflows"
+  },
+  {
+   "emoji": "🛠️",
+   "title": "Improvements & Ongoing Development",
+   "desc": "New features, bug fixes, refactoring, performance improvements, migrations, interface refreshes, testing and deployment preparation.",
+   "tags": "Existing projects · Technical cleanup · Maintenance"
+  }
+ ],
+ "bg": [
+  {
+   "emoji": "🌐",
+   "title": "Сайтове и онлайн бизнес",
+   "desc": "Фирмени сайтове, целеви страници, портфолиа, онлайн магазини, интерфейси за резервации и обновяване на съществуващи сайтове.",
+   "tags": "Адаптивен дизайн · UI/UX · Интеграции · Производителност"
+  },
+  {
+   "emoji": "⚙️",
+   "title": "Софтуер и платформи",
+   "desc": "Уеб и настолни приложения, табла, административни панели, клиентски портали и вътрешни бизнес инструменти.",
+   "tags": "Интерфейс · Сървърна логика · Бази данни · Вход"
+  },
+  {
+   "emoji": "💬",
+   "title": "Discord ботове и общности",
+   "desc": "Команди, тикети, модерация, роли, известия, дневници на събитията и свързани административни табла.",
+   "tags": "Ботове · API · Автоматизация · Сървърни интеграции"
+  },
+  {
+   "emoji": "🎮",
+   "title": "Игри и FiveM системи",
+   "desc": "Игри и прототипи, игрови механики, сървърни ресурси, NUI интерфейси, професии, инвентари и инструменти за екипа.",
+   "tags": "Игрова логика · Клиент и сървър · Съхранение на данни"
+  },
+  {
+   "emoji": "🤖",
+   "title": "Автоматизации и AI",
+   "desc": "Скриптове за повтарящи се задачи, AI функционалности, асистенти, обработка на данни и свързване на услуги.",
+   "tags": "API · Webhooks · Скриптове · AI интеграции"
+  },
+  {
+   "emoji": "🛠️",
+   "title": "Поддръжка и развитие",
+   "desc": "Нови функции, поправка на грешки, преработка на код, оптимизация, миграции, подобрения на интерфейса и подготовка за публикуване.",
+   "tags": "Съществуващи проекти · Технически подобрения · Поддръжка"
+  }
+ ]
+}

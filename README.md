@@ -27,36 +27,10 @@ I build digital products that connect design, code and real-world workflows. My 
 
 ## 🚀 Selected Work
 
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### 🟣 [Before I Deploy](#before-i-deploy)
-**Know before you ship.** A native macOS app that checks web projects before production: environments, dependencies, linting, types, tests, builds, security and configuration.
-
-**Developer tools · Automation · Release readiness**
-
-</td>
-<td width="50%" valign="top">
-
-### 🔵 [TLR Police Portal](#tlr-police-portal)
-Internal management for employee profiles, departments, ranks, callsigns, certificates and strikes, with permissions and audit logs.
-
-**Management software · Role-based access · Integrations**
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top">
-
-### 🩷 [The Last Republic](#the-last-republic)
-Connected gaming and community infrastructure bringing together FiveM, web applications, Discord, databases, staff tools and permissions.
-
-**Full-stack systems · Gaming · Community infrastructure**
-
-</td>
-</tr>
-</table>
+<a href="#before-i-deploy"><picture>
+<source media="(max-width: 600px)" srcset="assets/motion/bento-en-mobile.svg" />
+<img src="assets/motion/bento-en.svg" alt="Selected work at a glance: Before I Deploy, a native macOS app with 172 passing tests, 8 checks and 3 platforms; TLR Police Portal, roster, ranks and handbook synced with Discord with role-ID access; The Last Republic, site, rules and a timed exam reviewed in Discord with 23 API routes; 42.6k lines of code in Before I Deploy; 6 certificates and 129 Google lessons; 68 technologies, 12 in shipped products; available for paid projects at Fraisbg1@gmail.com." width="100%" />
+</picture></a>
 
 Much of my project source code is private. This profile presents the work, the capabilities and the approach behind it.
 
@@ -214,62 +188,10 @@ An internal portal for the TLR roleplay police department. **My contribution:** 
 
 ## 💼 What You Can Hire Me For
 
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### 🌐 Websites & Online Businesses
-Business websites, landing pages, portfolios, online stores, booking interfaces, content-driven sites and complete website redesigns.
-
-**Responsive design · UI/UX · Integrations · Performance**
-
-</td>
-<td width="50%" valign="top">
-
-### ⚙️ Custom Software & Platforms
-Web applications, desktop utilities, dashboards, admin panels, customer portals, internal tools and business management systems.
-
-**Frontend · Backend · Databases · Authentication**
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-### 💬 Discord Bots & Communities
-Custom bots, slash commands, ticket systems, moderation, roles, notifications, logging, community workflows and connected dashboards.
-
-**Bot development · APIs · Automation · Server integrations**
-
-</td>
-<td width="50%" valign="top">
-
-### 🎮 Games & FiveM Systems
-Custom games and prototypes, gameplay systems, server resources, NUI interfaces, jobs, inventories, staff tools and community infrastructure.
-
-**Game logic · Client/server systems · Persistence · Tooling**
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-### 🤖 Automation & AI Integrations
-Workflow automation, repetitive-task scripts, AI-powered features, assistant integrations, data-processing utilities and connected services.
-
-**APIs · Webhooks · Scripting · AI-assisted workflows**
-
-</td>
-<td width="50%" valign="top">
-
-### 🛠️ Improvements & Ongoing Development
-New features, bug fixes, refactoring, performance improvements, migrations, interface refreshes, testing and deployment preparation.
-
-**Existing projects · Technical cleanup · Maintenance**
-
-</td>
-</tr>
-</table>
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/services-en-mobile.svg" />
+<img src="assets/motion/services-en.svg" alt="01 Websites & Online Businesses: Business websites, landing pages, portfolios, online stores, booking interfaces, content-driven sites and complete website redesigns. 02 Custom Software & Platforms: Web applications, desktop utilities, dashboards, admin panels, customer portals, internal tools and business management systems. 03 Discord Bots & Communities: Custom bots, slash commands, ticket systems, moderation, roles, notifications, logging, community workflows and connected dashboards. 04 Games & FiveM Systems: Custom games and prototypes, gameplay systems, server resources, NUI interfaces, jobs, inventories, staff tools and community infrastructure. 05 Automation & AI Integrations: Workflow automation, repetitive-task scripts, AI-powered features, assistant integrations, data-processing utilities and connected services. 06 Improvements & Ongoing Development: New features, bug fixes, refactoring, performance improvements, migrations, interface refreshes, testing and deployment preparation." width="100%" />
+</picture>
 
 **Offered · proven · exploring.** The cards above are services I offer. The projects above show the experience already implemented. The technology panels below separate tools used in those products from wider interests.
 
