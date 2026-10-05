@@ -1,3 +1,7 @@
+## Color and motion revision
+
+All 68 original Shields.io badges are stored locally in `journal/badges/` and composed into five bilingual responsive collections. Original brand colors and logos are retained. The new introduction, soft radial backgrounds, rotating dotted accents and moving card outlines are decorative. Labels remain still. `prefers-reduced-motion` disables CSS motion. Metric artwork remains static. No Discord screenshot from the latest message was included, as requested.
+
 # Portfolio assets
 
 ## Engineering journal update — 5 October 2026

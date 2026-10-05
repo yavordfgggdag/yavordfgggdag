@@ -18,9 +18,9 @@ INK = '#0B1020'
 TEXT = '#EEF2FF'
 MUTED = '#B2BED5'
 LINE = '#354560'
-VIOLET = '#B8A1FF'
-BLUE = '#83C9F4'
-MINT = '#73DFCA'
+VIOLET = '#C49AFF'
+BLUE = '#65D9FF'
+MINT = '#65F2BE'
 
 
 def text(x, y, value, size=22, color=TEXT, weight=400, anchor='start'):
@@ -32,11 +32,14 @@ def line(x1, y1, x2, y2, color=LINE, width=1, extra=''):
 
 
 def svg(w, h, title, desc, body, animation=''):
+    if title in ('GitHub activity','Languages by code volume'):
+        animation += '.aura,.orbit{animation:none!important}'
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-labelledby="title desc">
 <title id="title">{escape(title)}</title><desc id="desc">{escape(desc)}</desc>
-<defs><linearGradient id="wash" x2="1" y2="1"><stop stop-color="#151632"/><stop offset="1" stop-color="{INK}"/></linearGradient><linearGradient id="spectrum"><stop stop-color="{VIOLET}"/><stop offset=".52" stop-color="{BLUE}"/><stop offset="1" stop-color="{MINT}"/></linearGradient></defs>
-<style>text{{font-family:Arial,Helvetica,sans-serif}}{animation}@media(prefers-reduced-motion:reduce){{*{{animation:none!important}}.travel,.return,.sweep{{display:none}}}}</style>
+<defs><linearGradient id="wash" x2="1" y2="1"><stop stop-color="#26164A"/><stop offset="1" stop-color="{INK}"/></linearGradient><linearGradient id="spectrum"><stop stop-color="{VIOLET}"/><stop offset=".28" stop-color="#FF7FCB"/><stop offset=".55" stop-color="{BLUE}"/><stop offset=".8" stop-color="{MINT}"/><stop offset="1" stop-color="{MINT}"/></linearGradient><radialGradient id="purple-haze"><stop stop-color="#AC57FF"/><stop offset="1" stop-color="#8739D8" stop-opacity="0"/></radialGradient><radialGradient id="blue-haze"><stop stop-color="#23CEEF"/><stop offset="1" stop-color="#007D9B" stop-opacity="0"/></radialGradient></defs>
+<style>text{{font-family:Arial,Helvetica,sans-serif}}.aura{{animation:breathe 7s ease-in-out infinite alternate}}.orbit{{transform-box:fill-box;transform-origin:center;animation:orbit 24s linear infinite}}@keyframes breathe{{from{{opacity:.14}}to{{opacity:.38}}}}@keyframes orbit{{to{{transform:rotate(360deg)}}}}{animation}@media(prefers-reduced-motion:reduce){{*{{animation:none!important}}.travel,.return,.sweep{{display:none}}}}</style>
 <rect width="{w}" height="{h}" fill="url(#wash)"/>
+<g aria-hidden="true"><ellipse class="aura" cx="{w*.87}" cy="{h*.18}" rx="{w*.22}" ry="{h*.5}" fill="url(#purple-haze)" opacity=".2"/><ellipse class="aura" style="animation-delay:-3s" cx="{w*.12}" cy="{h*.95}" rx="{w*.26}" ry="{h*.33}" fill="url(#blue-haze)" opacity=".2"/><path d="M0 1 H{w}" stroke="url(#spectrum)" stroke-width="3"/><circle class="orbit" cx="{w-60}" cy="60" r="29" fill="none" stroke="#F985D0" stroke-opacity=".3" stroke-dasharray="3 12"/></g>
 {body}
 </svg>'''
 
@@ -88,7 +91,7 @@ def architecture(lang, mobile, kind):
             b += text(328, 297, bridge[1], 17, BLUE, anchor='middle')
         b += text(40, 335, foot, 16, MUTED)
         h = 360
-    animation = '.travel{stroke-dasharray:8 192;animation:transit 14s ease-in-out infinite}.return{stroke-dasharray:8 192;animation:transit 14s ease-in-out 4s infinite}@keyframes transit{0%,12%{stroke-dashoffset:10}65%,100%{stroke-dashoffset:-105}}'
+    animation = '.travel{stroke-dasharray:8 192;animation:transit 5s ease-in-out infinite}.return{stroke-dasharray:8 192;animation:transit 5s ease-in-out 1.8s infinite}@keyframes transit{0%,12%{stroke-dashoffset:10}65%,100%{stroke-dashoffset:-105}}'
     return svg(w,h,kicker,desc,b,animation)
 
 
@@ -137,7 +140,7 @@ def process(lang,mobile):
             b+=text(x,y,f'0{i+1}',18,[VIOLET,BLUE,MINT][i%3])+text(x,y+37,label,25)
     if not mobile:
         b+=line(40,164,960,164,LINE,2)+line(40,164,960,164,'url(#spectrum)',3,'class="sweep" pathLength="100"')
-    return svg(w,360 if mobile else 195,'Процес на работа' if bg else 'Working process','Illustration of the working process, not a progress indicator.',b,'.sweep{stroke-dasharray:7 193;animation:sweep 20s ease-in-out infinite}@keyframes sweep{0%,8%{stroke-dashoffset:10}75%,100%{stroke-dashoffset:-105}}')
+    return svg(w,360 if mobile else 195,'Процес на работа' if bg else 'Working process','Illustration of the working process, not a progress indicator.',b,'.sweep{stroke-dasharray:7 193;animation:sweep 7s ease-in-out infinite}@keyframes sweep{0%,8%{stroke-dashoffset:10}75%,100%{stroke-dashoffset:-105}}')
 
 
 def activity(data,lang,mobile):
@@ -191,6 +194,38 @@ def languages(data,lang,mobile):
     return svg(w,foot+25,'Languages by code volume','Fixed aggregate language-byte snapshot. Includes private projects without their names or code; excludes the profile repository. Does not measure hours or skill.',b)
 
 
+def collection(lang,mobile,index):
+    import re
+    groups=json.loads((ROOT/'data/technology-badges.json').read_text())
+    rows=groups[index];w=390 if mobile else 1000;cols=2 if mobile else 5
+    pad=18 if mobile else 28;gap=12;cw=(w-2*pad-(cols-1)*gap)/cols
+    h=32+((len(rows)+cols-1)//cols)*68
+    colors=['#BA8BFF','#FF80CF','#60D8FF','#68ECC1','#FFCC78']
+    b=''
+    for i,row in enumerate(rows):
+        x=pad+(i%cols)*(cw+gap);y=16+(i//cols)*68;c=colors[(i+index)%5]
+        source=(OUT/'badges'/row['file']).read_text()
+        sw=float(re.search(r'width="([0-9.]+)"',source).group(1));sh=float(re.search(r'height="([0-9.]+)"',source).group(1))
+        scale=min((cw-12)/sw,30/sh);iw=sw*scale;ih=sh*scale
+        data=base64.b64encode(source.encode()).decode()
+        b+=f'<rect x="{x}" y="{y}" width="{cw}" height="54" rx="12" fill="{c}" fill-opacity=".12" stroke="{c}" stroke-opacity=".48"/>'
+        b+=f'<rect class="rim" style="animation-delay:-{i*.7}s" x="{x}" y="{y}" width="{cw}" height="54" rx="12" fill="none" stroke="{c}" stroke-width="2" pathLength="100"/>'
+        b+=f'<image x="{x+(cw-iw)/2}" y="{y+(54-ih)/2}" width="{iw}" height="{ih}" href="data:image/svg+xml;base64,{data}"/>'
+    return svg(w,h,'Езици и инструменти' if lang=='bg' else 'Languages and tools',', '.join(r['name'] for r in rows),b,'.rim{stroke-dasharray:12 88;animation:rim 8s linear infinite}@keyframes rim{to{stroke-dashoffset:-100}}')
+
+
+def intro(lang,mobile):
+    bg=lang=='bg';w=390 if mobile else 1000;h=290 if mobile else 260
+    b=text(24 if mobile else 40,40,'ИДЕИ → ИНТЕРФЕЙСИ → ПРОДУКТИ' if bg else 'IDEAS → INTERFACES → PRODUCTS',14 if mobile else 20,MINT,600)
+    labels=['Уеб.','Софтуер.','Общности.'] if bg else ['Web.','Software.','Communities.']
+    for i,label in enumerate(labels):
+        b+=text(24 if mobile else 40+i*310,94+i*60 if mobile else 125,label,38 if mobile else 43,[VIOLET,BLUE,MINT][i],700)
+    b+=text(24 if mobile else 40,263 if mobile else 187,'От идеята до работещото решение.' if bg else 'From an idea to a working solution.',16 if mobile else 23)
+    y=280 if mobile else 226
+    b+=line(24,y,w-24,y,'url(#spectrum)',3,'class="intro-flow" pathLength="100"')
+    return svg(w,h,'Yavor — creative engineering','Decorative animated introduction. No live status.',b,'.intro-flow{stroke-dasharray:24 8;animation:flow 9s linear infinite}@keyframes flow{to{stroke-dashoffset:-96}}')
+
+
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--metrics-only',action='store_true');args=ap.parse_args()
     data=json.loads((ROOT/'data/activity.json').read_text())
@@ -206,6 +241,9 @@ def main():
             files['metrics/activity-'+suffix]=activity(data,lang,mobile)
             files['metrics/languages-'+suffix]=languages(language,lang,mobile)
             if not args.metrics_only:
+                files['intro-'+suffix]=intro(lang,mobile)
+                for index in range(5):
+                    files[f'collection-{index}-'+suffix]=collection(lang,mobile,index)
                 files['native-'+suffix]=architecture(lang,mobile,'native')
                 files['sync-'+suffix]=architecture(lang,mobile,'sync')
                 files['toolkit-'+suffix]=toolkit(lang,mobile)

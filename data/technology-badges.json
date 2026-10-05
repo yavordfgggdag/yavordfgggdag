@@ -1,0 +1,284 @@
+[
+  [
+    {
+      "name": "TypeScript",
+      "file": "typescript.svg"
+    },
+    {
+      "name": "JavaScript",
+      "file": "javascript.svg"
+    },
+    {
+      "name": "Python",
+      "file": "python.svg"
+    },
+    {
+      "name": "Lua",
+      "file": "lua.svg"
+    },
+    {
+      "name": "HTML5",
+      "file": "html5.svg"
+    },
+    {
+      "name": "CSS3",
+      "file": "css3.svg"
+    },
+    {
+      "name": "SQL",
+      "file": "sql.svg"
+    },
+    {
+      "name": "Node.js",
+      "file": "node-js.svg"
+    },
+    {
+      "name": "Astro",
+      "file": "astro.svg"
+    },
+    {
+      "name": "MySQL",
+      "file": "mysql.svg"
+    },
+    {
+      "name": "MariaDB",
+      "file": "mariadb.svg"
+    },
+    {
+      "name": "Git",
+      "file": "git.svg"
+    },
+    {
+      "name": "GitHub",
+      "file": "github.svg"
+    }
+  ],
+  [
+    {
+      "name": "C",
+      "file": "c.svg"
+    },
+    {
+      "name": "C++",
+      "file": "cplusplus.svg"
+    },
+    {
+      "name": "C#",
+      "file": "csharp.svg"
+    },
+    {
+      "name": "Java",
+      "file": "java.svg"
+    },
+    {
+      "name": "Kotlin",
+      "file": "kotlin.svg"
+    },
+    {
+      "name": "Swift",
+      "file": "swift.svg"
+    },
+    {
+      "name": "Go",
+      "file": "go.svg"
+    },
+    {
+      "name": "Rust",
+      "file": "rust.svg"
+    },
+    {
+      "name": "PHP",
+      "file": "php.svg"
+    },
+    {
+      "name": "Ruby",
+      "file": "ruby.svg"
+    },
+    {
+      "name": "Dart",
+      "file": "dart.svg"
+    },
+    {
+      "name": "Scala",
+      "file": "scala.svg"
+    },
+    {
+      "name": "R",
+      "file": "r.svg"
+    },
+    {
+      "name": "Bash",
+      "file": "bash.svg"
+    },
+    {
+      "name": "PowerShell",
+      "file": "powershell.svg"
+    },
+    {
+      "name": "Elixir",
+      "file": "elixir.svg"
+    },
+    {
+      "name": "Erlang",
+      "file": "erlang.svg"
+    },
+    {
+      "name": "Haskell",
+      "file": "haskell.svg"
+    },
+    {
+      "name": "Clojure",
+      "file": "clojure.svg"
+    },
+    {
+      "name": "F#",
+      "file": "fsharp.svg"
+    },
+    {
+      "name": "Julia",
+      "file": "julia.svg"
+    },
+    {
+      "name": "Zig",
+      "file": "zig.svg"
+    },
+    {
+      "name": "Solidity",
+      "file": "solidity.svg"
+    },
+    {
+      "name": "GDScript",
+      "file": "gdscript.svg"
+    },
+    {
+      "name": "Objective-C",
+      "file": "objective-c.svg"
+    },
+    {
+      "name": "Perl",
+      "file": "perl.svg"
+    },
+    {
+      "name": "OCaml",
+      "file": "ocaml.svg"
+    }
+  ],
+  [
+    {
+      "name": "React",
+      "file": "react.svg"
+    },
+    {
+      "name": "Next.js",
+      "file": "next-js.svg"
+    },
+    {
+      "name": "Vue.js",
+      "file": "vue-js.svg"
+    },
+    {
+      "name": "Svelte",
+      "file": "svelte.svg"
+    },
+    {
+      "name": "Vite",
+      "file": "vite.svg"
+    },
+    {
+      "name": "Tailwind CSS",
+      "file": "tailwind-css.svg"
+    },
+    {
+      "name": "Express",
+      "file": "express.svg"
+    },
+    {
+      "name": "Electron",
+      "file": "electron.svg"
+    },
+    {
+      "name": "Flutter",
+      "file": "flutter.svg"
+    },
+    {
+      "name": ".NET",
+      "file": "net.svg"
+    }
+  ],
+  [
+    {
+      "name": "PostgreSQL",
+      "file": "postgresql.svg"
+    },
+    {
+      "name": "SQLite",
+      "file": "sqlite.svg"
+    },
+    {
+      "name": "MongoDB",
+      "file": "mongodb.svg"
+    },
+    {
+      "name": "Redis",
+      "file": "redis.svg"
+    },
+    {
+      "name": "Docker",
+      "file": "docker.svg"
+    },
+    {
+      "name": "Linux",
+      "file": "linux.svg"
+    },
+    {
+      "name": "macOS",
+      "file": "macos.svg"
+    },
+    {
+      "name": "Netlify",
+      "file": "netlify.svg"
+    },
+    {
+      "name": "GitHub Actions",
+      "file": "github-actions.svg"
+    },
+    {
+      "name": "NGINX",
+      "file": "nginx.svg"
+    }
+  ],
+  [
+    {
+      "name": "Discord",
+      "file": "discord.svg"
+    },
+    {
+      "name": "FiveM",
+      "file": "fivem.svg"
+    },
+    {
+      "name": "Godot",
+      "file": "godot.svg"
+    },
+    {
+      "name": "Unity",
+      "file": "unity.svg"
+    },
+    {
+      "name": "Unreal Engine",
+      "file": "unreal-engine.svg"
+    },
+    {
+      "name": "OpenAI",
+      "file": "openai.svg"
+    },
+    {
+      "name": "Claude",
+      "file": "claude.svg"
+    },
+    {
+      "name": "Cursor",
+      "file": "cursor.svg"
+    }
+  ]
+]
