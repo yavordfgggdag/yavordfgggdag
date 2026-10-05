@@ -8,6 +8,11 @@
 
 [Работа](#work) · [Езици и инструменти](#toolkit) · [Услуги](#services) · [Активност](#activity) · [Контакт](#contact)
 
+<picture>
+<source media="(max-width: 600px)" srcset="assets/journal/intro-bg-mobile.svg" />
+<img src="assets/journal/intro-bg.svg" alt="Цветна анимирана композиция: уеб, софтуер, общности." width="100%" />
+</picture>
+
 <a name="work"></a><a name="before-i-deploy"></a>
 
 ## Before I Deploy
@@ -171,20 +176,50 @@ Mission Control обединява състоянието на проектит�
 
 Запазен е целият набор от езици и инструменти от профила. Тази колекция включва допълнителни интереси и възможни технологични избори; не означава еднакъв опит или завършени продукти с всеки инструмент. Реализираният опит е посочен по-горе.
 
-**Допълнителни инструменти и интереси**  
-TypeScript · JavaScript · Python · Lua · HTML5 · CSS3 · SQL · Node.js · Astro · MySQL · MariaDB · Git · GitHub
+### Допълнителни инструменти и интереси
 
-**Други програмни езици**  
-C · C++ · C# · Java · Kotlin · Swift · Go · Rust · PHP · Ruby · Dart · Scala · R · Bash · PowerShell · Elixir · Erlang · Haskell · Clojure · F# · Julia · Zig · Solidity · GDScript · Objective-C · Perl · OCaml
+<picture>
+<source media="(max-width: 600px)" srcset="assets/journal/collection-0-bg-mobile.svg" />
+<img src="assets/journal/collection-0-bg.svg" alt="TypeScript, JavaScript, Python, Lua, HTML5, CSS3, SQL, Node.js, Astro, MySQL, MariaDB, Git, GitHub" width="100%" />
+</picture>
 
-**Уеб технологии и приложения**  
-React · Next.js · Vue.js · Svelte · Vite · Tailwind CSS · Express · Electron · Flutter · .NET
+<sub>TypeScript · JavaScript · Python · Lua · HTML5 · CSS3 · SQL · Node.js · Astro · MySQL · MariaDB · Git · GitHub</sub>
 
-**Данни, инфраструктура и публикуване**  
-PostgreSQL · SQLite · MongoDB · Redis · Docker · Linux · macOS · Netlify · GitHub Actions · NGINX
+### Други програмни езици
 
-**Игри, общности и AI**  
-Discord · FiveM · Godot · Unity · Unreal Engine · OpenAI · Claude · Cursor
+<picture>
+<source media="(max-width: 600px)" srcset="assets/journal/collection-1-bg-mobile.svg" />
+<img src="assets/journal/collection-1-bg.svg" alt="C, C++, C#, Java, Kotlin, Swift, Go, Rust, PHP, Ruby, Dart, Scala, R, Bash, PowerShell, Elixir, Erlang, Haskell, Clojure, F#, Julia, Zig, Solidity, GDScript, Objective-C, Perl, OCaml" width="100%" />
+</picture>
+
+<sub>C · C++ · C# · Java · Kotlin · Swift · Go · Rust · PHP · Ruby · Dart · Scala · R · Bash · PowerShell · Elixir · Erlang · Haskell · Clojure · F# · Julia · Zig · Solidity · GDScript · Objective-C · Perl · OCaml</sub>
+
+### Уеб технологии и приложения
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/journal/collection-2-bg-mobile.svg" />
+<img src="assets/journal/collection-2-bg.svg" alt="React, Next.js, Vue.js, Svelte, Vite, Tailwind CSS, Express, Electron, Flutter, .NET" width="100%" />
+</picture>
+
+<sub>React · Next.js · Vue.js · Svelte · Vite · Tailwind CSS · Express · Electron · Flutter · .NET</sub>
+
+### Данни, инфраструктура и публикуване
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/journal/collection-3-bg-mobile.svg" />
+<img src="assets/journal/collection-3-bg.svg" alt="PostgreSQL, SQLite, MongoDB, Redis, Docker, Linux, macOS, Netlify, GitHub Actions, NGINX" width="100%" />
+</picture>
+
+<sub>PostgreSQL · SQLite · MongoDB · Redis · Docker · Linux · macOS · Netlify · GitHub Actions · NGINX</sub>
+
+### Игри, общности и AI
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/journal/collection-4-bg-mobile.svg" />
+<img src="assets/journal/collection-4-bg.svg" alt="Discord, FiveM, Godot, Unity, Unreal Engine, OpenAI, Claude, Cursor" width="100%" />
+</picture>
+
+<sub>Discord · FiveM · Godot · Unity · Unreal Engine · OpenAI · Claude · Cursor</sub>
 
 ---
 

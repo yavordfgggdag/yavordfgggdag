@@ -8,6 +8,11 @@
 
 [Work](#work) · [Languages & tools](#toolkit) · [Services](#services) · [Activity](#activity) · [Contact](#contact)
 
+<picture>
+<source media="(max-width: 600px)" srcset="assets/journal/intro-en-mobile.svg" />
+<img src="assets/journal/intro-en.svg" alt="Colorful animated composition: web, software, communities." width="100%" />
+</picture>
+
 <a name="work"></a><a name="before-i-deploy"></a>
 
 ## Before I Deploy
@@ -171,20 +176,50 @@ Main website for the FiveM community. The work includes the public interface, ru
 
 The profile’s complete language and tool collection is retained. It includes additional interests and possible technology choices; it does not imply equal experience or completed products with every tool. Implemented experience is identified above.
 
-**Additional Tools & Interests**  
-TypeScript · JavaScript · Python · Lua · HTML5 · CSS3 · SQL · Node.js · Astro · MySQL · MariaDB · Git · GitHub
+### Additional Tools & Interests
 
-**Wider Programming Language Ecosystem**  
-C · C++ · C# · Java · Kotlin · Swift · Go · Rust · PHP · Ruby · Dart · Scala · R · Bash · PowerShell · Elixir · Erlang · Haskell · Clojure · F# · Julia · Zig · Solidity · GDScript · Objective-C · Perl · OCaml
+<picture>
+<source media="(max-width: 600px)" srcset="assets/journal/collection-0-en-mobile.svg" />
+<img src="assets/journal/collection-0-en.svg" alt="TypeScript, JavaScript, Python, Lua, HTML5, CSS3, SQL, Node.js, Astro, MySQL, MariaDB, Git, GitHub" width="100%" />
+</picture>
 
-**Web & Application Ecosystem**  
-React · Next.js · Vue.js · Svelte · Vite · Tailwind CSS · Express · Electron · Flutter · .NET
+<sub>TypeScript · JavaScript · Python · Lua · HTML5 · CSS3 · SQL · Node.js · Astro · MySQL · MariaDB · Git · GitHub</sub>
 
-**Data, Infrastructure & Delivery**  
-PostgreSQL · SQLite · MongoDB · Redis · Docker · Linux · macOS · Netlify · GitHub Actions · NGINX
+### Wider Programming Language Ecosystem
 
-**Games, Communities & AI**  
-Discord · FiveM · Godot · Unity · Unreal Engine · OpenAI · Claude · Cursor
+<picture>
+<source media="(max-width: 600px)" srcset="assets/journal/collection-1-en-mobile.svg" />
+<img src="assets/journal/collection-1-en.svg" alt="C, C++, C#, Java, Kotlin, Swift, Go, Rust, PHP, Ruby, Dart, Scala, R, Bash, PowerShell, Elixir, Erlang, Haskell, Clojure, F#, Julia, Zig, Solidity, GDScript, Objective-C, Perl, OCaml" width="100%" />
+</picture>
+
+<sub>C · C++ · C# · Java · Kotlin · Swift · Go · Rust · PHP · Ruby · Dart · Scala · R · Bash · PowerShell · Elixir · Erlang · Haskell · Clojure · F# · Julia · Zig · Solidity · GDScript · Objective-C · Perl · OCaml</sub>
+
+### Web & Application Ecosystem
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/journal/collection-2-en-mobile.svg" />
+<img src="assets/journal/collection-2-en.svg" alt="React, Next.js, Vue.js, Svelte, Vite, Tailwind CSS, Express, Electron, Flutter, .NET" width="100%" />
+</picture>
+
+<sub>React · Next.js · Vue.js · Svelte · Vite · Tailwind CSS · Express · Electron · Flutter · .NET</sub>
+
+### Data, Infrastructure & Delivery
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/journal/collection-3-en-mobile.svg" />
+<img src="assets/journal/collection-3-en.svg" alt="PostgreSQL, SQLite, MongoDB, Redis, Docker, Linux, macOS, Netlify, GitHub Actions, NGINX" width="100%" />
+</picture>
+
+<sub>PostgreSQL · SQLite · MongoDB · Redis · Docker · Linux · macOS · Netlify · GitHub Actions · NGINX</sub>
+
+### Games, Communities & AI
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/journal/collection-4-en-mobile.svg" />
+<img src="assets/journal/collection-4-en.svg" alt="Discord, FiveM, Godot, Unity, Unreal Engine, OpenAI, Claude, Cursor" width="100%" />
+</picture>
+
+<sub>Discord · FiveM · Godot · Unity · Unreal Engine · OpenAI · Claude · Cursor</sub>
 
 ---
 
