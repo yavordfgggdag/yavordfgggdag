@@ -146,3 +146,7 @@ To add a certificate, append an entry to `featured` (title, issuer, Simple Icons
 Display headlines (hero, project names, finale, footer) use **Unbounded** (SIL Open Font License 1.1, `fonts/unbounded/`), outlined to SVG paths by `scripts/typeset.py` because GitHub images cannot load web fonts. The same words are always present in the SVG title/description and the README alt text.
 
 Regenerating the visuals needs Pillow and fontTools (`pip install pillow fonttools`); the daily workflow only re-renders the activity panels and does not need them.
+
+## Before I Deploy metrics
+
+`motion/under-hood-*.svg` are generated from `data/bid-metrics.json`: aggregate counts measured on the private repository's main branch (5 Oct 2026) — non-blank lines per language, the eight-step check pipeline, engine commands, platforms, edge functions, templates and UI languages. "172 automated tests passing" is the result of running the engine suites that CI runs (119 + 53, 0 failed). The terminal shows the engine's real NDJSON event format (`step`, `log`, `result`) with illustrative values. No source code is published.
