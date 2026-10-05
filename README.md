@@ -77,7 +77,7 @@ A native macOS application for reviewing local web projects, understanding warni
 <img src="assets/motion/scene-bid-en.svg" alt="Before I Deploy running on macOS: a demo project with a Ready with warnings verdict, check controls and a step-by-step launch checklist." width="100%" />
 </picture>
 
-- **One check pipeline:** Git state, secrets, dependencies, lint, types, build and hosting readiness, with results returned to the app as NDJSON events.
+- **One check pipeline:** Git state, secrets, dependencies, lint, types, build, site quality and hosting readiness, with results returned to the app as NDJSON events.
 - **Release safeguards:** the engine checks for changed project fingerprints and requires explicit confirmation before production deployment.
 - **A useful control centre:** project status, site monitoring, SSL information and a command palette for moving between tasks.
 - **AI-assisted repair:** an implemented review-and-apply workflow for proposed file changes. Provider setup and service availability determine what can run.
@@ -86,6 +86,20 @@ A native macOS application for reviewing local web projects, understanding warni
 <source media="(max-width: 600px)" srcset="assets/motion/arch-bid-en-mobile.svg" />
 <img src="assets/motion/arch-bid-en.svg" alt="Architecture illustration: the SwiftUI app sends commands to a Node.js engine and receives NDJSON events. One chain of checks — Git, secrets, dependencies, lint, types, build, hosting — ends at an explicit confirmation before production hosting. Project files and Keychain stay local; Supabase, Postgres and Deno Edge Functions are optional cloud services." width="100%" />
 </picture>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/under-hood-en-mobile.svg" />
+<img src="assets/motion/under-hood-en.svg" alt="Under the hood of Before I Deploy, measured 5 Oct 2026: 42.6k lines of code, 172 automated tests passing, 8 checks in one pipeline, 54 engine commands, 3 desktop platforms, 5 edge functions, 20 site templates, 2 UI languages; code composition JavaScript 17.8k, Swift 15.1k, TypeScript 5.4k, SQL 3.3k lines; and the real NDJSON event format streamed from engine to app." width="100%" />
+</picture>
+
+**Decisions in the code**
+
+- **A person approves automatic runs.** The app's file watcher runs project scripts only while the project fingerprint matches the one a person approved. After any change — by the AI, a git pull or anyone else — a person starts the next run.
+- **Secrets stay in the operating system's keychain:** macOS Keychain, Windows Credential Manager, Linux Secret Service.
+- **One engine, three native shells:** SwiftUI on macOS, Tauri with a shared web UI on Windows and Linux. The Node.js engine runs as a separate process and speaks NDJSON.
+- **Tested like a product:** the engine suites build throwaway fixture projects with isolated settings and mocked services, and run in CI.
+
+<sub>Aggregate counts measured on the main branch on 5 Oct 2026; the source stays private.</sub>
 
 **Built with:** Swift · SwiftUI · JavaScript · Node.js · Supabase · PostgreSQL · Deno Edge Functions
 

@@ -1,0 +1,91 @@
+{
+ "measured": "2026-10-05",
+ "source": "Before I Deploy private repository, main branch (aggregate counts only; no code is published)",
+ "stats": [
+  {
+   "value": "42.6k",
+   "en": "lines of code",
+   "bg": "реда код",
+   "note": "non-blank lines in JS, Swift, TS, SQL, Rust, shell, Python"
+  },
+  {
+   "value": "172",
+   "en": "automated tests passing",
+   "bg": "автоматични теста минават",
+   "note": "engine suites run in CI: 119 + 53"
+  },
+  {
+   "value": "8",
+   "en": "checks in one pipeline",
+   "bg": "проверки в една верига",
+   "note": "git, secrets, deps, lint, typecheck, build, site, hosting"
+  },
+  {
+   "value": "54",
+   "en": "engine commands",
+   "bg": "команди в engine-а",
+   "note": "bid CLI subcommands"
+  },
+  {
+   "value": "3",
+   "en": "desktop platforms",
+   "bg": "платформи",
+   "note": "macOS (SwiftUI), Windows and Linux (Tauri)"
+  },
+  {
+   "value": "5",
+   "en": "edge functions",
+   "bg": "Edge функции",
+   "note": "Supabase: account, admin, ai-fix, billing, monitor"
+  },
+  {
+   "value": "20",
+   "en": "site templates",
+   "bg": "шаблона за сайтове",
+   "note": "engine/templates"
+  },
+  {
+   "value": "2",
+   "en": "UI languages",
+   "bg": "езика на интерфейса",
+   "note": "English, Bulgarian"
+  }
+ ],
+ "composition": [
+  {
+   "name": "JavaScript",
+   "lines": 17759,
+   "color": "#F1E05A"
+  },
+  {
+   "name": "Swift",
+   "lines": 15103,
+   "color": "#F05138"
+  },
+  {
+   "name": "TypeScript",
+   "lines": 5446,
+   "color": "#3178C6"
+  },
+  {
+   "name": "SQL",
+   "lines": 3346,
+   "color": "#E38C00"
+  },
+  {
+   "name": "Shell · Rust · Python",
+   "lines": 976,
+   "color": "#8B8FB0"
+  }
+ ],
+ "events": [
+  "{\"type\":\"step\",\"id\":\"git\",\"status\":\"running\"}",
+  "{\"type\":\"step\",\"id\":\"git\",\"status\":\"pass\"}",
+  "{\"type\":\"step\",\"id\":\"secrets\",\"status\":\"pass\"}",
+  "{\"type\":\"step\",\"id\":\"deps\",\"status\":\"warn\"}",
+  "{\"type\":\"log\",\"step\":\"build\",\"line\":\"…\"}",
+  "{\"type\":\"step\",\"id\":\"build\",\"status\":\"pass\"}",
+  "{\"type\":\"step\",\"id\":\"hosting\",\"status\":\"info\"}",
+  "{\"type\":\"result\",\"ok\":true,\"data\":{…}}"
+ ]
+}
