@@ -60,18 +60,22 @@
 
 Голяма част от изходния код е частен. Тук представям конкретната работа, техническите решения и начина си на работа.
 
+<a name="before-i-deploy"></a>
+
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/project-bid-bg-mobile.svg" />
 <img src="assets/motion/project-bid-bg.svg" alt="01 · Нативно macOS приложение" width="100%" />
 </picture>
 
-## Before I Deploy
 
 **Ясна подготовка за публикуване — от първата проверка до следващото действие.**
 
 Нативно приложение за macOS за преглед на локални уеб проекти, разбиране на предупрежденията и подготовка на тестова или продукционна версия. **Моят принос:** разработих SwiftUI интерфейса, командния Node.js модул и връзките между проверките, хостинга и облачните услуги.
 
-<img src="assets/screens/framed/before-i-deploy.jpg" alt="Работещ Before I Deploy на macOS: демонстрационен проект с предупреждения, проверки и списък със стъпки за публикуване." width="100%" />
+<picture>
+<source media="(max-width: 600px)" srcset="assets/screens/framed/before-i-deploy.jpg" />
+<img src="assets/motion/scene-bid-bg.svg" alt="Работещ Before I Deploy на macOS: демонстрационен проект с предупреждения, проверки и списък със стъпки за публикуване." width="100%" />
+</picture>
 
 - **Общ процес за проверки:** Git, тайни ключове, зависимости, статичен анализ, типове, компилация и готовност на хостинга. Резултатите стигат до приложението като NDJSON събития.
 - **Защити при публикуване:** проверка дали файловете са променени след анализа и изрично потвърждение преди продукционно публикуване.
@@ -102,18 +106,22 @@
 
 [Обсъдете продукта или подобен инструмент →](mailto:Fraisbg1@gmail.com?subject=Before%20I%20Deploy)
 
+<a name="tlr-police-portal"></a>
+
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/project-police-bg-mobile.svg" />
 <img src="assets/motion/project-police-bg.svg" alt="02 · Операции за FiveM общност" width="100%" />
 </picture>
 
-## TLR Police Portal
 
 **Структурата на екипа, превърната в работно пространство.**
 
 Вътрешен портал за полицейския отдел на TLR. **Моят принос:** разработих табло, търсачка на служители, йерархия на званията, наръчник и управление на сертификати, наказания и позивни, със сървърни проверки на правата и журнал на действията.
 
-<img src="assets/screens/framed/police-dashboard.jpg" alt="Заснето табло на TLR Police Portal с наръчник, радиокодове, райони и състав. Имената и аватарите са скрити." width="100%" />
+<picture>
+<source media="(max-width: 600px)" srcset="assets/screens/framed/police-dashboard.jpg" />
+<img src="assets/motion/scene-police-bg.svg" alt="Заснето табло на TLR Police Portal с наръчник, радиокодове, райони и състав. Имената и аватарите са скрити." width="100%" />
+</picture>
 
 **Техническо решение:** събитията за членство в Discord изискват постоянна връзка. Отделен Node.js бот поддържа Gateway връзката и синхронизира данните за състава в Postgres. Next.js сайтът обработва разрешените административни действия. Двата компонента използват обща карта на ролите.
 
@@ -123,10 +131,6 @@
 </picture>
 
 **Технологии:** TypeScript · Next.js · React · PostgreSQL / Neon · Drizzle ORM · Node.js · discord.js
-
-### Вътре в портала
-
-<img src="assets/screens/framed/police-employees.jpg" alt="Управление на служители с търсене и филтри по звание и отдел. Личните данни са скрити." width="100%" />
 
 <details>
 <summary><b>Отворете галерията — звания и интерактивен наръчник</b></summary>
@@ -155,12 +159,13 @@
 
 <sub>Снимки от предишната проверка на портала. Достъпът изисква Discord вход и членство в отдела. Актуалната връзка се уточнява; кодът е частен.</sub>
 
+<a name="the-last-republic"></a>
+
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/project-tlr-bg-mobile.svg" />
 <img src="assets/motion/project-tlr-bg.svg" alt="03 · Общностна инфраструктура" width="100%" />
 </picture>
 
-## The Last Republic
 
 **Общностен сайт с път от първото посещение до кандидатстването.**
 

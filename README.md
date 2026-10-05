@@ -60,18 +60,22 @@ Connected gaming and community infrastructure bringing together FiveM, web appli
 
 Much of my project source code is private. This profile presents the work, the capabilities and the approach behind it.
 
+<a name="before-i-deploy"></a>
+
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/project-bid-en-mobile.svg" />
 <img src="assets/motion/project-bid-en.svg" alt="01 · Native macOS app" width="100%" />
 </picture>
 
-## Before I Deploy
 
 **Make release preparation understandable, from the first check to the next action.**
 
 A native macOS application for reviewing local web projects, understanding warnings and preparing a preview or production release. **My contribution:** I developed the SwiftUI interface, the Node.js command engine and the connections between project checks, hosting and cloud services.
 
-<img src="assets/screens/framed/before-i-deploy.jpg" alt="Before I Deploy running on macOS: a demo project with a Ready with warnings verdict, check controls and a step-by-step launch checklist." width="100%" />
+<picture>
+<source media="(max-width: 600px)" srcset="assets/screens/framed/before-i-deploy.jpg" />
+<img src="assets/motion/scene-bid-en.svg" alt="Before I Deploy running on macOS: a demo project with a Ready with warnings verdict, check controls and a step-by-step launch checklist." width="100%" />
+</picture>
 
 - **One check pipeline:** Git state, secrets, dependencies, lint, types, build and hosting readiness, with results returned to the app as NDJSON events.
 - **Release safeguards:** the engine checks for changed project fingerprints and requires explicit confirmation before production deployment.
@@ -102,18 +106,22 @@ A native macOS application for reviewing local web projects, understanding warni
 
 [Discuss the product or a similar tool →](mailto:Fraisbg1@gmail.com?subject=Before%20I%20Deploy)
 
+<a name="tlr-police-portal"></a>
+
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/project-police-en-mobile.svg" />
 <img src="assets/motion/project-police-en.svg" alt="02 · FiveM community operations" width="100%" />
 </picture>
 
-## TLR Police Portal
 
 **Turn a community's staff structure into a usable operations workspace.**
 
 An internal portal for the TLR roleplay police department. **My contribution:** I developed the dashboard, searchable staff directory, rank hierarchy, handbook and management workflows for certificates, strikes and callsigns, with server-side access checks and audit records.
 
-<img src="assets/screens/framed/police-dashboard.jpg" alt="Actual authenticated TLR Police Portal dashboard with handbook, radio codes, districts and roster widgets. Profile names and avatars are visibly redacted." width="100%" />
+<picture>
+<source media="(max-width: 600px)" srcset="assets/screens/framed/police-dashboard.jpg" />
+<img src="assets/motion/scene-police-en.svg" alt="Actual authenticated TLR Police Portal dashboard with handbook, radio codes, districts and roster widgets. Profile names and avatars are visibly redacted." width="100%" />
+</picture>
 
 **The engineering decision:** Discord membership events need a persistent connection. A separate Node.js bot handles the Gateway connection and synchronizes Discord-owned roster fields into Postgres. The Next.js website handles authorized management actions. Both use a shared role map.
 
@@ -123,10 +131,6 @@ An internal portal for the TLR roleplay police department. **My contribution:** 
 </picture>
 
 **Built with:** TypeScript · Next.js · React · PostgreSQL / Neon · Drizzle ORM · Node.js · discord.js
-
-### Inside the portal
-
-<img src="assets/screens/framed/police-employees.jpg" alt="Live employee management screen with search, rank and department filters. Individual identities, badge details and personal records are fully redacted." width="100%" />
 
 <details>
 <summary><b>Open the gallery — rank hierarchy & interactive handbook</b></summary>
@@ -155,12 +159,13 @@ An internal portal for the TLR roleplay police department. **My contribution:** 
 
 <sub>Portal captures from the earlier review. Discord authentication and department membership required. Current entry URL is being confirmed; source is private.</sub>
 
+<a name="the-last-republic"></a>
+
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/project-tlr-en-mobile.svg" />
 <img src="assets/motion/project-tlr-en.svg" alt="03 · Community infrastructure" width="100%" />
 </picture>
 
-## The Last Republic
 
 **Community infrastructure connecting the website, Discord and operational tools.**
 
