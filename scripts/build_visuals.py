@@ -595,26 +595,26 @@ def arch_tlr(lang, mobile):
         defs, b = arch_frame(w, h, t['tlr_kicker'], C['cyan'])
         b += f'<rect x="400" y="70" width="400" height="52" rx="26" fill="{C["ink"]}" stroke="{C["lilac"]}" stroke-opacity=".7" stroke-dasharray="6 6"/>'
         b += text(600, 103, t['roles'], 18, C['lilac2'], 700, anchor='middle')
-        b += f'<path d="M455 122V170M800 96H1035V170" fill="none" stroke="{C["lilac"]}" stroke-opacity=".55" stroke-dasharray="4 6"/>'
-        xs = [40, 330, 620, 910]
+        b += f'<path d="M440 122V170M800 96H1040V170" fill="none" stroke="{C["lilac"]}" stroke-opacity=".55" stroke-dasharray="4 6"/>'
+        xs = [40, 320, 600, 920]
         for x, spec, col, logo in zip(xs, [t['discord'], t['bot'], t['pg'], t['portal']], [blurple, C['violet'], '#4F7BFF', C['cyan']],
                                       ['discord', 'nodedotjs', 'postgresql', 'nextdotjs']):
-            b += box(x, 170, 250, 96, *spec, col, logo, 19, compact=True)
-        b += box(910, 352, 250, 76, *t['staff'], C['mint'], None, 19)
-        b += flow_dashes('M290 218H330', blurple, 1.2, 3, '6 8')
-        b += f'<path d="M580 210H620" stroke="{C["violet"]}" stroke-opacity=".5" stroke-width="2"/>'
-        b += f'<path d="M910 206H870" stroke="{C["cyan"]}" stroke-opacity=".5" stroke-width="2"/>'
-        b += flow_dashes('M870 236H910', C['mint'], 2.2, 1.5, '3 7')
-        b += flow_dashes('M1035 352V266', C['mint'], 2.4, 1.5, '3 7')
-        b += shield(890, 196, C['amber'], 'sh')
-        p1, c1 = packet(580, 210, 620, 210, C['violet'], 5, 0, 'pk1')
-        p2, c2 = packet(910, 206, 870, 206, C['cyan'], 6, 2.2, 'pk2')
+            b += box(x, 170, 240, 96, *spec, col, logo, 19, compact=True)
+        b += box(920, 352, 240, 76, *t['staff'], C['mint'], None, 19)
+        b += flow_dashes('M280 218H320', blurple, 1.2, 3, '6 8')
+        b += f'<path d="M560 210H600" stroke="{C["violet"]}" stroke-opacity=".5" stroke-width="2"/>'
+        b += f'<path d="M920 206H840" stroke="{C["cyan"]}" stroke-opacity=".5" stroke-width="2"/>'
+        b += flow_dashes('M840 236H920', C['mint'], 2.2, 1.5, '3 7')
+        b += flow_dashes('M1040 352V266', C['mint'], 2.4, 1.5, '3 7')
+        b += shield(880, 206, C['amber'], 'sh')
+        p1, c1 = packet(560, 210, 600, 210, C['violet'], 5, 0, 'pk1')
+        p2, c2 = packet(920, 206, 840, 206, C['cyan'], 6, 2.2, 'pk2')
         b += p1 + p2
         css += c1 + c2
-        for cx_, lines, col in [(310, t['l1'], blurple), (600, t['l2'], C['lilac2']), (890, t['l3'], C['amber'])]:
+        for cx_, lines, col in [(300, t['l1'], '#8C9EFF'), (580, t['l2'], C['lilac2']), (880, t['l3'], C['amber'])]:
             for i, line in enumerate(lines):
                 b += text(cx_, 300 + i * 20, line, 14, col if i == 0 else '#FDE68A', anchor='middle', mono=True)
-        b += text(745, 344, t['audit'], 14, C['muted'], anchor='middle')
+        b += text(720, 344, t['audit'], 14, C['muted'], anchor='middle')
         b += text(w - 40, h - 14, T[lang]['illus'], 13, C['muted'], anchor='end')
     else:
         w, h = 600, 1080
@@ -634,7 +634,7 @@ def arch_tlr(lang, mobile):
         css += c1 + c2
         b += text(322, 226, t['l1'][0], 18, '#8C9EFF', mono=True)
         b += text(322, 402, t['l2'][0], 18, C['lilac2'], mono=True)
-        b += text(352, 564, t['l3'][0], 18, C['amber'], mono=True) + text(352, 590, t['l3'][1], 18, '#FDE68A', mono=True)
+        b += text(344, 564, t['l3'][0], 17, C['amber'], mono=True) + text(344, 590, t['l3'][1], 17, '#FDE68A', mono=True)
         b += flow_dashes('M300 790V704', C['mint'], 2.4, 1.5, '3 7')
         b += box(40, 790, 520, 86, *t['staff'], C['mint'], title_size=26, sub_size=19)
         b += f'<rect x="40" y="910" width="520" height="64" rx="32" fill="{C["ink"]}" stroke="{C["lilac"]}" stroke-opacity=".7" stroke-dasharray="6 6"/>'
