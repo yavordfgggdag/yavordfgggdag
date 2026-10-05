@@ -449,16 +449,29 @@ def project_marker(key, lang, mobile):
     return document(w, h, title, desc, b, defs, motion + css)
 
 
+def wrap_segments(value, limit, sep=' · '):
+    """Wrap a ' · '-separated list without starting a line with the separator."""
+    lines, line = [], ''
+    for part in value.split(sep):
+        candidate = f'{line}{sep}{part}' if line else part
+        if len(candidate) > limit and line:
+            lines.append(line)
+            line = part
+        else:
+            line = candidate
+    return lines + [line] if line else lines
+
+
 # ---------------------------------------------------------------- architecture
 A = {
     'en': {'kicker': 'UNDER THE INTERFACE · ARCHITECTURE', 'app': ('SwiftUI app', 'macOS interface'),
            'engine': ('Node.js engine', 'commands · checks'), 'host': ('Hosting', 'preview · production'),
            'cmd': 'commands', 'evt': 'NDJSON events',
-           'checks': ['Git', 'Secrets', 'Dependencies', 'Lint', 'Types', 'Build', 'Hosting'],
+           'checks': ['Git', 'Secrets', 'Dependencies', 'Lint', 'Types', 'Build', 'Site', 'Hosting'],
            'gate': 'Confirm', 'gate_note': ['changed files →', 'explicit confirmation'],
            'local': ('LOCAL', 'Project files · Keychain'), 'cloud': ('OPTIONAL CLOUD', 'Supabase · Postgres · Deno Edge Functions'),
            'bid_title': 'Before I Deploy architecture',
-           'bid_desc': 'Illustration. The SwiftUI app sends commands to a Node.js engine and receives NDJSON events back. The engine runs one chain of checks: Git, secrets, dependencies, lint, types, build and hosting readiness. If project files changed, production needs explicit confirmation before hosting. Project files and Keychain stay local; Supabase, Postgres and Deno Edge Functions are optional cloud services.',
+           'bid_desc': 'Illustration. The SwiftUI app sends commands to a Node.js engine and receives NDJSON events back. The engine runs one chain of eight checks: Git, secrets, dependencies, lint, types, build, site quality and hosting readiness. If project files changed, production needs explicit confirmation before hosting. Project files and Keychain stay local; Supabase, Postgres and Deno Edge Functions are optional cloud services.',
            'tlr_kicker': 'CONNECTED SYSTEMS · ARCHITECTURE',
            'discord': ('Discord', 'Gateway · membership'), 'bot': ('Node.js bot', 'discord.js'),
            'pg': ('Postgres', 'Neon · Drizzle ORM'), 'portal': ('Next.js portal', 'staff operations'),
@@ -470,11 +483,11 @@ A = {
     'bg': {'kicker': 'ПОД ИНТЕРФЕЙСА · АРХИТЕКТУРА', 'app': ('SwiftUI приложение', 'macOS интерфейс'),
            'engine': ('Node.js модул', 'команди · проверки'), 'host': ('Хостинг', 'preview · production'),
            'cmd': 'команди', 'evt': 'NDJSON събития',
-           'checks': ['Git', 'Тайни', 'Зависимости', 'Lint', 'Типове', 'Build', 'Хостинг'],
+           'checks': ['Git', 'Тайни', 'Зависимости', 'Lint', 'Типове', 'Build', 'Сайт', 'Хостинг'],
            'gate': 'Потвърди', 'gate_note': ['променени файлове →', 'изрично потвърждение'],
            'local': ('ЛОКАЛНО', 'Файлове на проекта · Keychain'), 'cloud': ('ОБЛАК ПО ИЗБОР', 'Supabase · Postgres · Deno Edge Functions'),
            'bid_title': 'Архитектура на Before I Deploy',
-           'bid_desc': 'Илюстрация. SwiftUI приложението изпраща команди към Node.js модул и получава обратно NDJSON събития. Модулът изпълнява една верига от проверки: Git, тайни, зависимости, lint, типове, build и готовност на хостинга. Ако файловете на проекта са променени, продукционното публикуване изисква изрично потвърждение. Файловете и Keychain остават локално; Supabase, Postgres и Deno Edge Functions са облачни услуги по избор.',
+           'bid_desc': 'Илюстрация. SwiftUI приложението изпраща команди към Node.js модул и получава обратно NDJSON събития. Модулът изпълнява една верига от осем проверки: Git, тайни, зависимости, lint, типове, build, качество на сайта и готовност на хостинга. Ако файловете на проекта са променени, продукционното публикуване изисква изрично потвърждение. Файловете и Keychain остават локално; Supabase, Postgres и Deno Edge Functions са облачни услуги по избор.',
            'tlr_kicker': 'СВЪРЗАНИ СИСТЕМИ · АРХИТЕКТУРА',
            'discord': ('Discord', 'Gateway · членство'), 'bot': ('Node.js бот', 'discord.js'),
            'pg': ('Postgres', 'Neon · Drizzle ORM'), 'portal': ('Next.js портал', 'действия на екипа'),
@@ -526,7 +539,7 @@ def arch_bid(lang, mobile):
         b += flow_dashes('M262 166V262', C['lilac'], 1.6) + flow_dashes('M338 262V166', C['pink'], 1.6, 5, '1 14')
         b += text(248, 220, t['cmd'], 18, C['lilac2'], anchor='end', mono=True) + text(352, 220, t['evt'], 18, C['pink'], mono=True)
         b += box(40, 262, 520, 86, *t['engine'], C['cyan'], 'nodedotjs', title_size=26, sub_size=19)
-        path, xs = 'M300 348V390H110V930', [420 + i * 62 for i in range(7)]
+        path, xs = 'M300 348V390H110V930', [414 + i * 56 for i in range(8)]
         lens = [42 + 190 + (y - 390) for y in xs]
         total, gate_d = 42 + 190 + 540, 42 + 190 + 470
         b += f'<path d="M300 348V390H110V930" fill="none" stroke="url(#chain)" stroke-width="2.4" opacity=".55"/>'
@@ -540,9 +553,9 @@ def arch_bid(lang, mobile):
         b += text(204, 854, t['gate_note'][0], 18, C['amber']) + text(204, 878, t['gate_note'][1], 18, '#FDE68A')
         b += box(40, 930, 520, 86, *t['host'], C['mint'], title_size=26, sub_size=19)
         b += (f'<rect x="40" y="1040" width="250" height="104" rx="16" fill="none" stroke="{C["lilac"]}" stroke-opacity=".5" stroke-dasharray="5 6"/>'
-              + text(60, 1070, t['local'][0], 15, C['lilac2'], 700, spacing=2) + ''.join(text(60, 1098 + i * 24, s, 18, C['soft']) for i, s in enumerate(wrap(t['local'][1], 20))))
+              + text(60, 1070, t['local'][0], 15, C['lilac2'], 700, spacing=2) + ''.join(text(60, 1098 + i * 24, s, 18, C['soft']) for i, s in enumerate(wrap_segments(t['local'][1], 20))))
         b += (f'<rect x="310" y="1040" width="250" height="104" rx="16" fill="none" stroke="{C["cyan"]}" stroke-opacity=".5" stroke-dasharray="5 6"/>'
-              + text(330, 1070, t['cloud'][0], 15, C['cyan'], 700, spacing=2) + ''.join(text(330, 1098 + i * 24, s, 18, C['soft']) for i, s in enumerate(wrap(t['cloud'][1], 20))))
+              + text(330, 1070, t['cloud'][0], 15, C['cyan'], 700, spacing=2) + ''.join(text(330, 1098 + i * 24, s, 18, C['soft']) for i, s in enumerate(wrap_segments(t['cloud'][1], 20))))
         b += text(w / 2, h - 20, T[lang]['illus'], 16, C['muted'], anchor='middle')
     else:
         w, h = 1200, 500
@@ -552,15 +565,15 @@ def arch_bid(lang, mobile):
         b += box(882, 96, 270, 96, *t['host'], C['mint'])
         b += flow_dashes('M318 128H465', C['lilac'], 1.6) + flow_dashes('M465 162H318', C['pink'], 1.6, 5, '1 14')
         b += text(391, 118, t['cmd'], 13, C['lilac2'], anchor='middle', mono=True) + text(391, 186, t['evt'], 13, C['pink'], anchor='middle', mono=True)
-        path, xs = 'M600 192V246H150V300H1017V192', [150 + i * 112 for i in range(7)]
-        lens = [54 + 450 + 54 + (x - 150) for x in xs]
-        total, gate_d = 54 + 450 + 54 + 867 + 108, 54 + 450 + 54 + 867
+        path, xs = 'M600 192V246H120V300H1017V192', [120 + i * 107 for i in range(8)]
+        lens = [54 + 480 + 54 + (x - 120) for x in xs]
+        total, gate_d = 54 + 480 + 54 + 897 + 108, 54 + 480 + 54 + 897
         b += f'<path d="{path}" fill="none" stroke="url(#chain)" stroke-width="2.4" opacity=".55"/>'
         for i, (x, label) in enumerate(zip(xs, t['checks'])):
             delay = period * .8 * lens[i] / total
             b += (f'<circle cx="{x}" cy="300" r="9" fill="{C["ink"]}" stroke="{C["lilac"]}" stroke-width="2"/>'
                   f'<circle class="ring" style="animation-delay:{delay:.2f}s" cx="{x}" cy="300" r="15" fill="none" stroke="{C["mint2"]}" stroke-width="2.4"/>')
-            b += text(x, 340, label, 16, C['soft'], anchor='middle')
+            b += text(x, 340, label, 15, C['soft'], anchor='middle')
         b += (f'<rect class="gate" x="947" y="280" width="140" height="40" rx="20" fill="{C["ink"]}" stroke="{C["amber"]}" stroke-width="2" '
               f'style="animation-delay:{period * .8 * gate_d / total:.2f}s"/>') + text(1017, 306, t['gate'], 17, C['amber'], 700, anchor='middle')
         b += text(1017, 346, t['gate_note'][0], 14, C['amber'], anchor='middle') + text(1017, 366, t['gate_note'][1], 14, '#FDE68A', anchor='middle')
@@ -1323,6 +1336,130 @@ def scene(key, lang):
     return document(w, h, cfg['title'][lang], desc, b, defs, motion, css)
 
 
+# ---------------------------------------------------------------- under the hood (Before I Deploy metrics)
+BIDM = json.loads((ROOT / 'data/bid-metrics.json').read_text())
+UH = {'en': {'kicker': 'UNDER THE HOOD · BEFORE I DEPLOY · MEASURED {d}', 'stream': 'engine → app · NDJSON',
+             'stream_note': 'real event format, illustrative values', 'overall': '→ overall: warnings · 1 warn', 'code': 'Code composition', 'title': 'Before I Deploy under the hood'},
+      'bg': {'kicker': 'ПОД КАПАКА · BEFORE I DEPLOY · ИЗМЕРЕНО {d}', 'stream': 'engine → приложение · NDJSON',
+             'stream_note': 'реален формат на събитията, примерни стойности', 'overall': '→ общо: warnings · 1 предупреждение', 'code': 'Състав на кода', 'title': 'Before I Deploy под капака'}}
+
+
+def json_line(line, x, y, size):
+    """Colour a single NDJSON line: keys lilac, strings mint, literals amber, punctuation muted."""
+    import re as _re
+    out, cx = '', x
+    char_w = size * .6
+    for tok in _re.findall(r'"[^"]*"(?=:)|"[^"]*"|true|false|[{}\[\]:,]|[^"{}\[\]:,]+', line):
+        if tok.endswith('"') and line[line.find(tok) + len(tok):line.find(tok) + len(tok) + 1] == ':' and tok.startswith('"'):
+            col = C['lilac2']
+        elif tok.startswith('"'):
+            col = C['mint2']
+        elif tok in ('true', 'false') or tok.startswith('…'):
+            col = C['amber']
+        else:
+            col = C['muted']
+        out += f'<tspan x="{cx:.1f}" fill="{col}">{esc(tok)}</tspan>'
+        cx += len(tok) * char_w
+    return f'<text y="{y}" font-size="{size}" class="mono">{out}</text>'
+
+
+def under_hood(lang, mobile):
+    t = UH[lang]
+    stats, comp, events = BIDM['stats'], BIDM['composition'], BIDM['events']
+    y_, m_, d_ = BIDM['measured'].split('-')
+    measured = f"{int(d_)} {MONTHS[lang][int(m_) - 1]} {y_}".upper()
+    w = 600 if mobile else 1200
+    x0 = 32 if mobile else 48
+    if mobile:
+        tile_w, tile_h, cols = 260, 128, 2
+        grid_x, grid_y = x0, 96
+        term_x, term_y, term_w = x0, grid_y + 4 * (tile_h + 16) + 10, w - 2 * x0
+        lines_shown = events
+        term_h = 70 + len(lines_shown) * 30
+        bar_y = term_y + term_h + 70
+        h = bar_y + 190
+    else:
+        tile_w, tile_h, cols = 290, 120, 2
+        grid_x, grid_y = x0, 100
+        term_x, term_y, term_w = 680, 100, 472
+        lines_shown = events
+        term_h = 4 * (tile_h + 16) - 16
+        bar_y = grid_y + 4 * (tile_h + 16) + 50
+        h = bar_y + 120
+    n_ev = len(lines_shown)
+    period = n_ev * 1.1 + 3
+    defs = (linear('bg', [(0, C['night']), (.55, '#150F40'), (1, C['deep'])], x2=1, y2=1)
+            + linear('num', [(0, '#FFFFFF'), (.6, C['lilac2']), (1, C['cyan'])], x2=1, y2=1)
+            + linear('top', [(0, C['violet']), (.5, C['cyan']), (1, C['mint'])])
+            + radial('au1', C['violet'], .4) + radial('au2', C['cyan'], .3)
+            + linear('sweep', [(0, '#fff', 0), (.5, '#fff', .5), (1, '#fff', 0)]))
+    css = ''.join(f'.e{i}{{opacity:1}}' for i in range(n_ev))
+    motion = ('.aur{animation:aur 30s ease-in-out infinite}@keyframes aur{50%{transform:translate(-70px,30px)}}'
+              f'.sweep{{animation:sweep 9s ease-in-out infinite}}@keyframes sweep{{0%,15%{{transform:translateX(0)}}60%,100%{{transform:translateX({w}px)}}}}'
+              '.cur{animation:cur 1.1s steps(1) infinite}@keyframes cur{50%{opacity:0}}')
+    for i in range(n_ev):
+        on = (i * 1.1) / period * 100
+        motion += (f'.e{i}{{animation:ev{i} {period:.1f}s linear infinite}}'
+                   f'@keyframes ev{i}{{0%,{max(on - .1, 0):.2f}%{{opacity:0}}{on + 2:.2f}%,94%{{opacity:1}}100%{{opacity:0}}}}')
+    b = frame(w, h, 30) + '<g clip-path="url(#frame)">'
+    b += f'<g class="aur"><circle cx="{w * .85:.0f}" cy="{h * .15:.0f}" r="{w * .5:.0f}" fill="url(#au1)"/></g><circle cx="{w * .1:.0f}" cy="{h:.0f}" r="{w * .45:.0f}" fill="url(#au2)"/>'
+    b += f'<rect width="{w}" height="4" fill="url(#top)"/>'
+    kick = t['kicker'].format(d=measured)
+    for i, line in enumerate(wrap(kick, 34) if mobile else [kick]):
+        b += text(x0, 56 + i * 24, line, 16 if mobile else 13, C['cyan'], 800, spacing=2.2)
+    # stat tiles
+    for i, st in enumerate(stats):
+        r_, c_ = divmod(i, cols)
+        tx = grid_x + c_ * (tile_w + 16)
+        ty = grid_y + r_ * (tile_h + 16) + (24 if mobile else 0)
+        b += (f'<rect x="{tx}" y="{ty}" width="{tile_w}" height="{tile_h}" rx="20" fill="#0E0B2C" fill-opacity=".72" stroke="#fff" stroke-opacity=".1"/>'
+              f'<rect x="{tx + 18}" y="{ty}" width="{tile_w - 36}" height="2" fill="url(#top)" opacity=".7"/>')
+        b += display(st['value'], tx + 20, ty + (66 if not mobile else 70), 44 if not mobile else 46, 'url(#num)', weight=800)
+        b += text(tx + 20, ty + tile_h - 22, st[lang], 15 if not mobile else 18, C['soft'], 600)
+    if mobile:
+        term_y += 24
+        bar_y += 24
+        h += 24
+    # terminal with the event stream
+    b += (f'<rect x="{term_x}" y="{term_y}" width="{term_w}" height="{term_h}" rx="18" fill="#05060F" fill-opacity=".9" stroke="{C["line"]}"/>'
+          f'<circle cx="{term_x + 22}" cy="{term_y + 22}" r="6" fill="#FF5F57"/><circle cx="{term_x + 42}" cy="{term_y + 22}" r="6" fill="#FEBC2E"/>'
+          f'<circle cx="{term_x + 62}" cy="{term_y + 22}" r="6" fill="#28C840"/>')
+    b += text(term_x + term_w - 18, term_y + 27, t['stream'], 13 if not mobile else 15, C['muted'], 700, anchor='end', mono=True)
+    size = 13.2 if not mobile else 15.2
+    gap = 40 if not mobile else 30
+    top = term_y + (100 if not mobile else 66)
+    if not mobile:
+        b += text(term_x + 20, term_y + 64, '$ bid check', 14, C['text'], 700, mono=True)
+    for i, line in enumerate(lines_shown):
+        b += f'<g class="e{i}">' + json_line(line, term_x + 20, top + i * gap, size) + '</g>'
+    if not mobile:
+        b += f'<g class="e{n_ev - 1}">' + text(term_x + 20, top + n_ev * gap + 4, t['overall'], 14, C['amber'], 700, mono=True) + '</g>'
+    b += f'<rect class="live cur" x="{term_x + 20}" y="{term_y + term_h - 26}" width="9" height="16" fill="{C["mint"]}"/>'
+    b += text(term_x + term_w - 18, term_y + term_h - 12, t['stream_note'], 11 if not mobile else 13, C['muted'], anchor='end')
+    # code composition bar
+    total = sum(c['lines'] for c in comp)
+    b += text(x0, bar_y - 16, t['code'], 16 if not mobile else 19, C['text'], 700)
+    bw = w - 2 * x0
+    b += f'<clipPath id="cbar"><rect x="{x0}" y="{bar_y}" width="{bw}" height="20" rx="10"/></clipPath><g clip-path="url(#cbar)">'
+    x = x0
+    for c in comp:
+        seg = bw * c['lines'] / total
+        b += f'<rect x="{x:.1f}" y="{bar_y}" width="{seg + .5:.1f}" height="20" fill="{c["color"]}"/>'
+        x += seg
+    b += f'<rect class="live sweep" x="{x0 - 140}" y="{bar_y}" width="140" height="20" fill="url(#sweep)"/></g>'
+    lx, ly = x0, bar_y + 50
+    for i, c in enumerate(comp):
+        label = f"{c['name']} {c['lines'] / 1000:.1f}k"
+        if mobile:
+            lx, ly = x0 + (i % 2) * 270, bar_y + 48 + (i // 2) * 34
+        b += f'<circle cx="{lx + 7}" cy="{ly - 5}" r="7" fill="{c["color"]}"/>' + text(lx + 22, ly, label, 15 if not mobile else 17, C['soft'], 600)
+        if not mobile:
+            lx += len(label) * 8.4 + 54
+    b += '</g>'
+    desc = '; '.join(f"{st['value']} {st[lang]}" for st in stats) + '. ' + ', '.join(f"{c['name']} {c['lines']}" for c in comp)
+    return document(w, h, t['title'], desc, b, defs, motion, css)
+
+
 # ---------------------------------------------------------------- main
 def main():
     count = 0
@@ -1341,6 +1478,7 @@ def main():
             if not mobile:
                 for key in SCENES:
                     files[f'scene-{key}-{lang}.svg'] = scene(key, lang)
+            files[f'under-hood-{sfx}'] = under_hood(lang, mobile)
             files[f'certificates-{sfx}'] = certificates(lang, mobile)
             files[f'lessons-{sfx}'] = lessons_panel(lang, mobile)
             if not mobile:
