@@ -132,3 +132,9 @@ On 2026-10-05 all other owned repositories were made private at the owner's requ
 - **Framed captures:** `screens/framed/` contains the same genuine interface areas as `screens/`, re-framed by `scripts/frame_screens.py` with a per-project accent. The original presentation caption around each capture was removed so headings are not repeated; the interface pixels are unchanged. Originals stay in `screens/`.
 - Earlier visuals (`studio/`, `contact.svg`, `technology-map.svg`, `development-flow.svg`, `section-divider.svg`, `work-*.jpg`, the original architecture diagrams) remain in the repository for history and rollback.
 - Checks: `python3 scripts/test_profile.py` verifies image paths, English/Bulgarian parity, the 68 technologies, contacts, absence of remote widgets and private repository names, and the reduced-motion contract.
+
+## Certificates
+
+`motion/certificates-*.svg` and `motion/lessons-*.svg` are generated from `data/certificates.json` by `scripts/build_visuals.py`.
+
+To add a certificate, append an entry to `featured` (title, issuer, Simple Icons slug or a short monogram, accent colour, `issued`, and `valid_until`/`period` when known), or add a lesson to a collection, then run `python3 scripts/build_visuals.py` and `python3 scripts/test_profile.py`. Lessons are de-duplicated by title. Original certificate files, certificate IDs and QR codes are intentionally not published.
