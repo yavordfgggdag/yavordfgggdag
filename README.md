@@ -451,14 +451,10 @@ Language shares are a separate 2026-10-05 snapshot of GitHub-reported code bytes
 <a href="https://www.instagram.com/y.yakowvw.sales/"><img src="assets/motion/contact-instagram-en.svg" alt="Instagram @y.yakowvw.sales" height="46" /></a>
 </p>
 
-<p align="center"><b>Available for paid websites, custom software, Discord bots, games and development work.</b><br>
-Send me your idea, the main features, your preferred timeline and your budget range. We can define the right scope and a custom quote.</p>
+<p align="center"><b>Available for paid websites, software, Discord bots and games.</b><br>
+Send your idea, the main features, timeline and budget — we will define the scope and a quote together.</p>
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/footer-en-mobile.svg" />
 <img src="assets/motion/footer-en.svg" alt="Websites · Software · Bots · Games · Automation. Your idea. A clear plan. Software that works. Build · Test · Verify · Deploy · Improve." width="100%" />
 </picture>
-
-<sub>Real captures and locally stored visuals; decorative motion never represents live activity, and all animation pauses for reduced-motion settings. [Screenshot provenance and accessibility notes](assets/README.md).</sub>
-
-<sub>Project source code is private; this profile presents selected real interfaces.</sub>
