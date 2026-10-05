@@ -657,22 +657,6 @@
    ]
   },
   {
-   "key": "client",
-   "name": "Помощ от приятел",
-   "items": [
-    [
-     "WordPress",
-     "wordpress"
-    ],
-    [
-     "WPForms",
-     null,
-     "#E27730",
-     "WPF"
-    ]
-   ]
-  },
-  {
    "key": "space",
    "name": "Space Control",
    "items": [

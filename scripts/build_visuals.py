@@ -25,24 +25,24 @@ PRODUCT_COLORS = {'bid': C['violet'], 'police': C['cyan'], 'client': C['amber'],
 T = {
     'en': {
         'hero_title': 'Yavor Yakow — independent developer',
-        'hero_desc': 'Studio introduction: products with systems behind them. Websites, online stores, web and desktop software, admin panels, Discord bots, games and FiveM, APIs, automation and AI. Featured work: Before I Deploy, TLR Police Portal and client websites. Contact: Fraisbg1@gmail.com, Discord Fraisbg, Instagram @y.yakowvw.sales. Orbits and light are decorative.',
+        'hero_desc': 'Studio introduction: products with systems behind them. Websites, online stores, web and desktop software, admin panels, Discord bots, games and FiveM, APIs, automation and AI. Featured work: Before I Deploy, TLR Police Portal and The Last Republic. Contact: Fraisbg1@gmail.com, Discord Fraisbg, Instagram @y.yakowvw.sales. Orbits and light are decorative.',
         'kicker': 'YAVOR YAKOW  ·  INDEPENDENT DEVELOPER', 'kicker_m': 'YAVOR YAKOW · DEVELOPER',
         'head': ['Products with', 'systems behind them.'],
         'spec': ['Websites · online stores · web & desktop software', 'Admin panels · Discord bots · games & FiveM · APIs · AI'],
         'spec_m': ['Websites · online stores · software', 'Admin panels · Discord bots · games', 'FiveM · APIs · automation & AI'],
-        'chips': ['Before I Deploy', 'TLR Police Portal', 'Client websites'],
+        'chips': ['Before I Deploy', 'TLR Police Portal', 'The Last Republic'],
         'decor': 'decorative motion',
         'divider': 'Chapter',
         'illus': 'Architecture illustration · not a live dashboard',
     },
     'bg': {
         'hero_title': 'Явор — независим разработчик',
-        'hero_desc': 'Представяне: продукти със системи зад тях. Сайтове, онлайн магазини, уеб и настолен софтуер, админ панели, Discord ботове, игри и FiveM, API, автоматизации и AI. Избрана работа: Before I Deploy, TLR Police Portal и клиентски сайтове. Контакт: Fraisbg1@gmail.com, Discord Fraisbg, Instagram @y.yakowvw.sales. Орбитите и светлината са декоративни.',
+        'hero_desc': 'Представяне: продукти със системи зад тях. Сайтове, онлайн магазини, уеб и настолен софтуер, админ панели, Discord ботове, игри и FiveM, API, автоматизации и AI. Избрана работа: Before I Deploy, TLR Police Portal и The Last Republic. Контакт: Fraisbg1@gmail.com, Discord Fraisbg, Instagram @y.yakowvw.sales. Орбитите и светлината са декоративни.',
         'kicker': 'ЯВОР  ·  YAVOR YAKOW  ·  НЕЗАВИСИМ РАЗРАБОТЧИК', 'kicker_m': 'ЯВОР · НЕЗАВИСИМ РАЗРАБОТЧИК',
         'head': ['Продукти със', 'системи зад тях.'],
         'spec': ['Сайтове · онлайн магазини · уеб и настолен софтуер', 'Админ панели · Discord ботове · игри и FiveM · API · AI'],
         'spec_m': ['Сайтове · онлайн магазини · софтуер', 'Админ панели · Discord ботове · игри', 'FiveM · API · автоматизации и AI'],
-        'chips': ['Before I Deploy', 'TLR Police Portal', 'Клиентски сайтове'],
+        'chips': ['Before I Deploy', 'TLR Police Portal', 'The Last Republic'],
         'decor': 'декоративно движение',
         'divider': 'Глава',
         'illus': 'Илюстрация на архитектурата · не е табло на живо',
@@ -161,7 +161,7 @@ def hero(lang, mobile):
     b += f'<g mask="url(#fadeY)"><g{fade_x}>{floor}</g></g>'
     b += f'<g class="live"><rect class="beam" x="0" y="-200" width="160" height="{h + 400}" fill="url(#beam)" transform="rotate(18 {w / 2} {h / 2})"/></g>'
     # orbit system: each moving body is a product colour; the legend chips name them
-    orbits = [(255, 90, 'o1', 24, PRODUCT_COLORS['bid'], 30), (190, 66, 'o2', 17, PRODUCT_COLORS['client'], 200),
+    orbits = [(255, 90, 'o1', 24, PRODUCT_COLORS['bid'], 30), (190, 66, 'o2', 17, PRODUCT_COLORS['tlr'], 200),
               (126, 44, 'o3', 12, PRODUCT_COLORS['police'], 110)]
     b += f'<circle class="halo" cx="{cx}" cy="{cy}" r="{150 * k:.0f}" fill="url(#rp)"/>'
     g = f'<g transform="rotate({tilt} {cx} {cy})">'
@@ -205,7 +205,7 @@ def hero(lang, mobile):
             b += text(x0, 322 + i * 33, line, 21, C['soft'])
         chip_y = [408, 408, 408]
         chip_x = [x0, None, None]
-    colors = [PRODUCT_COLORS['bid'], PRODUCT_COLORS['police'], PRODUCT_COLORS['client']]
+    colors = [PRODUCT_COLORS['bid'], PRODUCT_COLORS['police'], PRODUCT_COLORS['tlr']]
     cursor = x0
     chip_size = 20 if mobile else 17
     for i, label in enumerate(t['chips']):
@@ -339,9 +339,6 @@ PROJECTS = {
     'community': {'n': '04', 'accent': ('#34D399', '#A78BFA'), 'motif': 'hex',
                   'en': ('SOURCE SHOWCASE · REACT', 'Server discovery · topic-based rules · application routes'),
                   'bg': ('ПРЕГЛЕД НА КОДА · REACT', 'Сървъри · правила по теми · страници за кандидатстване')},
-    'client': {'n': '05', 'accent': ('#FBBF24', '#F472B6'), 'motif': 'page',
-               'en': ('CLIENT WEBSITES', 'Clear information · enquiry paths · local businesses'),
-               'bg': ('КЛИЕНТСКИ САЙТОВЕ', 'Ясна информация · път до запитване · местен бизнес')},
 }
 
 
