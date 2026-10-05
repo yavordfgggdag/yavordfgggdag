@@ -1542,6 +1542,221 @@ def arch_whitelist(lang, mobile):
     return document(w, h, t['title'], t['desc'], b, defs)
 
 
+# ---------------------------------------------------------------- bento overview
+BENTO = {
+    'en': {'title': 'Selected work at a glance', 'kicker': 'SELECTED WORK',
+           'bid': ('NATIVE macOS APP', 'Before I Deploy', 'Checks a web project and takes it to release.', ['172 tests passing', '8 checks', '3 platforms']),
+           'police': ('FIVEM OPERATIONS', 'TLR Police Portal', 'Roster, ranks and handbook synced with Discord.', ['role-ID access', 'audit records']),
+           'tlr': ('COMMUNITY PLATFORM', 'The Last Republic', 'Site, rules and a timed exam reviewed in Discord.', ['23 API routes', 'signed Discord flow']),
+           'loc': ('42.6k', 'lines of code in Before I Deploy'),
+           'certs': ('6 + 129', 'certificates and Google lessons'),
+           'stack': ('68', 'technologies · 12 in shipped products'),
+           'hire': ('AVAILABLE', 'Paid projects', 'websites · software · bots', 'Fraisbg1@gmail.com')},
+    'bg': {'title': 'Избрана работа накратко', 'kicker': 'ИЗБРАНА РАБОТА',
+           'bid': ('НАТИВНО macOS ПРИЛОЖЕНИЕ', 'Before I Deploy', 'Проверява уеб проект и го води до публикуване.', ['172 теста минават', '8 проверки', '3 платформи']),
+           'police': ('FIVEM ОПЕРАЦИИ', 'TLR Police Portal', 'Състав, звания и наръчник, свързани с Discord.', ['достъп по ID на роля', 'журнал']),
+           'tlr': ('ОБЩНОСТНА ПЛАТФОРМА', 'The Last Republic', 'Сайт, правила и изпит с решения в Discord.', ['23 API маршрута', 'подписан Discord поток']),
+           'loc': ('42.6k', 'реда код в Before I Deploy'),
+           'certs': ('6 + 129', 'сертификата и Google урока'),
+           'stack': ('68', 'технологии · 12 в готови продукти'),
+           'hire': ('СВОБОДЕН', 'Платени проекти', 'сайтове · софтуер · ботове', 'Fraisbg1@gmail.com')},
+}
+
+
+@lru_cache(maxsize=None)
+def thumb(name, width=640, crop_h=None):
+    import base64
+    import io
+    from PIL import Image
+    from frame_screens import inner_area
+    image = Image.open(ROOT / f'assets/screens/{name}.jpg').convert('RGB')
+    image = image if '/' in name else image.crop(inner_area(image))
+    image = image.resize((width, round(image.height * width / image.width)), Image.LANCZOS)
+    buffer = io.BytesIO()
+    image.save(buffer, 'JPEG', quality=70, optimize=True, progressive=True)
+    return 'data:image/jpeg;base64,' + base64.b64encode(buffer.getvalue()).decode(), image.size
+
+
+def bento_tile(idx, x, y, w, h, a1, a2):
+    gid = f'bt{idx}'
+    return (f'<linearGradient id="{gid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{a1}" stop-opacity=".22"/>'
+            f'<stop offset=".5" stop-color="#0E0B2C" stop-opacity=".9"/><stop offset="1" stop-color="{a2}" stop-opacity=".14"/></linearGradient>'
+            f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="26" fill="url(#{gid})" stroke="#fff" stroke-opacity=".1"/>'
+            f'<rect class="live edge" style="animation-delay:{idx * 1.3:.1f}s" x="{x}" y="{y}" width="{w}" height="{h}" rx="26" fill="none" '
+            f'stroke="{a1}" stroke-width="2" pathLength="1000" stroke-dasharray="120 880"/>')
+
+
+def bento_shot(idx, name, x, y, w, h, crop_from_top=True):
+    href, (iw, ih) = thumb(name)
+    dh = ih * w / iw
+    return (f'<clipPath id="bs{idx}"><rect x="{x}" y="{y}" width="{w}" height="{h}" rx="14"/></clipPath>'
+            f'<g clip-path="url(#bs{idx})"><g class="kb" style="animation-delay:-{idx * 3}s">'
+            f'<image href="{href}" x="{x}" y="{y}" width="{w}" height="{dh:.0f}" preserveAspectRatio="xMidYMin meet"/></g>'
+            f'<rect x="{x}" y="{y + h - 70}" width="{w}" height="70" fill="url(#shade)"/></g>'
+            f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="14" fill="none" stroke="#fff" stroke-opacity=".14"/>')
+
+
+def bento(lang, mobile):
+    t = BENTO[lang]
+    w = 600 if mobile else 1200
+    pad, gap = (32, 16) if mobile else (32, 16)
+    defs = (linear('bg', [(0, C['night']), (.55, '#150F40'), (1, C['deep'])], x2=1, y2=1)
+            + linear('shade', [(0, '#05060C', 0), (1, '#05060C', .85)], x2=0, y2=1)
+            + linear('hot', [(0, '#FFFFFF'), (.6, C['lilac2']), (1, C['cyan'])], x2=1, y2=1)
+            + linear('warm', [(0, C['amber']), (1, C['pink'])], x2=1, y2=1)
+            + radial('au1', C['violet'], .4) + radial('au2', C['cyan'], .28))
+    motion = ('.edge{animation:edge 10.4s linear infinite;opacity:0}@keyframes edge{0%{opacity:1;stroke-dashoffset:0}12%{opacity:1}14%,100%{opacity:0;stroke-dashoffset:-1000}}'
+              '.kb{transform-box:fill-box;transform-origin:center top;animation:kb 18s ease-in-out infinite alternate}@keyframes kb{to{transform:scale(1.06)}}'
+              '.aur{animation:aur 30s ease-in-out infinite}@keyframes aur{50%{transform:translate(-70px,30px)}}'
+              '.pulse{animation:pulse 3.6s ease-in-out infinite}@keyframes pulse{50%{opacity:.35}}')
+    if mobile:
+        cw = w - 2 * pad
+        half = (cw - gap) / 2
+        tiles = {'bid': (pad, 32, cw, 432), 'police': (pad, 480, cw, 330), 'tlr': (pad, 826, cw, 330),
+                 'loc': (pad, 1172, half, 200), 'certs': (pad + half + gap, 1172, half, 200),
+                 'stack': (pad, 1388, half, 200), 'hire': (pad + half + gap, 1388, half, 200)}
+        h = 1620
+    else:
+        unit = (w - 2 * pad - 3 * gap) / 4
+        row = 206
+        tiles = {'bid': (pad, 32, unit * 2 + gap, row * 2 + gap), 'police': (pad + 2 * (unit + gap), 32, unit * 2 + gap, row),
+                 'tlr': (pad + 2 * (unit + gap), 32 + row + gap, unit * 2 + gap, row),
+                 'loc': (pad, 32 + 2 * (row + gap), unit, row - 20), 'certs': (pad + unit + gap, 32 + 2 * (row + gap), unit, row - 20),
+                 'stack': (pad + 2 * (unit + gap), 32 + 2 * (row + gap), unit, row - 20), 'hire': (pad + 3 * (unit + gap), 32 + 2 * (row + gap), unit, row - 20)}
+        h = int(32 + 3 * row + 2 * gap - 20 + 32)
+    b = frame(w, h, 32) + '<g clip-path="url(#frame)">'
+    b += f'<g class="aur"><circle cx="{w * .8:.0f}" cy="{h * .1:.0f}" r="{w * .5:.0f}" fill="url(#au1)"/></g><circle cx="{w * .1:.0f}" cy="{h:.0f}" r="{w * .45:.0f}" fill="url(#au2)"/>'
+    accents = {'bid': (C['violet'], C['cyan']), 'police': (C['cyan'], C['mint']), 'tlr': (C['pink'], C['violet']),
+               'loc': (C['lilac'], C['cyan']), 'certs': (C['amber'], C['pink']), 'stack': (C['mint'], C['cyan']), 'hire': (C['mint'], C['lilac'])}
+    shots = {'bid': 'before-i-deploy', 'police': 'police-dashboard', 'tlr': 'tlr/home'}
+    for idx, (key, (x, y, tw, th)) in enumerate(tiles.items()):
+        a1, a2 = accents[key]
+        b += bento_tile(idx, x, y, tw, th, a1, a2)
+        if key in shots:
+            kicker, name, line, chips = t[key]
+            big = key == 'bid'
+            if big and not mobile:
+                sx, sy, sw, sh = x + 22, y + 22, tw - 44, th - 210
+                ty = y + th - 168
+            elif big:
+                sx, sy, sw, sh = x + 18, y + 18, tw - 36, 210
+                ty = y + 262
+            else:
+                if mobile:
+                    sx, sy, sw, sh = x + 18, y + 18, tw - 36, 120
+                    ty = y + 170
+                else:
+                    sw = tw * .46
+                    sx, sy, sh = x + tw - sw - 18, y + 18, th - 36
+                    ty = y + 50
+            b += bento_shot(idx, shots[key], sx, sy, sw, sh)
+            tx = x + (22 if big or mobile else 24)
+            maxw = (tw - 48) if (big or mobile) else (tw - sw - 66)
+            b += text(tx, ty, kicker, 12 if not mobile else 15, a1, 800, spacing=2)
+            b += display(name, tx, ty + (40 if big else 34), fit(name, 34 if big else 24, maxw), 'url(#hot)')
+            for i, l in enumerate(wrap(line, 52 if big and not mobile else (40 if mobile else 26))[:2 if (not big or mobile) else 1]):
+                b += text(tx, ty + (70 if big else 60) + i * 21, l, 15 if not mobile else 17, C['soft'])
+            cx_ = tx
+            cy_ = y + th - (28 if not mobile else 26)
+            for chip in chips if (big or mobile or True) else []:
+                cwid = len(chip) * (7.6 if not mobile else 8.6) + 26
+                if cx_ + cwid > x + (tw if (big or mobile) else tw - sw - 30) - 10:
+                    break
+                b += (f'<rect x="{cx_}" y="{cy_ - 20}" width="{cwid:.0f}" height="28" rx="14" fill="{a1}" fill-opacity=".14" stroke="{a1}" stroke-opacity=".5"/>'
+                      + text(cx_ + 13, cy_ - 1, chip, 13 if not mobile else 15, C['text'], 700))
+                cx_ += cwid + 8
+        elif key == 'hire':
+            badge, line, sub, mail = t['hire']
+            b += f'<circle class="pulse" cx="{x + 30}" cy="{y + 40}" r="7" fill="#4ADE80"/>'
+            b += text(x + 46, y + 46, badge, 14 if not mobile else 15, '#B3F6D2', 800, spacing=2)
+            words = line.split()
+            fs = min(fit(wd, 26, tw - 48) for wd in words)
+            for i, wd in enumerate(words):
+                b += display(wd, x + 24, y + 88 + i * fs * 1.2, fs, 'url(#hot)')
+            b += text(x + 24, y + 96 + len(words) * fs * 1.2 - fs * .6, sub, 13 if not mobile else 14, C['soft'])
+            b += glyph('mail', x + 24, y + th - 40, 20, C['pink']) + text(x + 52, y + th - 24, mail, 13 if not mobile else 14, C['text'], 700)
+        else:
+            value, label = t[key]
+            b += display(value, x + 24, y + 86, fit(value, 46, tw - 48), 'url(#warm)' if key == 'certs' else 'url(#hot)', weight=800)
+            for i, l in enumerate(wrap(label, 24 if not mobile else 20)):
+                b += text(x + 24, y + 122 + i * 21, l, 15 if not mobile else 16, C['soft'])
+            if key == 'certs':
+                for k, slug in enumerate(['googlegemini', 'googleads', 'hubspot', 'google']):
+                    b += icon(slug, x + 24 + k * 30, y + th - 40, 20, ['#A78BFA', '#4285F4', '#FF7A59', '#fff'][k])
+            if key == 'stack':
+                for k, slug in enumerate(['swift', 'typescript', 'nextdotjs', 'postgresql', 'discord']):
+                    b += icon(slug, x + 24 + k * 30, y + th - 40, 20, ['#F05138', '#3178C6', '#fff', '#4F7BFF', '#7C8BFF'][k])
+            if key == 'loc':
+                bx_, bw_ = x + 24, tw - 48
+                total = 42630
+                for c, n in [('#F1E05A', 17759), ('#F05138', 15103), ('#3178C6', 5446), ('#E38C00', 3346), ('#8B8FB0', 976)]:
+                    seg = bw_ * n / total
+                    b += f'<rect x="{bx_:.1f}" y="{y + th - 34}" width="{seg:.1f}" height="8" fill="{c}"/>'
+                    bx_ += seg
+    b += '</g>'
+    desc = (f"{t['bid'][1]}: {t['bid'][2]} {', '.join(t['bid'][3])}. {t['police'][1]}: {t['police'][2]} {t['tlr'][1]}: {t['tlr'][2]} "
+            f"{t['loc'][0]} {t['loc'][1]}. {t['certs'][0]} {t['certs'][1]}. {t['stack'][0]} {t['stack'][1]}. {t['hire'][0]} {t['hire'][1]}: {t['hire'][2]}.")
+    return document(w, h, t['title'], desc, b, defs, motion)
+
+
+# ---------------------------------------------------------------- services
+SERVICES = json.loads((ROOT / 'data/services.json').read_text())
+SV = {'en': {'kicker': 'SERVICES · WHAT YOU CAN HIRE ME FOR', 'title': 'Services'},
+      'bg': {'kicker': 'УСЛУГИ · ЗА КАКВО МОЖЕТЕ ДА МЕ НАЕМЕТЕ', 'title': 'Услуги'}}
+SERVICE_COLORS = [(C['cyan'], C['violet']), (C['violet'], C['pink']), ('#7C8BFF', C['cyan']),
+                  (C['pink'], C['amber']), (C['mint'], C['cyan']), (C['amber'], C['mint'])]
+
+
+def services(lang, mobile):
+    items = SERVICES[lang]
+    w = 600 if mobile else 1200
+    pad, gap = 32, 16
+    cols = 1 if mobile else 3
+    cw = (w - 2 * pad - (cols - 1) * gap) / cols
+    ch = 268 if mobile else 312
+    top = 84
+    rows = math.ceil(len(items) / cols)
+    h = int(top + rows * ch + (rows - 1) * gap + 32)
+    defs = (linear('bg', [(0, C['night']), (.55, '#150F40'), (1, C['deep'])], x2=1, y2=1)
+            + radial('au1', C['violet'], .38) + radial('au2', C['cyan'], .26)
+            + linear('shine', [(0, '#fff', 0), (.5, '#fff', .12), (1, '#fff', 0)]))
+    n = len(items)
+    motion = ('.aur{animation:aur 30s ease-in-out infinite}@keyframes aur{50%{transform:translate(-70px,30px)}}'
+              f'.shine{{animation:shine {n * 1.5:.1f}s ease-in-out infinite}}'
+              f'@keyframes shine{{0%{{transform:translateX(0) skewX(-16deg)}}{100 / n * 1.3:.1f}%,100%{{transform:translateX({cw + 300:.0f}px) skewX(-16deg)}}}}')
+    b = frame(w, h, 30) + '<g clip-path="url(#frame)">'
+    b += f'<g class="aur"><circle cx="{w * .85:.0f}" cy="{h * .1:.0f}" r="{w * .5:.0f}" fill="url(#au1)"/></g><circle cx="{w * .1:.0f}" cy="{h:.0f}" r="{w * .45:.0f}" fill="url(#au2)"/>'
+    for i, line in enumerate(wrap(SV[lang]['kicker'], 34) if mobile else [SV[lang]['kicker']]):
+        b += text(pad, 52 + i * 22, line, 16 if mobile else 13, C['lilac2'], 800, spacing=2.2)
+    if mobile:
+        top += 18
+        h += 18
+    for i, item in enumerate(items):
+        a1, a2 = SERVICE_COLORS[i]
+        r_, c_ = divmod(i, cols)
+        x, y = pad + c_ * (cw + gap), top + r_ * (ch + gap)
+        gid = f'sv{i}'
+        b += (f'<linearGradient id="{gid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{a1}" stop-opacity=".2"/>'
+              f'<stop offset=".55" stop-color="#0E0B2C" stop-opacity=".9"/><stop offset="1" stop-color="{a2}" stop-opacity=".12"/></linearGradient>'
+              f'<rect x="{x}" y="{y}" width="{cw:.0f}" height="{ch}" rx="24" fill="url(#{gid})" stroke="{a1}" stroke-opacity=".45"/>'
+              f'<rect x="{x + 22}" y="{y}" width="{cw - 44:.0f}" height="3" rx="1.5" fill="{a1}"/>')
+        b += display(f'{i + 1:02d}', x + 22, y + 52, 26, 'none', extra=f'stroke="{a1}" stroke-width="1.4"')
+        tl = wrap(item['title'], 22 if not mobile else 30)
+        fs = min(fit(l, 21 if not mobile else 23, cw - 44) for l in tl)
+        for k, l in enumerate(tl):
+            b += display(l, x + 22, y + 92 + k * fs * 1.3, fs, C['text'])
+        dy = y + 92 + len(tl) * fs * 1.3 + 8
+        for k, l in enumerate(wrap(item['desc'], 44 if not mobile else 54)[:4]):
+            b += text(x + 22, dy + k * 21, l, 14.5 if not mobile else 16, C['soft'])
+        for k, l in enumerate(wrap(item['tags'], 46 if not mobile else 56)[:2]):
+            b += text(x + 22, y + ch - 22 - (len(wrap(item['tags'], 46 if not mobile else 56)[:2]) - 1 - k) * 18, l, 12.5 if not mobile else 14, a1, 700)
+        b += (f'<g class="live"><clipPath id="sc{i}"><rect x="{x}" y="{y}" width="{cw:.0f}" height="{ch}" rx="24"/></clipPath><g clip-path="url(#sc{i})">'
+              f'<rect class="shine" style="animation-delay:{i * 1.5:.1f}s" x="{x - 160}" y="{y - 40}" width="110" height="{ch + 80}" fill="url(#shine)"/></g></g>')
+    b += '</g>'
+    desc = ' '.join(f"{it['title']}: {it['desc']} ({it['tags']})." for it in items)
+    return document(w, int(h), SV[lang]['title'], desc, b, defs, motion)
+
+
 # ---------------------------------------------------------------- main
 def main():
     count = 0
@@ -1561,6 +1776,8 @@ def main():
                 for key in SCENES:
                     files[f'scene-{key}-{lang}.svg'] = scene(key, lang)
             files[f'under-hood-{sfx}'] = under_hood(lang, mobile)
+            files[f'bento-{sfx}'] = bento(lang, mobile)
+            files[f'services-{sfx}'] = services(lang, mobile)
             files[f'arch-whitelist-{sfx}'] = arch_whitelist(lang, mobile)
             files[f'certificates-{sfx}'] = certificates(lang, mobile)
             files[f'lessons-{sfx}'] = lessons_panel(lang, mobile)
