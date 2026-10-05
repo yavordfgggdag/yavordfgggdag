@@ -7,7 +7,7 @@
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/hero-en-mobile.svg" />
-<img src="assets/motion/hero-en.svg" alt="Yavor Yakow, independent developer. Products with systems behind them: websites, online stores, web and desktop software, admin panels, Discord bots, games and FiveM, APIs and AI. Featured: Before I Deploy, TLR Police Portal, client websites. Contact: Fraisbg1@gmail.com · +359 898 634 678 · Discord Fraisbg." width="100%" />
+<img src="assets/motion/hero-en.svg" alt="Yavor Yakow, independent developer. Products with systems behind them: websites, online stores, web and desktop software, admin panels, Discord bots, games and FiveM, APIs and AI. Featured: Before I Deploy, TLR Police Portal, client websites. Contact: Fraisbg1@gmail.com · Discord Fraisbg · Instagram @y.yakowvw.sales." width="100%" />
 </picture>
 
 <p align="center"><b><a href="#work">Work</a> · <a href="#services">Services</a> · <a href="#technology">Technology</a> · <a href="#activity">Activity</a> · <a href="#process">Process</a> · <a href="#contact">Contact</a></b></p>
@@ -448,7 +448,6 @@ Language shares are a separate 2026-10-05 snapshot of GitHub-reported code bytes
 </picture>
 
 <p align="center">
-<a href="tel:+359898634678"><img src="assets/motion/contact-phone-en.svg" alt="Call +359 898 634 678" height="46" /></a>
 <a href="mailto:Fraisbg1@gmail.com"><img src="assets/motion/contact-mail-en.svg" alt="Email Fraisbg1@gmail.com" height="46" /></a>
 <img src="assets/motion/contact-discord-en.svg" alt="Discord: Fraisbg" height="46" />
 <a href="https://www.instagram.com/y.yakowvw.sales/"><img src="assets/motion/contact-instagram-en.svg" alt="Instagram @y.yakowvw.sales" height="46" /></a>

@@ -25,7 +25,7 @@ PRODUCT_COLORS = {'bid': C['violet'], 'police': C['cyan'], 'client': C['amber'],
 T = {
     'en': {
         'hero_title': 'Yavor Yakow — independent developer',
-        'hero_desc': 'Studio introduction: products with systems behind them. Websites, online stores, web and desktop software, admin panels, Discord bots, games and FiveM, APIs, automation and AI. Featured work: Before I Deploy, TLR Police Portal and client websites. Contact: Fraisbg1@gmail.com, +359 898 634 678, Discord Fraisbg. Orbits and light are decorative.',
+        'hero_desc': 'Studio introduction: products with systems behind them. Websites, online stores, web and desktop software, admin panels, Discord bots, games and FiveM, APIs, automation and AI. Featured work: Before I Deploy, TLR Police Portal and client websites. Contact: Fraisbg1@gmail.com, Discord Fraisbg, Instagram @y.yakowvw.sales. Orbits and light are decorative.',
         'kicker': 'YAVOR YAKOW  ·  INDEPENDENT DEVELOPER', 'kicker_m': 'YAVOR YAKOW · DEVELOPER',
         'head': ['Products with', 'systems behind them.'],
         'spec': ['Websites · online stores · web & desktop software', 'Admin panels · Discord bots · games & FiveM · APIs · AI'],
@@ -37,7 +37,7 @@ T = {
     },
     'bg': {
         'hero_title': 'Явор — независим разработчик',
-        'hero_desc': 'Представяне: продукти със системи зад тях. Сайтове, онлайн магазини, уеб и настолен софтуер, админ панели, Discord ботове, игри и FiveM, API, автоматизации и AI. Избрана работа: Before I Deploy, TLR Police Portal и клиентски сайтове. Контакт: Fraisbg1@gmail.com, +359 898 634 678, Discord Fraisbg. Орбитите и светлината са декоративни.',
+        'hero_desc': 'Представяне: продукти със системи зад тях. Сайтове, онлайн магазини, уеб и настолен софтуер, админ панели, Discord ботове, игри и FiveM, API, автоматизации и AI. Избрана работа: Before I Deploy, TLR Police Portal и клиентски сайтове. Контакт: Fraisbg1@gmail.com, Discord Fraisbg, Instagram @y.yakowvw.sales. Орбитите и светлината са декоративни.',
         'kicker': 'ЯВОР  ·  YAVOR YAKOW  ·  НЕЗАВИСИМ РАЗРАБОТЧИК', 'kicker_m': 'ЯВОР · НЕЗАВИСИМ РАЗРАБОТЧИК',
         'head': ['Продукти със', 'системи зад тях.'],
         'spec': ['Сайтове · онлайн магазини · уеб и настолен софтуер', 'Админ панели · Discord ботове · игри и FiveM · API · AI'],
@@ -48,7 +48,7 @@ T = {
         'illus': 'Илюстрация на архитектурата · не е табло на живо',
     },
 }
-CONTACT = [('mail', 'Fraisbg1@gmail.com'), ('phone', '+359 898 634 678'), ('discord', 'Fraisbg')]
+CONTACT = [('mail', 'Fraisbg1@gmail.com'), ('discord', 'Fraisbg'), ('instagram', '@y.yakowvw.sales')]
 
 
 # ---------------------------------------------------------------- helpers
@@ -222,14 +222,14 @@ def hero(lang, mobile):
         for i, (kind, value) in enumerate(CONTACT):
             y = 800 + i * 58
             b += f'<rect x="{x0}" y="{y}" width="{w - 2 * x0}" height="46" rx="23" fill="#0B0824" fill-opacity=".72" stroke="#ffffff" stroke-opacity=".16"/>'
-            b += glyph(kind, x0 + 18, y + 11, 24, [C['pink'], C['mint'], '#8C9EFF'][i])
+            b += glyph(kind, x0 + 18, y + 11, 24, [C['pink'], '#8C9EFF', '#FF4F93'][i])
             b += text(x0 + 56, y + 31, value, 22, C['text'], 600)
     else:
         y = 476
         b += f'<rect x="{x0}" y="{y}" width="676" height="58" rx="29" fill="#0B0824" fill-opacity=".72" stroke="#ffffff" stroke-opacity=".16"/>'
         x = x0 + 24
         for i, (kind, value) in enumerate(CONTACT):
-            b += glyph(kind, x, y + 17, 24, [C['pink'], C['mint'], '#8C9EFF'][i])
+            b += glyph(kind, x, y + 17, 24, [C['pink'], '#8C9EFF', '#FF4F93'][i])
             b += text(x + 34, y + 36, value, 19, C['text'], 600)
             x += 34 + len(value) * 10.4 + 34
             if i < 2:
@@ -913,17 +913,17 @@ F = {
     'en': {'status': 'AVAILABLE FOR PAID PROJECTS', 'head': 'What should we build next?',
            'sub': 'A website, a custom tool, a bot or your next big idea.',
            'sub2': 'Send the idea, main features, timeline and budget range — we define the scope together.',
-           'labels': ['PHONE', 'EMAIL', 'DISCORD', 'INSTAGRAM'],
+           'labels': ['EMAIL', 'DISCORD', 'INSTAGRAM'],
            'title': 'Contact Yavor', 'words': ['WEBSITES', 'SOFTWARE', 'BOTS', 'GAMES', 'AUTOMATION'],
            'tag': 'Your idea. A clear plan. Software that works.', 'steps': 'BUILD · TEST · VERIFY · DEPLOY · IMPROVE'},
     'bg': {'status': 'ПРИЕМАМ ПЛАТЕНИ ПРОЕКТИ', 'head': 'Какво да създадем следващо?',
            'sub': 'Сайт, инструмент, бот или следващата ви идея.',
            'sub2': 'Изпратете идеята, основните функции, срока и бюджета — ще уточним обхвата заедно.',
-           'labels': ['ТЕЛЕФОН', 'ИМЕЙЛ', 'DISCORD', 'INSTAGRAM'],
+           'labels': ['ИМЕЙЛ', 'DISCORD', 'INSTAGRAM'],
            'title': 'Контакт с Явор', 'words': ['САЙТОВЕ', 'СОФТУЕР', 'БОТОВЕ', 'ИГРИ', 'АВТОМАТИЗАЦИИ'],
            'tag': 'Вашата идея. Ясен план. Работещ софтуер.', 'steps': 'СЪЗДАВАНЕ · ТЕСТВАНЕ · ПРОВЕРКА · ПУБЛИКУВАНЕ · РАЗВИТИЕ'},
 }
-CARDS = [('phone', '+359 898 634 678', C['mint']), ('mail', 'Fraisbg1@gmail.com', C['pink']),
+CARDS = [('mail', 'Fraisbg1@gmail.com', C['pink']),
          ('discord', 'Fraisbg', '#7C8BFF'), ('instagram', '@y.yakowvw.sales', '#FF4F93')]
 
 
@@ -1031,7 +1031,6 @@ def footer(lang, mobile):
 
 # ---------------------------------------------------------------- contact buttons
 BUTTONS = {
-    'phone': ('+359 898 634 678', C['mint'], {'en': 'CALL', 'bg': 'ОБАДЕТЕ СЕ'}),
     'mail': ('Fraisbg1@gmail.com', C['pink'], {'en': 'EMAIL', 'bg': 'ИМЕЙЛ'}),
     'discord': ('Fraisbg', '#7C8BFF', {'en': 'DISCORD', 'bg': 'DISCORD'}),
     'instagram': ('@y.yakowvw.sales', '#FF4F93', {'en': 'INSTAGRAM', 'bg': 'INSTAGRAM'}),
