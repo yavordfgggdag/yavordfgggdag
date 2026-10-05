@@ -444,19 +444,18 @@
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/finale-bg-mobile.svg" />
-<img src="assets/motion/finale-bg.svg" alt="Приемам платени проекти. Какво да създадем следващо? Сайт, инструмент, бот или следващата ви идея. Телефон +359 898 634 678 · Имейл Fraisbg1@gmail.com · Discord Fraisbg · Instagram @y.yakowvw.sales" width="100%" />
+<img src="assets/motion/finale-bg.svg" alt="Приемам платени проекти. Какво да създадем следващо? Сайт, инструмент, бот или следващата ви идея." width="100%" />
 </picture>
 
-| Контакт | Намерете ме тук |
-| :--- | :--- |
-| 📞 **Телефон** | [+359 898 634 678](tel:+359898634678) |
-| ✉️ **Имейл** | [Fraisbg1@gmail.com](mailto:Fraisbg1@gmail.com) |
-| 💬 **Discord** | **Fraisbg** |
-| 📸 **Instagram** | [@y.yakowvw.sales](https://www.instagram.com/y.yakowvw.sales/) |
+<p align="center">
+<a href="tel:+359898634678"><img src="assets/motion/contact-phone-bg.svg" alt="Обадете се на +359 898 634 678" height="46" /></a>
+<a href="mailto:Fraisbg1@gmail.com"><img src="assets/motion/contact-mail-bg.svg" alt="Имейл Fraisbg1@gmail.com" height="46" /></a>
+<img src="assets/motion/contact-discord-bg.svg" alt="Discord: Fraisbg" height="46" />
+<a href="https://www.instagram.com/y.yakowvw.sales/"><img src="assets/motion/contact-instagram-bg.svg" alt="Instagram @y.yakowvw.sales" height="46" /></a>
+</p>
 
-**Приемам платени поръчки за сайтове, софтуер, Discord ботове, игри и индивидуална разработка.**
-
-Изпратете идеята, основните функции, желания срок и ориентировъчен бюджет. Ще уточним обхвата и индивидуална оферта.
+<p align="center"><b>Приемам платени поръчки за сайтове, софтуер, Discord ботове, игри и индивидуална разработка.</b><br>
+Изпратете идеята, основните функции, желания срок и ориентировъчен бюджет. Ще уточним обхвата и индивидуална оферта.</p>
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/footer-bg-mobile.svg" />

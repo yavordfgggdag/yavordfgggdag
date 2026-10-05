@@ -929,7 +929,7 @@ CARDS = [('phone', '+359 898 634 678', C['mint']), ('mail', 'Fraisbg1@gmail.com'
 
 def finale(lang, mobile):
     t = F[lang]
-    w, h = (600, 1120) if mobile else (1200, 600)
+    w, h = (600, 560) if mobile else (1200, 340)
     sx, sy = w / 2, h + 40
     defs = (linear('bg', [(0, C['night']), (.55, '#1B0F3E'), (1, '#2A0E2E')], x2=0, y2=1)
             + radial('sun', C['amber2'], .6) + radial('pk', C['magenta'], .5) + radial('vi', C['violet'], .45)
@@ -950,7 +950,7 @@ def finale(lang, mobile):
         rr = h * (.42 + i * .16)
         b += f'<circle cx="{sx}" cy="{sy}" r="{rr:.0f}" fill="none" stroke="#FFD89B" stroke-opacity="{.22 - i * .04:.2f}" stroke-dasharray="{3 + i} {9 + i * 3}"/>'
     b += '<g class="live orb">' + ''.join(
-        f'<circle cx="{sx + math.cos(math.radians(a)) * h * .58:.0f}" cy="{sy + math.sin(math.radians(a)) * h * .58:.0f}" r="{3 + i % 3}" fill="{[C["amber"], C["pink"], C["lilac2"], C["mint"]][i % 4]}"/>'
+        f'<circle cx="{sx + math.cos(math.radians(a)) * h * 1.02:.0f}" cy="{sy + math.sin(math.radians(a)) * h * 1.02:.0f}" r="{3 + i % 3}" fill="{[C["amber"], C["pink"], C["lilac2"], C["mint"]][i % 4]}"/>'
         for i, a in enumerate(range(190, 350, 26))) + '</g>'
     b += stars(w, h * .5, 30, 9)
     # status + headline
@@ -968,12 +968,12 @@ def finale(lang, mobile):
         y += len(wrap(t['sub'], 34)) * 28 + 12
         for i, line in enumerate(wrap(t['sub2'], 44)):
             b += text(sx, y + i * 26, line, 19, C['soft'], anchor='middle')
-        cards = [(40, 470 + i * 140, 520, 118) for i in range(4)]
+        cards = []
     else:
         b += text(sx, 168, t['head'], 62, 'url(#hg)', 800, anchor='middle')
         b += text(sx, 216, t['sub'], 23, C['text'], 600, anchor='middle')
         b += text(sx, 252, t['sub2'], 18, C['soft'], anchor='middle')
-        cards = [(60 + i * 275, 318, 255, 158) for i in range(4)]
+        cards = []
     for i, ((kind, value, col), (x, y, cw, ch)) in enumerate(zip(CARDS, cards)):
         b += f'<rect x="{x}" y="{y}" width="{cw}" height="{ch}" rx="24" fill="#0C0926" fill-opacity=".82" stroke="{col}" stroke-opacity=".75" stroke-width="1.6"/>'
         b += f'<rect class="live cg" style="animation-delay:{i * 2.2}s" x="{x - 3}" y="{y - 3}" width="{cw + 6}" height="{ch + 6}" rx="26" fill="{col}" fill-opacity=".1" stroke="{col}" stroke-width="3"/>'
@@ -986,7 +986,7 @@ def finale(lang, mobile):
             b += text(x + 26, y + 112, t['labels'][i], 13, col, 800, spacing=2.4)
             b += text(x + 26, y + 138, value, 19 if len(value) < 17 else 18, C['text'], 700)
     b += '</g>'
-    desc = f"{t['head']} {t['sub']} " + ' · '.join(f'{l}: {v}' for l, (_k, v, _c) in zip(t['labels'], CARDS))
+    desc = f"{t['status']}. {t['head']} {t['sub']} {t['sub2']}"
     return document(w, h, t['title'], desc, b, defs, motion)
 
 
@@ -1029,6 +1029,28 @@ def footer(lang, mobile):
     return document(w, h, t['tag'], f"{' · '.join(t['words'])}. {t['tag']} {t['steps']}", b, defs, motion)
 
 
+# ---------------------------------------------------------------- contact buttons
+BUTTONS = {
+    'phone': ('+359 898 634 678', C['mint'], {'en': 'CALL', 'bg': 'ОБАДЕТЕ СЕ'}),
+    'mail': ('Fraisbg1@gmail.com', C['pink'], {'en': 'EMAIL', 'bg': 'ИМЕЙЛ'}),
+    'discord': ('Fraisbg', '#7C8BFF', {'en': 'DISCORD', 'bg': 'DISCORD'}),
+    'instagram': ('@y.yakowvw.sales', '#FF4F93', {'en': 'INSTAGRAM', 'bg': 'INSTAGRAM'}),
+}
+
+
+def contact_button(kind, lang):
+    value, col, labels = BUTTONS[kind]
+    label = labels[lang]
+    h = 64
+    w = round(84 + max(len(value) * 10.6, len(label) * 9) + 26)
+    defs = linear('bg', [(0, '#0C0926'), (1, C['indigo'])], x2=1, y2=1) + linear('edge', [(0, col), (1, col, .35)])
+    b = (f'<rect x="1" y="1" width="{w - 2}" height="{h - 2}" rx="{h / 2 - 1:.0f}" fill="url(#bg)" stroke="url(#edge)" stroke-width="2"/>'
+         f'<circle cx="33" cy="{h / 2}" r="21" fill="{col}" fill-opacity=".18"/>' + glyph(kind, 21, h / 2 - 12, 24, col))
+    b += text(66, 27, label, 12, col, 800, spacing=2)
+    b += text(66, 48, value, 18, C['text'], 700)
+    return document(w, h, f'{label}: {value}', f'{label}: {value}', b, defs)
+
+
 # ---------------------------------------------------------------- main
 def main():
     count = 0
@@ -1044,6 +1066,9 @@ def main():
                 files[f'project-{key}-{sfx}'] = project_marker(key, lang, mobile)
             for v, group in enumerate(GROUPS):
                 files[f'stack-{group}-{sfx}'] = stack_group(group, v, lang, mobile)
+            if not mobile:
+                for kind in BUTTONS:
+                    files[f'contact-{kind}-{lang}.svg'] = contact_button(kind, lang)
             for name, content in files.items():
                 write(name, content)
                 count += 1
