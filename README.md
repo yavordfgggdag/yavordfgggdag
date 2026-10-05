@@ -7,7 +7,7 @@
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/hero-en-mobile.svg" />
-<img src="assets/motion/hero-en.svg" alt="Yavor Yakow, independent developer. Products with systems behind them: websites, online stores, web and desktop software, admin panels, Discord bots, games and FiveM, APIs and AI. Featured: Before I Deploy, TLR Police Portal, client websites. Contact: Fraisbg1@gmail.com · Discord Fraisbg · Instagram @y.yakowvw.sales." width="100%" />
+<img src="assets/motion/hero-en.svg" alt="Yavor Yakow, independent developer. Products with systems behind them: websites, online stores, web and desktop software, admin panels, Discord bots, games and FiveM, APIs and AI. Featured: Before I Deploy, TLR Police Portal, The Last Republic. Contact: Fraisbg1@gmail.com · Discord Fraisbg · Instagram @y.yakowvw.sales." width="100%" />
 </picture>
 
 <p align="center"><b><a href="#work">Work</a> · <a href="#services">Services</a> · <a href="#technology">Technology</a> · <a href="#activity">Activity</a> · <a href="#process">Process</a> · <a href="#contact">Contact</a></b></p>
@@ -57,10 +57,10 @@ Connected gaming and community infrastructure bringing together FiveM, web appli
 </td>
 <td width="50%" valign="top">
 
-### 🟠 Client Web Projects
-**„Помощ от приятел“** (educational centre) and **„Автоинструктор Господинов“** (driving instructor). [See the client projects below](#client-websites).
+### 🟢 [Community platform](#community-platform)
+A separate React frontend for a gaming community: server discovery, topic-based rules and application routes in one navigation system.
 
-**Business websites · UI/UX · Custom functionality**
+**React · Supabase · Source showcase**
 
 </td>
 </tr>
@@ -210,34 +210,6 @@ A browser-based interface experiment exploring simulated resource monitoring and
 
 <sub>Source preview only: the reviewed checkout is missing referenced styling and script assets. A complete visual demo is pending those assets or a working demo URL. Source code is private.</sub>
 
-<picture>
-<source media="(max-width: 600px)" srcset="assets/motion/project-client-en-mobile.svg" />
-<img src="assets/motion/project-client-en.svg" alt="05 · Client websites" width="100%" />
-</picture>
-
-## Client websites
-
-### Помощ от приятел · Educational centre
-
-A client website that helps parents explore Bulgarian-language and mathematics lessons and reach the centre through a clear enquiry path. The live interface includes course formats, an FAQ and an enquiry form.
-
-**Verified platform components:** WordPress · WPForms. The enquiry interface was inspected without submitting personal data.
-
-<details>
-<summary><b>Explore the interactive FAQ</b></summary>
-
-<img src="assets/screens/framed/client-education-faq.jpg" alt="Live FAQ with an expanded answer about the supported school grades." width="100%" />
-
-</details>
-
-[Visit Помощ от приятел →](https://pomoshtotpriyatel.com/)
-
-### Автоинструктор Господинов · Driving instructor
-
-Client website for a driving instructor, providing an online presence for the business.
-
-<sub>Website link, current screenshots, implementation details and technology are awaiting verification.</sub>
-
 <a name="services"></a>
 
 <picture>
@@ -349,7 +321,7 @@ New features, bug fixes, refactoring, performance improvements, migrations, inte
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/stack-used-en-mobile.svg" />
-<img src="assets/motion/stack-used-en.svg" alt="Used in the featured products. Before I Deploy: Swift, SwiftUI, JavaScript, Node.js, Supabase, PostgreSQL, Deno Edge Functions. TLR Police Portal: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, discord.js. Community platform: React, Vite, Tailwind CSS, shadcn/ui, React Router, TanStack Query, Supabase. Помощ от приятел: WordPress, WPForms. Space Control: HTML, JavaScript, Canvas API." width="100%" />
+<img src="assets/motion/stack-used-en.svg" alt="Used in the featured products. Before I Deploy: Swift, SwiftUI, JavaScript, Node.js, Supabase, PostgreSQL, Deno Edge Functions. TLR Police Portal: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, discord.js. Community platform: React, Vite, Tailwind CSS, shadcn/ui, React Router, TanStack Query, Supabase. Space Control: HTML, JavaScript, Canvas API." width="100%" />
 </picture>
 
 The 68 technologies below are the original technology collection: additional interests and possible project choices. It is not a claim of completed products or equal experience with every tool. A **mint ring** marks the tools verified in the products above.
