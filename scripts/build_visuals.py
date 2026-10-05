@@ -1,0 +1,1080 @@
+#!/usr/bin/env python3
+"""Generate the animated studio visuals used by README.md and README.bg.md.
+
+Run: python3 scripts/build_visuals.py
+Writes assets/motion/*.svg. Inputs: data/technologies.json (all 68 technologies
+plus the verified product stacks) and data/tech-icons.json (Simple Icons, CC0).
+Decorative motion never represents live activity; architecture visuals are
+labelled as illustrations. Activity/language panels are produced separately by
+scripts/update_metrics.py.
+"""
+import json
+import math
+import random
+from pathlib import Path
+
+from profile_style import ACCENTS, C, document, esc, linear, radial, text, wrap
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / 'assets/motion'
+TECH = json.loads((ROOT / 'data/technologies.json').read_text())
+ICONS = json.loads((ROOT / 'data/tech-icons.json').read_text())['icons']
+
+PRODUCT_COLORS = {'bid': C['violet'], 'police': C['cyan'], 'client': C['amber'], 'community': C['mint'], 'tlr': C['pink']}
+
+T = {
+    'en': {
+        'hero_title': 'Yavor Yakow — independent developer',
+        'hero_desc': 'Studio introduction: products with systems behind them. Websites, online stores, web and desktop software, admin panels, Discord bots, games and FiveM, APIs, automation and AI. Featured work: Before I Deploy, TLR Police Portal and client websites. Contact: Fraisbg1@gmail.com, Discord Fraisbg, Instagram @y.yakowvw.sales. Orbits and light are decorative.',
+        'kicker': 'YAVOR YAKOW  ·  INDEPENDENT DEVELOPER', 'kicker_m': 'YAVOR YAKOW · DEVELOPER',
+        'head': ['Products with', 'systems behind them.'],
+        'spec': ['Websites · online stores · web & desktop software', 'Admin panels · Discord bots · games & FiveM · APIs · AI'],
+        'spec_m': ['Websites · online stores · software', 'Admin panels · Discord bots · games', 'FiveM · APIs · automation & AI'],
+        'chips': ['Before I Deploy', 'TLR Police Portal', 'Client websites'],
+        'decor': 'decorative motion',
+        'divider': 'Chapter',
+        'illus': 'Architecture illustration · not a live dashboard',
+    },
+    'bg': {
+        'hero_title': 'Явор — независим разработчик',
+        'hero_desc': 'Представяне: продукти със системи зад тях. Сайтове, онлайн магазини, уеб и настолен софтуер, админ панели, Discord ботове, игри и FiveM, API, автоматизации и AI. Избрана работа: Before I Deploy, TLR Police Portal и клиентски сайтове. Контакт: Fraisbg1@gmail.com, Discord Fraisbg, Instagram @y.yakowvw.sales. Орбитите и светлината са декоративни.',
+        'kicker': 'ЯВОР  ·  YAVOR YAKOW  ·  НЕЗАВИСИМ РАЗРАБОТЧИК', 'kicker_m': 'ЯВОР · НЕЗАВИСИМ РАЗРАБОТЧИК',
+        'head': ['Продукти със', 'системи зад тях.'],
+        'spec': ['Сайтове · онлайн магазини · уеб и настолен софтуер', 'Админ панели · Discord ботове · игри и FiveM · API · AI'],
+        'spec_m': ['Сайтове · онлайн магазини · софтуер', 'Админ панели · Discord ботове · игри', 'FiveM · API · автоматизации и AI'],
+        'chips': ['Before I Deploy', 'TLR Police Portal', 'Клиентски сайтове'],
+        'decor': 'декоративно движение',
+        'divider': 'Глава',
+        'illus': 'Илюстрация на архитектурата · не е табло на живо',
+    },
+}
+CONTACT = [('mail', 'Fraisbg1@gmail.com'), ('discord', 'Fraisbg'), ('instagram', '@y.yakowvw.sales')]
+
+
+# ---------------------------------------------------------------- helpers
+def icon(slug, x, y, size, fill):
+    path = ICONS[slug]['path']
+    return f'<g transform="translate({x:.1f} {y:.1f}) scale({size / 24:.4f})"><path d="{path}" fill="{fill}"/></g>'
+
+
+def glyph(kind, x, y, size, color):
+    """Small drawn contact glyphs (no emoji fonts, no remote assets)."""
+    s = size / 24
+    if kind == 'discord':
+        return icon('discord', x, y, size, color)
+    if kind == 'instagram':
+        return icon('instagram', x, y, size, color)
+    if kind == 'mail':
+        return (f'<g transform="translate({x} {y}) scale({s:.3f})" fill="none" stroke="{color}" stroke-width="2" stroke-linejoin="round">'
+                '<rect x="2" y="5" width="20" height="14" rx="3"/><path d="M3 6.5l9 6.5 9-6.5"/></g>')
+    if kind == 'phone':
+        return (f'<g transform="translate({x} {y}) scale({s:.3f})" fill="none" stroke="{color}" stroke-width="2" stroke-linejoin="round">'
+                '<path d="M6.6 3.5h3l1.5 4.2-2 1.5a12 12 0 005.7 5.7l1.5-2 4.2 1.5v3a2 2 0 01-2.2 2A17.6 17.6 0 014.6 5.7a2 2 0 012-2.2z"/></g>')
+    raise ValueError(kind)
+
+
+def ellipse_path(cx, cy, rx, ry):
+    return f'M{cx - rx:.1f} {cy:.1f}a{rx} {ry} 0 1 0 {2 * rx} 0a{rx} {ry} 0 1 0 {-2 * rx} 0'
+
+
+def on_ellipse(cx, cy, rx, ry, tilt, angle):
+    a, t = math.radians(angle), math.radians(tilt)
+    x, y = rx * math.cos(a), ry * math.sin(a)
+    return cx + x * math.cos(t) - y * math.sin(t), cy + x * math.sin(t) + y * math.cos(t)
+
+
+def frame(width, height, radius=28, fill='url(#bg)'):
+    return (f'<clipPath id="frame"><rect width="{width}" height="{height}" rx="{radius}"/></clipPath>'
+            f'<rect width="{width}" height="{height}" rx="{radius}" fill="{fill}"/>')
+
+
+def stars(width, height, count, seed, top=0):
+    rng = random.Random(seed)
+    dots = ''
+    for _ in range(count):
+        dots += f'<circle cx="{rng.uniform(0, width):.0f}" cy="{rng.uniform(top, height):.0f}" r="{rng.choice([0.8, 1, 1.2, 1.6])}" fill="#fff" opacity="{rng.uniform(.15, .55):.2f}"/>'
+    return dots
+
+
+def pill_width(label, size):
+    return len(label) * size * 0.56 + 52
+
+
+def write(name, content):
+    OUT.mkdir(parents=True, exist_ok=True)
+    (OUT / name).write_text(content)
+
+
+# ---------------------------------------------------------------- hero
+def hero(lang, mobile):
+    t = T[lang]
+    w, h = (600, 1010) if mobile else (1200, 640)
+    cx, cy = (300, 640) if mobile else (918, 300)
+    k = 0.72 if mobile else 1.0
+    tilt = -16
+    defs = (linear('bg', [(0, C['night']), (.55, '#170F45'), (1, C['deep'])], x2=1, y2=1)
+            + radial('rv', C['violet'], .55) + radial('rp', C['magenta'], .42) + radial('rc', C['cyan'], .32)
+            + radial('ra', C['amber2'], .30)
+            + linear('hg', [(0, C['lilac2']), (.5, C['pink']), (1, C['amber'])])
+            + linear('acc', [(0, C['violet']), (.5, C['cyan']), (1, C['mint'])])
+            + linear('o1', [(0, C['lilac'], .9), (1, C['cyan'], .15)])
+            + linear('o2', [(0, C['pink'], .85), (1, C['amber'], .2)])
+            + linear('o3', [(0, C['cyan'], .9), (1, C['mint'], .2)])
+            + '<radialGradient id="core"><stop offset="0" stop-color="#FFF7FD"/><stop offset=".3" stop-color="#F9A8D4"/>'
+              '<stop offset=".62" stop-color="#8B5CF6" stop-opacity=".9"/><stop offset="1" stop-color="#4C1D95" stop-opacity="0"/></radialGradient>'
+            + linear('fy', [(0, '#000'), (.35, '#fff', .6), (1, '#fff')], x2=0, y2=1)
+            + linear('fx', [(0, '#000'), (.5, '#fff'), (1, '#fff')])
+            + linear('beam', [(0, '#fff', 0), (.5, '#fff', .13), (1, '#fff', 0)])
+            + '<mask id="fadeY"><rect width="100%" height="100%" fill="url(#fy)"/></mask>'
+            + '<mask id="fadeX"><rect width="100%" height="100%" fill="url(#fx)"/></mask>')
+    motion = ('.b1{animation:drift1 30s ease-in-out infinite}.b2{animation:drift2 38s ease-in-out infinite}'
+              '.b3{animation:drift3 44s ease-in-out infinite}.b4{animation:drift2 26s ease-in-out infinite reverse}'
+              '.fl{animation:floor 8s cubic-bezier(.55,0,.9,.4) infinite}'
+              '.halo{transform-box:fill-box;transform-origin:center;animation:breathe 9s ease-in-out infinite}'
+              '.ring{transform-box:fill-box;transform-origin:center;animation:spin 60s linear infinite}'
+              '.ring2{transform-box:fill-box;transform-origin:center;animation:spin 90s linear infinite reverse}'
+              '.beam{animation:beam 16s ease-in-out infinite}.spark{animation:spark 11s cubic-bezier(.6,0,.3,1) infinite}'
+              '@keyframes drift1{50%{transform:translate(-60px,40px)}}@keyframes drift2{50%{transform:translate(50px,-30px)}}'
+              '@keyframes drift3{50%{transform:translate(70px,-50px)}}'
+              f'@keyframes floor{{0%{{transform:translateY(0);opacity:0}}12%{{opacity:.9}}100%{{transform:translateY({(h - (cy + 140 * k)):.0f}px);opacity:.9}}}}'
+              '@keyframes breathe{50%{transform:scale(1.12);opacity:.75}}@keyframes spin{to{transform:rotate(360deg)}}'
+              f'@keyframes beam{{0%,20%{{transform:translateX(-500px)}}70%,100%{{transform:translateX({w + 300}px)}}}}'
+              f'@keyframes spark{{0%{{transform:translateX(0);opacity:0}}8%{{opacity:1}}85%{{opacity:1}}100%{{transform:translateX({w - 2 * (32 if mobile else 72) - 140}px);opacity:0}}}}')
+    b = frame(w, h) + '<g clip-path="url(#frame)">'
+    b += (f'<g class="b1"><circle cx="{w * .8:.0f}" cy="{h * .2:.0f}" r="{380 * k:.0f}" fill="url(#rv)"/></g>'
+          f'<g class="b2"><circle cx="{w * .92:.0f}" cy="{h * .85:.0f}" r="{320 * k:.0f}" fill="url(#rp)"/></g>'
+          f'<g class="b3"><circle cx="{w * .2:.0f}" cy="{h * .98:.0f}" r="{340 * k:.0f}" fill="url(#rc)"/></g>'
+          f'<g class="b4"><circle cx="{w * .52:.0f}" cy="{h * .05:.0f}" r="{220 * k:.0f}" fill="url(#ra)"/></g>')
+    b += stars(w, h, 70 if not mobile else 45, 7)
+    # perspective floor below the orbit system
+    horizon = cy + 140 * k
+    floor = ''
+    for i in range(-14, 15):
+        floor += f'<path d="M{cx + i * 16 * k:.0f} {horizon:.0f}L{cx + i * 120 * k:.0f} {h}" stroke="{C["lilac"]}" stroke-opacity=".28"/>'
+    for i in range(1, 6):
+        yy = horizon + (h - horizon) * (i / 6) ** 2
+        floor += f'<path d="M0 {yy:.0f}H{w}" stroke="{C["cyan"]}" stroke-opacity=".18"/>'
+    floor += '<g class="live">' + ''.join(
+        f'<path class="fl" style="animation-delay:-{i * 1.6:.1f}s" d="M0 {horizon:.0f}H{w}" stroke="{C["mint2"]}" stroke-opacity=".55"/>'
+        for i in range(5)) + '</g>'
+    fade_x = '' if mobile else ' mask="url(#fadeX)"'
+    b += f'<g mask="url(#fadeY)"><g{fade_x}>{floor}</g></g>'
+    b += f'<g class="live"><rect class="beam" x="0" y="-200" width="160" height="{h + 400}" fill="url(#beam)" transform="rotate(18 {w / 2} {h / 2})"/></g>'
+    # orbit system: each moving body is a product colour; the legend chips name them
+    orbits = [(255, 90, 'o1', 24, PRODUCT_COLORS['bid'], 30), (190, 66, 'o2', 17, PRODUCT_COLORS['client'], 200),
+              (126, 44, 'o3', 12, PRODUCT_COLORS['police'], 110)]
+    b += f'<circle class="halo" cx="{cx}" cy="{cy}" r="{150 * k:.0f}" fill="url(#rp)"/>'
+    g = f'<g transform="rotate({tilt} {cx} {cy})">'
+    for rx, ry, grad, dur, color, start in orbits:
+        rx, ry = rx * k, ry * k
+        g += f'<path d="{ellipse_path(cx, cy, rx, ry)}" fill="none" stroke="url(#{grad})" stroke-width="1.6"/>'
+    g += '</g>'
+    b += g
+    b += (f'<circle class="ring2" cx="{cx}" cy="{cy}" r="{80 * k:.0f}" fill="none" stroke="{C["lilac2"]}" stroke-opacity=".35" stroke-dasharray="2 9"/>'
+          f'<circle class="ring" cx="{cx}" cy="{cy}" r="{62 * k:.0f}" fill="none" stroke="{C["pink"]}" stroke-opacity=".55" stroke-width="1.5" stroke-dasharray="60 30 8 30"/>'
+          f'<circle cx="{cx}" cy="{cy}" r="{44 * k:.0f}" fill="url(#core)"/>')
+    bodies_live, bodies_still = '', ''
+    extra = [(255, 90, 34, PRODUCT_COLORS['community'], 210)]
+    for rx, ry, _grad, dur, color, start in orbits + [(a, b2, None, d, c, s) for a, b2, d, c, s in extra]:
+        rx, ry = rx * k, ry * k
+        dot = (f'<circle r="{15 * k:.0f}" fill="{color}" opacity=".22"/><circle r="{6.5 * k:.1f}" fill="{color}"/>'
+               f'<circle r="{2.4 * k:.1f}" fill="#fff"/>')
+        bodies_live += (f'<g transform="rotate({tilt} {cx} {cy})"><g>{dot}<animateMotion dur="{dur}s" repeatCount="indefinite" '
+                        f'begin="-{dur * start / 360:.2f}s" path="{ellipse_path(cx, cy, rx, ry)}"/></g></g>')
+        px, py = on_ellipse(cx, cy, rx, ry, tilt, 180 + start)
+        bodies_still += f'<g transform="translate({px:.1f} {py:.1f})">{dot}</g>'
+    b += f'<g class="live">{bodies_live}</g><g class="still">{bodies_still}</g>'
+    # typography
+    x0 = 32 if mobile else 72
+    if mobile:
+        y = 78
+        b += f'<rect x="{x0}" y="{y - 13}" width="26" height="4" rx="2" fill="url(#acc)"/>'
+        b += text(x0 + 38, y - 4, t['kicker_m'], 18, C['lilac2'], 700, spacing=2)
+        b += text(x0, 156, t['head'][0], 46, C['text'], 800)
+        b += text(x0, 212, t['head'][1], 46, 'url(#hg)', 800)
+        for i, line in enumerate(t['spec_m']):
+            b += text(x0, 266 + i * 32, line, 21, C['soft'])
+        chip_y = [372, 426, 426]
+        chip_x = [x0, x0, None]
+    else:
+        b += f'<rect x="{x0}" y="{103}" width="34" height="4" rx="2" fill="url(#acc)"/>'
+        b += text(x0 + 48, 110, t['kicker'], 16, C['lilac2'], 700, spacing=3.4)
+        b += text(x0, 196, t['head'][0], 58, C['text'], 800)
+        b += text(x0, 264, t['head'][1], 58, 'url(#hg)', 800)
+        for i, line in enumerate(t['spec']):
+            b += text(x0, 322 + i * 33, line, 21, C['soft'])
+        chip_y = [408, 408, 408]
+        chip_x = [x0, None, None]
+    colors = [PRODUCT_COLORS['bid'], PRODUCT_COLORS['police'], PRODUCT_COLORS['client']]
+    cursor = x0
+    chip_size = 20 if mobile else 17
+    for i, label in enumerate(t['chips']):
+        pw = pill_width(label, chip_size)
+        x = chip_x[i] if chip_x[i] is not None else cursor
+        y = chip_y[i]
+        ch = 42 if mobile else 38
+        b += (f'<rect x="{x}" y="{y}" width="{pw:.0f}" height="{ch}" rx="{ch / 2:.0f}" fill="#ffffff" fill-opacity=".06" stroke="{colors[i]}" stroke-opacity=".7"/>'
+              f'<circle cx="{x + 21}" cy="{y + ch / 2}" r="6" fill="{colors[i]}"/>')
+        b += text(x + 36, y + ch / 2 + 6.5, label, chip_size, C['text'], 700)
+        cursor = x + pw + 12
+    # contact: always visible, never animated
+    if mobile:
+        for i, (kind, value) in enumerate(CONTACT):
+            y = 800 + i * 58
+            b += f'<rect x="{x0}" y="{y}" width="{w - 2 * x0}" height="46" rx="23" fill="#0B0824" fill-opacity=".72" stroke="#ffffff" stroke-opacity=".16"/>'
+            b += glyph(kind, x0 + 18, y + 11, 24, [C['pink'], '#8C9EFF', '#FF4F93'][i])
+            b += text(x0 + 56, y + 31, value, 22, C['text'], 600)
+    else:
+        y = 476
+        b += f'<rect x="{x0}" y="{y}" width="676" height="58" rx="29" fill="#0B0824" fill-opacity=".72" stroke="#ffffff" stroke-opacity=".16"/>'
+        x = x0 + 24
+        for i, (kind, value) in enumerate(CONTACT):
+            b += glyph(kind, x, y + 17, 24, [C['pink'], '#8C9EFF', '#FF4F93'][i])
+            b += text(x + 34, y + 36, value, 19, C['text'], 600)
+            x += 34 + len(value) * 10.4 + 34
+            if i < 2:
+                b += f'<path d="M{x - 18} {y + 18}v22" stroke="#fff" stroke-opacity=".18"/>'
+    base = h - 34
+    b += f'<rect x="{x0}" y="{base}" width="{w - 2 * x0}" height="3" rx="1.5" fill="url(#acc)" opacity=".85"/>'
+    b += f'<g class="live"><rect class="spark" x="{x0}" y="{base - 2}" width="140" height="7" rx="3.5" fill="#E0FBFF"/></g>'
+    b += '</g>'
+    return document(w, h, t['hero_title'], t['hero_desc'], b, defs, motion)
+
+
+# ---------------------------------------------------------------- chapter dividers
+DIVIDERS = [('waves', 'violet'), ('beads', 'pink'), ('circuit', 'cyan'), ('constellation', 'mint'), ('sunrise', 'amber')]
+
+
+def divider(index, lang, mobile):
+    motif, accent = DIVIDERS[index]
+    a1, a2 = ACCENTS[accent]
+    w, h = (600, 92) if mobile else (1200, 104)
+    mid = h / 2
+    r = 26 if mobile else 30
+    bx = r + 6
+    defs = (linear('g', [(0, a1), (1, a2)]) + linear('ge', [(0, a1, 0), (.12, a1, .9), (.88, a2, .9), (1, a2, 0)])
+            + radial('glow', a1, .55) + linear('band', [(0, C['ink']), (.5, C['indigo']), (1, C['ink'])]))
+    motion = ('.ringd{transform-box:fill-box;transform-origin:center;animation:spin 24s linear infinite}'
+              '@keyframes spin{to{transform:rotate(360deg)}}')
+    x0, x1 = bx + r + 24, w - 8
+    span = x1 - x0
+    m = ''
+    if motif == 'waves':
+        period = 150 if mobile else 240
+        for j, (amp, op, sw) in enumerate([(14, .9, 2.2), (9, .55, 1.4), (20, .3, 1)]):
+            d = f'M{x0 - period * 2} {mid}'
+            for i in range(int((span + period * 4) / (period / 2)) + 2):
+                xx = x0 - period * 2 + (i + 1) * period / 2
+                cy_ = mid + (amp if (i + j) % 2 == 0 else -amp) * (1 if mobile is False else .7)
+                d += f'Q{xx - period / 4:.0f} {cy_:.0f} {xx:.0f} {mid}'
+            m += f'<path class="wv" style="animation-duration:{10 + j * 4}s" d="{d}" fill="none" stroke="url(#g)" stroke-width="{sw}" opacity="{op}"/>'
+        motion += f'.wv{{animation:wave 12s linear infinite}}@keyframes wave{{to{{transform:translateX({period}px)}}}}'
+    elif motif == 'beads':
+        n = 26 if mobile else 46
+        for i in range(n):
+            xx = x0 + span * i / (n - 1)
+            yy = mid + math.sin(i / 2.6) * (h * .16)
+            m += (f'<circle cx="{xx:.1f}" cy="{yy:.1f}" r="{3.2 if i % 3 else 4.6}" fill="url(#g)" opacity=".75"/>'
+                  f'<circle class="bd" style="animation-delay:{i * .11:.2f}s" cx="{xx:.1f}" cy="{yy:.1f}" r="9" fill="{a2}" opacity="0"/>')
+        motion += f'.bd{{animation:bead {n * .11 + 2:.1f}s ease-in-out infinite}}@keyframes bead{{0%,12%,100%{{opacity:0}}5%{{opacity:.55}}}}'
+    elif motif == 'circuit':
+        rng = random.Random(index * 11 + (1 if mobile else 0))
+        lanes = [mid - h * .22, mid, mid + h * .22]
+        for j, ly in enumerate(lanes):
+            d = f'M{x0} {ly:.0f}'
+            xx = x0
+            while xx < x1 - 60:
+                step = rng.randint(60, 140)
+                xx = min(xx + step, x1)
+                d += f'H{xx}'
+                if rng.random() < .45 and xx < x1 - 40:
+                    other = lanes[(j + rng.choice([1, 2])) % 3]
+                    d += f'L{xx + 14} {other:.0f}L{xx + 28} {ly:.0f}'
+                    xx += 28
+                    m += f'<circle cx="{xx - 14}" cy="{other:.0f}" r="2.6" fill="{a2}"/>'
+            m += f'<path d="{d}H{x1}" fill="none" stroke="url(#ge)" stroke-width="1.4" opacity=".55"/>'
+            m += f'<path class="live ct" style="animation-delay:-{j * 2.2}s" d="{d}H{x1}" fill="none" stroke="#E0FFFB" stroke-width="2.2" pathLength="100" stroke-dasharray="4 96" stroke-linecap="round"/>'
+        motion += '.ct{animation:trace 7s linear infinite}@keyframes trace{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}'
+    elif motif == 'constellation':
+        rng = random.Random(4 + (1 if mobile else 0))
+        pts = [(x0 + span * (i + rng.uniform(.1, .9)) / (14 if not mobile else 8), rng.uniform(h * .2, h * .8))
+               for i in range(14 if not mobile else 8)]
+        for (ax, ay), (bx_, by) in zip(pts, pts[1:]):
+            m += f'<path d="M{ax:.0f} {ay:.0f}L{bx_:.0f} {by:.0f}" stroke="url(#ge)" stroke-opacity=".6"/>'
+        for i, (px, py) in enumerate(pts):
+            m += f'<circle cx="{px:.0f}" cy="{py:.0f}" r="{2.5 + (i % 3)}" fill="{a1 if i % 2 else a2}"/>'
+            m += f'<circle class="st" style="animation-delay:{i * .7:.1f}s" cx="{px:.0f}" cy="{py:.0f}" r="10" fill="url(#glow)" opacity=".15"/>'
+        motion += f'.st{{animation:star {len(pts) * .7:.1f}s ease-in-out infinite}}@keyframes star{{0%,100%{{opacity:.15}}8%{{opacity:1}}20%{{opacity:.15}}}}'
+    elif motif == 'sunrise':
+        cxs = x0 + span / 2
+        for i in range(6):
+            rr = 24 + i * (h * .3 if not mobile else h * .28)
+            m += (f'<path class="{"sr" if i % 2 else "sr2"}" d="M{cxs - rr:.0f} {h}A{rr:.0f} {rr:.0f} 0 0 1 {cxs + rr:.0f} {h}" fill="none" '
+                  f'stroke="url(#g)" stroke-width="1.6" opacity="{.85 - i * .12:.2f}" stroke-dasharray="{14 + i * 6} {10 + i * 4}"/>')
+        m += f'<path d="M{x0} {h - 1}H{x1}" stroke="url(#ge)" stroke-width="2"/>'
+        motion += ('.sr{animation:dash 14s linear infinite}.sr2{animation:dash 20s linear infinite reverse}'
+                   '@keyframes dash{to{stroke-dashoffset:-240}}')
+    clip = f'<clipPath id="motif"><rect x="{x0}" y="0" width="{span}" height="{h}"/></clipPath>'
+    num = f'{index + 1:02d}'
+    b = f'<rect width="{w}" height="{h}" rx="{h / 2:.0f}" fill="url(#band)"/>' + clip + f'<g clip-path="url(#motif)">{m}</g>'
+    b += (f'<circle cx="{bx}" cy="{mid}" r="{r + 10}" fill="url(#glow)" opacity=".6"/>'
+          f'<circle cx="{bx}" cy="{mid}" r="{r}" fill="{C["ink"]}" stroke="url(#g)" stroke-width="2"/>'
+          f'<circle class="ringd" cx="{bx}" cy="{mid}" r="{r + 6}" fill="none" stroke="{a2}" stroke-opacity=".7" stroke-dasharray="3 7"/>')
+    b += text(bx, mid + (8 if mobile else 9), num, 22 if mobile else 24, C['text'], 800, anchor='middle')
+    label = f"{T[lang]['divider']} {num}"
+    return document(w, h, label, f'{label}. Decorative section transition.' if lang == 'en' else f'{label}. Декоративен преход между секциите.', b, defs, motion)
+
+
+# ---------------------------------------------------------------- project accents
+PROJECTS = {
+    'bid': {'n': '01', 'accent': ('#8B5CF6', '#22D3EE'), 'motif': 'scan',
+            'en': ('NATIVE macOS APP', 'SwiftUI interface · Node.js check engine · hosting & cloud links'),
+            'bg': ('НАТИВНО macOS ПРИЛОЖЕНИЕ', 'SwiftUI интерфейс · Node.js модул за проверки · хостинг и облак')},
+    'police': {'n': '02', 'accent': ('#22D3EE', '#34D399'), 'motif': 'tree',
+               'en': ('FIVEM COMMUNITY OPERATIONS', 'Staff roster · ranks · handbook · Discord-synchronised roles'),
+               'bg': ('ОПЕРАЦИИ ЗА FIVEM ОБЩНОСТ', 'Състав · звания · наръчник · роли, синхронизирани с Discord')},
+    'tlr': {'n': '03', 'accent': ('#F472B6', '#8B5CF6'), 'motif': 'network',
+            'en': ('COMMUNITY INFRASTRUCTURE', 'Public interface · rules · Discord-connected applications'),
+            'bg': ('ОБЩНОСТНА ИНФРАСТРУКТУРА', 'Публичен интерфейс · правила · кандидатстване чрез Discord')},
+    'community': {'n': '04', 'accent': ('#34D399', '#A78BFA'), 'motif': 'hex',
+                  'en': ('SOURCE SHOWCASE · REACT', 'Server discovery · topic-based rules · application routes'),
+                  'bg': ('ПРЕГЛЕД НА КОДА · REACT', 'Сървъри · правила по теми · страници за кандидатстване')},
+    'client': {'n': '05', 'accent': ('#FBBF24', '#F472B6'), 'motif': 'page',
+               'en': ('CLIENT WEBSITES', 'Clear information · enquiry paths · local businesses'),
+               'bg': ('КЛИЕНТСКИ САЙТОВЕ', 'Ясна информация · път до запитване · местен бизнес')},
+}
+
+
+def project_motif(kind, x, y, w, h, a1, a2):
+    m, css = '', ''
+    if kind == 'scan':
+        rng = random.Random(3)
+        rows = 6
+        for i in range(rows):
+            yy = y + 10 + i * (h - 20) / (rows - 1)
+            ln = rng.uniform(.35, .8) * (w - 60)
+            m += f'<rect x="{x}" y="{yy - 4:.0f}" width="{ln:.0f}" height="8" rx="4" fill="{a1}" opacity=".28"/>'
+            m += f'<rect x="{x}" y="{yy - 4:.0f}" width="{ln * .35:.0f}" height="8" rx="4" fill="{a1}" opacity=".55"/>'
+            color = C['amber'] if i == 3 else C['mint']
+            m += f'<circle cx="{x + w - 22}" cy="{yy:.0f}" r="6" fill="{color}" opacity=".35"/>'
+            m += f'<circle class="ok" style="animation-delay:{.6 + i * .55:.2f}s" cx="{x + w - 22}" cy="{yy:.0f}" r="6" fill="{color}" opacity=".35"/>'
+        m += f'<rect class="scanb" x="{x - 10}" y="{y}" width="4" height="{h}" rx="2" fill="{a2}" opacity=".9"/>'
+        css = (f'.scanb{{animation:scan 6s cubic-bezier(.5,0,.5,1) infinite}}@keyframes scan{{0%{{transform:translateX(0);opacity:0}}8%{{opacity:.9}}60%{{transform:translateX({w - 30}px);opacity:.9}}70%,100%{{transform:translateX({w - 30}px);opacity:0}}}}'
+               '.ok{animation:ok 6s ease-out infinite}@keyframes ok{0%,100%{opacity:.35}8%,60%{opacity:1}}')
+    elif kind == 'tree':
+        levels = [[.5], [.2, .5, .8], [.08, .26, .42, .58, .74, .92]]
+        pts = []
+        for li, level in enumerate(levels):
+            yy = y + 12 + li * (h - 24) / 2
+            pts.append([(x + w * f, yy) for f in level])
+        for li in range(2):
+            for i, (px, py) in enumerate(pts[li + 1]):
+                parent = pts[li][min(len(pts[li]) - 1, i * len(pts[li]) // len(pts[li + 1]))]
+                m += f'<path d="M{parent[0]:.0f} {parent[1]:.0f}C{parent[0]:.0f} {(parent[1] + py) / 2:.0f} {px:.0f} {(parent[1] + py) / 2:.0f} {px:.0f} {py:.0f}" fill="none" stroke="{a1}" stroke-opacity=".4"/>'
+        k = 0
+        for li, level in enumerate(pts):
+            for px, py in level:
+                m += f'<circle cx="{px:.0f}" cy="{py:.0f}" r="{9 - li * 2}" fill="{C["ink"]}" stroke="{a1 if li < 2 else a2}" stroke-width="2"/>'
+                m += f'<circle class="nd" style="animation-delay:{li * .9 + k * .08:.2f}s" cx="{px:.0f}" cy="{py:.0f}" r="{9 - li * 2}" fill="{a2}" opacity="0"/>'
+                k += 1
+        css = '.nd{animation:node 7s ease-in-out infinite}@keyframes node{0%,100%{opacity:0}6%,22%{opacity:.85}36%{opacity:0}}'
+    elif kind == 'network':
+        hub = (x + w / 2, y + h / 2)
+        sats = [(x + w / 2 + math.cos(a) * w * .38, y + h / 2 + math.sin(a) * h * .42) for a in [i * math.pi / 3 + .3 for i in range(6)]]
+        for i, (px, py) in enumerate(sats):
+            m += f'<path d="M{hub[0]:.0f} {hub[1]:.0f}L{px:.0f} {py:.0f}" stroke="{a1}" stroke-opacity=".35"/>'
+            m += f'<path class="lk" style="animation-delay:-{i * .8:.1f}s" d="M{hub[0]:.0f} {hub[1]:.0f}L{px:.0f} {py:.0f}" stroke="{a2}" stroke-width="2" pathLength="100" stroke-dasharray="10 90"/>'
+            m += f'<circle cx="{px:.0f}" cy="{py:.0f}" r="7" fill="{C["ink"]}" stroke="{a2}" stroke-width="2"/>'
+        m += f'<circle cx="{hub[0]:.0f}" cy="{hub[1]:.0f}" r="16" fill="{a1}" opacity=".3"/><circle cx="{hub[0]:.0f}" cy="{hub[1]:.0f}" r="9" fill="{a1}"/>'
+        css = '.lk{animation:link 4.8s linear infinite}@keyframes link{from{stroke-dashoffset:100}to{stroke-dashoffset:-10}}'
+    elif kind == 'hex':
+        size = 15
+        cols, rows = int(w / (size * 1.8)), 4
+        k = 0
+        for r_ in range(rows):
+            for c_ in range(cols):
+                cx_ = x + 14 + c_ * size * 1.75 + (size * .87 if r_ % 2 else 0)
+                cy_ = y + 16 + r_ * size * 1.5
+                if cx_ > x + w - 10:
+                    continue
+                pts = ' '.join(f'{cx_ + size * math.cos(math.radians(60 * i + 30)):.1f},{cy_ + size * math.sin(math.radians(60 * i + 30)):.1f}' for i in range(6))
+                m += f'<polygon points="{pts}" fill="none" stroke="{a1}" stroke-opacity=".35"/>'
+                m += f'<polygon class="hx" style="animation-delay:{(c_ + r_) * .16:.2f}s" points="{pts}" fill="{a2}" opacity="0"/>'
+                k += 1
+        css = '.hx{animation:hex 6s ease-in-out infinite}@keyframes hex{0%,100%{opacity:0}10%{opacity:.5}24%{opacity:0}}'
+    elif kind == 'page':
+        blocks = [(0, 0, 1, .14, a1), (0, .22, .58, .3, a2), (.64, .22, .36, .3, a1), (0, .6, .31, .4, a2), (.345, .6, .31, .4, a1), (.69, .6, .31, .4, a2)]
+        m += f'<rect x="{x - 6}" y="{y - 6}" width="{w + 12}" height="{h + 12}" rx="12" fill="none" stroke="{a1}" stroke-opacity=".35" stroke-dasharray="4 6"/>'
+        for i, (bx_, by_, bw, bh, col) in enumerate(blocks):
+            m += f'<rect class="pg" style="animation-delay:{i * .45:.2f}s" x="{x + bx_ * w:.0f}" y="{y + by_ * h:.0f}" width="{bw * w:.0f}" height="{bh * h:.0f}" rx="7" fill="{col}" opacity=".45"/>'
+        css = '.pg{animation:pg 9s ease-in-out infinite}@keyframes pg{0%{opacity:.08}8%,70%{opacity:.6}85%,100%{opacity:.08}}'
+    return m, css
+
+
+def project_marker(key, lang, mobile):
+    p = PROJECTS[key]
+    a1, a2 = p['accent']
+    kicker, role = p[lang]
+    w, h = (600, 270) if mobile else (1200, 176)
+    defs = (linear('bg', [(0, C['ink']), (.6, C['indigo']), (1, C['deep'])], x2=1, y2=1) + linear('g', [(0, a1), (1, a2)])
+            + radial('gl', a1, .5) + radial('gl2', a2, .4))
+    motion = '.aur{animation:aur 22s ease-in-out infinite}@keyframes aur{50%{transform:translate(-40px,14px)}}'
+    b = frame(w, h, 22) + '<g clip-path="url(#frame)">'
+    b += (f'<g class="aur"><circle cx="{w * .82:.0f}" cy="{h * .3:.0f}" r="{h * 1.3:.0f}" fill="url(#gl)"/></g>'
+          f'<circle cx="{w * .08:.0f}" cy="{h:.0f}" r="{h:.0f}" fill="url(#gl2)"/>')
+    b += f'<rect x="0" y="0" width="{w}" height="3" fill="url(#g)"/>'
+    if mobile:
+        b += text(24, 92, p['n'], 80, 'none', 800, extra=f'stroke="url(#g)" stroke-width="2"')
+        kl = wrap(kicker, 22)
+        for i, line in enumerate(kl):
+            b += text(140, 50 + i * 24, line, 19, a1, 800, spacing=2)
+        for i, line in enumerate(wrap(role, 34)):
+            b += text(140, 56 + len(kl) * 24 + i * 28, line, 21, C['soft'])
+        mm, css = project_motif(p['motif'], 30, 186, w - 60, 62, a1, a2)
+    else:
+        b += text(40, 134, p['n'], 118, 'none', 800, extra=f'stroke="url(#g)" stroke-width="2"')
+        b += text(40, 134, p['n'], 118, a1, 800, extra='opacity=".08"')
+        b += text(232, 74, kicker, 16, a1, 800, spacing=3.2)
+        b += text(232, 112, role, 21, C['soft'])
+        mm, css = project_motif(p['motif'], 900, 34, 260, 108, a1, a2)
+    b += f'<g>{mm}</g></g>'
+    title = f'{p["n"]} · {kicker}'
+    desc = f'{title}. {role}. ' + ('Decorative project accent.' if lang == 'en' else 'Декоративен акцент на проекта.')
+    return document(w, h, title, desc, b, defs, motion + css)
+
+
+# ---------------------------------------------------------------- architecture
+A = {
+    'en': {'kicker': 'UNDER THE INTERFACE · ARCHITECTURE', 'app': ('SwiftUI app', 'macOS interface'),
+           'engine': ('Node.js engine', 'commands · checks'), 'host': ('Hosting', 'preview · production'),
+           'cmd': 'commands', 'evt': 'NDJSON events',
+           'checks': ['Git', 'Secrets', 'Dependencies', 'Lint', 'Types', 'Build', 'Hosting'],
+           'gate': 'Confirm', 'gate_note': ['changed files →', 'explicit confirmation'],
+           'local': ('LOCAL', 'Project files · Keychain'), 'cloud': ('OPTIONAL CLOUD', 'Supabase · Postgres · Deno Edge Functions'),
+           'bid_title': 'Before I Deploy architecture',
+           'bid_desc': 'Illustration. The SwiftUI app sends commands to a Node.js engine and receives NDJSON events back. The engine runs one chain of checks: Git, secrets, dependencies, lint, types, build and hosting readiness. If project files changed, production needs explicit confirmation before hosting. Project files and Keychain stay local; Supabase, Postgres and Deno Edge Functions are optional cloud services.',
+           'tlr_kicker': 'CONNECTED SYSTEMS · ARCHITECTURE',
+           'discord': ('Discord', 'Gateway · membership'), 'bot': ('Node.js bot', 'discord.js'),
+           'pg': ('Postgres', 'Neon · Drizzle ORM'), 'portal': ('Next.js portal', 'staff operations'),
+           'staff': ('Staff browser', 'Discord sign-in'), 'roles': 'Shared role map', 'roles_m': 'Shared role map · bot + portal',
+           'l1': ['persistent Gateway'], 'l2': ['roster sync'], 'l3': ['authorized actions', 'server-side permissions'],
+           'audit': 'roster · audit records',
+           'tlr_title': 'TLR Police Portal architecture',
+           'tlr_desc': 'Illustration. Discord membership events need a persistent connection, so a separate Node.js bot holds the Gateway connection and synchronises Discord-owned roster fields into Postgres (Neon, Drizzle ORM). The Next.js portal reads the roster and performs authorized management actions after server-side permission checks, writing audit records. Bot and portal share one role map. Staff sign in with Discord.'},
+    'bg': {'kicker': 'ПОД ИНТЕРФЕЙСА · АРХИТЕКТУРА', 'app': ('SwiftUI приложение', 'macOS интерфейс'),
+           'engine': ('Node.js модул', 'команди · проверки'), 'host': ('Хостинг', 'preview · production'),
+           'cmd': 'команди', 'evt': 'NDJSON събития',
+           'checks': ['Git', 'Тайни', 'Зависимости', 'Lint', 'Типове', 'Build', 'Хостинг'],
+           'gate': 'Потвърди', 'gate_note': ['променени файлове →', 'изрично потвърждение'],
+           'local': ('ЛОКАЛНО', 'Файлове на проекта · Keychain'), 'cloud': ('ОБЛАК ПО ИЗБОР', 'Supabase · Postgres · Deno Edge Functions'),
+           'bid_title': 'Архитектура на Before I Deploy',
+           'bid_desc': 'Илюстрация. SwiftUI приложението изпраща команди към Node.js модул и получава обратно NDJSON събития. Модулът изпълнява една верига от проверки: Git, тайни, зависимости, lint, типове, build и готовност на хостинга. Ако файловете на проекта са променени, продукционното публикуване изисква изрично потвърждение. Файловете и Keychain остават локално; Supabase, Postgres и Deno Edge Functions са облачни услуги по избор.',
+           'tlr_kicker': 'СВЪРЗАНИ СИСТЕМИ · АРХИТЕКТУРА',
+           'discord': ('Discord', 'Gateway · членство'), 'bot': ('Node.js бот', 'discord.js'),
+           'pg': ('Postgres', 'Neon · Drizzle ORM'), 'portal': ('Next.js портал', 'действия на екипа'),
+           'staff': ('Служители', 'вход с Discord'), 'roles': 'Обща карта на ролите', 'roles_m': 'Обща карта на ролите · бот + портал',
+           'l1': ['постоянен Gateway'], 'l2': ['синхронизация'], 'l3': ['разрешени действия', 'права на сървъра'],
+           'audit': 'състав · журнал на действията',
+           'tlr_title': 'Архитектура на TLR Police Portal',
+           'tlr_desc': 'Илюстрация. Събитията за членство в Discord изискват постоянна връзка, затова отделен Node.js бот поддържа Gateway връзката и синхронизира данните за състава в Postgres (Neon, Drizzle ORM). Next.js порталът чете състава и изпълнява разрешени действия след проверка на правата на сървъра, като записва журнал. Ботът и порталът използват обща карта на ролите. Служителите влизат с Discord.'},
+}
+
+
+def box(x, y, w, h, title, sub, color, logo=None, title_size=22, compact=False, sub_size=None):
+    out = (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="18" fill="{C["glass"]}" fill-opacity=".92" stroke="{color}" stroke-opacity=".75" stroke-width="1.6"/>'
+           f'<rect x="{x + 16}" y="{y + 18}" width="4" height="{h - 36}" rx="2" fill="{color}"/>')
+    tx = x + 36
+    if logo:
+        lx = x + (48 if compact else 56)
+        out += f'<circle cx="{lx}" cy="{y + h / 2}" r="{19 if compact else 22}" fill="{color}" fill-opacity=".18"/>' + icon(logo, lx - 11, y + h / 2 - 11, 22, color)
+        tx = x + (78 if compact else 92)
+    out += text(tx, y + h / 2 - 4, title, title_size, C['text'], 700)
+    out += text(tx, y + h / 2 + 23, sub, sub_size or (14 if compact else 16), C['muted'])
+    return out
+
+
+def arch_frame(w, h, kicker, color):
+    defs = (linear('bg', [(0, C['ink']), (.6, C['indigo']), (1, C['deep'])], x2=1, y2=1)
+            + radial('ga', C['violet'], .35) + radial('gb', C['cyan'], .28)
+            + '<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#8C85D9" stroke-opacity=".07"/></pattern>')
+    b = frame(w, h, 24) + f'<rect width="{w}" height="{h}" rx="24" fill="url(#grid)"/>'
+    b += f'<g clip-path="url(#frame)"><circle cx="{w * .85:.0f}" cy="{h * .1:.0f}" r="{w * .35:.0f}" fill="url(#ga)"/><circle cx="{w * .1:.0f}" cy="{h * .95:.0f}" r="{w * .3:.0f}" fill="url(#gb)"/></g>'
+    b += f'<rect x="40" y="38" width="28" height="4" rx="2" fill="{color}"/>' + text(80, 46, kicker, 14, C['lilac2'], 700, spacing=3)
+    return defs, b
+
+
+def flow_dashes(d, color, dur, width=2, dash='8 10', reverse=False, extra=''):
+    return (f'<path d="{d}" fill="none" stroke="{color}" stroke-opacity=".25" stroke-width="{width}"/>'
+            f'<path class="live" d="{d}" fill="none" stroke="{color}" stroke-width="{width}" stroke-dasharray="{dash}" stroke-linecap="round" '
+            f'style="animation:flow {dur}s linear infinite{" reverse" if reverse else ""}" {extra}/>'
+            f'<path class="still" d="{d}" fill="none" stroke="{color}" stroke-width="{width}" stroke-dasharray="{dash}" stroke-linecap="round"/>')
+
+
+def arch_bid(lang, mobile):
+    t = A[lang]
+    period = 10.0
+    if mobile:
+        w, h = 600, 1190
+        defs, b = arch_frame(w, h, t['kicker'], C['violet'])
+        b += box(40, 80, 520, 86, *t['app'], C['violet'], 'swift', title_size=26, sub_size=19)
+        b += flow_dashes('M262 166V262', C['lilac'], 1.6) + flow_dashes('M338 262V166', C['pink'], 1.6, 5, '1 14')
+        b += text(248, 220, t['cmd'], 18, C['lilac2'], anchor='end', mono=True) + text(352, 220, t['evt'], 18, C['pink'], mono=True)
+        b += box(40, 262, 520, 86, *t['engine'], C['cyan'], 'nodedotjs', title_size=26, sub_size=19)
+        path, xs = 'M300 348V390H110V930', [420 + i * 62 for i in range(7)]
+        lens = [42 + 190 + (y - 390) for y in xs]
+        total, gate_d = 42 + 190 + 540, 42 + 190 + 470
+        b += f'<path d="M300 348V390H110V930" fill="none" stroke="url(#chain)" stroke-width="2.4" opacity=".55"/>'
+        for i, (y, label) in enumerate(zip(xs, t['checks'])):
+            delay = period * .8 * lens[i] / total
+            b += (f'<circle cx="110" cy="{y}" r="9" fill="{C["ink"]}" stroke="{C["lilac"]}" stroke-width="2"/>'
+                  f'<circle class="ring" style="animation-delay:{delay:.2f}s" cx="110" cy="{y}" r="15" fill="none" stroke="{C["mint2"]}" stroke-width="2.4"/>')
+            b += text(142, y + 8, label, 23, C['soft'])
+        b += (f'<rect class="gate" x="30" y="840" width="160" height="40" rx="20" fill="{C["ink"]}" stroke="{C["amber"]}" stroke-width="2" '
+              f'style="animation-delay:{period * .8 * gate_d / total:.2f}s"/>') + text(110, 866, t['gate'], 17, C['amber'], 700, anchor='middle')
+        b += text(204, 854, t['gate_note'][0], 18, C['amber']) + text(204, 878, t['gate_note'][1], 18, '#FDE68A')
+        b += box(40, 930, 520, 86, *t['host'], C['mint'], title_size=26, sub_size=19)
+        b += (f'<rect x="40" y="1040" width="250" height="104" rx="16" fill="none" stroke="{C["lilac"]}" stroke-opacity=".5" stroke-dasharray="5 6"/>'
+              + text(60, 1070, t['local'][0], 15, C['lilac2'], 700, spacing=2) + ''.join(text(60, 1098 + i * 24, s, 18, C['soft']) for i, s in enumerate(wrap(t['local'][1], 20))))
+        b += (f'<rect x="310" y="1040" width="250" height="104" rx="16" fill="none" stroke="{C["cyan"]}" stroke-opacity=".5" stroke-dasharray="5 6"/>'
+              + text(330, 1070, t['cloud'][0], 15, C['cyan'], 700, spacing=2) + ''.join(text(330, 1098 + i * 24, s, 18, C['soft']) for i, s in enumerate(wrap(t['cloud'][1], 20))))
+        b += text(w / 2, h - 20, T[lang]['illus'], 16, C['muted'], anchor='middle')
+    else:
+        w, h = 1200, 500
+        defs, b = arch_frame(w, h, t['kicker'], C['violet'])
+        b += box(48, 96, 270, 96, *t['app'], C['violet'], 'swift')
+        b += box(465, 96, 270, 96, *t['engine'], C['cyan'], 'nodedotjs')
+        b += box(882, 96, 270, 96, *t['host'], C['mint'])
+        b += flow_dashes('M318 128H465', C['lilac'], 1.6) + flow_dashes('M465 162H318', C['pink'], 1.6, 5, '1 14')
+        b += text(391, 118, t['cmd'], 13, C['lilac2'], anchor='middle', mono=True) + text(391, 186, t['evt'], 13, C['pink'], anchor='middle', mono=True)
+        path, xs = 'M600 192V246H150V300H1017V192', [150 + i * 112 for i in range(7)]
+        lens = [54 + 450 + 54 + (x - 150) for x in xs]
+        total, gate_d = 54 + 450 + 54 + 867 + 108, 54 + 450 + 54 + 867
+        b += f'<path d="{path}" fill="none" stroke="url(#chain)" stroke-width="2.4" opacity=".55"/>'
+        for i, (x, label) in enumerate(zip(xs, t['checks'])):
+            delay = period * .8 * lens[i] / total
+            b += (f'<circle cx="{x}" cy="300" r="9" fill="{C["ink"]}" stroke="{C["lilac"]}" stroke-width="2"/>'
+                  f'<circle class="ring" style="animation-delay:{delay:.2f}s" cx="{x}" cy="300" r="15" fill="none" stroke="{C["mint2"]}" stroke-width="2.4"/>')
+            b += text(x, 340, label, 16, C['soft'], anchor='middle')
+        b += (f'<rect class="gate" x="947" y="280" width="140" height="40" rx="20" fill="{C["ink"]}" stroke="{C["amber"]}" stroke-width="2" '
+              f'style="animation-delay:{period * .8 * gate_d / total:.2f}s"/>') + text(1017, 306, t['gate'], 17, C['amber'], 700, anchor='middle')
+        b += text(1017, 346, t['gate_note'][0], 14, C['amber'], anchor='middle') + text(1017, 366, t['gate_note'][1], 14, '#FDE68A', anchor='middle')
+        b += f'<path d="M654 192V392" stroke="{C["cyan"]}" stroke-opacity=".5" stroke-dasharray="4 6"/>'
+        b += (f'<rect x="48" y="392" width="380" height="68" rx="16" fill="none" stroke="{C["lilac"]}" stroke-opacity=".5" stroke-dasharray="5 6"/>'
+              + text(68, 418, t['local'][0], 12, C['lilac2'], 700, spacing=2.4) + text(68, 444, t['local'][1], 17, C['soft']))
+        b += (f'<rect x="470" y="392" width="682" height="68" rx="16" fill="none" stroke="{C["cyan"]}" stroke-opacity=".5" stroke-dasharray="5 6"/>'
+              + text(490, 418, t['cloud'][0], 12, C['cyan'], 700, spacing=2.4) + text(490, 444, t['cloud'][1], 17, C['soft']))
+        b += text(w - 40, h - 14, T[lang]['illus'], 13, C['muted'], anchor='end')
+    defs += linear('chain', [(0, C['violet']), (.6, C['cyan']), (1, C['amber'])], x2=1, y2=1 if mobile else 0)
+    b += (f'<g class="live"><g><circle r="16" fill="{C["cyan"]}" opacity=".25"/><circle r="6" fill="#E9FDFF"/>'
+          f'<animateMotion dur="{period}s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.8;1" calcMode="linear" path="{path}"/></g></g>')
+    motion = ('@keyframes flow{to{stroke-dashoffset:-36}}'
+              f'.ring{{opacity:.15;animation:lit {period}s ease-out infinite}}@keyframes lit{{0%{{opacity:1}}30%{{opacity:.7}}75%,100%{{opacity:.15}}}}'
+              f'.gate{{animation:gate {period}s ease-out infinite}}@keyframes gate{{0%{{stroke-width:5;fill:#3A2A06}}25%,100%{{stroke-width:2;fill:{C["ink"]}}}}}')
+    return document(w, h, t['bid_title'], t['bid_desc'], b, defs, motion)
+
+
+def packet(x1, y1, x2, y2, color, dur, delay, name):
+    dx, dy = x2 - x1, y2 - y1
+    css = (f'.{name}{{animation:{name} {dur}s cubic-bezier(.5,0,.5,1) infinite;animation-delay:{delay}s}}'
+           f'@keyframes {name}{{0%{{transform:translate(0,0);opacity:0}}5%{{opacity:1}}35%{{transform:translate({dx}px,{dy}px);opacity:1}}42%,100%{{transform:translate({dx}px,{dy}px);opacity:0}}}}')
+    el = f'<g class="live"><g class="{name}"><circle cx="{x1}" cy="{y1}" r="13" fill="{color}" opacity=".25"/><circle cx="{x1}" cy="{y1}" r="5.5" fill="#F4FBFF"/></g></g>'
+    return el, css
+
+
+def shield(x, y, color, cls=''):
+    return (f'<g transform="translate({x - 13} {y - 15})"><path class="{cls}" d="M13 0l13 5v9c0 8-6 14-13 16C6 28 0 22 0 14V5z" fill="{C["ink"]}" stroke="{color}" stroke-width="2"/>'
+            f'<path d="M8 15l4 4 7-8" fill="none" stroke="{color}" stroke-width="2.4" stroke-linecap="round"/></g>')
+
+
+def arch_tlr(lang, mobile):
+    t = A[lang]
+    blurple = '#5865F2'
+    css = '@keyframes flow{to{stroke-dashoffset:-36}}.sh{animation:sh 6s ease-out infinite;animation-delay:3.4s}@keyframes sh{0%{stroke-width:5}30%,100%{stroke-width:2}}'
+    if not mobile:
+        w, h = 1200, 470
+        defs, b = arch_frame(w, h, t['tlr_kicker'], C['cyan'])
+        b += f'<rect x="400" y="70" width="400" height="52" rx="26" fill="{C["ink"]}" stroke="{C["lilac"]}" stroke-opacity=".7" stroke-dasharray="6 6"/>'
+        b += text(600, 103, t['roles'], 18, C['lilac2'], 700, anchor='middle')
+        b += f'<path d="M455 122V170M800 96H1035V170" fill="none" stroke="{C["lilac"]}" stroke-opacity=".55" stroke-dasharray="4 6"/>'
+        xs = [40, 330, 620, 910]
+        for x, spec, col, logo in zip(xs, [t['discord'], t['bot'], t['pg'], t['portal']], [blurple, C['violet'], '#4F7BFF', C['cyan']],
+                                      ['discord', 'nodedotjs', 'postgresql', 'nextdotjs']):
+            b += box(x, 170, 250, 96, *spec, col, logo, 19, compact=True)
+        b += box(910, 352, 250, 76, *t['staff'], C['mint'], None, 19)
+        b += flow_dashes('M290 218H330', blurple, 1.2, 3, '6 8')
+        b += f'<path d="M580 210H620" stroke="{C["violet"]}" stroke-opacity=".5" stroke-width="2"/>'
+        b += f'<path d="M910 206H870" stroke="{C["cyan"]}" stroke-opacity=".5" stroke-width="2"/>'
+        b += flow_dashes('M870 236H910', C['mint'], 2.2, 1.5, '3 7')
+        b += flow_dashes('M1035 352V266', C['mint'], 2.4, 1.5, '3 7')
+        b += shield(890, 196, C['amber'], 'sh')
+        p1, c1 = packet(580, 210, 620, 210, C['violet'], 5, 0, 'pk1')
+        p2, c2 = packet(910, 206, 870, 206, C['cyan'], 6, 2.2, 'pk2')
+        b += p1 + p2
+        css += c1 + c2
+        for cx_, lines, col in [(310, t['l1'], blurple), (600, t['l2'], C['lilac2']), (890, t['l3'], C['amber'])]:
+            for i, line in enumerate(lines):
+                b += text(cx_, 300 + i * 20, line, 14, col if i == 0 else '#FDE68A', anchor='middle', mono=True)
+        b += text(745, 344, t['audit'], 14, C['muted'], anchor='middle')
+        b += text(w - 40, h - 14, T[lang]['illus'], 13, C['muted'], anchor='end')
+    else:
+        w, h = 600, 1080
+        defs, b = arch_frame(w, h, t['tlr_kicker'], C['cyan'])
+        ys = [86, 262, 438, 614]
+        specs = [(t['discord'], blurple, 'discord'), (t['bot'], C['violet'], 'nodedotjs'), (t['pg'], '#4F7BFF', 'postgresql'), (t['portal'], C['cyan'], 'nextdotjs')]
+        for y, (spec, col, logo) in zip(ys, specs):
+            b += box(40, y, 520, 90, *spec, col, logo, title_size=26, sub_size=19)
+        b += flow_dashes('M300 176V262', blurple, 1.2, 3, '6 8')
+        b += f'<path d="M300 352V438" stroke="{C["violet"]}" stroke-opacity=".5" stroke-width="2"/>'
+        b += f'<path d="M280 614V528" stroke="{C["cyan"]}" stroke-opacity=".5" stroke-width="2"/>'
+        b += flow_dashes('M330 528V614', C['mint'], 2.2, 1.5, '3 7')
+        b += shield(280, 572, C['amber'], 'sh')
+        p1, c1 = packet(300, 352, 300, 438, C['violet'], 5, 0, 'pk1')
+        p2, c2 = packet(280, 614, 280, 528, C['cyan'], 6, 2.2, 'pk2')
+        b += p1 + p2
+        css += c1 + c2
+        b += text(322, 226, t['l1'][0], 18, '#8C9EFF', mono=True)
+        b += text(322, 402, t['l2'][0], 18, C['lilac2'], mono=True)
+        b += text(352, 564, t['l3'][0], 18, C['amber'], mono=True) + text(352, 590, t['l3'][1], 18, '#FDE68A', mono=True)
+        b += flow_dashes('M300 790V704', C['mint'], 2.4, 1.5, '3 7')
+        b += box(40, 790, 520, 86, *t['staff'], C['mint'], title_size=26, sub_size=19)
+        b += f'<rect x="40" y="910" width="520" height="64" rx="32" fill="{C["ink"]}" stroke="{C["lilac"]}" stroke-opacity=".7" stroke-dasharray="6 6"/>'
+        b += text(300, 950, t['roles_m'], 20, C['lilac2'], 700, anchor='middle')
+        b += text(300, 1012, t['audit'], 18, C['muted'], anchor='middle')
+        b += text(w / 2, h - 20, T[lang]['illus'], 16, C['muted'], anchor='middle')
+    return document(w, h, t['tlr_title'], t['tlr_desc'], b, defs, css)
+
+
+# ---------------------------------------------------------------- technology
+GROUPS = {
+    'tools': ('violet', {'en': 'Additional Tools & Interests', 'bg': 'Допълнителни инструменти и интереси'}),
+    'languages': ('pink', {'en': 'Wider Programming Language Ecosystem', 'bg': 'Други програмни езици'}),
+    'web': ('cyan', {'en': 'Web & Application Ecosystem', 'bg': 'Уеб технологии и приложения'}),
+    'data': ('mint', {'en': 'Data, Infrastructure & Delivery', 'bg': 'Данни, инфраструктура и публикуване'}),
+    'games': ('amber', {'en': 'Games, Communities & AI', 'bg': 'Игри, общности и AI'}),
+}
+TS = {
+    'en': {'count': '{n} technologies', 'legend': 'used in the featured products', 'used_title': 'Used in the featured products',
+           'used_sub': 'Verified in the inspected implementations. The same tools carry a mint ring in the panels below.',
+           'kinds': {'bid': 'native macOS app', 'police': 'web portal + Discord bot', 'community': 'React frontend · source showcase',
+                     'client': 'client website', 'space': 'browser experiment'},
+           'names': {'community': 'Community platform'}, 'group_desc': 'Interests and possible project choices: {names}.'},
+    'bg': {'count': '{n} технологии', 'legend': 'използвано в представените проекти', 'used_title': 'Използвано в представените проекти',
+           'used_sub': 'Проверено в прегледаните реализации. Същите инструменти имат ментов кръг в панелите по-долу.',
+           'kinds': {'bid': 'нативно macOS приложение', 'police': 'уеб портал + Discord бот', 'community': 'React интерфейс · преглед на кода',
+                     'client': 'клиентски сайт', 'space': 'браузърен експеримент'},
+           'names': {'community': 'Общностна платформа'}, 'group_desc': 'Интереси и възможни избори: {names}.'},
+}
+
+
+def shape(w, h, variant):
+    cut = 46
+    if variant == 0:
+        return f'M24 0H{w - cut}L{w} {cut}V{h - 24}Q{w} {h} {w - 24} {h}H24Q0 {h} 0 {h - 24}V24Q0 0 24 0Z'
+    if variant == 1:
+        return f'M40 0H{w - 40}Q{w} 0 {w} 40V{h - 40}Q{w} {h} {w - 40} {h}H40Q0 {h} 0 {h - 40}V40Q0 0 40 0Z'
+    if variant == 2:
+        return f'M{cut} 0H{w - 24}Q{w} 0 {w} 24V{h - cut}L{w - cut} {h}H24Q0 {h} 0 {h - 24}V{cut}Z'
+    if variant == 3:
+        return f'M24 0H{w - 24}Q{w} 0 {w} 24V{h - 24}Q{w} {h} {w - 24} {h}H{cut}L0 {h - cut}V24Q0 0 24 0Z'
+    return f'M24 0H{w * .62:.0f}L{w * .62 + 30:.0f} 22H{w - 24}Q{w} 22 {w} 46V{h - 24}Q{w} {h} {w - 24} {h}H24Q0 {h} 0 {h - 24}V24Q0 0 24 0Z'
+
+
+def logo_tile(item, x, y, size):
+    """Badge-style tile: original badge colour as background, original logo colour."""
+    out = (f'<rect x="{x}" y="{y}" width="{size}" height="{size}" rx="{size * .25:.0f}" fill="{item["tile"]}"/>'
+           f'<rect x="{x}" y="{y}" width="{size}" height="{size}" rx="{size * .25:.0f}" fill="url(#shine)"/>'
+           f'<rect x="{x + .75}" y="{y + .75}" width="{size - 1.5}" height="{size - 1.5}" rx="{size * .25:.0f}" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="1.5"/>')
+    if item.get('icon'):
+        s = size * .5
+        out += icon(item['icon'], x + (size - s) / 2, y + (size - s) / 2, s, item['ink'])
+    else:
+        mono = item['monogram']
+        fs = size * (.36 if len(mono) <= 2 else .3 if len(mono) == 3 else .25)
+        out += text(x + size / 2, y + size / 2 + fs * .36, mono, round(fs), item['ink'], 800, anchor='middle')
+    return out
+
+
+def stack_group(group, variant, lang, mobile):
+    accent, titles = GROUPS[group]
+    a1, a2 = ACCENTS[accent]
+    items = [i for i in TECH['technologies'] if i['group'] == group]
+    n = len(items)
+    w = 600 if mobile else 1200
+    cell_w, cell_h, tile, gap = (134, 178, 96, 8) if mobile else (128, 150, 86, 12)
+    if mobile:
+        cols = 4
+    else:
+        rows_ = math.ceil(n / 8)
+        cols = math.ceil(n / rows_)
+    rows = math.ceil(n / cols)
+    title = titles[lang]
+    title_lines = wrap(title, 24) if mobile else [title]
+    head = (118 if mobile else 106) + (len(title_lines) - 1) * 38 + (40 if mobile and any(i['featured'] for i in items) else 0)
+    h = head + rows * cell_h + 34
+    step = .62
+    defs = (linear('g', [(0, a1), (1, a2)]) + radial('au1', a1, .42) + radial('au2', a2, .32)
+            + linear('bg', [(0, C['ink']), (.65, C['indigo']), (1, C['deep'])], x2=1, y2=1)
+            + linear('shine', [(0, '#fff', .28), (.5, '#fff', .04), (1, '#000', .12)], x2=0, y2=1)
+            + f'<clipPath id="panel"><path d="{shape(w, h, variant)}"/></clipPath>')
+    motion = (f'.aur{{animation:aur 26s ease-in-out infinite}}.aur2{{animation:aur 34s ease-in-out infinite reverse}}@keyframes aur{{50%{{transform:translate(-80px,30px)}}}}'
+              f'.contour{{animation:contour 18s linear infinite}}@keyframes contour{{to{{stroke-dashoffset:-1000}}}}'
+              f'.seq{{opacity:0;animation:seq {n * step:.2f}s ease-in-out infinite}}'
+              f'@keyframes seq{{0%{{opacity:0}}{100 / n * .6:.2f}%{{opacity:1}}{100 / n * 2.2:.2f}%,100%{{opacity:0}}}}')
+    b = f'<path d="{shape(w, h, variant)}" fill="url(#bg)"/>'
+    b += (f'<g clip-path="url(#panel)"><g class="aur"><circle cx="{w * .85:.0f}" cy="{h * .15:.0f}" r="{max(w, h) * .45:.0f}" fill="url(#au1)"/></g>'
+          f'<g class="aur2"><circle cx="{w * .12:.0f}" cy="{h * .9:.0f}" r="{max(w, h) * .38:.0f}" fill="url(#au2)"/></g></g>')
+    b += f'<path d="{shape(w, h, variant)}" fill="none" stroke="url(#g)" stroke-opacity=".55" stroke-width="1.5"/>'
+    b += (f'<path class="live contour" d="{shape(w, h, variant)}" fill="none" stroke="#fff" stroke-width="2.5" pathLength="1000" stroke-dasharray="60 440" stroke-linecap="round"/>')
+    x0 = 32 if mobile else 48
+    b += text(x0, 52, TS[lang]['count'].format(n=n).upper(), 18 if mobile else 13, a1, 800, spacing=2.4)
+    for i, line in enumerate(title_lines):
+        b += text(x0, (98 if mobile else 92) + i * 38, line, 33 if mobile else 31, C['text'], 800)
+    if any(i['featured'] for i in items):
+        lx, ly = (x0 + 12, head - 22) if mobile else (w - 48, 52)
+        legend = TS[lang]['legend']
+        if mobile:
+            b += f'<circle cx="{lx}" cy="{ly - 7}" r="11" fill="none" stroke="{C["mint"]}" stroke-width="3"/>' + text(lx + 22, ly, legend, 19, C['soft'])
+        else:
+            b += f'<circle cx="{lx - len(legend) * 6.9 - 16:.0f}" cy="{ly - 5}" r="9" fill="none" stroke="{C["mint"]}" stroke-width="2.5"/>' + text(lx, ly, legend, 15, C['soft'], anchor='end')
+    grid_w = cols * cell_w + (cols - 1) * gap
+    for idx, item in enumerate(items):
+        r_, c_ = divmod(idx, cols)
+        in_row = min(cols, n - r_ * cols)
+        row_w = in_row * cell_w + (in_row - 1) * gap
+        sx = (w - row_w) / 2 if not mobile else (w - grid_w) / 2
+        cx_ = sx + c_ * (cell_w + gap) + cell_w / 2
+        ty = head + r_ * cell_h + 10
+        tx = cx_ - tile / 2
+        if item['featured']:
+            b += f'<rect x="{tx - 6}" y="{ty - 6}" width="{tile + 12}" height="{tile + 12}" rx="{tile * .3:.0f}" fill="none" stroke="{C["mint"]}" stroke-width="2.5"/>'
+        b += logo_tile(item, tx, ty, tile)
+        b += (f'<rect class="live seq" style="animation-delay:{idx * step:.2f}s" x="{tx - 4}" y="{ty - 4}" width="{tile + 8}" height="{tile + 8}" '
+              f'rx="{tile * .28:.0f}" fill="#fff" fill-opacity=".14" stroke="#fff" stroke-width="2.5"/>')
+        if mobile:
+            parts = item['name'].split(' ', 1) if len(item['name']) > 10 and ' ' in item['name'] else [item['name']]
+            for j, part in enumerate(parts):
+                b += text(cx_, ty + tile + 30 + j * 22, part, 19, C['soft'], 600, anchor='middle')
+        else:
+            b += text(cx_, ty + tile + 30, item['name'], 15 if len(item['name']) < 13 else 14, C['soft'], 600, anchor='middle')
+    names = ', '.join(i['name'] + (' (featured)' if i['featured'] else '') for i in items)
+    desc = TS[lang]['group_desc'].format(names=names)
+    return document(w, h, f'{title} — {n}', desc, b, defs, motion)
+
+
+def stack_used(lang, mobile):
+    w = 600 if mobile else 1200
+    tile, cell_w, cell_h = (92, 134, 166) if mobile else (78, 118, 132)
+    products = TECH['products']
+    rows = []
+    m_title = wrap(TS[lang]['used_title'], 26)
+    m_sub = wrap(TS[lang]['used_sub'], 46)[:3]
+    y = 150 if not mobile else 98 + len(m_title) * 34 + len(m_sub) * 24 + 24
+    for p in products:
+        n = len(p['items'])
+        if mobile:
+            per = 4
+            r = math.ceil(n / per)
+            rows.append((p, y, r))
+            y += 78 + r * cell_h + 12
+        else:
+            rows.append((p, y, 1))
+            y += cell_h + 16
+    h = y + 24
+    defs = (linear('bg', [(0, C['night']), (.5, '#141046'), (1, C['deep'])], x2=1, y2=1)
+            + linear('g', [(0, C['violet']), (.5, C['cyan']), (1, C['mint'])])
+            + radial('au1', C['violet'], .4) + radial('au2', C['mint'], .3))
+    for p in products:
+        for it in p['items']:
+            col = ICONS[it[1]]['hex'] if it[1] else it[2]
+            gid = 'h' + col.strip('#')
+            if gid not in defs:
+                defs += radial(gid, col if col != '#000000' else '#9CA3AF', .55)
+    total = sum(len(p['items']) for p in products)
+    step = .45
+    motion = (f'.aur{{animation:aur 28s ease-in-out infinite}}@keyframes aur{{50%{{transform:translate(-90px,40px)}}}}'
+              f'.seq{{opacity:0;animation:seq {total * step:.2f}s ease-in-out infinite}}'
+              f'@keyframes seq{{0%{{opacity:0}}{100 / total * .7:.2f}%{{opacity:1}}{100 / total * 3:.2f}%,100%{{opacity:0}}}}')
+    b = frame(w, h, 30) + '<g clip-path="url(#frame)">'
+    b += f'<g class="aur"><circle cx="{w * .8:.0f}" cy="{h * .1:.0f}" r="{w * .5:.0f}" fill="url(#au1)"/></g><circle cx="{w * .1:.0f}" cy="{h:.0f}" r="{w * .45:.0f}" fill="url(#au2)"/>'
+    b += f'<rect x="0" y="0" width="{w}" height="4" fill="url(#g)"/>'
+    x0 = 32 if mobile else 48
+    b += text(x0, 58, 'VERIFIED · IN USE' if lang == 'en' else 'ПРОВЕРЕНО · В УПОТРЕБА', 17 if mobile else 13, C['mint'], 800, spacing=2.4)
+    if mobile:
+        for i, line in enumerate(m_title):
+            b += text(x0, 98 + i * 34, line, 29, C['text'], 800)
+        sub_y = 98 + len(m_title) * 34 - 4
+        for i, line in enumerate(m_sub):
+            b += text(x0, sub_y + i * 24, line, 18, C['muted'])
+    else:
+        b += text(x0, 98, TS[lang]['used_title'], 32, C['text'], 800)
+        b += text(x0, 128, TS[lang]['used_sub'], 16, C['muted'])
+    k = 0
+    for p, y, r in rows:
+        color = PRODUCT_COLORS.get(p['key'], C['lilac'])
+        name = TS[lang]['names'].get(p['key'], p['name'])
+        kind = TS[lang]['kinds'][p['key']]
+        if mobile:
+            b += f'<circle cx="{x0 + 8}" cy="{y + 18}" r="8" fill="{color}"/>' + text(x0 + 26, y + 26, name, 25, C['text'], 800)
+            b += text(x0 + 26, y + 54, kind, 18, C['muted'])
+            ty0, sx = y + 78, (w - 4 * cell_w) / 2
+        else:
+            b += f'<circle cx="{x0 + 7}" cy="{y + 34}" r="7" fill="{color}"/>' + text(x0 + 24, y + 41, name, 21, C['text'], 800)
+            b += text(x0 + 24, y + 66, kind, 14, C['muted'])
+            b += f'<path d="M{x0} {y + cell_h + 4}H{w - x0}" stroke="#fff" stroke-opacity=".07"/>'
+            ty0, sx = y + 4, 330
+        for i, it in enumerate(p['items']):
+            rr, cc = divmod(i, 4) if mobile else (0, i)
+            cx_ = sx + cc * cell_w + cell_w / 2
+            ty = ty0 + rr * cell_h
+            tx = cx_ - tile / 2
+            col = ICONS[it[1]]['hex'] if it[1] else it[2]
+            ink = '#FFFFFF' if col in ('#000000',) else col
+            b += f'<circle cx="{cx_}" cy="{ty + tile / 2}" r="{tile * .78:.0f}" fill="url(#h{col.strip("#")})" opacity=".55"/>'
+            b += (f'<rect x="{tx}" y="{ty}" width="{tile}" height="{tile}" rx="{tile * .28:.0f}" fill="#0E0B2C" fill-opacity=".9" stroke="{ink}" stroke-opacity=".55" stroke-width="1.5"/>')
+            if it[1]:
+                b += icon(it[1], tx + tile * .24, ty + tile * .24, tile * .52, ink)
+            else:
+                mono = it[3]
+                b += text(cx_, ty + tile / 2 + 7, mono, 19 if len(mono) <= 3 else 16, ink, 800, anchor='middle')
+            b += (f'<rect class="live seq" style="animation-delay:{k * step:.2f}s" x="{tx - 4}" y="{ty - 4}" width="{tile + 8}" height="{tile + 8}" '
+                  f'rx="{tile * .3:.0f}" fill="{ink}" fill-opacity=".16" stroke="{ink}" stroke-width="2.5"/>')
+            if mobile:
+                parts = it[0].split(' ', 1) if len(it[0]) > 10 and ' ' in it[0] else [it[0]]
+                for j, part in enumerate(parts):
+                    b += text(cx_, ty + tile + 28 + j * 21, part, 18, C['soft'], 600, anchor='middle')
+            else:
+                b += text(cx_, ty + tile + 24, it[0], 13 if len(it[0]) > 11 else 14, C['soft'], 600, anchor='middle')
+            k += 1
+    b += '</g>'
+    desc = '; '.join(f"{TS[lang]['names'].get(p['key'], p['name'])}: " + ', '.join(i[0] for i in p['items']) for p in products)
+    return document(w, h, TS[lang]['used_title'], desc, b, defs, motion)
+
+
+# ---------------------------------------------------------------- process
+P = {
+    'en': {'kicker': 'PROCESS · 5 STEPS', 'title': 'From idea to working product',
+           'steps': [('Discover', 'Understand your goals, users and requirements'), ('Design', 'Define the interface, architecture and scope'),
+                     ('Build', 'Develop features and connect the systems'), ('Validate', 'Test behavior, fix issues and check readiness'),
+                     ('Launch', 'Deploy, document and plan the next improvements')]},
+    'bg': {'kicker': 'ПРОЦЕС · 5 СТЪПКИ', 'title': 'От идея до работещ продукт',
+           'steps': [('Проучване', 'Цели, потребители и изисквания'), ('Дизайн', 'Интерфейс, архитектура и обхват'),
+                     ('Разработка', 'Функции и интеграции'), ('Проверка', 'Поведение, грешки и готовност'),
+                     ('Публикуване', 'Публикуване, документация и следващи подобрения')]},
+}
+STEP_COLORS = [C['violet'], C['pink'], C['cyan'], C['mint'], C['amber']]
+
+
+def process(lang, mobile):
+    t = P[lang]
+    period = 12.0
+    defs = (linear('bg', [(0, C['ink']), (.6, '#160F42'), (1, C['deep'])], x2=1, y2=1)
+            + linear('rib', [(0, C['violet']), (.25, C['pink']), (.5, C['cyan']), (.75, C['mint']), (1, C['amber'])], x2=1 if not mobile else 0, y2=0 if not mobile else 1)
+            + radial('au', C['violet'], .35) + ''.join(radial(f's{i}', c, .6) for i, c in enumerate(STEP_COLORS)))
+    if mobile:
+        w, h = 600, 1090
+        pts = [(80, 150 + i * 190) for i in range(5)]
+        path = f'M80 150V{150 + 4 * 190}'
+    else:
+        w, h = 1200, 440
+        pts = [(130 + i * 235, 170 if i % 2 == 0 else 236) for i in range(5)]
+        path = f'M{pts[0][0]} {pts[0][1]}' + ''.join(
+            f'C{a[0] + 110} {a[1]} {b_[0] - 110} {b_[1]} {b_[0]} {b_[1]}' for a, b_ in zip(pts, pts[1:]))
+    motion = (f'.st{{animation:st {period}s ease-out infinite}}@keyframes st{{0%{{opacity:.95;transform:scale(1.25)}}20%{{opacity:.35;transform:scale(1)}}100%{{opacity:.35;transform:scale(1)}}}}'
+              '.aur{animation:aur 30s ease-in-out infinite}@keyframes aur{50%{transform:translate(60px,-30px)}}')
+    b = frame(w, h, 28) + '<g clip-path="url(#frame)">'
+    b += f'<g class="aur"><circle cx="{w * .5:.0f}" cy="{h * .5:.0f}" r="{max(w, h) * .45:.0f}" fill="url(#au)"/></g>'
+    b += text(40 if not mobile else 32, 52, t['kicker'], 18 if mobile else 13, C['lilac2'], 800, spacing=2.4)
+    b += f'<path d="{path}" fill="none" stroke="url(#rib)" stroke-width="10" stroke-opacity=".18" stroke-linecap="round"/>'
+    b += f'<path d="{path}" fill="none" stroke="url(#rib)" stroke-width="2.5" stroke-linecap="round"/>'
+    for i, ((x, y), (name, desc)) in enumerate(zip(pts, t['steps'])):
+        col = STEP_COLORS[i]
+        b += (f'<circle class="live st" style="animation-delay:{i * period * .8 / 4:.2f}s;transform-box:fill-box;transform-origin:center" cx="{x}" cy="{y}" r="58" fill="url(#s{i})"/>'
+              f'<circle class="still" cx="{x}" cy="{y}" r="58" fill="url(#s{i})" opacity=".35"/>'
+              f'<circle cx="{x}" cy="{y}" r="34" fill="{C["ink"]}" stroke="{col}" stroke-width="2.5"/>')
+        b += text(x, y + 8, f'{i + 1:02d}', 21, col, 800, anchor='middle')
+        if mobile:
+            b += text(140, y - 8, name, 28, C['text'], 800)
+            for j, line in enumerate(wrap(desc, 28)):
+                b += text(140, y + 24 + j * 26, line, 20, C['soft'])
+        else:
+            ty = y + 72
+            b += text(x, ty, name, 21, C['text'], 800, anchor='middle')
+            for j, line in enumerate(wrap(desc, 22)):
+                b += text(x, ty + 26 + j * 21, line, 15, C['soft'], anchor='middle')
+    b += (f'<g class="live"><g><circle r="18" fill="#fff" opacity=".18"/><circle r="6" fill="#fff"/>'
+          f'<animateMotion dur="{period}s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.8;1" calcMode="linear" path="{path}"/></g></g>')
+    b += '</g>'
+    desc = '; '.join(f'{i + 1:02d} {n}: {d}' for i, (n, d) in enumerate(t['steps']))
+    return document(w, h, t['title'], desc, b, defs, motion)
+
+
+# ---------------------------------------------------------------- finale & footer
+F = {
+    'en': {'status': 'AVAILABLE FOR PAID PROJECTS', 'head': 'What should we build next?',
+           'sub': 'A website, a custom tool, a bot or your next big idea.',
+           'sub2': 'Send the idea, main features, timeline and budget range — we define the scope together.',
+           'labels': ['EMAIL', 'DISCORD', 'INSTAGRAM'],
+           'title': 'Contact Yavor', 'words': ['WEBSITES', 'SOFTWARE', 'BOTS', 'GAMES', 'AUTOMATION'],
+           'tag': 'Your idea. A clear plan. Software that works.', 'steps': 'BUILD · TEST · VERIFY · DEPLOY · IMPROVE'},
+    'bg': {'status': 'ПРИЕМАМ ПЛАТЕНИ ПРОЕКТИ', 'head': 'Какво да създадем следващо?',
+           'sub': 'Сайт, инструмент, бот или следващата ви идея.',
+           'sub2': 'Изпратете идеята, основните функции, срока и бюджета — ще уточним обхвата заедно.',
+           'labels': ['ИМЕЙЛ', 'DISCORD', 'INSTAGRAM'],
+           'title': 'Контакт с Явор', 'words': ['САЙТОВЕ', 'СОФТУЕР', 'БОТОВЕ', 'ИГРИ', 'АВТОМАТИЗАЦИИ'],
+           'tag': 'Вашата идея. Ясен план. Работещ софтуер.', 'steps': 'СЪЗДАВАНЕ · ТЕСТВАНЕ · ПРОВЕРКА · ПУБЛИКУВАНЕ · РАЗВИТИЕ'},
+}
+CARDS = [('mail', 'Fraisbg1@gmail.com', C['pink']),
+         ('discord', 'Fraisbg', '#7C8BFF'), ('instagram', '@y.yakowvw.sales', '#FF4F93')]
+
+
+def finale(lang, mobile):
+    t = F[lang]
+    w, h = (600, 560) if mobile else (1200, 340)
+    sx, sy = w / 2, h + 40
+    defs = (linear('bg', [(0, C['night']), (.55, '#1B0F3E'), (1, '#2A0E2E')], x2=0, y2=1)
+            + radial('sun', C['amber2'], .6) + radial('pk', C['magenta'], .5) + radial('vi', C['violet'], .45)
+            + linear('hg', [(0, C['amber']), (.5, C['pink']), (1, C['lilac2'])])
+            + linear('ray', [(0, '#FFD89B', .0), (1, '#FFD89B', .18)], x2=0, y2=1))
+    rays = ''.join(f'<path d="M{sx} {sy}L{sx + math.cos(math.radians(a)) * 1400:.0f} {sy + math.sin(math.radians(a)) * 1400:.0f}L{sx + math.cos(math.radians(a + 3)) * 1400:.0f} {sy + math.sin(math.radians(a + 3)) * 1400:.0f}Z" fill="#FFD89B" opacity=".06"/>'
+                   for a in range(180, 361, 12))
+    n = len(CARDS)
+    motion = ('.rays{transform-origin:%.0fpx %.0fpx;animation:spin 120s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}' % (sx, sy)
+              + '.sun{transform-box:fill-box;transform-origin:center;animation:sun 14s ease-in-out infinite}@keyframes sun{50%{transform:scale(1.08)}}'
+              + f'.cg{{opacity:0;animation:cg {n * 2.2}s ease-in-out infinite}}@keyframes cg{{0%,100%{{opacity:0}}6%,20%{{opacity:1}}28%{{opacity:0}}}}'
+              + '.orb{transform-box:view-box;transform-origin:%.0fpx %.0fpx;animation:spin 70s linear infinite reverse}' % (sx, sy))
+    b = frame(w, h, 32) + '<g clip-path="url(#frame)">'
+    b += f'<g class="rays">{rays}</g>'
+    b += (f'<circle class="sun" cx="{sx}" cy="{sy}" r="{h * .75:.0f}" fill="url(#sun)"/>'
+          f'<circle cx="{w * .18:.0f}" cy="{h * .78:.0f}" r="{w * .32:.0f}" fill="url(#pk)"/><circle cx="{w * .86:.0f}" cy="{h * .25:.0f}" r="{w * .3:.0f}" fill="url(#vi)"/>')
+    for i in range(4):
+        rr = h * (.42 + i * .16)
+        b += f'<circle cx="{sx}" cy="{sy}" r="{rr:.0f}" fill="none" stroke="#FFD89B" stroke-opacity="{.22 - i * .04:.2f}" stroke-dasharray="{3 + i} {9 + i * 3}"/>'
+    b += '<g class="live orb">' + ''.join(
+        f'<circle cx="{sx + math.cos(math.radians(a)) * h * 1.02:.0f}" cy="{sy + math.sin(math.radians(a)) * h * 1.02:.0f}" r="{3 + i % 3}" fill="{[C["amber"], C["pink"], C["lilac2"], C["mint"]][i % 4]}"/>'
+        for i, a in enumerate(range(190, 350, 26))) + '</g>'
+    b += stars(w, h * .5, 30, 9)
+    # status + headline
+    sw = len(t['status']) * 11.4 + 64
+    b += (f'<rect x="{sx - sw / 2:.0f}" y="{48 if not mobile else 52}" width="{sw:.0f}" height="38" rx="19" fill="#0B2A22" fill-opacity=".85" stroke="{C["mint"]}" stroke-opacity=".7"/>'
+          f'<circle cx="{sx - sw / 2 + 22:.0f}" cy="{(48 if not mobile else 52) + 19}" r="5.5" fill="#4ADE80"/>')
+    b += text(sx - sw / 2 + 40, (48 if not mobile else 52) + 25, t['status'], 15, '#B3F6D2', 800, spacing=1.6)
+    if mobile:
+        lines = wrap(t['head'], 16)
+        for i, line in enumerate(lines):
+            b += text(sx, 170 + i * 54, line, 46, 'url(#hg)', 800, anchor='middle')
+        y = 170 + len(lines) * 54 + 6
+        for i, line in enumerate(wrap(t['sub'], 34)):
+            b += text(sx, y + i * 28, line, 21, C['text'], 600, anchor='middle')
+        y += len(wrap(t['sub'], 34)) * 28 + 12
+        for i, line in enumerate(wrap(t['sub2'], 44)):
+            b += text(sx, y + i * 26, line, 19, C['soft'], anchor='middle')
+        cards = []
+    else:
+        b += text(sx, 168, t['head'], 62, 'url(#hg)', 800, anchor='middle')
+        b += text(sx, 216, t['sub'], 23, C['text'], 600, anchor='middle')
+        b += text(sx, 252, t['sub2'], 18, C['soft'], anchor='middle')
+        cards = []
+    for i, ((kind, value, col), (x, y, cw, ch)) in enumerate(zip(CARDS, cards)):
+        b += f'<rect x="{x}" y="{y}" width="{cw}" height="{ch}" rx="24" fill="#0C0926" fill-opacity=".82" stroke="{col}" stroke-opacity=".75" stroke-width="1.6"/>'
+        b += f'<rect class="live cg" style="animation-delay:{i * 2.2}s" x="{x - 3}" y="{y - 3}" width="{cw + 6}" height="{ch + 6}" rx="26" fill="{col}" fill-opacity=".1" stroke="{col}" stroke-width="3"/>'
+        if mobile:
+            b += f'<circle cx="{x + 56}" cy="{y + ch / 2}" r="30" fill="{col}" fill-opacity=".18"/>' + glyph(kind, x + 42, y + ch / 2 - 14, 28, col)
+            b += text(x + 104, y + ch / 2 - 10, t['labels'][i], 18, col, 800, spacing=2)
+            b += text(x + 104, y + ch / 2 + 24, value, 26, C['text'], 700)
+        else:
+            b += f'<circle cx="{x + 50}" cy="{y + 50}" r="28" fill="{col}" fill-opacity=".18"/>' + glyph(kind, x + 36, y + 36, 28, col)
+            b += text(x + 26, y + 112, t['labels'][i], 13, col, 800, spacing=2.4)
+            b += text(x + 26, y + 138, value, 19 if len(value) < 17 else 18, C['text'], 700)
+    b += '</g>'
+    desc = f"{t['status']}. {t['head']} {t['sub']} {t['sub2']}"
+    return document(w, h, t['title'], desc, b, defs, motion)
+
+
+FOOT_COLORS = ['#2563EB', '#7C3AED', '#5865F2', '#E11D48', '#059669']
+
+
+def footer(lang, mobile):
+    t = F[lang]
+    w, h = (600, 320) if mobile else (1200, 200)
+    defs = linear('fb', [(0, C['ink']), (.5, '#1A1146'), (1, C['ink'])]) + linear('hg', [(0, C['lilac2']), (.5, C['pink']), (1, C['amber'])]) + linear('sh', [(0, '#fff', 0), (.5, '#fff', .55), (1, '#fff', 0)])
+    widths = [len(wd) * 12.5 + 40 for wd in t['words']]
+    rows = [list(range(5))] if not mobile else [[0, 1, 2], [3, 4]]
+    b, y = f'<rect width="{w}" height="{h}" rx="26" fill="url(#fb)"/>', 26
+    n = 5
+    motion = f'.shn{{animation:shn {n * 1.4:.1f}s ease-in-out infinite}}@keyframes shn{{0%{{transform:translateX(-80px);opacity:0}}4%{{opacity:1}}{100 / n:.0f}%{{transform:translateX(var(--d));opacity:0}}100%{{opacity:0}}}}'
+    for row in rows:
+        total = sum(widths[i] for i in row) + 14 * (len(row) - 1)
+        x = (w - total) / 2
+        for i in row:
+            pw = widths[i]
+            b += f'<clipPath id="c{i}"><rect x="{x:.0f}" y="{y}" width="{pw:.0f}" height="42" rx="8"/></clipPath>'
+            b += f'<rect x="{x:.0f}" y="{y}" width="{pw:.0f}" height="42" rx="8" fill="{FOOT_COLORS[i]}"/>'
+            b += (f'<g clip-path="url(#c{i})" class="live"><rect class="shn" style="--d:{pw + 80:.0f}px;animation-delay:{i * 1.4:.1f}s" '
+                  f'x="{x:.0f}" y="{y}" width="60" height="42" fill="url(#sh)" transform="skewX(-18)"/></g>')
+            b += text(x + pw / 2, y + 28, t['words'][i], 17, '#fff', 800, anchor='middle', spacing=2)
+            x += pw + 14
+        y += 56
+    y += 30
+    tag = wrap(t['tag'], 26) if mobile else [t['tag']]
+    for i, line in enumerate(tag):
+        b += text(w / 2, y + i * 38, line, 32 if not mobile else 30, 'url(#hg)', 800, anchor='middle')
+    y += (len(tag) - 1) * 38 + 36
+    steps = t['steps'] if not mobile or len(t['steps']) < 46 else t['steps'].replace(' · ', ' · ', 2)
+    if mobile:
+        halves = steps.split(' · ')
+        b += text(w / 2, y, ' · '.join(halves[:3]), 17, C['muted'], 700, anchor='middle', mono=True)
+        b += text(w / 2, y + 26, ' · '.join(halves[3:]), 17, C['muted'], 700, anchor='middle', mono=True)
+    else:
+        b += text(w / 2, y, steps, 15, C['muted'], 700, anchor='middle', mono=True, spacing=1)
+    return document(w, h, t['tag'], f"{' · '.join(t['words'])}. {t['tag']} {t['steps']}", b, defs, motion)
+
+
+# ---------------------------------------------------------------- contact buttons
+BUTTONS = {
+    'mail': ('Fraisbg1@gmail.com', C['pink'], {'en': 'EMAIL', 'bg': 'ИМЕЙЛ'}),
+    'discord': ('Fraisbg', '#7C8BFF', {'en': 'DISCORD', 'bg': 'DISCORD'}),
+    'instagram': ('@y.yakowvw.sales', '#FF4F93', {'en': 'INSTAGRAM', 'bg': 'INSTAGRAM'}),
+}
+
+
+def contact_button(kind, lang):
+    value, col, labels = BUTTONS[kind]
+    label = labels[lang]
+    h = 64
+    w = round(84 + max(len(value) * 10.6, len(label) * 9) + 26)
+    defs = linear('bg', [(0, '#0C0926'), (1, C['indigo'])], x2=1, y2=1) + linear('edge', [(0, col), (1, col, .35)])
+    b = (f'<rect x="1" y="1" width="{w - 2}" height="{h - 2}" rx="{h / 2 - 1:.0f}" fill="url(#bg)" stroke="url(#edge)" stroke-width="2"/>'
+         f'<circle cx="33" cy="{h / 2}" r="21" fill="{col}" fill-opacity=".18"/>' + glyph(kind, 21, h / 2 - 12, 24, col))
+    b += text(66, 27, label, 12, col, 800, spacing=2)
+    b += text(66, 48, value, 18, C['text'], 700)
+    return document(w, h, f'{label}: {value}', f'{label}: {value}', b, defs)
+
+
+# ---------------------------------------------------------------- main
+def main():
+    count = 0
+    for lang in ('en', 'bg'):
+        for mobile in (False, True):
+            sfx = f'{lang}{"-mobile" if mobile else ""}.svg'
+            files = {f'hero-{sfx}': hero(lang, mobile), f'arch-bid-{sfx}': arch_bid(lang, mobile),
+                     f'arch-tlr-{sfx}': arch_tlr(lang, mobile), f'stack-used-{sfx}': stack_used(lang, mobile),
+                     f'process-{sfx}': process(lang, mobile), f'finale-{sfx}': finale(lang, mobile), f'footer-{sfx}': footer(lang, mobile)}
+            for i in range(len(DIVIDERS)):
+                files[f'divider-{i + 1:02d}-{sfx}'] = divider(i, lang, mobile)
+            for key in PROJECTS:
+                files[f'project-{key}-{sfx}'] = project_marker(key, lang, mobile)
+            for v, group in enumerate(GROUPS):
+                files[f'stack-{group}-{sfx}'] = stack_group(group, v, lang, mobile)
+            if not mobile:
+                for kind in BUTTONS:
+                    files[f'contact-{kind}-{lang}.svg'] = contact_button(kind, lang)
+            for name, content in files.items():
+                write(name, content)
+                count += 1
+    shown = sum(1 for i in TECH['technologies'])
+    assert shown == 68, shown
+    print(f'{count} files written to {OUT.relative_to(ROOT)}; technologies: {shown}')
+
+
+if __name__ == '__main__':
+    main()

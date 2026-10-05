@@ -1,239 +1,310 @@
-<p align="right"><b>EN · English</b> &nbsp; / &nbsp; <a href="README.bg.md">BG · Български</a></p>
+<p align="center">
+<a href="https://github.com/yavordfgggdag"><img src="assets/languages/en.svg" alt="English" width="146" height="42" /></a>
+<a href="https://github.com/yavordfgggdag/yavordfgggdag/blob/main/README.bg.md"><img src="assets/languages/bg.svg" alt="Български" width="166" height="42" /></a>
+</p>
 
-<img src="assets/banner.svg" alt="Yavor — Websites. Software. Games. Available for paid projects." width="100%" />
-
-**I’m Yavor.** I build web and desktop software, websites and tools for businesses and communities.
-
-**Available for paid projects.** [Let’s discuss yours →](mailto:Fraisbg1@gmail.com)
-
-[Work](#work) · [Languages & tools](#toolkit) · [Services](#services) · [Activity](#activity) · [Contact](#contact)
+<img src="assets/banner.svg" alt="Yavor — Websites. Software. Games. Built around your vision. Available for paid projects." width="100%" />
 
 <picture>
-<source media="(max-width: 600px)" srcset="assets/journal/intro-en-mobile.svg" />
-<img src="assets/journal/intro-en.svg" alt="Colorful animated composition: web, software, communities." width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/hero-en-mobile.svg" />
+<img src="assets/motion/hero-en.svg" alt="Yavor Yakow, independent developer. Products with systems behind them: websites, online stores, web and desktop software, admin panels, Discord bots, games and FiveM, APIs and AI. Featured: Before I Deploy, TLR Police Portal, client websites. Contact: Fraisbg1@gmail.com · Discord Fraisbg · Instagram @y.yakowvw.sales." width="100%" />
 </picture>
 
-<a name="work"></a><a name="before-i-deploy"></a>
+<p align="center"><b><a href="#work">Work</a> · <a href="#services">Services</a> · <a href="#technology">Technology</a> · <a href="#activity">Activity</a> · <a href="#process">Process</a> · <a href="#contact">Contact</a></b></p>
+
+## 👋 Hi, I'm Yavor
+
+I build digital products that connect design, code and real-world workflows. My work spans web development, custom software, Discord bots, games, FiveM systems, automation and developer tools.
+
+**I take on paid development projects** — from a focused feature or a new website to a complete custom platform. I can help turn an early idea into a clear scope, build the product, connect its systems and prepare it for launch.
+
+<a name="work"></a>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/divider-01-en-mobile.svg" />
+<img src="assets/motion/divider-01-en.svg" alt="" width="100%" />
+</picture>
+
+## 🚀 Selected Work
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🟣 [Before I Deploy](#before-i-deploy)
+**Know before you ship.** A native macOS app that checks web projects before production: environments, dependencies, linting, types, tests, builds, security and configuration.
+
+**Developer tools · Automation · Release readiness**
+
+</td>
+<td width="50%" valign="top">
+
+### 🔵 [TLR Police Portal](#tlr-police-portal)
+Internal management for employee profiles, departments, ranks, callsigns, certificates and strikes, with permissions and audit logs.
+
+**Management software · Role-based access · Integrations**
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 🩷 [The Last Republic](#the-last-republic)
+Connected gaming and community infrastructure bringing together FiveM, web applications, Discord, databases, staff tools and permissions.
+
+**Full-stack systems · Gaming · Community infrastructure**
+
+</td>
+<td width="50%" valign="top">
+
+### 🟠 Client Web Projects
+**„Помощ от приятел“** (educational centre) and **„Автоинструктор Господинов“** (driving instructor). [See the client projects below](#client-websites).
+
+**Business websites · UI/UX · Custom functionality**
+
+</td>
+</tr>
+</table>
+
+Much of my project source code is private. This profile presents the work, the capabilities and the approach behind it.
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/project-bid-en-mobile.svg" />
+<img src="assets/motion/project-bid-en.svg" alt="01 · Native macOS app" width="100%" />
+</picture>
 
 ## Before I Deploy
 
+**Make release preparation understandable, from the first check to the next action.**
+
+A native macOS application for reviewing local web projects, understanding warnings and preparing a preview or production release. **My contribution:** I developed the SwiftUI interface, the Node.js command engine and the connections between project checks, hosting and cloud services.
+
+<img src="assets/screens/framed/before-i-deploy.jpg" alt="Before I Deploy running on macOS: a demo project with a Ready with warnings verdict, check controls and a step-by-step launch checklist." width="100%" />
+
+- **One check pipeline:** Git state, secrets, dependencies, lint, types, build and hosting readiness, with results returned to the app as NDJSON events.
+- **Release safeguards:** the engine checks for changed project fingerprints and requires explicit confirmation before production deployment.
+- **A useful control centre:** project status, site monitoring, SSL information and a command palette for moving between tasks.
+- **AI-assisted repair:** an implemented review-and-apply workflow for proposed file changes. Provider setup and service availability determine what can run.
+
 <picture>
-<source media="(max-width: 600px)" srcset="assets/journal/screens/bid-mobile.svg" />
-<img src="assets/journal/screens/bid.svg" alt="Actual Before I Deploy with a demo project; narrow screens show a detail from the same desktop capture." width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/arch-bid-en-mobile.svg" />
+<img src="assets/motion/arch-bid-en.svg" alt="Architecture illustration: the SwiftUI app sends commands to a Node.js engine and receives NDJSON events. One chain of checks — Git, secrets, dependencies, lint, types, build, hosting — ends at an explicit confirmation before production hosting. Project files and Keychain stay local; Supabase, Postgres and Deno Edge Functions are optional cloud services." width="100%" />
 </picture>
-
-A native macOS application for checking web projects and preparing them for release.
-
-<sub>Real development capture. On narrow screens: a closer desktop detail. [Full capture](assets/screens/before-i-deploy.jpg).</sub>
-
-**A native interface. A separate check engine.** I developed the SwiftUI interface, the Node.js command engine and the connections between checks, hosting and cloud services. Results reach the app as NDJSON events.
-
-<picture>
-<source media="(max-width: 600px)" srcset="assets/journal/native-en-mobile.svg" />
-<img src="assets/journal/native-en.svg" alt="Architecture: SwiftUI sends commands to Node.js and receives NDJSON events; the engine checks the local project. Motion does not represent live status." width="100%" />
-</picture>
-
-**Engineering decisions:** one pipeline for Git state, secrets, dependencies, lint, types, build and hosting readiness; a check for changed project fingerprints after analysis; explicit confirmation before production deployment.
 
 **Built with:** Swift · SwiftUI · JavaScript · Node.js · Supabase · PostgreSQL · Deno Edge Functions
 
 <details>
-<summary><b>Gallery & additional functionality</b></summary>
+<summary><b>Explore the application — Mission Control & keyboard navigation</b></summary>
 
-Mission Control brings together project status, site monitoring and SSL information. The command palette provides keyboard navigation.
+### Mission Control
 
-<img src="assets/screens/bid-mission-control.jpg" alt="Mission Control with a demo project and an HTTP 404 incident; captured state, not a performance claim." width="100%" />
+<img src="assets/screens/framed/bid-mission-control.jpg" alt="Live Mission Control showing a demo project, monitoring status and an HTTP 404 incident; this is a captured development state, not a success metric." width="100%" />
 
-<img src="assets/screens/bid-command-palette.jpg" alt="The actual Before I Deploy command palette." width="100%" />
+### Command palette
 
-**AI-assisted repair:** review and apply proposed changes. Availability depends on provider configuration and external services.
+<img src="assets/screens/framed/bid-command-palette.jpg" alt="Actual Before I Deploy command palette with Mission Control, Domains, Costs, Setup, AI, Settings and History actions." width="100%" />
 
 </details>
 
-<sub>Actively developed product with private source. Captures do not imply a public release or validation of every external integration.</sub>
+<sub>Actively developed product. Screens show the installed application with a demo project; they do not imply a public release or that every external integration has been validated. Source is private.</sub>
 
----
+[Discuss the product or a similar tool →](mailto:Fraisbg1@gmail.com?subject=Before%20I%20Deploy)
 
-<a name="tlr-police-portal"></a>
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/project-police-en-mobile.svg" />
+<img src="assets/motion/project-police-en.svg" alt="02 · FiveM community operations" width="100%" />
+</picture>
 
 ## TLR Police Portal
 
-An internal portal for the police department of The Last Republic’s FiveM roleplay community. I developed the dashboard, searchable staff directory, rank hierarchy, handbook and management workflows for certificates, strikes and callsigns.
+**Turn a community's staff structure into a usable operations workspace.**
+
+An internal portal for the TLR roleplay police department. **My contribution:** I developed the dashboard, searchable staff directory, rank hierarchy, handbook and management workflows for certificates, strikes and callsigns, with server-side access checks and audit records.
+
+<img src="assets/screens/framed/police-dashboard.jpg" alt="Actual authenticated TLR Police Portal dashboard with handbook, radio codes, districts and roster widgets. Profile names and avatars are visibly redacted." width="100%" />
+
+**The engineering decision:** Discord membership events need a persistent connection. A separate Node.js bot handles the Gateway connection and synchronizes Discord-owned roster fields into Postgres. The Next.js website handles authorized management actions. Both use a shared role map.
 
 <picture>
-<source media="(max-width: 600px)" srcset="assets/journal/screens/police-mobile.svg" />
-<img src="assets/journal/screens/police.svg" alt="Actual TLR Police Portal dashboard with identities redacted. The narrow variant is a radio-code detail from the desktop capture." width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/arch-tlr-en-mobile.svg" />
+<img src="assets/motion/arch-tlr-en.svg" alt="Architecture illustration: a persistent Discord Gateway bot synchronizes roster data to Postgres; the Next.js portal reads that data and performs authorized actions after server-side permission checks, writing audit records. Bot and portal share one role map; staff sign in with Discord." width="100%" />
 </picture>
 
-<sub>On narrow screens: the radio-code detail from the same capture. [Full dashboard](assets/screens/police-dashboard.jpg).</sub>
+**Built with:** TypeScript · Next.js · React · PostgreSQL / Neon · Drizzle ORM · Node.js · discord.js
 
-**The persistent connection has its own process.** A separate Node.js bot maintains the Discord Gateway connection and synchronizes roster data into Postgres. The Next.js portal performs management actions with server-side access checks and audit records. Both components use a shared role map.
+### Inside the portal
 
-<picture>
-<source media="(max-width: 600px)" srcset="assets/journal/sync-en-mobile.svg" />
-<img src="assets/journal/sync-en.svg" alt="Architecture: Discord bot, Postgres and Next.js portal. Illustrated synchronization, not live activity." width="100%" />
-</picture>
-
-**Built with:** TypeScript · Next.js · React · Tailwind CSS · PostgreSQL / Neon · Drizzle ORM · Node.js · discord.js
+<img src="assets/screens/framed/police-employees.jpg" alt="Live employee management screen with search, rank and department filters. Individual identities, badge details and personal records are fully redacted." width="100%" />
 
 <details>
-<summary><b>Gallery — staff, ranks & handbook</b></summary>
+<summary><b>Open the gallery — rank hierarchy & interactive handbook</b></summary>
 
-<img src="assets/screens/police-employees.jpg" alt="Roster management; individual records are redacted." width="100%" />
+### Rank hierarchy
 
-<img src="assets/screens/police-ranks.jpg" alt="Actual rank hierarchy." width="100%" />
+<img src="assets/screens/framed/police-ranks.jpg" alt="Live rank hierarchy for the Commissioner's Office, Los Santos Police Department and Blaine County Sheriff's Office." width="100%" />
 
-<img src="assets/screens/police-handbook.jpg" alt="Actual interactive handbook." width="100%" />
+### Interactive handbook
+
+<img src="assets/screens/framed/police-handbook.jpg" alt="Live police handbook showing The Mission, chapter tabs, page controls and structured procedure content." width="100%" />
 
 </details>
 
 <details>
-<summary><b>Actual handbook navigation — short GIF</b></summary>
+<summary><b>Play the short handbook navigation demo (animated GIF)</b></summary>
 
 <picture>
-<source media="(prefers-reduced-motion: reduce)" srcset="assets/screens/police-handbook.jpg" />
-<img src="assets/screens/handbook-navigation.gif" alt="Three captured pages from real handbook navigation." width="100%" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="assets/screens/police-handbook.jpg" />
+  <img src="assets/screens/handbook-navigation.gif" alt="Recorded navigation through three real handbook pages: The Mission, Culture and Welcome to the LSPD. Static screenshot shown when reduced motion is supported." width="100%" />
 </picture>
 
-[Static capture](assets/screens/police-handbook.jpg).
+<sub>Three captured states from real page navigation, with pauses for readability. No interface or data has been fabricated.</sub>
 
 </details>
 
-<sub>Captures from the earlier review. Access requires Discord authentication and department membership. Current entry URL is being confirmed; source is private.</sub>
+<sub>Portal captures from the earlier review. Discord authentication and department membership required. Current entry URL is being confirmed; source is private.</sub>
 
----
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/project-tlr-en-mobile.svg" />
+<img src="assets/motion/project-tlr-en.svg" alt="03 · Community infrastructure" width="100%" />
+</picture>
 
-<a name="client-websites"></a>
+## The Last Republic
 
-## Client work
+**Community infrastructure connecting the website, Discord and operational tools.**
+
+**My contribution:** the public interface, rules and Discord-connected application journeys for the FiveM community.
+
+<sub>The current main-site URL and version are being confirmed. Earlier homepage captures are not presented as the current website.</sub>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/project-community-en-mobile.svg" />
+<img src="assets/motion/project-community-en.svg" alt="04 · Source showcase · React" width="100%" />
+</picture>
+
+## Community platform
+
+**A shared entry point for a gaming community, its rules and player journeys.**
+
+A separate React implementation whose interface is branded TLR RP and focuses on Minecraft SMP and Factions. The frontend brings server discovery, topic-based rules and application routes into one consistent navigation system. This is a local source-code showcase, not the current main website of The Last Republic.
+
+<details>
+<summary><b>View the local interface from the reviewed source</b></summary>
+
+<img src="assets/screens/framed/community-platform.jpg" alt="Actual local TLR RP interface: green Minecraft community homepage with SMP and Factions messaging. Repository defaults are shown." width="100%" />
+
+<img src="assets/screens/framed/community-rules.jpg" alt="Real locally rendered rules hub with navigation cards for general rules, chat, SMP, Factions and Discord." width="100%" />
+
+</details>
+
+**Technical detail:** React Router handles the page journeys, route components load on demand, and React Query manages remote data caching. The repository also contains Supabase-backed authentication, data access and server functions.
+
+**Built with:** TypeScript · React · Vite · Tailwind CSS · shadcn/ui · React Router · TanStack Query · Supabase
+
+<sub>Captured from the unmodified frontend running locally, with production services disconnected. Placeholder addresses and status text are repository defaults. These images demonstrate the interface, not a verified live server, checkout or authentication deployment. Source code is private.</sub>
+
+### Code experiment — Space Control
+
+A browser-based interface experiment exploring simulated resource monitoring and control feedback. The reviewed source includes HTML screens and Canvas elements, with references to JavaScript files for the intended interactions.
+
+**Technology:** HTML · JavaScript · Canvas API
+
+<sub>Source preview only: the reviewed checkout is missing referenced styling and script assets. A complete visual demo is pending those assets or a working demo URL. Source code is private.</sub>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/project-client-en-mobile.svg" />
+<img src="assets/motion/project-client-en.svg" alt="05 · Client websites" width="100%" />
+</picture>
+
+## Client websites
 
 ### Помощ от приятел · Educational centre
 
-A website that helps parents explore Bulgarian-language and mathematics lessons and send an enquiry. Includes course formats, an FAQ and a contact form.
+A client website that helps parents explore Bulgarian-language and mathematics lessons and reach the centre through a clear enquiry path. The live interface includes course formats, an FAQ and an enquiry form.
 
-<picture>
-<source media="(max-width: 600px)" srcset="assets/journal/screens/education-mobile.svg" />
-<img src="assets/journal/screens/education.svg" alt="Real capture from Помощ от приятел; the narrow version is a detail from the same image." width="680" />
-</picture>
-
-**Components documented in the earlier review:** WordPress · WPForms. The form was inspected without submitting personal data.
-
-[Visit the website →](https://pomoshtotpriyatel.com/) · [Full capture](assets/screens/client-education.jpg)
+**Verified platform components:** WordPress · WPForms. The enquiry interface was inspected without submitting personal data.
 
 <details>
-<summary><b>FAQ — actual capture</b></summary>
+<summary><b>Explore the interactive FAQ</b></summary>
 
-<img src="assets/screens/client-education-faq.jpg" alt="FAQ with an expanded answer." width="100%" />
+<img src="assets/screens/framed/client-education-faq.jpg" alt="Live FAQ with an expanded answer about the supported school grades." width="100%" />
 
 </details>
+
+[Visit Помощ от приятел →](https://pomoshtotpriyatel.com/)
 
 ### Автоинструктор Господинов · Driving instructor
 
-A client website providing an online presence for a driving instructor. **Awaiting verification:** exact URL, current captures, scope and technology.
+Client website for a driving instructor, providing an online presence for the business.
 
-<a name="the-last-republic"></a>
-
-### The Last Republic
-
-Main website for the FiveM community. The work includes the public interface, rules and Discord-connected application journeys. **The current URL and version are awaiting confirmation.** Earlier homepages and the Minecraft interface are not presented as the current main website.
-
-<details>
-<summary><b>Additional work & experiments</b></summary>
-
-**Community platform.** A separate React implementation with a Minecraft SMP and Factions interface. Technical choices include React Router, lazy-loaded routes, TanStack Query and Supabase integrations. Captures are from a local review with production services disconnected; they do not verify a live server, checkout or public sign-in.
-
-<img src="assets/screens/community-platform.jpg" alt="Local Minecraft interface; not the current main website of The Last Republic." width="100%" />
-
-<img src="assets/screens/community-rules.jpg" alt="Local rules hub of the community platform." width="100%" />
-
-**Technology:** TypeScript · React · Vite · Tailwind CSS · shadcn/ui · React Router · TanStack Query · Supabase.
-
-**Space Control.** An experiment with HTML, JavaScript and Canvas API. Referenced styles and scripts were missing in the earlier review; it is not presented as a completed product. These projects have private source.
-
-</details>
-
----
-
-<a name="toolkit"></a>
-
-## Languages, tools & development environment
-
-<picture>
-<source media="(max-width: 600px)" srcset="assets/journal/toolkit-en-mobile.svg" />
-<img src="assets/journal/toolkit-en.svg" alt="Technologies from the featured work: Swift and SwiftUI; TypeScript, React and Next.js; Postgres, Drizzle, Supabase and discord.js." width="100%" />
-</picture>
-
-### Implemented experience — connected to specific work
-
-| Context | Tools and role |
-| :--- | :--- |
-| Native application | Swift / SwiftUI — macOS interface; Node.js / JavaScript — checks; NDJSON — events |
-| Portal and integrations | TypeScript / React / Next.js — interface and server logic; Tailwind CSS — styling; discord.js — bot |
-| Data and cloud services | PostgreSQL / Neon / Drizzle; Supabase / Deno Edge Functions — depending on the project |
-| Client website | WordPress / WPForms — documented components of Помощ от приятел |
-
-### Full collection — additional technologies & interests
-
-The profile’s complete language and tool collection is retained. It includes additional interests and possible technology choices; it does not imply equal experience or completed products with every tool. Implemented experience is identified above.
-
-### Additional Tools & Interests
-
-<picture>
-<source media="(max-width: 600px)" srcset="assets/journal/collection-0-en-mobile.svg" />
-<img src="assets/journal/collection-0-en.svg" alt="TypeScript, JavaScript, Python, Lua, HTML5, CSS3, SQL, Node.js, Astro, MySQL, MariaDB, Git, GitHub" width="100%" />
-</picture>
-
-<sub>TypeScript · JavaScript · Python · Lua · HTML5 · CSS3 · SQL · Node.js · Astro · MySQL · MariaDB · Git · GitHub</sub>
-
-### Wider Programming Language Ecosystem
-
-<picture>
-<source media="(max-width: 600px)" srcset="assets/journal/collection-1-en-mobile.svg" />
-<img src="assets/journal/collection-1-en.svg" alt="C, C++, C#, Java, Kotlin, Swift, Go, Rust, PHP, Ruby, Dart, Scala, R, Bash, PowerShell, Elixir, Erlang, Haskell, Clojure, F#, Julia, Zig, Solidity, GDScript, Objective-C, Perl, OCaml" width="100%" />
-</picture>
-
-<sub>C · C++ · C# · Java · Kotlin · Swift · Go · Rust · PHP · Ruby · Dart · Scala · R · Bash · PowerShell · Elixir · Erlang · Haskell · Clojure · F# · Julia · Zig · Solidity · GDScript · Objective-C · Perl · OCaml</sub>
-
-### Web & Application Ecosystem
-
-<picture>
-<source media="(max-width: 600px)" srcset="assets/journal/collection-2-en-mobile.svg" />
-<img src="assets/journal/collection-2-en.svg" alt="React, Next.js, Vue.js, Svelte, Vite, Tailwind CSS, Express, Electron, Flutter, .NET" width="100%" />
-</picture>
-
-<sub>React · Next.js · Vue.js · Svelte · Vite · Tailwind CSS · Express · Electron · Flutter · .NET</sub>
-
-### Data, Infrastructure & Delivery
-
-<picture>
-<source media="(max-width: 600px)" srcset="assets/journal/collection-3-en-mobile.svg" />
-<img src="assets/journal/collection-3-en.svg" alt="PostgreSQL, SQLite, MongoDB, Redis, Docker, Linux, macOS, Netlify, GitHub Actions, NGINX" width="100%" />
-</picture>
-
-<sub>PostgreSQL · SQLite · MongoDB · Redis · Docker · Linux · macOS · Netlify · GitHub Actions · NGINX</sub>
-
-### Games, Communities & AI
-
-<picture>
-<source media="(max-width: 600px)" srcset="assets/journal/collection-4-en-mobile.svg" />
-<img src="assets/journal/collection-4-en.svg" alt="Discord, FiveM, Godot, Unity, Unreal Engine, OpenAI, Claude, Cursor" width="100%" />
-</picture>
-
-<sub>Discord · FiveM · Godot · Unity · Unreal Engine · OpenAI · Claude · Cursor</sub>
-
----
+<sub>Website link, current screenshots, implementation details and technology are awaiting verification.</sub>
 
 <a name="services"></a>
 
-## What you can hire me for
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/divider-02-en-mobile.svg" />
+<img src="assets/motion/divider-02-en.svg" alt="" width="100%" />
+</picture>
 
-- **Websites and online stores:** business websites, catalogues, orders and bookings.
-- **Web and desktop software:** admin panels, portals and internal tools.
-- **Discord, games and FiveM:** bots, game systems and community tools.
-- **APIs, automation and AI:** connected services, data processing and AI functionality.
-- **Maintenance and development:** features, fixes, optimization and release preparation.
+## 💼 What You Can Hire Me For
 
-These are **offered services**. Scope, timeline and pricing are agreed for each project.
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🌐 Websites & Online Businesses
+Business websites, landing pages, portfolios, online stores, booking interfaces, content-driven sites and complete website redesigns.
+
+**Responsive design · UI/UX · Integrations · Performance**
+
+</td>
+<td width="50%" valign="top">
+
+### ⚙️ Custom Software & Platforms
+Web applications, desktop utilities, dashboards, admin panels, customer portals, internal tools and business management systems.
+
+**Frontend · Backend · Databases · Authentication**
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 💬 Discord Bots & Communities
+Custom bots, slash commands, ticket systems, moderation, roles, notifications, logging, community workflows and connected dashboards.
+
+**Bot development · APIs · Automation · Server integrations**
+
+</td>
+<td width="50%" valign="top">
+
+### 🎮 Games & FiveM Systems
+Custom games and prototypes, gameplay systems, server resources, NUI interfaces, jobs, inventories, staff tools and community infrastructure.
+
+**Game logic · Client/server systems · Persistence · Tooling**
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 🤖 Automation & AI Integrations
+Workflow automation, repetitive-task scripts, AI-powered features, assistant integrations, data-processing utilities and connected services.
+
+**APIs · Webhooks · Scripting · AI-assisted workflows**
+
+</td>
+<td width="50%" valign="top">
+
+### 🛠️ Improvements & Ongoing Development
+New features, bug fixes, refactoring, performance improvements, migrations, interface refreshes, testing and deployment preparation.
+
+**Existing projects · Technical cleanup · Maintenance**
+
+</td>
+</tr>
+</table>
+
+**Offered · proven · exploring.** The cards above are services I offer. The projects above show the experience already implemented. The technology panels below separate tools used in those products from wider interests.
 
 <details>
 <summary><b>Explore the full development service catalogue</b></summary>
@@ -265,20 +336,68 @@ These are **offered services**. Scope, timeline and pricing are agreed for each 
 
 </details>
 
----
+> **Have something different in mind?** I also consider custom development outside this list. Start with the problem, the users and what a successful result should do.
 
-<a name="activity"></a>
-
-## Activity & code volume
+<a name="technology"></a>
 
 <picture>
-<source media="(max-width: 600px)" srcset="assets/journal/metrics/activity-en-mobile.svg" />
-<img src="assets/journal/metrics/activity-en.svg" alt="GitHub contributions: current and longest streak, active days, last contribution, 30-day activity and calendar." width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/divider-03-en-mobile.svg" />
+<img src="assets/motion/divider-03-en.svg" alt="" width="100%" />
+</picture>
+
+## 🌈 Languages & Technology
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/stack-used-en-mobile.svg" />
+<img src="assets/motion/stack-used-en.svg" alt="Used in the featured products. Before I Deploy: Swift, SwiftUI, JavaScript, Node.js, Supabase, PostgreSQL, Deno Edge Functions. TLR Police Portal: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, discord.js. Community platform: React, Vite, Tailwind CSS, shadcn/ui, React Router, TanStack Query, Supabase. Помощ от приятел: WordPress, WPForms. Space Control: HTML, JavaScript, Canvas API." width="100%" />
+</picture>
+
+The 68 technologies below are the original technology collection: additional interests and possible project choices. It is not a claim of completed products or equal experience with every tool. A **mint ring** marks the tools verified in the products above.
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/stack-tools-en-mobile.svg" />
+<img src="assets/motion/stack-tools-en.svg" alt="Additional Tools & Interests, 13: TypeScript (used in featured products), JavaScript (used), Python, Lua, HTML5 (used), CSS3, SQL, Node.js (used), Astro, MySQL, MariaDB, Git, GitHub." width="100%" />
 </picture>
 
 <picture>
-<source media="(max-width: 600px)" srcset="assets/journal/metrics/languages-en-mobile.svg" />
-<img src="assets/journal/metrics/languages-en.svg" alt="Dated language snapshot by code volume, not time or proficiency." width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/stack-languages-en-mobile.svg" />
+<img src="assets/motion/stack-languages-en.svg" alt="Wider Programming Language Ecosystem, 27: C, C++, C#, Java, Kotlin, Swift (used in featured products), Go, Rust, PHP, Ruby, Dart, Scala, R, Bash, PowerShell, Elixir, Erlang, Haskell, Clojure, F#, Julia, Zig, Solidity, GDScript, Objective-C, Perl, OCaml." width="100%" />
+</picture>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/stack-web-en-mobile.svg" />
+<img src="assets/motion/stack-web-en.svg" alt="Web & Application Ecosystem, 10: React (used in featured products), Next.js (used), Vue.js, Svelte, Vite (used), Tailwind CSS (used), Express, Electron, Flutter, .NET." width="100%" />
+</picture>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/stack-data-en-mobile.svg" />
+<img src="assets/motion/stack-data-en.svg" alt="Data, Infrastructure & Delivery, 10: PostgreSQL (used in featured products), SQLite, MongoDB, Redis, Docker, Linux, macOS (used), Netlify, GitHub Actions, NGINX." width="100%" />
+</picture>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/stack-games-en-mobile.svg" />
+<img src="assets/motion/stack-games-en.svg" alt="Games, Communities & AI, 8: Discord (used in featured products), FiveM, Godot, Unity, Unreal Engine, OpenAI, Claude, Cursor." width="100%" />
+</picture>
+
+<sub>The right stack depends on the product; the panels do not imply equal specialization in every language. Specific tools and implementation scope are agreed for each engagement. Logos: original brand colours via <a href="https://simpleicons.org">Simple Icons</a> (CC0); SQL, C#, PowerShell, Objective-C and OpenAI appear as text tiles, as in the original badges.</sub>
+
+<a name="activity"></a>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/divider-04-en-mobile.svg" />
+<img src="assets/motion/divider-04-en.svg" alt="" width="100%" />
+</picture>
+
+## 📊 Activity & language mix
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/metrics/activity-en-mobile.svg" />
+<img src="assets/metrics/activity-en.svg" alt="Contributions, active days, current and longest streak, last contribution and contribution calendar." width="100%" />
+</picture>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/metrics/languages-en-mobile.svg" />
+<img src="assets/metrics/languages-en.svg" alt="Languages by aggregate code volume across project repositories, including private projects, without repository names or contents." width="100%" />
 </picture>
 
 <details>
@@ -294,39 +413,52 @@ Language shares are a separate 2026-10-05 snapshot of GitHub-reported code bytes
 
 </details>
 
----
-
 <a name="process"></a>
 
-## How we work together
+## 🧭 From Your Idea to a Working Product
 
 <picture>
-<source media="(max-width: 600px)" srcset="assets/journal/process-en-mobile.svg" />
-<img src="assets/journal/process-en.svg" alt="Scope, design, build, verify and release. Illustrative motion, not a progress report." width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/process-en-mobile.svg" />
+<img src="assets/motion/process-en.svg" alt="01 Discover: understand your goals, users and requirements. 02 Design: define the interface, architecture and scope. 03 Build: develop features and connect the systems. 04 Validate: test behavior, fix issues and check readiness. 05 Launch: deploy, document and plan the next improvements." width="100%" />
 </picture>
 
-We start with goals, users and requirements. We agree on the interface, architecture and scope; build the features and integrations; check behavior and release readiness. Documentation and agreed improvements follow.
+### What Matters in My Work
 
-<details>
-<summary><b>Working principles</b></summary>
-
-Purposeful design · Clear architecture · Thoughtful permissions and access control · Practical checks · Useful automation · Agreed requirements and expectations.
-
-</details>
-
----
+**🎯 Purposeful design** — interfaces and features built around the people using them.<br>
+**🧱 Clear architecture** — understandable code and systems that can evolve.<br>
+**🔐 Thoughtful permissions** — validation, access control and sensible defaults.<br>
+**🧪 Practical quality checks** — testing, diagnostics and validation before release.<br>
+**🔁 Useful automation** — fewer repetitive steps and more consistent workflows.<br>
+**🤝 Clear project scope** — agreed requirements, deliverables and expectations.
 
 <a name="contact"></a>
 
-## Let’s discuss your project.
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/divider-05-en-mobile.svg" />
+<img src="assets/motion/divider-05-en.svg" alt="" width="100%" />
+</picture>
 
-Send your **idea, main features, preferred timeline and budget range**. We can define the scope and a custom quote.
+## 📬 Let's Talk About Your Project
 
-**[Fraisbg1@gmail.com](mailto:Fraisbg1@gmail.com)**  
-Phone: **+359898634678**  
-Discord: **Fraisbg**  
-Instagram: **[@y.yakowvw.sales](https://www.instagram.com/y.yakowvw.sales/)**
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/finale-en-mobile.svg" />
+<img src="assets/motion/finale-en.svg" alt="Available for paid projects. What should we build next? A website, a custom tool, a bot or your next big idea." width="100%" />
+</picture>
 
-**EN · English** · [BG · Български](README.bg.md)
+<p align="center">
+<a href="mailto:Fraisbg1@gmail.com"><img src="assets/motion/contact-mail-en.svg" alt="Email Fraisbg1@gmail.com" height="46" /></a>
+<img src="assets/motion/contact-discord-en.svg" alt="Discord: Fraisbg" height="46" />
+<a href="https://www.instagram.com/y.yakowvw.sales/"><img src="assets/motion/contact-instagram-en.svg" alt="Instagram @y.yakowvw.sales" height="46" /></a>
+</p>
 
-<sub>Project source code is private. [Capture provenance and accessibility notes](assets/README.md). The original banner and original images are preserved.</sub>
+<p align="center"><b>Available for paid websites, custom software, Discord bots, games and development work.</b><br>
+Send me your idea, the main features, your preferred timeline and your budget range. We can define the right scope and a custom quote.</p>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/footer-en-mobile.svg" />
+<img src="assets/motion/footer-en.svg" alt="Websites · Software · Bots · Games · Automation. Your idea. A clear plan. Software that works. Build · Test · Verify · Deploy · Improve." width="100%" />
+</picture>
+
+<sub>Real captures and locally stored visuals; decorative motion never represents live activity, and all animation pauses for reduced-motion settings. [Screenshot provenance and accessibility notes](assets/README.md).</sub>
+
+<sub>Project source code is private; this profile presents selected real interfaces.</sub>
