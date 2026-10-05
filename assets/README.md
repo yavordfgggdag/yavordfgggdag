@@ -138,3 +138,11 @@ On 2026-10-05 all other owned repositories were made private at the owner's requ
 `motion/certificates-*.svg` and `motion/lessons-*.svg` are generated from `data/certificates.json` by `scripts/build_visuals.py`.
 
 To add a certificate, append an entry to `featured` (title, issuer, Simple Icons slug or a short monogram, accent colour, `issued`, and `valid_until`/`period` when known), or add a lesson to a collection, then run `python3 scripts/build_visuals.py` and `python3 scripts/test_profile.py`. Lessons are de-duplicated by title. Original certificate files, certificate IDs and QR codes are intentionally not published.
+
+## Live product scenes and display typography
+
+`motion/scene-*.svg` place the genuine captures from `screens/` inside a drawn laptop or browser frame and cross-fade between them with a slow scroll. The captures are embedded as JPEG data URIs (no external requests); identities stay redacted exactly as in the originals. On narrow screens the README shows the static framed capture instead. Without motion, the first screen is shown.
+
+Display headlines (hero, project names, finale, footer) use **Unbounded** (SIL Open Font License 1.1, `fonts/unbounded/`), outlined to SVG paths by `scripts/typeset.py` because GitHub images cannot load web fonts. The same words are always present in the SVG title/description and the README alt text.
+
+Regenerating the visuals needs Pillow and fontTools (`pip install pillow fonttools`); the daily workflow only re-renders the activity panels and does not need them.

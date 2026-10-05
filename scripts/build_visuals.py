@@ -10,10 +10,12 @@ scripts/update_metrics.py.
 """
 import json
 import math
+from functools import lru_cache
 import random
 from pathlib import Path
 
 from profile_style import ACCENTS, C, document, esc, linear, radial, text, wrap
+from typeset import fit, outline
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'assets/motion'
@@ -98,6 +100,11 @@ def stars(width, height, count, seed, top=0):
 
 def pill_width(label, size):
     return len(label) * size * 0.56 + 52
+
+
+def display(value, x, y, size, fill, anchor='start', weight=700, extra=''):
+    """Display headline in Unbounded, outlined so it renders identically everywhere."""
+    return f'<path d="{outline(value, x, y, size, weight, anchor)}" fill="{fill}" {extra}/>'
 
 
 def write(name, content):
@@ -190,8 +197,9 @@ def hero(lang, mobile):
         y = 78
         b += f'<rect x="{x0}" y="{y - 13}" width="26" height="4" rx="2" fill="url(#acc)"/>'
         b += text(x0 + 38, y - 4, t['kicker_m'], 18, C['lilac2'], 700, spacing=2)
-        b += text(x0, 156, t['head'][0], 46, C['text'], 800)
-        b += text(x0, 212, t['head'][1], 46, 'url(#hg)', 800)
+        hs = min(fit(t['head'][0], 46, w - 2 * x0), fit(t['head'][1], 46, w - 2 * x0))
+        b += display(t['head'][0], x0, 150, hs, C['text'])
+        b += display(t['head'][1], x0, 150 + hs * 1.25, hs, 'url(#hg)')
         for i, line in enumerate(t['spec_m']):
             b += text(x0, 266 + i * 32, line, 21, C['soft'])
         chip_y = [372, 426, 426]
@@ -199,8 +207,9 @@ def hero(lang, mobile):
     else:
         b += f'<rect x="{x0}" y="{103}" width="34" height="4" rx="2" fill="url(#acc)"/>'
         b += text(x0 + 48, 110, t['kicker'], 16, C['lilac2'], 700, spacing=3.4)
-        b += text(x0, 196, t['head'][0], 58, C['text'], 800)
-        b += text(x0, 264, t['head'][1], 58, 'url(#hg)', 800)
+        hs = min(fit(t['head'][0], 54, 640), fit(t['head'][1], 54, 640))
+        b += display(t['head'][0], x0, 190, hs, C['text'])
+        b += display(t['head'][1], x0, 190 + hs * 1.3, hs, 'url(#hg)')
         for i, line in enumerate(t['spec']):
             b += text(x0, 322 + i * 33, line, 21, C['soft'])
         chip_y = [408, 408, 408]
@@ -327,13 +336,13 @@ def divider(index, lang, mobile):
 
 # ---------------------------------------------------------------- project accents
 PROJECTS = {
-    'bid': {'n': '01', 'accent': ('#8B5CF6', '#22D3EE'), 'motif': 'scan',
+    'bid': {'n': '01', 'name': 'Before I Deploy', 'accent': ('#8B5CF6', '#22D3EE'), 'motif': 'scan',
             'en': ('NATIVE macOS APP', 'SwiftUI interface · Node.js check engine · hosting & cloud links'),
             'bg': ('НАТИВНО macOS ПРИЛОЖЕНИЕ', 'SwiftUI интерфейс · Node.js модул за проверки · хостинг и облак')},
-    'police': {'n': '02', 'accent': ('#22D3EE', '#34D399'), 'motif': 'tree',
+    'police': {'n': '02', 'name': 'TLR Police Portal', 'accent': ('#22D3EE', '#34D399'), 'motif': 'tree',
                'en': ('FIVEM COMMUNITY OPERATIONS', 'Staff roster · ranks · handbook · Discord-synchronised roles'),
                'bg': ('ОПЕРАЦИИ ЗА FIVEM ОБЩНОСТ', 'Състав · звания · наръчник · роли, синхронизирани с Discord')},
-    'tlr': {'n': '03', 'accent': ('#F472B6', '#8B5CF6'), 'motif': 'network',
+    'tlr': {'n': '03', 'name': 'The Last Republic', 'accent': ('#F472B6', '#8B5CF6'), 'motif': 'network',
             'en': ('COMMUNITY INFRASTRUCTURE', 'Public interface · rules · Discord-connected applications'),
             'bg': ('ОБЩНОСТНА ИНФРАСТРУКТУРА', 'Публичен интерфейс · правила · кандидатстване чрез Discord')},
 }
@@ -409,9 +418,9 @@ def project_marker(key, lang, mobile):
     p = PROJECTS[key]
     a1, a2 = p['accent']
     kicker, role = p[lang]
-    w, h = (600, 270) if mobile else (1200, 176)
+    w, h = (600, 330) if mobile else (1200, 210)
     defs = (linear('bg', [(0, C['ink']), (.6, C['indigo']), (1, C['deep'])], x2=1, y2=1) + linear('g', [(0, a1), (1, a2)])
-            + radial('gl', a1, .5) + radial('gl2', a2, .4))
+            + linear('name', [(0, '#FFFFFF'), (.55, '#FFFFFF'), (1, a2)]) + radial('gl', a1, .5) + radial('gl2', a2, .4))
     motion = '.aur{animation:aur 22s ease-in-out infinite}@keyframes aur{50%{transform:translate(-40px,14px)}}'
     b = frame(w, h, 22) + '<g clip-path="url(#frame)">'
     b += (f'<g class="aur"><circle cx="{w * .82:.0f}" cy="{h * .3:.0f}" r="{h * 1.3:.0f}" fill="url(#gl)"/></g>'
@@ -422,15 +431,18 @@ def project_marker(key, lang, mobile):
         kl = wrap(kicker, 22)
         for i, line in enumerate(kl):
             b += text(140, 50 + i * 24, line, 19, a1, 800, spacing=2)
-        for i, line in enumerate(wrap(role, 34)):
-            b += text(140, 56 + len(kl) * 24 + i * 28, line, 21, C['soft'])
-        mm, css = project_motif(p['motif'], 30, 186, w - 60, 62, a1, a2)
+        ny = 76 + len(kl) * 24
+        b += display(p['name'], 32, ny + 34, fit(p['name'], 40, w - 64), 'url(#name)')
+        for i, line in enumerate(wrap(role, 40)):
+            b += text(32, ny + 76 + i * 28, line, 21, C['soft'])
+        mm, css = project_motif(p['motif'], 30, h - 82, w - 60, 58, a1, a2)
     else:
-        b += text(40, 134, p['n'], 118, 'none', 800, extra=f'stroke="url(#g)" stroke-width="2"')
-        b += text(40, 134, p['n'], 118, a1, 800, extra='opacity=".08"')
-        b += text(232, 74, kicker, 16, a1, 800, spacing=3.2)
-        b += text(232, 112, role, 21, C['soft'])
-        mm, css = project_motif(p['motif'], 900, 34, 260, 108, a1, a2)
+        b += text(40, 150, p['n'], 118, 'none', 800, extra=f'stroke="url(#g)" stroke-width="2"')
+        b += text(40, 150, p['n'], 118, a1, 800, extra='opacity=".08"')
+        b += text(232, 62, kicker, 15, a1, 800, spacing=3)
+        b += display(p['name'], 232, 118, fit(p['name'], 44, 640), 'url(#name)')
+        b += text(232, 160, role, 20, C['soft'])
+        mm, css = project_motif(p['motif'], 900, 52, 260, 108, a1, a2)
     b += f'<g>{mm}</g></g>'
     title = f'{p["n"]} · {kicker}'
     desc = f'{title}. {role}. ' + ('Decorative project accent.' if lang == 'en' else 'Декоративен акцент на проекта.')
@@ -954,9 +966,10 @@ def finale(lang, mobile):
     b += text(sx - sw / 2 + 40, (48 if not mobile else 52) + 25, t['status'], 15, '#B3F6D2', 800, spacing=1.6)
     if mobile:
         lines = wrap(t['head'], 16)
+        fs = min(fit(line, 40, w - 64) for line in lines)
         for i, line in enumerate(lines):
-            b += text(sx, 170 + i * 54, line, 46, 'url(#hg)', 800, anchor='middle')
-        y = 170 + len(lines) * 54 + 6
+            b += display(line, sx, 160 + i * fs * 1.3, fs, 'url(#hg)', anchor='middle')
+        y = 160 + len(lines) * fs * 1.3 + 6
         for i, line in enumerate(wrap(t['sub'], 34)):
             b += text(sx, y + i * 28, line, 21, C['text'], 600, anchor='middle')
         y += len(wrap(t['sub'], 34)) * 28 + 12
@@ -964,7 +977,7 @@ def finale(lang, mobile):
             b += text(sx, y + i * 26, line, 19, C['soft'], anchor='middle')
         cards = []
     else:
-        b += text(sx, 168, t['head'], 62, 'url(#hg)', 800, anchor='middle')
+        b += display(t['head'], sx, 168, fit(t['head'], 50, 1060), 'url(#hg)', anchor='middle')
         b += text(sx, 216, t['sub'], 23, C['text'], 600, anchor='middle')
         b += text(sx, 252, t['sub2'], 18, C['soft'], anchor='middle')
         cards = []
@@ -1010,8 +1023,9 @@ def footer(lang, mobile):
         y += 56
     y += 30
     tag = wrap(t['tag'], 26) if mobile else [t['tag']]
+    fs = min(fit(line, 30 if not mobile else 28, w - 60) for line in tag)
     for i, line in enumerate(tag):
-        b += text(w / 2, y + i * 38, line, 32 if not mobile else 30, 'url(#hg)', 800, anchor='middle')
+        b += display(line, w / 2, y + i * 38, fs, 'url(#hg)', anchor='middle')
     y += (len(tag) - 1) * 38 + 36
     steps = t['steps'] if not mobile or len(t['steps']) < 46 else t['steps'].replace(' · ', ' · ', 2)
     if mobile:
@@ -1195,6 +1209,120 @@ def lessons_panel(lang, mobile):
     return document(w, h, t['lessons_alt'], desc, b, defs, motion)
 
 
+# ---------------------------------------------------------------- live product scenes
+SCENES = {
+    'bid': {'device': 'laptop', 'accent': (C['violet'], C['cyan']),
+            'screens': [('before-i-deploy', {'en': 'Release checklist', 'bg': 'Списък за публикуване'}),
+                        ('bid-mission-control', {'en': 'Mission Control', 'bg': 'Mission Control'}),
+                        ('bid-command-palette', {'en': 'Command palette', 'bg': 'Командна палитра'})],
+            'title': {'en': 'Before I Deploy — real screens', 'bg': 'Before I Deploy — реални екрани'}},
+    'police': {'device': 'browser', 'accent': (C['cyan'], C['mint']),
+               'screens': [('police-dashboard', {'en': 'Dashboard', 'bg': 'Табло'}),
+                           ('police-employees', {'en': 'Staff directory', 'bg': 'Служители'}),
+                           ('police-ranks', {'en': 'Rank hierarchy', 'bg': 'Звания'}),
+                           ('police-handbook', {'en': 'Handbook', 'bg': 'Наръчник'})],
+               'title': {'en': 'TLR Police Portal — real screens', 'bg': 'TLR Police Portal — реални екрани'}},
+}
+SCENE_NOTE = {'en': 'Real captures · animated presentation', 'bg': 'Реални кадри · анимирано представяне'}
+
+
+@lru_cache(maxsize=None)
+def screen_data(name):
+    """Genuine capture without its presentation caption, as an embedded JPEG."""
+    import base64
+    import io
+    from PIL import Image
+    from frame_screens import inner_area
+    image = Image.open(ROOT / f'assets/screens/{name}.jpg').convert('RGB')
+    crop = image.crop(inner_area(image))
+    crop = crop.resize((1100, round(crop.height * 1100 / crop.width)), Image.LANCZOS)
+    buffer = io.BytesIO()
+    crop.save(buffer, 'JPEG', quality=74, optimize=True, progressive=True)
+    return 'data:image/jpeg;base64,' + base64.b64encode(buffer.getvalue()).decode(), crop.size
+
+
+def scene(key, lang):
+    cfg = SCENES[key]
+    a1, a2 = cfg['accent']
+    screens = cfg['screens']
+    n = len(screens)
+    seg = 4.6
+    period = n * seg
+    w, h = 1200, 800
+    if cfg['device'] == 'laptop':
+        sx, sy, sw, sh = 150, 74, 900, 563
+    else:
+        sx, sy, sw, sh = 90, 108, 1020, 566
+    defs = (linear('bg', [(0, C['night']), (.55, '#150F40'), (1, C['deep'])], x2=1, y2=1)
+            + radial('g1', a1, .55) + radial('g2', a2, .4)
+            + linear('metal', [(0, '#3A3F55'), (.5, '#8E93A8'), (1, '#2A2E40')])
+            + linear('sheen', [(0, '#fff', 0), (.5, '#fff', .07), (1, '#fff', 0)])
+            + linear('fade', [(0, '#000', 0), (1, '#000', .35)], x2=0, y2=1)
+            + f'<clipPath id="screen"><rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="{6 if cfg["device"] == "laptop" else 0}"/></clipPath>')
+    css = ''
+    motion = ('.g1{animation:drift 26s ease-in-out infinite}.g2{animation:drift 34s ease-in-out infinite reverse}'
+              '@keyframes drift{50%{transform:translate(-50px,30px)}}'
+              f'.sheen{{animation:sheen 9s ease-in-out infinite}}@keyframes sheen{{0%,25%{{transform:translateX(-400px)}}75%,100%{{transform:translateX({sw + 400}px)}}}}')
+    fade = 0.7 / period * 100
+    for i in range(n):
+        start, end = i / n * 100, (i + 1) / n * 100
+        css += f'.s{i}{{opacity:{1 if i == 0 else 0}}}.d{i}{{opacity:{1 if i == 0 else .3}}}.l{i}{{opacity:{1 if i == 0 else 0}}}'
+        if i == 0:
+            frames = f'0%{{opacity:1}}{end - fade:.2f}%{{opacity:1}}{end:.2f}%{{opacity:0}}{100 - fade:.2f}%{{opacity:0}}100%{{opacity:1}}'
+            dots = f'0%{{opacity:1}}{end - fade:.2f}%{{opacity:1}}{end:.2f}%{{opacity:.3}}{100 - fade:.2f}%{{opacity:.3}}100%{{opacity:1}}'
+        else:
+            frames = (f'0%{{opacity:0}}{start - fade:.2f}%{{opacity:0}}{start:.2f}%{{opacity:1}}{end - fade:.2f}%{{opacity:1}}'
+                      f'{end:.2f}%{{opacity:0}}100%{{opacity:0}}')
+            dots = (f'0%{{opacity:.3}}{start - fade:.2f}%{{opacity:.3}}{start:.2f}%{{opacity:1}}{end - fade:.2f}%{{opacity:1}}'
+                    f'{end:.2f}%{{opacity:.3}}100%{{opacity:.3}}')
+        motion += (f'.s{i},.l{i}{{animation:show{i} {period:.1f}s linear infinite}}@keyframes show{i}{{{frames}}}'
+                   f'.d{i}{{animation:dot{i} {period:.1f}s linear infinite}}@keyframes dot{i}{{{dots}}}')
+    b = f'<rect width="{w}" height="{h}" rx="30" fill="url(#bg)"/>'
+    b += (f'<clipPath id="frame"><rect width="{w}" height="{h}" rx="30"/></clipPath><g clip-path="url(#frame)">'
+          f'<g class="g1"><circle cx="{w * .22:.0f}" cy="{h * .3:.0f}" r="420" fill="url(#g1)"/></g>'
+          f'<g class="g2"><circle cx="{w * .82:.0f}" cy="{h * .75:.0f}" r="380" fill="url(#g2)"/></g>'
+          + stars(w, h, 50, 21) + '</g>')
+    # device body
+    if cfg['device'] == 'laptop':
+        b += (f'<ellipse cx="{w / 2}" cy="{sy + sh + 66}" rx="520" ry="26" fill="#000" opacity=".45"/>'
+              f'<rect x="{sx - 22}" y="{sy - 22}" width="{sw + 44}" height="{sh + 44}" rx="28" fill="#0A0A12" stroke="#3A3F55" stroke-width="2"/>'
+              f'<circle cx="{w / 2}" cy="{sy - 11}" r="3.5" fill="#22263A"/>'
+              f'<path d="M{sx - 70} {sy + sh + 22}H{sx + sw + 70}L{sx + sw + 104} {sy + sh + 48}Q{sx + sw + 108} {sy + sh + 56} {sx + sw + 96} {sy + sh + 56}'
+              f'H{sx - 96}Q{sx - 108} {sy + sh + 56} {sx - 104} {sy + sh + 48}Z" fill="url(#metal)"/>'
+              f'<rect x="{w / 2 - 80}" y="{sy + sh + 22}" width="160" height="9" rx="4.5" fill="#1C1F2E" opacity=".7"/>')
+    else:
+        b += (f'<ellipse cx="{w / 2}" cy="{sy + sh + 40}" rx="540" ry="22" fill="#000" opacity=".45"/>'
+              f'<rect x="{sx - 2}" y="{sy - 46}" width="{sw + 4}" height="{sh + 48}" rx="18" fill="#0B0D18" stroke="#33395A" stroke-width="2"/>'
+              f'<circle cx="{sx + 24}" cy="{sy - 23}" r="6.5" fill="#FF5F57"/><circle cx="{sx + 46}" cy="{sy - 23}" r="6.5" fill="#FEBC2E"/>'
+              f'<circle cx="{sx + 68}" cy="{sy - 23}" r="6.5" fill="#28C840"/>'
+              f'<rect x="{w / 2 - 210}" y="{sy - 37}" width="420" height="28" rx="14" fill="#161A2C"/>')
+        b += shield(w / 2 - 186, sy - 22, C['mint'])
+        b += text(w / 2 + 6, sy - 17, 'TLR Police Portal', 15, C['soft'], 600, anchor='middle')
+    # screens
+    b += f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" fill="#05060C"/><g clip-path="url(#screen)">'
+    for i, (name, _labels) in enumerate(screens):
+        href, (iw, ih) = screen_data(name)
+        dh = ih * sw / iw
+        overflow = max(0, dh - sh)
+        scroll = f'.sc{i}{{animation:scroll{i} {period:.1f}s ease-in-out infinite}}@keyframes scroll{i}{{0%,{i / n * 100 + 8:.1f}%{{transform:translateY(0)}}{(i + 1) / n * 100 - 4:.1f}%,100%{{transform:translateY(-{overflow:.0f}px)}}}}' if overflow > 12 else ''
+        motion += scroll
+        b += (f'<g class="s{i}"><g class="sc{i}"><image href="{href}" x="{sx}" y="{sy}" width="{sw}" height="{dh:.0f}" preserveAspectRatio="xMidYMin meet"/></g></g>')
+    b += f'<rect x="{sx}" y="{sy + sh - 120}" width="{sw}" height="120" fill="url(#fade)"/>'
+    b += f'<g class="live"><rect class="sheen" x="{sx - 200}" y="{sy}" width="220" height="{sh}" fill="url(#sheen)" transform="skewX(-14)"/></g></g>'
+    # caption: current screen + progress dots
+    cy = h - 46
+    for i, (_name, labels) in enumerate(screens):
+        b += f'<g class="l{i}">' + text(w / 2, cy - 22, labels[lang], 24, C['text'], 700, anchor='middle') + '</g>'
+    total = n * 30
+    for i in range(n):
+        b += f'<rect class="d{i}" x="{w / 2 - total / 2 + i * 30}" y="{cy}" width="22" height="5" rx="2.5" fill="{a2 if i else a1}"/>'
+    b += text(w - 34, h - 22, SCENE_NOTE[lang], 13, C['muted'], anchor='end')
+    labels = ', '.join(l[lang] for _n, l in screens)
+    desc = f"{cfg['title'][lang]}: {labels}. " + ('Genuine captures presented as an animated sequence; identities are redacted.' if lang == 'en'
+                                                  else 'Истински кадри, показани като анимирана последователност; личните данни са скрити.')
+    return document(w, h, cfg['title'][lang], desc, b, defs, motion, css)
+
+
 # ---------------------------------------------------------------- main
 def main():
     count = 0
@@ -1210,6 +1338,9 @@ def main():
                 files[f'project-{key}-{sfx}'] = project_marker(key, lang, mobile)
             for v, group in enumerate(GROUPS):
                 files[f'stack-{group}-{sfx}'] = stack_group(group, v, lang, mobile)
+            if not mobile:
+                for key in SCENES:
+                    files[f'scene-{key}-{lang}.svg'] = scene(key, lang)
             files[f'certificates-{sfx}'] = certificates(lang, mobile)
             files[f'lessons-{sfx}'] = lessons_panel(lang, mobile)
             if not mobile:
