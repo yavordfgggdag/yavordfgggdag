@@ -3,27 +3,14 @@
 <a href="https://github.com/yavordfgggdag/yavordfgggdag/blob/main/README.bg.md"><img src="assets/languages/bg.svg" alt="Български" width="166" height="42" /></a>
 </p>
 
-<div align="center">
+<img src="assets/banner.svg" alt="Yavor — Websites. Software. Games. Built around your vision. Available for paid projects." width="100%" />
 
-<img src="assets/banner.svg" alt="Yavor — Websites. Software. Games. Built around your vision." width="100%" />
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/hero-en-mobile.svg" />
+<img src="assets/motion/hero-en.svg" alt="Yavor Yakow, independent developer. Products with systems behind them: websites, online stores, web and desktop software, admin panels, Discord bots, games and FiveM, APIs and AI. Featured: Before I Deploy, TLR Police Portal, client websites. Contact: Fraisbg1@gmail.com · +359 898 634 678 · Discord Fraisbg." width="100%" />
+</picture>
 
-### Full-Stack Developer · Software Builder · Creative Technologist
-
-**I turn ideas into websites, software, bots and interactive experiences.**<br>
-Custom development for businesses, creators, communities and ambitious projects.
-
-![AVAILABLE FOR PAID PROJECTS](https://img.shields.io/badge/AVAILABLE%20FOR%20PAID%20PROJECTS-22C55E?style=for-the-badge&logoColor=white)
-![CUSTOM DEVELOPMENT](https://img.shields.io/badge/CUSTOM%20DEVELOPMENT-7C3AED?style=for-the-badge&logoColor=white)
-![FROM IDEA TO LAUNCH](https://img.shields.io/badge/FROM%20IDEA%20TO%20LAUNCH-0891B2?style=for-the-badge&logoColor=white)
-
-![Profile views](https://visitor-badge.laobi.icu/badge?page_id=yavordfgggdag.yavordfgggdag&left_color=334155&right_color=7c3aed)
-![GitHub followers](https://img.shields.io/github/followers/yavordfgggdag?style=for-the-badge&label=FOLLOWERS&color=0891b2)
-
-[Services](#-what-you-can-hire-me-for) · [Projects](#-selected-work) · [Technology](#-languages--technology) · [Process](#-from-your-idea-to-a-working-product) · [Contact](#-lets-talk-about-your-project)
-
-</div>
-
----
+<p align="center"><b><a href="#work">Work</a> · <a href="#services">Services</a> · <a href="#technology">Technology</a> · <a href="#activity">Activity</a> · <a href="#process">Process</a> · <a href="#contact">Contact</a></b></p>
 
 ## 👋 Hi, I'm Yavor
 
@@ -31,50 +18,233 @@ I build digital products that connect design, code and real-world workflows. My 
 
 **I take on paid development projects** — from a focused feature or a new website to a complete custom platform. I can help turn an early idea into a clear scope, build the product, connect its systems and prepare it for launch.
 
-<picture>
-<source media="(max-width: 600px)" srcset="assets/studio/manifesto-en-mobile.svg" />
-<img src="assets/studio/manifesto-en.svg" alt="The interface is only the beginning. Design, logic and connected systems." width="100%" />
-</picture>
-
-## 📊 Activity & language mix
+<a name="work"></a>
 
 <picture>
-<source media="(max-width: 600px)" srcset="assets/metrics/activity-en-mobile.svg" />
-<img src="assets/metrics/activity-en.svg" alt="Contributions, active days, current and longest streak, last contribution and contribution calendar." width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/divider-01-en-mobile.svg" />
+<img src="assets/motion/divider-01-en.svg" alt="" width="100%" />
 </picture>
 
+## 🚀 Selected Work
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🟣 [Before I Deploy](#before-i-deploy)
+**Know before you ship.** A native macOS app that checks web projects before production: environments, dependencies, linting, types, tests, builds, security and configuration.
+
+**Developer tools · Automation · Release readiness**
+
+</td>
+<td width="50%" valign="top">
+
+### 🔵 [TLR Police Portal](#tlr-police-portal)
+Internal management for employee profiles, departments, ranks, callsigns, certificates and strikes, with permissions and audit logs.
+
+**Management software · Role-based access · Integrations**
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 🩷 [The Last Republic](#the-last-republic)
+Connected gaming and community infrastructure bringing together FiveM, web applications, Discord, databases, staff tools and permissions.
+
+**Full-stack systems · Gaming · Community infrastructure**
+
+</td>
+<td width="50%" valign="top">
+
+### 🟠 Client Web Projects
+**„Помощ от приятел“** (educational centre) and **„Автоинструктор Господинов“** (driving instructor). [See the client projects below](#client-websites).
+
+**Business websites · UI/UX · Custom functionality**
+
+</td>
+</tr>
+</table>
+
+Much of my project source code is private. This profile presents the work, the capabilities and the approach behind it.
+
 <picture>
-<source media="(max-width: 600px)" srcset="assets/metrics/languages-en-mobile.svg" />
-<img src="assets/metrics/languages-en.svg" alt="Languages by aggregate code volume across project repositories, including private projects, without repository names or contents." width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/project-bid-en-mobile.svg" />
+<img src="assets/motion/project-bid-en.svg" alt="01 · Native macOS app" width="100%" />
 </picture>
+
+## Before I Deploy
+
+**Make release preparation understandable, from the first check to the next action.**
+
+A native macOS application for reviewing local web projects, understanding warnings and preparing a preview or production release. **My contribution:** I developed the SwiftUI interface, the Node.js command engine and the connections between project checks, hosting and cloud services.
+
+<img src="assets/screens/framed/before-i-deploy.jpg" alt="Before I Deploy running on macOS: a demo project with a Ready with warnings verdict, check controls and a step-by-step launch checklist." width="100%" />
+
+- **One check pipeline:** Git state, secrets, dependencies, lint, types, build and hosting readiness, with results returned to the app as NDJSON events.
+- **Release safeguards:** the engine checks for changed project fingerprints and requires explicit confirmation before production deployment.
+- **A useful control centre:** project status, site monitoring, SSL information and a command palette for moving between tasks.
+- **AI-assisted repair:** an implemented review-and-apply workflow for proposed file changes. Provider setup and service availability determine what can run.
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/arch-bid-en-mobile.svg" />
+<img src="assets/motion/arch-bid-en.svg" alt="Architecture illustration: the SwiftUI app sends commands to a Node.js engine and receives NDJSON events. One chain of checks — Git, secrets, dependencies, lint, types, build, hosting — ends at an explicit confirmation before production hosting. Project files and Keychain stay local; Supabase, Postgres and Deno Edge Functions are optional cloud services." width="100%" />
+</picture>
+
+**Built with:** Swift · SwiftUI · JavaScript · Node.js · Supabase · PostgreSQL · Deno Edge Functions
 
 <details>
-<summary><b>How these numbers are calculated</b></summary>
+<summary><b>Explore the application — Mission Control & keyboard navigation</b></summary>
 
-Activity refreshes daily from the public GitHub contribution calendar. Contributions are not just commits and do not measure hours worked. “Last contribution” is the last active calendar day, not the last login. GitHub may update the calendar with a delay.
+### Mission Control
 
-The current streak counts consecutive active days ending today, or yesterday when today has no contribution yet. Longest streak, contribution totals and active days refer to the displayed annual window. The mobile heatmap shows the last 26 weeks; headline totals still use the annual window.
+<img src="assets/screens/framed/bid-mission-control.jpg" alt="Live Mission Control showing a demo project, monitoring status and an HTTP 404 incident; this is a captured development state, not a success metric." width="100%" />
 
-Language shares are a separate 2026-10-05 snapshot of GitHub-reported code bytes, including private projects and excluding this profile repository. They do not measure frequency, time or proficiency. The language snapshot is not refreshed automatically: the public workflow has no access to private code.
+### Command palette
 
-[GitHub contribution rules](https://docs.github.com/en/account-and-profile/reference/profile-contributions-reference) · [Metrics source](scripts/update_metrics.py)
+<img src="assets/screens/framed/bid-command-palette.jpg" alt="Actual Before I Deploy command palette with Mission Control, Domains, Costs, Setup, AI, Settings and History actions." width="100%" />
 
 </details>
 
-### A closer look at the work
+<sub>Actively developed product. Screens show the installed application with a demo project; they do not imply a public release or that every external integration has been validated. Source is private.</sub>
+
+[Discuss the product or a similar tool →](mailto:Fraisbg1@gmail.com?subject=Before%20I%20Deploy)
 
 <picture>
-<source media="(max-width: 600px)" srcset="assets/studio/work-en-mobile.jpg" />
-<img src="assets/studio/work-en.jpg" alt="Before I Deploy · TLR Police Portal · Помощ от приятел" width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/project-police-en-mobile.svg" />
+<img src="assets/motion/project-police-en.svg" alt="02 · FiveM community operations" width="100%" />
 </picture>
 
+## TLR Police Portal
 
+**Turn a community's staff structure into a usable operations workspace.**
 
-[Before I Deploy](#before-i-deploy) · [The Last Republic](#the-last-republic) · [Police Portal](#tlr-police-portal) · [Community platform](#community-platform)
+An internal portal for the TLR roleplay police department. **My contribution:** I developed the dashboard, searchable staff directory, rank hierarchy, handbook and management workflows for certificates, strikes and callsigns, with server-side access checks and audit records.
+
+<img src="assets/screens/framed/police-dashboard.jpg" alt="Actual authenticated TLR Police Portal dashboard with handbook, radio codes, districts and roster widgets. Profile names and avatars are visibly redacted." width="100%" />
+
+**The engineering decision:** Discord membership events need a persistent connection. A separate Node.js bot handles the Gateway connection and synchronizes Discord-owned roster fields into Postgres. The Next.js website handles authorized management actions. Both use a shared role map.
 
 <picture>
-<source media="(max-width: 600px)" srcset="assets/studio/chapter-03-en-mobile.svg" />
-<img src="assets/studio/chapter-03-en.svg" alt="" width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/arch-tlr-en-mobile.svg" />
+<img src="assets/motion/arch-tlr-en.svg" alt="Architecture illustration: a persistent Discord Gateway bot synchronizes roster data to Postgres; the Next.js portal reads that data and performs authorized actions after server-side permission checks, writing audit records. Bot and portal share one role map; staff sign in with Discord." width="100%" />
+</picture>
+
+**Built with:** TypeScript · Next.js · React · PostgreSQL / Neon · Drizzle ORM · Node.js · discord.js
+
+### Inside the portal
+
+<img src="assets/screens/framed/police-employees.jpg" alt="Live employee management screen with search, rank and department filters. Individual identities, badge details and personal records are fully redacted." width="100%" />
+
+<details>
+<summary><b>Open the gallery — rank hierarchy & interactive handbook</b></summary>
+
+### Rank hierarchy
+
+<img src="assets/screens/framed/police-ranks.jpg" alt="Live rank hierarchy for the Commissioner's Office, Los Santos Police Department and Blaine County Sheriff's Office." width="100%" />
+
+### Interactive handbook
+
+<img src="assets/screens/framed/police-handbook.jpg" alt="Live police handbook showing The Mission, chapter tabs, page controls and structured procedure content." width="100%" />
+
+</details>
+
+<details>
+<summary><b>Play the short handbook navigation demo (animated GIF)</b></summary>
+
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="assets/screens/police-handbook.jpg" />
+  <img src="assets/screens/handbook-navigation.gif" alt="Recorded navigation through three real handbook pages: The Mission, Culture and Welcome to the LSPD. Static screenshot shown when reduced motion is supported." width="100%" />
+</picture>
+
+<sub>Three captured states from real page navigation, with pauses for readability. No interface or data has been fabricated.</sub>
+
+</details>
+
+<sub>Portal captures from the earlier review. Discord authentication and department membership required. Current entry URL is being confirmed; source is private.</sub>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/project-tlr-en-mobile.svg" />
+<img src="assets/motion/project-tlr-en.svg" alt="03 · Community infrastructure" width="100%" />
+</picture>
+
+## The Last Republic
+
+**Community infrastructure connecting the website, Discord and operational tools.**
+
+**My contribution:** the public interface, rules and Discord-connected application journeys for the FiveM community.
+
+<sub>The current main-site URL and version are being confirmed. Earlier homepage captures are not presented as the current website.</sub>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/project-community-en-mobile.svg" />
+<img src="assets/motion/project-community-en.svg" alt="04 · Source showcase · React" width="100%" />
+</picture>
+
+## Community platform
+
+**A shared entry point for a gaming community, its rules and player journeys.**
+
+A separate React implementation whose interface is branded TLR RP and focuses on Minecraft SMP and Factions. The frontend brings server discovery, topic-based rules and application routes into one consistent navigation system. This is a local source-code showcase, not the current main website of The Last Republic.
+
+<details>
+<summary><b>View the local interface from the reviewed source</b></summary>
+
+<img src="assets/screens/framed/community-platform.jpg" alt="Actual local TLR RP interface: green Minecraft community homepage with SMP and Factions messaging. Repository defaults are shown." width="100%" />
+
+<img src="assets/screens/framed/community-rules.jpg" alt="Real locally rendered rules hub with navigation cards for general rules, chat, SMP, Factions and Discord." width="100%" />
+
+</details>
+
+**Technical detail:** React Router handles the page journeys, route components load on demand, and React Query manages remote data caching. The repository also contains Supabase-backed authentication, data access and server functions.
+
+**Built with:** TypeScript · React · Vite · Tailwind CSS · shadcn/ui · React Router · TanStack Query · Supabase
+
+<sub>Captured from the unmodified frontend running locally, with production services disconnected. Placeholder addresses and status text are repository defaults. These images demonstrate the interface, not a verified live server, checkout or authentication deployment. Source code is private.</sub>
+
+### Code experiment — Space Control
+
+A browser-based interface experiment exploring simulated resource monitoring and control feedback. The reviewed source includes HTML screens and Canvas elements, with references to JavaScript files for the intended interactions.
+
+**Technology:** HTML · JavaScript · Canvas API
+
+<sub>Source preview only: the reviewed checkout is missing referenced styling and script assets. A complete visual demo is pending those assets or a working demo URL. Source code is private.</sub>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/project-client-en-mobile.svg" />
+<img src="assets/motion/project-client-en.svg" alt="05 · Client websites" width="100%" />
+</picture>
+
+## Client websites
+
+### Помощ от приятел · Educational centre
+
+A client website that helps parents explore Bulgarian-language and mathematics lessons and reach the centre through a clear enquiry path. The live interface includes course formats, an FAQ and an enquiry form.
+
+<img src="assets/screens/framed/client-education.jpg" alt="Real homepage detail from Помощ от приятел: educational centre branding, lesson introduction and enquiry call to action. Public presenter video and contact strip excluded from this crop." width="100%" />
+
+**Verified platform components:** WordPress · WPForms. The enquiry interface was inspected without submitting personal data.
+
+<details>
+<summary><b>Explore the interactive FAQ</b></summary>
+
+<img src="assets/screens/framed/client-education-faq.jpg" alt="Live FAQ with an expanded answer about the supported school grades." width="100%" />
+
+</details>
+
+[Visit Помощ от приятел →](https://pomoshtotpriyatel.com/)
+
+### Автоинструктор Господинов · Driving instructor
+
+Client website for a driving instructor, providing an online presence for the business.
+
+<sub>Website link, current screenshots, implementation details and technology are awaiting verification.</sub>
+
+<a name="services"></a>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/divider-02-en-mobile.svg" />
+<img src="assets/motion/divider-02-en.svg" alt="" width="100%" />
 </picture>
 
 ## 💼 What You Can Hire Me For
@@ -136,6 +306,8 @@ New features, bug fixes, refactoring, performance improvements, migrations, inte
 </tr>
 </table>
 
+**Offered · proven · exploring.** The cards above are services I offer. The projects above show the experience already implemented. The technology panels below separate tools used in those products from wider interests.
+
 <details>
 <summary><b>Explore the full development service catalogue</b></summary>
 
@@ -168,348 +340,89 @@ New features, bug fixes, refactoring, performance improvements, migrations, inte
 
 > **Have something different in mind?** I also consider custom development outside this list. Start with the problem, the users and what a successful result should do.
 
----
+<a name="technology"></a>
 
 <picture>
-<source media="(max-width: 600px)" srcset="assets/studio/chapter-01-en-mobile.svg" />
-<img src="assets/studio/chapter-01-en.svg" alt="" width="100%" />
-</picture>
-
-## 🚀 Selected Work
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### 🟣 Before I Deploy
-**Know before you ship.**
-
-Developer tooling focused on checking projects before production: environments, dependencies, linting, types, tests, builds, security and configuration.
-
-**Developer tools · Automation · Release readiness**
-
-</td>
-<td width="50%" valign="top">
-
-### 🔵 The Last Republic
-Connected gaming and community infrastructure bringing together FiveM, web applications, Discord, databases, staff tools and permissions.
-
-**Full-stack systems · Gaming · Community infrastructure**
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-### 🟢 TLR Police Portal
-Internal management workflows for employee profiles, departments, ranks, callsigns, certificates and strikes, with permissions and audit logs.
-
-**Management software · Role-based access · Integrations**
-
-</td>
-<td width="50%" valign="top">
-
-### 🟠 Client Web Projects
-Websites for **„Помощ от приятел“** (educational centre) and **„Автоинструктор Господинов“** (driving instructor). [See the client projects below](#client-websites).
-
-**Business websites · UI/UX · Custom functionality**
-
-</td>
-</tr>
-</table>
-
-Much of my project source code is private. This profile presents the work, the capabilities and the approach behind it.
-
----
-
-## Before I Deploy
-
-**Make release preparation understandable, from the first check to the next action.**
-
-A native macOS application for reviewing local web projects, understanding warnings and preparing a preview or production release. I developed the SwiftUI interface, the Node.js command engine and the connections between project checks, hosting and cloud services.
-
-<img src="assets/screens/before-i-deploy.jpg" alt="Before I Deploy running on macOS: a demo project with a Ready with warnings verdict, check controls and a step-by-step launch checklist." width="100%" />
-
-**What is behind the screen**
-
-- **One check pipeline:** Git state, secrets, dependencies, lint, types, build and hosting readiness, with results returned to the app as NDJSON events.
-- **Release safeguards:** the engine checks for changed project fingerprints and requires explicit confirmation before production deployment.
-- **A useful control centre:** project status, site monitoring, SSL information and a command palette for moving between tasks.
-- **AI-assisted repair:** an implemented review-and-apply workflow for proposed file changes. Provider setup and service availability determine what can run.
-
-**Built with:** Swift · SwiftUI · JavaScript · Node.js · Supabase · PostgreSQL · Deno Edge Functions
-
-<img src="assets/bid-architecture.svg" alt="Architecture diagram: SwiftUI communicates with a Node.js engine through NDJSON. The engine handles local checks and connects to hosting and optional cloud services." width="100%" />
-
-<details>
-<summary><b>Explore the application — Mission Control & keyboard navigation</b></summary>
-
-### Mission Control
-
-<img src="assets/screens/bid-mission-control.jpg" alt="Live Mission Control showing a demo project, monitoring status and an HTTP 404 incident; this is a captured development state, not a success metric." width="100%" />
-
-### Command palette
-
-<img src="assets/screens/bid-command-palette.jpg" alt="Actual Before I Deploy command palette with Mission Control, Domains, Costs, Setup, AI, Settings and History actions." width="100%" />
-
-</details>
-
-<sub>Actively developed product. Screens show the installed application with a demo project; they do not imply a public release or that every external integration has been validated. Source is private.</sub>
-
-[Discuss the product or a similar tool →](mailto:Fraisbg1@gmail.com?subject=Before%20I%20Deploy)
-
-<img src="assets/section-divider.svg" alt="" width="100%" />
-
-## The Last Republic
-
-**Community infrastructure connecting the website, Discord and operational tools.**
-
-My work includes the public interface, rules and Discord-connected application journeys for the FiveM community.
-
-<sub>The current main-site URL and version are being confirmed. Earlier homepage captures are not presented as the current website.</sub>
-
-## TLR Police Portal
-
-**Turn a community's staff structure into a usable operations workspace.**
-
-An internal portal for the TLR roleplay police department. I developed the dashboard, searchable staff directory, rank hierarchy, handbook and management workflows for certificates, strikes and callsigns, with server-side access checks and audit records.
-
-<img src="assets/screens/police-dashboard.jpg" alt="Actual authenticated TLR Police Portal dashboard with handbook, radio codes, districts and roster widgets. Profile names and avatars are visibly redacted." width="100%" />
-
-**The engineering decision:** Discord membership events need a persistent connection. A separate Node.js bot handles the Gateway connection and synchronizes Discord-owned roster fields into Postgres. The Next.js website handles authorized management actions. Both use a shared role map.
-
-**Built with:** TypeScript · Next.js · React · PostgreSQL / Neon · Drizzle ORM · Node.js · discord.js
-
-<img src="assets/tlr-architecture.svg" alt="Architecture diagram: a persistent Discord bot synchronizes roster data to Postgres; the Next.js portal reads that data and handles operations with server-side permissions." width="100%" />
-
-### Inside the portal
-
-<img src="assets/screens/police-employees.jpg" alt="Live employee management screen with search, rank and department filters. Individual identities, badge details and personal records are fully redacted." width="100%" />
-
-<details>
-<summary><b>Open the gallery — rank hierarchy & interactive handbook</b></summary>
-
-### Rank hierarchy
-
-<img src="assets/screens/police-ranks.jpg" alt="Live rank hierarchy for the Commissioner's Office, Los Santos Police Department and Blaine County Sheriff's Office." width="100%" />
-
-### Interactive handbook
-
-<img src="assets/screens/police-handbook.jpg" alt="Live police handbook showing The Mission, chapter tabs, page controls and structured procedure content." width="100%" />
-
-</details>
-
-<details>
-<summary><b>Play the short handbook navigation demo (animated GIF)</b></summary>
-
-<picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="assets/screens/police-handbook.jpg" />
-  <img src="assets/screens/handbook-navigation.gif" alt="Recorded navigation through three real handbook pages: The Mission, Culture and Welcome to the LSPD. Static screenshot shown when reduced motion is supported." width="100%" />
-</picture>
-
-<sub>Three captured states from real page navigation, with pauses for readability. No interface or data has been fabricated.</sub>
-
-</details>
-
-<sub>Portal captures from the earlier review. Discord authentication and department membership required. Current entry URL is being confirmed; source is private.</sub>
-
-<img src="assets/section-divider.svg" alt="" width="100%" />
-
-## Community platform
-
-**A shared entry point for a gaming community, its rules and player journeys.**
-
-The `chillrp-website` repository contains a separate React implementation whose current interface is branded TLR RP and focuses on Minecraft SMP and Factions. The frontend brings server discovery, topic-based rules and application routes into one consistent navigation system. This is a local source-code showcase, not the current main website of The Last Republic.
-
-<details>
-<summary><b>View the local interface from the reviewed source</b></summary>
-
-<img src="assets/screens/community-platform.jpg" alt="Actual local TLR RP interface from chillrp-website: green Minecraft community homepage with SMP and Factions messaging. Repository defaults are shown." width="100%" />
-
-</details>
-
-**Technical detail:** React Router handles the page journeys, route components load on demand, and React Query manages remote data caching. The repository also contains Supabase-backed authentication, data access and server functions.
-
-**Built with:** TypeScript · React · Vite · Tailwind CSS · shadcn/ui · React Router · TanStack Query · Supabase
-
-<details>
-<summary><b>Explore the rules hub</b></summary>
-
-<img src="assets/screens/community-rules.jpg" alt="Real locally rendered rules hub with navigation cards for general rules, chat, SMP, Factions and Discord." width="100%" />
-
-</details>
-
-**Source code is private.**
-
-<sub>Captured from the unmodified frontend running locally, with production services disconnected. Placeholder addresses and status text are repository defaults. These images demonstrate the interface, not a verified live server, checkout or authentication deployment.</sub>
-
-### Code experiment — Space Control
-
-A browser-based interface experiment exploring simulated resource monitoring and control feedback. The reviewed `fraisbg1` checkout includes HTML screens and Canvas elements, with references to JavaScript files for the intended interactions.
-
-**Technology:** HTML · JavaScript · Canvas API
-
-**Source code is private.**
-
-<sub>Source preview only: the reviewed checkout is missing referenced styling and script assets. A complete visual demo is pending those assets or a working demo URL.</sub>
-
-<img src="assets/section-divider.svg" alt="" width="100%" />
-
-<picture>
-<source media="(max-width: 600px)" srcset="assets/studio/chapter-02-en-mobile.svg" />
-<img src="assets/studio/chapter-02-en.svg" alt="" width="100%" />
-</picture>
-
-## Client websites
-
-### Помощ от приятел · Educational centre
-
-A client website that helps parents explore Bulgarian-language and mathematics lessons and reach the centre through a clear enquiry path. The live interface includes course formats, an FAQ and an enquiry form.
-
-<img src="assets/screens/client-education.jpg" alt="Real homepage detail from Помощ от приятел: educational centre branding, lesson introduction and enquiry call to action. Public presenter video and contact strip excluded from this crop." width="100%" />
-
-**Verified platform components:** WordPress · WPForms. The enquiry interface was inspected without submitting personal data.
-
-<details>
-<summary><b>Explore the interactive FAQ</b></summary>
-
-<img src="assets/screens/client-education-faq.jpg" alt="Live FAQ with an expanded answer about the supported school grades." width="100%" />
-
-</details>
-
-[Visit Помощ от приятел →](https://pomoshtotpriyatel.com/)
-
-### Автоинструктор Господинов · Driving instructor
-
-Client website for a driving instructor, providing an online presence for the business.
-
-<sub>Website link, current screenshots, implementation details and technology are awaiting verification.</sub>
-
-<picture>
-<source media="(max-width: 600px)" srcset="assets/studio/chapter-04-en-mobile.svg" />
-<img src="assets/studio/chapter-04-en.svg" alt="" width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/divider-03-en-mobile.svg" />
+<img src="assets/motion/divider-03-en.svg" alt="" width="100%" />
 </picture>
 
 ## 🌈 Languages & Technology
 
-### Technologies Behind the Featured Products
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/stack-used-en-mobile.svg" />
+<img src="assets/motion/stack-used-en.svg" alt="Used in the featured products. Before I Deploy: Swift, SwiftUI, JavaScript, Node.js, Supabase, PostgreSQL, Deno Edge Functions. TLR Police Portal: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, discord.js. Community platform: React, Vite, Tailwind CSS, shadcn/ui, React Router, TanStack Query, Supabase. Помощ от приятел: WordPress, WPForms. Space Control: HTML, JavaScript, Canvas API." width="100%" />
+</picture>
 
-<img src="assets/technology-map.svg" alt="Verified project technology: SwiftUI and Node.js for Before I Deploy; Next.js, React, Tailwind, PostgreSQL and Discord integrations for TLR." width="100%" />
+The 68 technologies below are the original technology collection: additional interests and possible project choices. It is not a claim of completed products or equal experience with every tool. A **mint ring** marks the tools verified in the products above.
 
-**Before I Deploy:** Swift · SwiftUI · JavaScript · Node.js · Supabase · PostgreSQL · Deno Edge Functions<br>
-**Reviewed TLR implementation & Police Portal:** TypeScript · React · Next.js · Tailwind CSS · Drizzle · Neon / PostgreSQL · discord.js<br>
-**Community platform:** React · Vite · shadcn/ui · React Router · TanStack Query · Supabase<br>
-**Space Control experiment:** HTML · JavaScript · Canvas
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/stack-tools-en-mobile.svg" />
+<img src="assets/motion/stack-tools-en.svg" alt="Additional Tools & Interests, 13: TypeScript (used in featured products), JavaScript (used), Python, Lua, HTML5 (used), CSS3, SQL, Node.js (used), Astro, MySQL, MariaDB, Git, GitHub." width="100%" />
+</picture>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/stack-languages-en-mobile.svg" />
+<img src="assets/motion/stack-languages-en.svg" alt="Wider Programming Language Ecosystem, 27: C, C++, C#, Java, Kotlin, Swift (used in featured products), Go, Rust, PHP, Ruby, Dart, Scala, R, Bash, PowerShell, Elixir, Erlang, Haskell, Clojure, F#, Julia, Zig, Solidity, GDScript, Objective-C, Perl, OCaml." width="100%" />
+</picture>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/stack-web-en-mobile.svg" />
+<img src="assets/motion/stack-web-en.svg" alt="Web & Application Ecosystem, 10: React (used in featured products), Next.js (used), Vue.js, Svelte, Vite (used), Tailwind CSS (used), Express, Electron, Flutter, .NET." width="100%" />
+</picture>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/stack-data-en-mobile.svg" />
+<img src="assets/motion/stack-data-en.svg" alt="Data, Infrastructure & Delivery, 10: PostgreSQL (used in featured products), SQLite, MongoDB, Redis, Docker, Linux, macOS (used), Netlify, GitHub Actions, NGINX." width="100%" />
+</picture>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/stack-games-en-mobile.svg" />
+<img src="assets/motion/stack-games-en.svg" alt="Games, Communities & AI, 8: Discord (used in featured products), FiveM, Godot, Unity, Unreal Engine, OpenAI, Claude, Cursor." width="100%" />
+</picture>
+
+<sub>The right stack depends on the product; the panels do not imply equal specialization in every language. Specific tools and implementation scope are agreed for each engagement. Logos: original brand colours via <a href="https://simpleicons.org">Simple Icons</a> (CC0); SQL, C#, PowerShell, Objective-C and OpenAI appear as text tiles, as in the original badges.</sub>
+
+<a name="activity"></a>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/divider-04-en-mobile.svg" />
+<img src="assets/motion/divider-04-en.svg" alt="" width="100%" />
+</picture>
+
+## 📊 Activity & language mix
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/metrics/activity-en-mobile.svg" />
+<img src="assets/metrics/activity-en.svg" alt="Contributions, active days, current and longest streak, last contribution and contribution calendar." width="100%" />
+</picture>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/metrics/languages-en-mobile.svg" />
+<img src="assets/metrics/languages-en.svg" alt="Languages by aggregate code volume across project repositories, including private projects, without repository names or contents." width="100%" />
+</picture>
 
 <details>
-<summary><b>Explore my wider technology interests</b></summary>
+<summary><b>How these numbers are calculated</b></summary>
 
-The original technology collection below covers additional interests and possible project choices. It is not a claim of completed products or equal experience with every tool. The projects above identify the technologies verified in their implementation.
+Activity refreshes daily from the public GitHub contribution calendar. Contributions are not just commits and do not measure hours worked. “Last contribution” is the last active calendar day, not the last login. GitHub may update the calendar with a delay.
 
-### Additional Tools & Interests
+The current streak counts consecutive active days ending today, or yesterday when today has no contribution yet. Longest streak, contribution totals and active days refer to the displayed annual window. The mobile heatmap shows the last 26 weeks; headline totals still use the annual window.
 
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Lua](https://img.shields.io/badge/Lua-2C2D72?style=for-the-badge&logo=lua&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-663399?style=for-the-badge&logo=css&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-00758F?style=for-the-badge&logoColor=white)
+Language shares are a separate 2026-10-05 snapshot of GitHub-reported code bytes, including private projects and excluding this profile repository. They do not measure frequency, time or proficiency. The language snapshot is not refreshed automatically: the public workflow has no access to private code.
 
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![Astro](https://img.shields.io/badge/Astro-BC52EE?style=for-the-badge&logo=astro&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
-
-### Wider Programming Language Ecosystem
-
-A broader view of the languages I explore and consider for project work. The right stack depends on the product; the badges below do not imply equal specialization in every language.
-
-![C](https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black)
-![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
-![C#](https://img.shields.io/badge/C%23-512BD4?style=for-the-badge&logoColor=white)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)
-![Swift](https://img.shields.io/badge/Swift-F05138?style=for-the-badge&logo=swift&logoColor=white)
-![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
-![Rust](https://img.shields.io/badge/Rust-CE422B?style=for-the-badge&logo=rust&logoColor=white)
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for-the-badge&logo=ruby&logoColor=white)
-![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
-![Scala](https://img.shields.io/badge/Scala-DC322F?style=for-the-badge&logo=scala&logoColor=white)
-![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white)
-![Bash](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnubash&logoColor=white)
-![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=for-the-badge&logoColor=white)
-![Elixir](https://img.shields.io/badge/Elixir-4B275F?style=for-the-badge&logo=elixir&logoColor=white)
-![Erlang](https://img.shields.io/badge/Erlang-A90533?style=for-the-badge&logo=erlang&logoColor=white)
-![Haskell](https://img.shields.io/badge/Haskell-5D4F85?style=for-the-badge&logo=haskell&logoColor=white)
-![Clojure](https://img.shields.io/badge/Clojure-5881D8?style=for-the-badge&logo=clojure&logoColor=white)
-![F#](https://img.shields.io/badge/F%23-378BBA?style=for-the-badge&logoColor=white)
-![Julia](https://img.shields.io/badge/Julia-9558B2?style=for-the-badge&logo=julia&logoColor=white)
-![Zig](https://img.shields.io/badge/Zig-F7A41D?style=for-the-badge&logo=zig&logoColor=black)
-![Solidity](https://img.shields.io/badge/Solidity-363636?style=for-the-badge&logo=solidity&logoColor=white)
-![GDScript](https://img.shields.io/badge/GDScript-478CBF?style=for-the-badge&logo=godotengine&logoColor=white)
-![Objective-C](https://img.shields.io/badge/Objective--C-438EFF?style=for-the-badge&logoColor=white)
-![Perl](https://img.shields.io/badge/Perl-39457E?style=for-the-badge&logo=perl&logoColor=white)
-![OCaml](https://img.shields.io/badge/OCaml-EC6813?style=for-the-badge&logo=ocaml&logoColor=white)
-
-### Web & Application Ecosystem
-
-![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![Next.js](https://img.shields.io/badge/Next.js-111827?style=for-the-badge&logo=nextdotjs&logoColor=white)
-![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white)
-![Svelte](https://img.shields.io/badge/Svelte-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
-![Express](https://img.shields.io/badge/Express-334155?style=for-the-badge&logo=express&logoColor=white)
-![Electron](https://img.shields.io/badge/Electron-47848F?style=for-the-badge&logo=electron&logoColor=white)
-![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
-![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
-
-### Data, Infrastructure & Delivery
-
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-FF4438?style=for-the-badge&logo=redis&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-![macOS](https://img.shields.io/badge/macOS-232F3E?style=for-the-badge&logo=apple&logoColor=white)
-![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=black)
-![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
-![NGINX](https://img.shields.io/badge/NGINX-009639?style=for-the-badge&logo=nginx&logoColor=white)
-
-### Games, Communities & AI
-
-![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)
-![FiveM](https://img.shields.io/badge/FiveM-F40552?style=for-the-badge&logo=fivem&logoColor=white)
-![Godot](https://img.shields.io/badge/Godot-478CBF?style=for-the-badge&logo=godotengine&logoColor=white)
-![Unity](https://img.shields.io/badge/Unity-222C37?style=for-the-badge&logo=unity&logoColor=white)
-![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-313131?style=for-the-badge&logo=unrealengine&logoColor=white)
-![OpenAI](https://img.shields.io/badge/OpenAI-10A37F?style=for-the-badge&logoColor=white)
-![Claude](https://img.shields.io/badge/Claude-D97757?style=for-the-badge&logo=anthropic&logoColor=white)
-![Cursor](https://img.shields.io/badge/Cursor-111827?style=for-the-badge&logoColor=white)
-
-<sub>Beyond the main stack, these sections map technologies relevant to my interests and potential project requirements. Specific tools and implementation scope are agreed for each engagement.</sub>
+[GitHub contribution rules](https://docs.github.com/en/account-and-profile/reference/profile-contributions-reference) · [Metrics source](scripts/update_metrics.py)
 
 </details>
 
----
-
-<img src="assets/development-flow.svg" alt="Animated development journey: discover, design, develop, test and launch" width="100%" />
-
-<picture>
-<source media="(max-width: 600px)" srcset="assets/studio/chapter-05-en-mobile.svg" />
-<img src="assets/studio/chapter-05-en.svg" alt="" width="100%" />
-</picture>
+<a name="process"></a>
 
 ## 🧭 From Your Idea to a Working Product
 
-| 01 · Discover | 02 · Design | 03 · Build | 04 · Validate | 05 · Launch |
-| :--- | :--- | :--- | :--- | :--- |
-| Understand your goals, users and requirements | Define the interface, architecture and scope | Develop features and connect the systems | Test behavior, fix issues and check readiness | Deploy, document and plan the next improvements |
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/process-en-mobile.svg" />
+<img src="assets/motion/process-en.svg" alt="01 Discover: understand your goals, users and requirements. 02 Design: define the interface, architecture and scope. 03 Build: develop features and connect the systems. 04 Validate: test behavior, fix issues and check readiness. 05 Launch: deploy, document and plan the next improvements." width="100%" />
+</picture>
 
 ### What Matters in My Work
 
@@ -520,25 +433,23 @@ A broader view of the languages I explore and consider for project work. The rig
 **🔁 Useful automation** — fewer repetitive steps and more consistent workflows.<br>
 **🤝 Clear project scope** — agreed requirements, deliverables and expectations.
 
+<a name="contact"></a>
+
 <picture>
-<source media="(max-width: 600px)" srcset="assets/studio/chapter-06-en-mobile.svg" />
-<img src="assets/studio/chapter-06-en.svg" alt="" width="100%" />
+<source media="(max-width: 600px)" srcset="assets/motion/divider-05-en-mobile.svg" />
+<img src="assets/motion/divider-05-en.svg" alt="" width="100%" />
 </picture>
 
 ## 📬 Let's Talk About Your Project
 
-<div align="center">
-
-### A website, a custom tool, a bot or your next big idea.
-**Tell me what you want to build. Let's work out how to make it happen.**
-
-<img src="assets/contact.svg" alt="Contact: +359 898 634 678 · Fraisbg1@gmail.com · Discord Fraisbg · Instagram @y.yakowvw.sales" width="100%" />
-
-</div>
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/finale-en-mobile.svg" />
+<img src="assets/motion/finale-en.svg" alt="Available for paid projects. What should we build next? A website, a custom tool, a bot or your next big idea. Phone +359 898 634 678 · Email Fraisbg1@gmail.com · Discord Fraisbg · Instagram @y.yakowvw.sales" width="100%" />
+</picture>
 
 | Contact | Find me here |
 | :--- | :--- |
-| 📞 **Phone** | +359 898 634 678 |
+| 📞 **Phone** | [+359 898 634 678](tel:+359898634678) |
 | ✉️ **Email** | [Fraisbg1@gmail.com](mailto:Fraisbg1@gmail.com) |
 | 💬 **Discord** | **Fraisbg** |
 | 📸 **Instagram** | [@y.yakowvw.sales](https://www.instagram.com/y.yakowvw.sales/) |
@@ -547,18 +458,11 @@ A broader view of the languages I explore and consider for project work. The rig
 
 Send me your idea, the main features, your preferred timeline and your budget range. We can define the right scope and a custom quote.
 
----
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/footer-en-mobile.svg" />
+<img src="assets/motion/footer-en.svg" alt="Websites · Software · Bots · Games · Automation. Your idea. A clear plan. Software that works. Build · Test · Verify · Deploy · Improve." width="100%" />
+</picture>
 
-<div align="center">
-
-![WEBSITES](https://img.shields.io/badge/WEBSITES-2563EB?style=for-the-badge&logoColor=white) ![SOFTWARE](https://img.shields.io/badge/SOFTWARE-7C3AED?style=for-the-badge&logoColor=white) ![BOTS](https://img.shields.io/badge/BOTS-5865F2?style=for-the-badge&logoColor=white) ![GAMES](https://img.shields.io/badge/GAMES-E11D48?style=for-the-badge&logoColor=white) ![AUTOMATION](https://img.shields.io/badge/AUTOMATION-059669?style=for-the-badge&logoColor=white)
-
-### Your idea. A clear plan. Software that works.
-
-**BUILD · TEST · VERIFY · DEPLOY · IMPROVE**
-
-</div>
-
-<sub>Real captures and locally stored visuals. [Screenshot provenance and accessibility notes](assets/README.md).</sub>
+<sub>Real captures and locally stored visuals; decorative motion never represents live activity, and all animation pauses for reduced-motion settings. [Screenshot provenance and accessibility notes](assets/README.md).</sub>
 
 <sub>Project source code is private; this profile presents selected real interfaces.</sub>
