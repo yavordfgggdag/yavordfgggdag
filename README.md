@@ -221,8 +221,6 @@ A browser-based interface experiment exploring simulated resource monitoring and
 
 A client website that helps parents explore Bulgarian-language and mathematics lessons and reach the centre through a clear enquiry path. The live interface includes course formats, an FAQ and an enquiry form.
 
-<img src="assets/screens/framed/client-education.jpg" alt="Real homepage detail from Помощ от приятел: educational centre branding, lesson introduction and enquiry call to action. Public presenter video and contact strip excluded from this crop." width="100%" />
-
 **Verified platform components:** WordPress · WPForms. The enquiry interface was inspected without submitting personal data.
 
 <details>
