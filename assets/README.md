@@ -1,5 +1,67 @@
 # Portfolio assets
 
+## Engineering journal update — 5 October 2026
+
+The current README composition leads with actual products, followed by the complete
+language/tool collection, services, metrics, working process and contact details.
+The original banner, original screenshots and previous SVG artwork remain in place.
+Both language versions retain the same project, service and technology scope.
+
+New artwork lives in `journal/` and is reproducible with
+`python3 scripts/render_journal.py`. Its shared palette is midnight indigo
+`#0B1020`, deep violet `#151632`, lilac `#B8A1FF`, ice blue `#83C9F4`,
+seafoam `#73DFCA`, off-white `#EEF2FF` and muted text `#B2BED5`.
+Architecture diagrams use static labels and slow signal motion with pauses.
+The working-process line has a distinct, slower cycle. All new motion has a
+`prefers-reduced-motion` fallback. No animation represents measured live activity.
+The original banner's animation and source bytes are unchanged.
+
+### Exact screenshot viewports
+
+`journal/screens/*.svg` are self-contained presentation compositions containing
+the **unchanged bytes** of the existing redacted JPEG captures. No product UI,
+record, count or warning was generated or retouched. Desktop viewports omit the
+former decorative headers so each project is titled once in Markdown. The same
+quiet 1 px frame is used for all three lead images.
+
+Narrow-screen sources are explicitly identified in both READMEs as details from
+desktop captures, not screenshots of responsive product versions. Full originals
+are linked next to each image. The mobile Police Portal detail shows radio codes;
+all earlier redactions remain intact.
+
+| Source JPEG | Desktop viewport (x, y, width, height) | Narrow viewport |
+| --- | --- | --- |
+| before-i-deploy.jpg | 28, 105, 1344, 934 | 48, 190, 680, 830 |
+| police-dashboard.jpg | 28, 105, 1344, 738 | 610, 475, 377, 190 |
+| client-education.jpg | 28, 105, 1344, 1139 | 170, 470, 1000, 742 |
+
+### Metrics presentation
+
+`journal/metrics/` reads the existing `data/activity.json` and fixed
+`data/languages.json`, reusing the existing `stats()` function. The workflow first
+refreshes the public calendar using the unchanged source script, then renders
+the new presentation with `--metrics-only`. Existing workflow permissions and
+schedule are unchanged. There is no new token or private-repository access.
+Language bytes remain a fixed, explicitly dated snapshot; no recalculation from
+private repositories is performed. New charts are static.
+
+### Content retained and relocated
+
+All 68 distinct entries from the original wider technology collection remain
+visible as selectable text. Project-specific technology roles are added without
+promoting exploratory tools to proven experience. The full service catalogue,
+metric methodology, secondary galleries, community implementation and incomplete
+Space Control experiment remain available in disclosures. Private repository
+names are not needed in the new README copy. Old files and history are retained.
+
+The main The Last Republic URL, current Police Portal entry and the driving
+instructor site's URL/current screenshots remain unconfirmed. No substitute
+interface is presented for them. The educational site and existing documentation
+are the sources for its description; a new authenticated source-code audit was
+not performed during this design update.
+
+---
+
 Captured and checked on **5 October 2026** (Europe/Sofia).
 
 ## Real interface captures
