@@ -45,6 +45,15 @@ class ProfileTests(unittest.TestCase):
                     svg = (ROOT / f'assets/motion/stack-{item["group"]}-{lang}{suffix}.svg').read_text()
                     self.assertIn(item['name'].replace('&', '&amp;'), svg, (item['name'], lang, suffix))
 
+    def test_certificates_section(self):
+        data = json.loads((ROOT / 'data/certificates.json').read_text())
+        lessons = data['collections'][0]['lessons']
+        for markdown in (EN, BG):
+            for item in data['featured']:
+                self.assertIn(item['title'], markdown)
+            for lesson in lessons:
+                self.assertIn(lesson['title'], markdown)
+
     def test_contacts_present_in_both(self):
         for markdown in (EN, BG):
             for value in ('Fraisbg1@gmail.com', 'Fraisbg', '@y.yakowvw.sales'):
