@@ -1,0 +1,696 @@
+{
+ "note": "All 68 technologies from the original profile. featured=true marks technologies verified in the featured product implementations; the rest are wider interests and possible project choices, not claims of completed products or proficiency.",
+ "technologies": [
+  {
+   "name": "TypeScript",
+   "group": "tools",
+   "tile": "#3178C6",
+   "icon": "typescript",
+   "ink": "#FFFFFF",
+   "featured": true
+  },
+  {
+   "name": "JavaScript",
+   "group": "tools",
+   "tile": "#F7DF1E",
+   "icon": "javascript",
+   "ink": "#000000",
+   "featured": true
+  },
+  {
+   "name": "Python",
+   "group": "tools",
+   "tile": "#3776AB",
+   "icon": "python",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Lua",
+   "group": "tools",
+   "tile": "#2C2D72",
+   "icon": "lua",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "HTML5",
+   "group": "tools",
+   "tile": "#E34F26",
+   "icon": "html5",
+   "ink": "#FFFFFF",
+   "featured": true
+  },
+  {
+   "name": "CSS3",
+   "group": "tools",
+   "tile": "#663399",
+   "icon": "css",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "SQL",
+   "group": "tools",
+   "tile": "#00758F",
+   "icon": null,
+   "ink": "#FFFFFF",
+   "monogram": "SQL",
+   "featured": false
+  },
+  {
+   "name": "Node.js",
+   "group": "tools",
+   "tile": "#339933",
+   "icon": "nodedotjs",
+   "ink": "#FFFFFF",
+   "featured": true
+  },
+  {
+   "name": "Astro",
+   "group": "tools",
+   "tile": "#BC52EE",
+   "icon": "astro",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "MySQL",
+   "group": "tools",
+   "tile": "#4479A1",
+   "icon": "mysql",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "MariaDB",
+   "group": "tools",
+   "tile": "#003545",
+   "icon": "mariadb",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Git",
+   "group": "tools",
+   "tile": "#F05032",
+   "icon": "git",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "GitHub",
+   "group": "tools",
+   "tile": "#181717",
+   "icon": "github",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "C",
+   "group": "languages",
+   "tile": "#A8B9CC",
+   "icon": "c",
+   "ink": "#000000",
+   "featured": false
+  },
+  {
+   "name": "C++",
+   "group": "languages",
+   "tile": "#00599C",
+   "icon": "cplusplus",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "C#",
+   "group": "languages",
+   "tile": "#512BD4",
+   "icon": null,
+   "ink": "#FFFFFF",
+   "monogram": "C#",
+   "featured": false
+  },
+  {
+   "name": "Java",
+   "group": "languages",
+   "tile": "#ED8B00",
+   "icon": "openjdk",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Kotlin",
+   "group": "languages",
+   "tile": "#7F52FF",
+   "icon": "kotlin",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Swift",
+   "group": "languages",
+   "tile": "#F05138",
+   "icon": "swift",
+   "ink": "#FFFFFF",
+   "featured": true
+  },
+  {
+   "name": "Go",
+   "group": "languages",
+   "tile": "#00ADD8",
+   "icon": "go",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Rust",
+   "group": "languages",
+   "tile": "#CE422B",
+   "icon": "rust",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "PHP",
+   "group": "languages",
+   "tile": "#777BB4",
+   "icon": "php",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Ruby",
+   "group": "languages",
+   "tile": "#CC342D",
+   "icon": "ruby",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Dart",
+   "group": "languages",
+   "tile": "#0175C2",
+   "icon": "dart",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Scala",
+   "group": "languages",
+   "tile": "#DC322F",
+   "icon": "scala",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "R",
+   "group": "languages",
+   "tile": "#276DC3",
+   "icon": "r",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Bash",
+   "group": "languages",
+   "tile": "#4EAA25",
+   "icon": "gnubash",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "PowerShell",
+   "group": "languages",
+   "tile": "#5391FE",
+   "icon": null,
+   "ink": "#FFFFFF",
+   "monogram": "PS",
+   "featured": false
+  },
+  {
+   "name": "Elixir",
+   "group": "languages",
+   "tile": "#4B275F",
+   "icon": "elixir",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Erlang",
+   "group": "languages",
+   "tile": "#A90533",
+   "icon": "erlang",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Haskell",
+   "group": "languages",
+   "tile": "#5D4F85",
+   "icon": "haskell",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Clojure",
+   "group": "languages",
+   "tile": "#5881D8",
+   "icon": "clojure",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "F#",
+   "group": "languages",
+   "tile": "#378BBA",
+   "icon": "fsharp",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Julia",
+   "group": "languages",
+   "tile": "#9558B2",
+   "icon": "julia",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Zig",
+   "group": "languages",
+   "tile": "#F7A41D",
+   "icon": "zig",
+   "ink": "#000000",
+   "featured": false
+  },
+  {
+   "name": "Solidity",
+   "group": "languages",
+   "tile": "#363636",
+   "icon": "solidity",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "GDScript",
+   "group": "languages",
+   "tile": "#478CBF",
+   "icon": "godotengine",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Objective-C",
+   "group": "languages",
+   "tile": "#438EFF",
+   "icon": null,
+   "ink": "#FFFFFF",
+   "monogram": "ObjC",
+   "featured": false
+  },
+  {
+   "name": "Perl",
+   "group": "languages",
+   "tile": "#39457E",
+   "icon": "perl",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "OCaml",
+   "group": "languages",
+   "tile": "#EC6813",
+   "icon": "ocaml",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "React",
+   "group": "web",
+   "tile": "#61DAFB",
+   "icon": "react",
+   "ink": "#000000",
+   "featured": true
+  },
+  {
+   "name": "Next.js",
+   "group": "web",
+   "tile": "#111827",
+   "icon": "nextdotjs",
+   "ink": "#FFFFFF",
+   "featured": true
+  },
+  {
+   "name": "Vue.js",
+   "group": "web",
+   "tile": "#4FC08D",
+   "icon": "vuedotjs",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Svelte",
+   "group": "web",
+   "tile": "#FF3E00",
+   "icon": "svelte",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Vite",
+   "group": "web",
+   "tile": "#646CFF",
+   "icon": "vite",
+   "ink": "#FFFFFF",
+   "featured": true
+  },
+  {
+   "name": "Tailwind CSS",
+   "group": "web",
+   "tile": "#06B6D4",
+   "icon": "tailwindcss",
+   "ink": "#FFFFFF",
+   "featured": true
+  },
+  {
+   "name": "Express",
+   "group": "web",
+   "tile": "#334155",
+   "icon": "express",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Electron",
+   "group": "web",
+   "tile": "#47848F",
+   "icon": "electron",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Flutter",
+   "group": "web",
+   "tile": "#02569B",
+   "icon": "flutter",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": ".NET",
+   "group": "web",
+   "tile": "#512BD4",
+   "icon": "dotnet",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "PostgreSQL",
+   "group": "data",
+   "tile": "#4169E1",
+   "icon": "postgresql",
+   "ink": "#FFFFFF",
+   "featured": true
+  },
+  {
+   "name": "SQLite",
+   "group": "data",
+   "tile": "#003B57",
+   "icon": "sqlite",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "MongoDB",
+   "group": "data",
+   "tile": "#47A248",
+   "icon": "mongodb",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Redis",
+   "group": "data",
+   "tile": "#FF4438",
+   "icon": "redis",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Docker",
+   "group": "data",
+   "tile": "#2496ED",
+   "icon": "docker",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Linux",
+   "group": "data",
+   "tile": "#FCC624",
+   "icon": "linux",
+   "ink": "#000000",
+   "featured": false
+  },
+  {
+   "name": "macOS",
+   "group": "data",
+   "tile": "#232F3E",
+   "icon": "apple",
+   "ink": "#FFFFFF",
+   "featured": true
+  },
+  {
+   "name": "Netlify",
+   "group": "data",
+   "tile": "#00C7B7",
+   "icon": "netlify",
+   "ink": "#000000",
+   "featured": false
+  },
+  {
+   "name": "GitHub Actions",
+   "group": "data",
+   "tile": "#2088FF",
+   "icon": "githubactions",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "NGINX",
+   "group": "data",
+   "tile": "#009639",
+   "icon": "nginx",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Discord",
+   "group": "games",
+   "tile": "#5865F2",
+   "icon": "discord",
+   "ink": "#FFFFFF",
+   "featured": true
+  },
+  {
+   "name": "FiveM",
+   "group": "games",
+   "tile": "#F40552",
+   "icon": "fivem",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Godot",
+   "group": "games",
+   "tile": "#478CBF",
+   "icon": "godotengine",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Unity",
+   "group": "games",
+   "tile": "#222C37",
+   "icon": "unity",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Unreal Engine",
+   "group": "games",
+   "tile": "#313131",
+   "icon": "unrealengine",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "OpenAI",
+   "group": "games",
+   "tile": "#10A37F",
+   "icon": null,
+   "ink": "#FFFFFF",
+   "monogram": "AI",
+   "featured": false
+  },
+  {
+   "name": "Claude",
+   "group": "games",
+   "tile": "#D97757",
+   "icon": "anthropic",
+   "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Cursor",
+   "group": "games",
+   "tile": "#111827",
+   "icon": "cursor",
+   "ink": "#FFFFFF",
+   "featured": false
+  }
+ ],
+ "products": [
+  {
+   "key": "bid",
+   "name": "Before I Deploy",
+   "items": [
+    [
+     "Swift",
+     "swift"
+    ],
+    [
+     "SwiftUI",
+     null,
+     "#F05138",
+     "SUI"
+    ],
+    [
+     "JavaScript",
+     "javascript"
+    ],
+    [
+     "Node.js",
+     "nodedotjs"
+    ],
+    [
+     "Supabase",
+     "supabase"
+    ],
+    [
+     "PostgreSQL",
+     "postgresql"
+    ],
+    [
+     "Deno Edge",
+     "deno"
+    ]
+   ]
+  },
+  {
+   "key": "police",
+   "name": "TLR Police Portal",
+   "items": [
+    [
+     "TypeScript",
+     "typescript"
+    ],
+    [
+     "Next.js",
+     "nextdotjs"
+    ],
+    [
+     "React",
+     "react"
+    ],
+    [
+     "Tailwind CSS",
+     "tailwindcss"
+    ],
+    [
+     "Drizzle",
+     "drizzle"
+    ],
+    [
+     "Neon Postgres",
+     "neon"
+    ],
+    [
+     "discord.js",
+     "discorddotjs"
+    ]
+   ]
+  },
+  {
+   "key": "community",
+   "name": "Community platform",
+   "items": [
+    [
+     "React",
+     "react"
+    ],
+    [
+     "Vite",
+     "vite"
+    ],
+    [
+     "Tailwind CSS",
+     "tailwindcss"
+    ],
+    [
+     "shadcn/ui",
+     "shadcnui"
+    ],
+    [
+     "React Router",
+     "reactrouter"
+    ],
+    [
+     "TanStack Query",
+     "reactquery"
+    ],
+    [
+     "Supabase",
+     "supabase"
+    ]
+   ]
+  },
+  {
+   "key": "client",
+   "name": "Помощ от приятел",
+   "items": [
+    [
+     "WordPress",
+     "wordpress"
+    ],
+    [
+     "WPForms",
+     null,
+     "#E27730",
+     "WPF"
+    ]
+   ]
+  },
+  {
+   "key": "space",
+   "name": "Space Control",
+   "items": [
+    [
+     "HTML",
+     "html5"
+    ],
+    [
+     "JavaScript",
+     "javascript"
+    ],
+    [
+     "Canvas API",
+     null,
+     "#7C3AED",
+     "CVS"
+    ]
+   ]
+  }
+ ]
+}

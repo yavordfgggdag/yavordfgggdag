@@ -7,7 +7,6 @@ import json
 import re
 import urllib.request
 from datetime import date, datetime, timedelta
-from html import escape
 from html.parser import HTMLParser
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -60,73 +59,125 @@ def stats(days, today):
                 current=current, last=active[-1]['date'] if active else None,
                 month=sum(d['count'] for d in days if date.fromisoformat(d['date']) >= today-timedelta(days=29)))
 
-def txt(x,y,value,size=20,color='#edf3ff',weight=400,extra=''):
-    return f'<text x="{x}" y="{y}" font-size="{size}" fill="{color}" font-weight="{weight}" {extra}>{escape(str(value))}</text>'
+from profile_style import C, document, linear, radial, text as txt, wrap
 
-def svg(w,h,title,content):
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-labelledby="title desc"><title id="title">{escape(title)}</title><desc id="desc">{escape(title)}. Source: GitHub. Motion is decorative, never simulated activity.</desc><defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#0c1023"/><stop offset=".6" stop-color="#17132e"/><stop offset="1" stop-color="#082f37"/></linearGradient><linearGradient id="accent"><stop stop-color="#aa91ff"/><stop offset=".5" stop-color="#6fb7ff"/><stop offset="1" stop-color="#51e4cb"/></linearGradient></defs><style>text{{font-family:Arial,Helvetica,sans-serif}}.signal{{stroke-dasharray:18 220;animation:signal 18s linear infinite}}.pulse{{animation:pulse 6s ease-in-out infinite}}@keyframes signal{{to{{stroke-dashoffset:-714}}}}@keyframes pulse{{50%{{opacity:.4}}}}@media(prefers-reduced-motion:reduce){{*{{animation:none!important}}}}</style><rect width="{w}" height="{h}" rx="20" fill="url(#bg)"/><rect x="1" y="1" width="{w-2}" height="{h-2}" rx="19" stroke="#394761" fill="none"/>{content}</svg>'''
+HEAT = ['#2B2463', '#4C2F9E', '#8B5CF6', '#EC4899', '#FBBF24']
+MONTHS = {'en': 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(),
+          'bg': 'яну фев мар апр май юни юли авг сеп окт ное дек'.split()}
+
+
+def panel(w, h, title, desc, body, extra_defs='', motion=''):
+    """Shared studio frame; motion is decorative and never simulates activity."""
+    defs = (linear('bg', [(0, C['night']), (.55, '#161045'), (1, C['deep'])], x2=1, y2=1)
+            + linear('accent', [(0, C['violet']), (.5, C['cyan']), (1, C['mint'])])
+            + radial('au1', C['violet'], .38) + radial('au2', C['cyan'], .26) + extra_defs)
+    motion = ('.aur{animation:aur 28s ease-in-out infinite}@keyframes aur{50%{transform:translate(-70px,30px)}}'
+              f'.signal{{animation:signal 12s cubic-bezier(.6,0,.3,1) infinite}}@keyframes signal{{0%{{transform:translateX(0);opacity:0}}10%{{opacity:1}}85%{{opacity:1}}100%{{transform:translateX({w - 200}px);opacity:0}}}}' + motion)
+    b = (f'<clipPath id="frame"><rect width="{w}" height="{h}" rx="28"/></clipPath><rect width="{w}" height="{h}" rx="28" fill="url(#bg)"/>'
+         f'<g clip-path="url(#frame)"><g class="aur"><circle cx="{w * .85:.0f}" cy="{h * .1:.0f}" r="{w * .45:.0f}" fill="url(#au1)"/></g>'
+         f'<circle cx="{w * .05:.0f}" cy="{h:.0f}" r="{w * .4:.0f}" fill="url(#au2)"/>'
+         f'<rect width="{w}" height="4" fill="url(#accent)"/>{body}</g>')
+    return document(w, h, title, desc + ' Source: GitHub. Motion is decorative, never simulated activity.', b, defs, motion)
+
 
 def activity(days, today, lang, mobile):
-    bg = lang == 'bg'; s = stats(days,today); w = 520 if mobile else 1000
+    bg = lang == 'bg'; s = stats(days, today); w = 600 if mobile else 1200; x0 = 32 if mobile else 48
     title = 'Ритъмът на работата.' if bg else 'The rhythm behind the work.'
-    b = txt(28,38,'GITHUB / ACTIVITY',13,'#91a5c8',700, 'letter-spacing="2"')
-    b += txt(28,84,title,29 if mobile else 35,'#f3f5ff',700)
-    labels = ['ПРИНОСИ','АКТИВНИ ДНИ','ТЕКУЩ STREAK','НАЙ-ДЪЛЪГ STREAK'] if bg else ['CONTRIBUTIONS','ACTIVE DAYS','CURRENT STREAK','LONGEST STREAK']
-    vals = [s['total'],s['active'],s['current'],s['longest']]
-    for i,(label,value) in enumerate(zip(labels,vals)):
-        x=28+(i%2)*242 if mobile else 28+i*242
-        y=112+(i//2)*132 if mobile else 115
-        b += f'<rect x="{x}" y="{y}" width="222" height="116" rx="12" fill="#111c31" stroke="#3c4864"/>'
-        b += txt(x+16,y+29,label,12,'#a8bad4',700)+txt(x+16,y+84,value,43,'#a9a3ff' if i<2 else '#66e4cf',700)
-    y=414 if mobile else 285
-    last=s['last'] or ('няма' if bg else 'none')
-    b += txt(28,y,('Последен принос: ' if bg else 'Last contribution: ')+last,19,'#e1e9fa',700)
-    b += txt(28,y+30,('Последни 30 дни: ' if bg else 'Last 30 days: ')+str(s['month']),17,'#a1b8d5')
-    # Calendar remains factual and static; only the line below it moves.
-    visible=days[-182:] if mobile else days
-    start=date.fromisoformat(visible[0]['date']); start -= timedelta(days=(start.weekday()+1)%7)
-    step=17 if mobile else 17; cell=13; ox=28; oy=y+70
-    maxval=max(d['count'] for d in days) or 1
+    b = txt(x0, 52, 'GITHUB · ПУБЛИЧНА АКТИВНОСТ' if bg else 'GITHUB · PUBLIC ACTIVITY', 17 if mobile else 13, C['cyan'], 800, spacing=2.4)
+    b += txt(x0, 98, title, 32 if mobile else 38, C['text'], 800)
+    labels = ['ПРИНОСИ', 'АКТИВНИ ДНИ', 'ТЕКУЩ STREAK', 'НАЙ-ДЪЛЪГ STREAK'] if bg else ['CONTRIBUTIONS', 'ACTIVE DAYS', 'CURRENT STREAK', 'LONGEST STREAK']
+    vals = [s['total'], s['active'], s['current'], s['longest']]
+    accents = [C['lilac'], C['pink'], C['mint'], C['amber']]
+    if mobile:
+        boxes = [(x0, 126, 260, 128), (x0 + 276, 126, 260, 128), (x0, 268, 260, 128), (x0 + 276, 268, 260, 128)]
+    else:
+        boxes = [(x0, 132, 330, 150), (x0 + 350, 132, 240, 150), (x0 + 610, 132, 240, 150), (x0 + 870, 132, 234, 150)]
+    for i, ((x, y, bw, bh), label, value, col) in enumerate(zip(boxes, labels, vals, accents)):
+        b += (f'<rect x="{x}" y="{y}" width="{bw}" height="{bh}" rx="{26 if i == 0 else 20}" fill="#0E0B2C" fill-opacity=".78" stroke="{col}" stroke-opacity=".55"/>'
+              f'<rect x="{x + 18}" y="{y}" width="{bw - 36}" height="3" rx="1.5" fill="{col}"/>')
+        b += txt(x + 20, y + 36, label, 16 if mobile else 13, C['soft'], 800, spacing=1.2)
+        b += txt(x + 20, y + bh - 26, value, (54 if mobile else (74 if i == 0 else 60)), col, 800)
+    y = 438 if mobile else 330
+    last = s['last'] or ('няма' if bg else 'none')
+    b += f'<circle cx="{x0 + 7}" cy="{y - 6}" r="6" fill="{C["mint"]}"/>'
+    b += txt(x0 + 22, y, ('Последен принос: ' if bg else 'Last contribution: ') + last, 22 if mobile else 19, C['text'], 700)
+    b += txt(x0 + 22, y + 30, ('Последни 30 дни: ' if bg else 'Last 30 days: ') + str(s['month']), 19 if mobile else 16, C['muted'])
+    # Calendar remains factual and static; only the line under it moves.
+    visible = days[-182:] if mobile else days
+    start = date.fromisoformat(visible[0]['date']); start -= timedelta(days=(start.weekday() + 1) % 7)
+    step, cell = (19, 15) if mobile else (19, 15)
+    ox, oy = x0 + (6 if mobile else 0), y + 76
+    maxval = max(d['count'] for d in days) or 1
+    seen = set()
     for d in visible:
-        dt=date.fromisoformat(d['date']); pos=(dt-start).days; c=d['count']
-        level=0 if c==0 else min(4,1+int(c/maxval*3))
-        fill=['#243149','#48427a','#6f60ab','#628ece','#5cdbc7'][level]
-        x=ox+(pos//7)*step; yy=oy+(pos%7)*step
-        b+=f'<rect x="{x}" y="{yy}" width="{cell}" height="{cell}" rx="3" fill="{fill}"><title>{d["date"]}: {c}</title></rect>'
-    foot=oy+145
-    b+=txt(28,foot,('Календар: ' if bg else 'Calendar: ')+visible[0]['date']+' → '+visible[-1]['date'],14,'#9aafca')
-    b+=f'<path d="M28 {foot+25}H{w-28}" stroke="#354962"/><path class="signal" d="M28 {foot+25}H{w-28}" stroke="url(#accent)" stroke-width="2"/>'
-    b+=txt(28,foot+53,('Публични GitHub приноси · обновено ' if bg else 'Public GitHub calendar · updated ')+today.isoformat(),13,'#a7b8cf')
-    return svg(w,foot+80,title,b)
+        dt = date.fromisoformat(d['date']); pos = (dt - start).days; c = d['count']
+        level = 0 if c == 0 else min(4, 1 + int(c / maxval * 3))
+        x = ox + (pos // 7) * step; yy = oy + (pos % 7) * step
+        if dt.day <= 7 and (dt.year, dt.month) not in seen and pos % 7 == 0:
+            seen.add((dt.year, dt.month))
+            b += txt(x, oy - 10, MONTHS[lang][dt.month - 1], 16 if mobile else 12, C['muted'])
+        b += f'<rect x="{x}" y="{yy}" width="{cell}" height="{cell}" rx="4" fill="{HEAT[level]}"><title>{d["date"]}: {c}</title></rect>'
+    foot = oy + 7 * step + 30
+    lx = x0
+    b += txt(lx, foot, ('Календар: ' if bg else 'Calendar: ') + visible[0]['date'] + ' → ' + visible[-1]['date'], 18 if mobile else 14, C['muted'])
+    if not mobile:
+        b += txt(w - 48 - 5 * 22 - 60, foot, 'по-малко' if bg else 'less', 12, C['muted'], anchor='end')
+        for i, col in enumerate(HEAT):
+            b += f'<rect x="{w - 48 - 5 * 22 - 50 + i * 22}" y="{foot - 12}" width="15" height="15" rx="4" fill="{col}"/>'
+        b += txt(w - 48, foot, 'повече' if bg else 'more', 12, C['muted'], anchor='end')
+    b += f'<path d="M{x0} {foot + 24}H{w - x0}" stroke="#3B3378"/><rect class="live signal" x="{x0}" y="{foot + 22}" width="140" height="4" rx="2" fill="#E0FBFF"/>'
+    b += txt(x0, foot + 56, ('Публични GitHub приноси · обновено ' if bg else 'Public GitHub calendar · updated ') + today.isoformat(), 17 if mobile else 13, C['muted'])
+    return panel(w, foot + 80, title, title, b)
 
-def languages(data,lang,mobile):
-    bg=lang=='bg';w=520 if mobile else 1000
-    items=data['languages'];total=sum(d['bytes'] for d in items)
-    if total<=0:raise ValueError('Empty language snapshot')
-    top=items[:6]
-    other=sum(i['bytes'] for i in items[6:])
-    if other:top=top+[{'name':'Други' if bg else 'Other','bytes':other}]
-    b=txt(28,38,'CODE / LANGUAGE MIX',13,'#91a5c8',700,'letter-spacing="2"')
-    b+=txt(28,83,'Езиците зад проектите.' if bg else 'The languages behind the products.',28 if mobile else 34,'#f3f5ff',700)
-    b+=txt(28,116,'Дял от обема код · без профилното хранилище' if bg else 'Share of code bytes · profile repository excluded',16,'#a7b8d5')
-    colors=['#a895ff','#61c7f2','#65deca','#e6b97c','#f497b2','#80a7ec','#69778f']
-    for i,(row,color) in enumerate(zip(top,colors)):
-        y=163+i*65; pct=row['bytes']/total*100
-        b+=txt(28,y,row['name'],21,'#edf2ff',700)+txt(w-30,y,f'{pct:.1f}%',20,color,700,'text-anchor="end"')
-        b+=f'<rect x="28" y="{y+13}" width="{w-56}" height="9" rx="4.5" fill="#28334a"/><rect x="28" y="{y+13}" width="{(w-56)*pct/100:.2f}" height="9" rx="4.5" fill="{color}"/>'
-    y=163+len(top)*65
-    b+=txt(28,y,('Измерено: ' if bg else 'Measured: ')+data['snapshot_date'],15,'#adbed6')
-    b+=txt(28,y+27,'Обем код, не време или ниво на умения.' if bg else 'Code volume, not time spent or proficiency.',15,'#a1b3ce')
-    return svg(w,y+55,'Езици по обем код' if bg else 'Languages by code volume',b)
+
+def languages(data, lang, mobile):
+    bg = lang == 'bg'; w = 600 if mobile else 1200; x0 = 32 if mobile else 48
+    items = data['languages']; total = sum(d['bytes'] for d in items)
+    if total <= 0: raise ValueError('Empty language snapshot')
+    top = [dict(i) for i in items[:6]]
+    other = sum(i['bytes'] for i in items[6:])
+    if other: top.append({'name': 'Други' if bg else 'Other', 'bytes': other, 'color': '#8B8FB0'})
+    title = 'Езиците зад проектите.' if bg else 'The languages behind the products.'
+    b = txt(x0, 52, 'КОД · ЕЗИКОВ МИКС' if bg else 'CODE · LANGUAGE MIX', 17 if mobile else 13, C['pink'], 800, spacing=2.4)
+    b += txt(x0, 98, title, 30 if mobile else 38, C['text'], 800)
+    sub = 'Дял от обема код · без профилното хранилище' if bg else 'Share of code bytes · profile repository excluded'
+    b += txt(x0, 130, sub, 16, C['muted']) if not mobile else ''.join(txt(x0, 130 + i * 22, line, 18, C['muted']) for i, line in enumerate(wrap(sub, 40)))
+    # one stacked bar in the original GitHub language colours
+    bx, bw, x = x0, w - 2 * x0, x0
+    top_y = 158 if not mobile else 172
+    b += f'<clipPath id="bar"><rect x="{bx}" y="{top_y}" width="{bw}" height="22" rx="11"/></clipPath><g clip-path="url(#bar)">'
+    for row in top:
+        seg = bw * row['bytes'] / total
+        b += f'<rect x="{x:.2f}" y="{top_y}" width="{seg + .5:.2f}" height="22" fill="{row["color"]}"/>'
+        x += seg
+    b += f'<rect class="live sweep" x="{bx - 120}" y="{top_y}" width="120" height="22" fill="url(#sweep)"/></g>'
+    for i, row in enumerate(top):
+        y = top_y + 78 + i * 58; pct = row['bytes'] / total * 100
+        b += f'<circle cx="{x0 + 8}" cy="{y - 7}" r="8" fill="{row["color"]}" stroke="#fff" stroke-opacity=".35"/>'
+        b += txt(x0 + 26, y, row['name'], 21, C['text'], 700) + txt(w - x0, y, f'{pct:.1f}%', 20, C['soft'], 700, anchor='end')
+        b += (f'<rect x="{x0}" y="{y + 13}" width="{bw}" height="8" rx="4" fill="#2A2457"/>'
+              f'<rect x="{x0}" y="{y + 13}" width="{max(bw * pct / 100, 8):.2f}" height="8" rx="4" fill="{row["color"]}"/>')
+    y = top_y + 78 + len(top) * 58 + 8
+    fs = 18 if mobile else 15
+    b += txt(x0, y, ('Измерено: ' if bg else 'Measured: ') + data['snapshot_date'], fs, C['soft'])
+    b += txt(x0, y + 28, 'Обем код, не време или ниво на умения.' if bg else 'Code volume, not time spent or proficiency.', fs, C['muted'])
+    defs = linear('sweep', [(0, '#fff', 0), (.5, '#fff', .5), (1, '#fff', 0)])
+    motion = f'.sweep{{animation:sweep 9s ease-in-out infinite}}@keyframes sweep{{0%,15%{{transform:translateX(0)}}60%,100%{{transform:translateX({bw + 240}px)}}}}'
+    return panel(w, y + 56, 'Езици по обем код' if bg else 'Languages by code volume',
+                 'Езици по обем код' if bg else 'Languages by code volume', b, defs, motion)
+
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--calendar-file',type=Path);ap.add_argument('--today',type=date.fromisoformat);a=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--calendar-file',type=Path);ap.add_argument('--today',type=date.fromisoformat)
+    ap.add_argument('--from-saved',action='store_true',help='re-render visuals from data/activity.json without fetching');a=ap.parse_args()
     today=a.today or datetime.now(ZoneInfo('Europe/Sofia')).date()
-    if a.calendar_file:html=a.calendar_file.read_text()
+    if a.from_saved:
+        saved=json.loads((ROOT/'data/activity.json').read_text());days=saved['days'];today=a.today or date.fromisoformat(saved['updated'])
+    elif a.calendar_file:html=a.calendar_file.read_text()
     else:
         req=urllib.request.Request(f'https://github.com/users/{USER}/contributions',headers={'User-Agent':'Yavor-Profile-Metrics/1.0'})
         with urllib.request.urlopen(req,timeout=40) as response:html=response.read().decode()
-    parser=CalendarParser();parser.feed(html);days=parser.days()
+    if not a.from_saved:parser=CalendarParser();parser.feed(html);days=parser.days()
     days=[d for d in days if date.fromisoformat(d['date'])<=today]
     if (today-date.fromisoformat(days[-1]['date'])).days>2:raise ValueError('Stale calendar; preserving previous output')
     language=json.loads((ROOT/'data/languages.json').read_text())
