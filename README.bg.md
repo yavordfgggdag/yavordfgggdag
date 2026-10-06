@@ -179,6 +179,28 @@
 
 <sub>22 страници · 23 API маршрута · 4 миграции на базата · 11 автоматични теста минават. Заснето от актуалния код, стартиран локално на 5 окт 2026; входът с Discord не е настроен локално. Кодът е частен.</sub>
 
+<a name="readme-studio"></a>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/project-studio-bg-mobile.svg" />
+<img src="assets/motion/project-studio-bg.svg" alt="04 · readme-studio · отворен код" width="100%" />
+</picture>
+
+**Двигателят с отворен код зад стила на този профил: анимиран двуезичен GitHub README от един JSON файл.**
+
+<a href="https://github.com/yyakowvw/readme-studio">
+<picture>
+<source media="(max-width: 600px)" srcset="assets/studio/readme-studio-bg-mobile.svg" />
+<img src="assets/studio/readme-studio-bg.svg" alt="readme-studio — вашият GitHub профил, в движение. Чист SVG, нула JavaScript, уважава намаленото движение." width="100%" />
+</picture>
+</a>
+
+- **Девет анимирани компонента** с варианти от 1200 px и 600 px, четири теми, 174 вградени икони и заглавия с шрифта Unbounded, превърнати в SVG контури (латиница + кирилица).
+- **Работи в защитения преглед на GitHub:** без скриптове и външни заявки, цялото движение е в `prefers-reduced-motion`. Проверка преглежда всеки файл преди публикуване.
+- **Ползва се без инсталиране:** GitHub Action генерира профила отново при всяка промяна. 16 теста и CI пазят резултата възпроизводим.
+
+**Създадено с:** Python · fontTools · SVG + CSS анимация · GitHub Actions · **[⭐ github.com/yyakowvw/readme-studio](https://github.com/yyakowvw/readme-studio)**
+
 <a name="услуги"></a>
 
 <picture>
