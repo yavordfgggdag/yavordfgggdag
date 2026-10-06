@@ -267,7 +267,7 @@
 <img src="assets/motion/stack-used-bg.svg" alt="Използвано в представените проекти. Before I Deploy: Swift, SwiftUI, JavaScript, Node.js, Supabase, PostgreSQL, Deno Edge Functions. The Last Republic: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, Netlify. TLR Police Portal: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, discord.js." width="100%" />
 </picture>
 
-Колекцията от 68 технологии по-долу показва допълнителни интереси и възможни технологични избори. Тя не означава завършени продукти или еднакъв опит с всеки инструмент. **Ментовият кръг** отбелязва инструментите, проверени в проектите по-горе.
+Колекцията от 69 технологии по-долу показва допълнителни интереси и възможни технологични избори. Тя не означава завършени продукти или еднакъв опит с всеки инструмент. **Ментовият кръг** отбелязва инструментите, проверени в проектите по-горе.
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/stack-tools-bg-mobile.svg" />
@@ -291,7 +291,7 @@
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/stack-games-bg-mobile.svg" />
-<img src="assets/motion/stack-games-bg.svg" alt="Игри, общности и AI, 8: Discord (използвано в проектите), FiveM, Godot, Unity, Unreal Engine, OpenAI, Anthropic, Cursor." width="100%" />
+<img src="assets/motion/stack-games-bg.svg" alt="Игри, общности и AI, 9: Discord (използвано в проектите), FiveM, Godot, Unity, Unreal Engine, OpenAI, Anthropic, Cursor, Higgsfield." width="100%" />
 </picture>
 
 <sub>Подходящият избор зависи от продукта; панелите не означават еднаква специализация. Конкретните инструменти и обхват се уточняват за всеки проект. Логата са в оригиналните цветове на марките чрез <a href="https://simpleicons.org">Simple Icons</a> (CC0); SQL, C#, PowerShell, Objective-C и OpenAI са текстови плочки, както в оригиналните значки.</sub>

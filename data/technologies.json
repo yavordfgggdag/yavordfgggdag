@@ -1,5 +1,5 @@
 {
- "note": "All 68 technologies from the original profile. featured=true marks technologies verified in the featured product implementations; the rest are wider interests and possible project choices, not claims of completed products or proficiency.",
+ "note": "All 68 technologies from the original profile plus Higgsfield (69). featured=true marks technologies verified in the featured product implementations; the rest are wider interests and possible project choices, not claims of completed products or proficiency.",
  "technologies": [
   {
    "name": "TypeScript",
@@ -548,6 +548,14 @@
    "tile": "#111827",
    "icon": "cursor",
    "ink": "#FFFFFF",
+   "featured": false
+  },
+  {
+   "name": "Higgsfield",
+   "group": "games",
+   "tile": "#D1FE17",
+   "icon": "higgsfield",
+   "ink": "#000000",
    "featured": false
   }
  ],

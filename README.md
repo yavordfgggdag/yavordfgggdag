@@ -267,7 +267,7 @@ An internal portal for the TLR roleplay police department. **My contribution:** 
 <img src="assets/motion/stack-used-en.svg" alt="Used in the featured products. Before I Deploy: Swift, SwiftUI, JavaScript, Node.js, Supabase, PostgreSQL, Deno Edge Functions. The Last Republic: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, Netlify. TLR Police Portal: TypeScript, Next.js, React, Tailwind CSS, Drizzle, Neon Postgres, discord.js." width="100%" />
 </picture>
 
-The 68 technologies below are the original technology collection: additional interests and possible project choices. It is not a claim of completed products or equal experience with every tool. A **mint ring** marks the tools verified in the products above.
+The 69 technologies below are the original technology collection: additional interests and possible project choices. It is not a claim of completed products or equal experience with every tool. A **mint ring** marks the tools verified in the products above.
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/stack-tools-en-mobile.svg" />
@@ -291,7 +291,7 @@ The 68 technologies below are the original technology collection: additional int
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/stack-games-en-mobile.svg" />
-<img src="assets/motion/stack-games-en.svg" alt="Games, Communities & AI, 8: Discord (used in featured products), FiveM, Godot, Unity, Unreal Engine, OpenAI, Anthropic, Cursor." width="100%" />
+<img src="assets/motion/stack-games-en.svg" alt="Games, Communities & AI, 9: Discord (used in featured products), FiveM, Godot, Unity, Unreal Engine, OpenAI, Anthropic, Cursor, Higgsfield." width="100%" />
 </picture>
 
 <sub>The right stack depends on the product; the panels do not imply equal specialization in every language. Specific tools and implementation scope are agreed for each engagement. Logos: original brand colours via <a href="https://simpleicons.org">Simple Icons</a> (CC0); SQL, C#, PowerShell, Objective-C and OpenAI appear as text tiles, as in the original badges.</sub>

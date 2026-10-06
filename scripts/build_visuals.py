@@ -1114,7 +1114,10 @@ def cert_card(c, x, y, w, h, lang, idx, mobile):
     out += (f'<circle cx="{mx}" cy="{my}" r="{r + 14}" fill="{col}" opacity=".12"/>'
             f'<circle class="medal" cx="{mx}" cy="{my}" r="{r + 7}" fill="none" stroke="{col}" stroke-opacity=".7" stroke-dasharray="3 6"/>'
             f'<circle cx="{mx}" cy="{my}" r="{r}" fill="#0B0824" stroke="{col}" stroke-width="2"/>')
-    if c.get('icon'):
+    if c.get('icon') == 'advanceacademy':
+        # official emblem: white mark on the academy's navy
+        out += f'<circle cx="{mx}" cy="{my}" r="{r - 2}" fill="#3A4B66"/>' + icon(c['icon'], mx - 16, my - 16, 32, '#FFFFFF')
+    elif c.get('icon'):
         out += icon(c['icon'], mx - 15, my - 15, 30, col if c['icon'] != 'google' else '#fff')
     else:
         out += text(mx, my + 8, c['monogram'], 21, col, 800, anchor='middle')
@@ -1812,7 +1815,7 @@ BENTO = {
            'tlr': ('COMMUNITY PLATFORM', 'The Last Republic', 'Site, rules and a timed exam reviewed in Discord.', ['23 API routes', 'signed Discord flow']),
            'loc': ('42.6k', 'lines of code in Before I Deploy'),
            'certs': ('135', 'certificates · 129 of them from Google'),
-           'stack': ('68', 'technologies · 12 in shipped products'),
+           'stack': ('69', 'technologies · 12 in shipped products'),
            'hire': ('AVAILABLE', 'Paid projects', 'websites · software · bots', 'Fraisbg1@gmail.com')},
     'bg': {'title': 'Избрана работа накратко', 'kicker': 'ИЗБРАНА РАБОТА',
            'bid': ('НАТИВНО macOS ПРИЛОЖЕНИЕ', 'Before I Deploy', 'Проверява уеб проект и го води до публикуване.', ['172 теста минават', '8 проверки', '3 платформи']),
@@ -1820,7 +1823,7 @@ BENTO = {
            'tlr': ('ОБЩНОСТНА ПЛАТФОРМА', 'The Last Republic', 'Сайт, правила и изпит с решения в Discord.', ['23 API маршрута', 'подписан Discord поток']),
            'loc': ('42.6k', 'реда код в Before I Deploy'),
            'certs': ('135', 'сертификата · 129 от тях от Google'),
-           'stack': ('68', 'технологии · 12 в готови продукти'),
+           'stack': ('69', 'технологии · 12 в готови продукти'),
            'hire': ('СВОБОДЕН', 'Платени проекти', 'сайтове · софтуер · ботове', 'Fraisbg1@gmail.com')},
 }
 
@@ -2050,7 +2053,7 @@ def main():
                 write(name, content)
                 count += 1
     shown = sum(1 for i in TECH['technologies'])
-    assert shown == 68, shown
+    assert shown == 69, shown
     print(f'{count} files written to {OUT.relative_to(ROOT)}; technologies: {shown}')
 
 
