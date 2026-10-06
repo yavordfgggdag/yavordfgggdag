@@ -1239,7 +1239,7 @@ SCENES = {
                         ('tlr/server-rules', {'en': 'Server rules with search', 'bg': 'Правилник с търсене'}),
                         ('tlr/police-entry', {'en': 'Police Portal entry', 'bg': 'Вход в полицейския портал'})],
             'title': {'en': 'The Last Republic — real screens', 'bg': 'The Last Republic — реални екрани'}},
-    'police': {'device': 'browser', 'bar': 'TLR Police Portal', 'shield': True, 'accent': (C['cyan'], C['mint']),
+    'police': {'device': 'tablet', 'bar': 'TLR Police Portal', 'shield': True, 'accent': (C['cyan'], C['mint']),
                'screens': [('police-dashboard', {'en': 'Dashboard', 'bg': 'Табло'}),
                            ('police-employees', {'en': 'Staff directory', 'bg': 'Служители'}),
                            ('police-ranks', {'en': 'Rank hierarchy', 'bg': 'Звания'}),
@@ -1397,6 +1397,85 @@ def macbook_front(sx, sy, sw, sh, a1, a2, w):
     return out, fy + 11
 
 
+IPAD = {'en': 'Mon 5 Oct', 'bg': 'пн 5 окт'}
+
+
+@lru_cache(maxsize=None)
+def page_color(name):
+    """Average colour of the capture's last rows, used to extend short pages."""
+    from PIL import Image
+    from frame_screens import inner_area
+    image = Image.open(ROOT / f'assets/screens/{name}.jpg').convert('RGB')
+    crop = image if '/' in name else image.crop(inner_area(image))
+    strip = crop.crop((0, crop.height - 40, max(4, crop.width // 60), crop.height)).resize((1, 1), Image.LANCZOS)
+    return '#%02X%02X%02X' % strip.getpixel((0, 0))
+
+
+def ipad_back(sx, sy, sw, sh, cfg, lang):
+    """iPad Pro in landscape: aluminium frame, buttons, Apple Pencil, bezel, status bar and Safari.
+    Returns (svg, content rect)."""
+    out = ''
+    # Apple Pencil attached to the magnetic top edge
+    px0, px1, py = sx + sw * .42, sx + sw * .86, sy - 31
+    out += (f'<path d="M{px0} {py}H{px1 - 26}L{px1} {py + 5.5}L{px1 - 26} {py + 11}H{px0}Q{px0 - 6} {py + 11} {px0 - 6} {py + 5.5}Q{px0 - 6} {py} {px0} {py}Z" fill="url(#pencil)"/>'
+            f'<path d="M{px1 - 26} {py}L{px1} {py + 5.5}L{px1 - 26} {py + 11}Z" fill="#D9DCE3"/>'
+            f'<path d="M{px1 - 6} {py + 3.7}L{px1} {py + 5.5}L{px1 - 6} {py + 7.3}Z" fill="#3A3D46"/>'
+            f'<path d="M{px0 + 30} {py + 11}H{px1 - 70}" stroke="#AEB3BE" stroke-width="1"/>')
+    # buttons: top button and volume rocker
+    out += (f'<rect x="{sx + 50}" y="{sy - 25}" width="62" height="6" rx="3" fill="url(#btn)"/>'
+            f'<rect x="{sx + sw + 18}" y="{sy + 40}" width="6" height="46" rx="3" fill="url(#btnv)"/>'
+            f'<rect x="{sx + sw + 18}" y="{sy + 96}" width="6" height="46" rx="3" fill="url(#btnv)"/>')
+    # aluminium frame, chamfer highlight and black bezel
+    out += (f'<rect x="{sx - 22}" y="{sy - 22}" width="{sw + 44}" height="{sh + 44}" rx="46" fill="url(#alu)"/>'
+            f'<rect x="{sx - 22}" y="{sy - 22}" width="{sw + 44}" height="{sh + 44}" rx="46" fill="none" stroke="#E3E6EE" stroke-opacity=".7" stroke-width="1.2"/>'
+            f'<rect x="{sx - 19.5}" y="{sy - 19.5}" width="{sw + 39}" height="{sh + 39}" rx="43.5" fill="#030305"/>'
+            f'<rect x="{sx - 19.5}" y="{sy - 19.5}" width="{sw + 39}" height="{sh + 39}" rx="43.5" fill="url(#bezel)"/>')
+    # front camera on the landscape edge
+    cx = sx + sw / 2
+    out += (f'<circle cx="{cx}" cy="{sy - 10}" r="3.6" fill="#0B0D16" stroke="#1E2336"/>'
+            f'<circle cx="{cx}" cy="{sy - 10}" r="1.6" fill="#1C2850"/><circle cx="{cx - .7}" cy="{sy - 10.7}" r=".6" fill="#fff" opacity=".5"/>')
+    # display
+    out += f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="26" fill="#0A0B12"/>'
+    # status bar
+    sb, tb = 26, 48
+    status = ''
+    status += text(sx + 30, sy + 18, '9:41', 14, '#FFFFFF', 700)
+    status += text(sx + 70, sy + 18, IPAD[lang], 14, '#FFFFFF', 600)
+    rx_ = sx + sw - 30
+    status += (f'<g transform="translate({rx_ - 26} {sy + 8})"><rect width="24" height="11.5" rx="3.4" fill="none" stroke="#fff" stroke-opacity=".9"/>'
+               f'<rect x="2" y="2" width="20" height="7.5" rx="1.8" fill="#fff"/><rect x="25" y="3.8" width="1.8" height="4" rx=".9" fill="#fff" opacity=".7"/></g>')
+    status += text(rx_ - 32, sy + 18, '100%', 13.5, '#FFFFFF', 600, anchor='end')
+    wx_ = rx_ - 86
+    status += (f'<g transform="translate({wx_} {sy + 19})" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round">'
+               '<path d="M-8 -8a11.3 11.3 0 0 1 16 0"/><path d="M-4.9 -4.9a6.9 6.9 0 0 1 9.8 0"/></g>'
+               f'<circle cx="{wx_}" cy="{sy + 17.2}" r="1.7" fill="#fff"/>')
+    out += f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sb + tb}" fill="#16161C" clip-path="url(#screen)"/>' + status
+    # Safari toolbar
+    ty = sy + sb
+    icons = '#4F8DF7'
+    out += (f'<g fill="none" stroke="{icons}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'
+            f'<rect x="{sx + 26}" y="{ty + 15}" width="22" height="18" rx="4"/><path d="M{sx + 34} {ty + 15}v18"/>'
+            f'<path d="M{sx + 76} {ty + 16}l-8 8 8 8"/><path d="M{sx + 100} {ty + 16}l8 8-8 8" stroke-opacity=".35"/>'
+            f'<path d="M{sx + sw - 132} {ty + 21}v-8m-5 5l5-5 5 5M{sx + sw - 140} {ty + 19}v13h16v-13"/>'
+            f'<path d="M{sx + sw - 86} {ty + 24}h16m-8-8v16"/>'
+            f'<rect x="{sx + sw - 48}" y="{ty + 18}" width="14" height="14" rx="3"/><path d="M{sx + sw - 44} {ty + 14}h10a4 4 0 0 1 4 4v10"/></g>')
+    pw = 420
+    px = sx + sw / 2 - pw / 2
+    out += f'<rect x="{px}" y="{ty + 9}" width="{pw}" height="31" rx="11" fill="#2A2A33"/>'
+    out += text(px + 16, ty + 29.5, 'aA', 14, '#D7D7DE', 600)
+    out += shield(sx + sw / 2 - 74, ty + 25, C['mint'])
+    out += text(sx + sw / 2 + 10, ty + 30, cfg['bar'], 15, '#F2F2F6', 600, anchor='middle')
+    out += (f'<path d="M{px + pw - 22} {ty + 20}a6.5 6.5 0 1 0 1.8 4.6M{px + pw - 22} {ty + 16}v4.5h-4.5" fill="none" stroke="#D7D7DE" stroke-width="1.7" stroke-linecap="round"/>')
+    out += f'<path d="M{sx} {ty + tb}H{sx + sw}" stroke="#000" stroke-opacity=".7"/>'
+    return out, (sx, ty + tb, sw, sh - sb - tb)
+
+
+def ipad_front(sx, sy, sw, sh):
+    out = (f'<rect x="{sx + sw / 2 - 80}" y="{sy + sh - 11}" width="160" height="5" rx="2.5" fill="#fff" opacity=".85"/>'
+           f'<path d="M{sx} {sy}H{sx + sw * .44:.0f}L{sx + sw * .18:.0f} {sy + sh}H{sx}Z" fill="url(#glass)" clip-path="url(#screen)"/>')
+    return out
+
+
 def scene(key, lang):
     cfg = SCENES[key]
     a1, a2 = cfg['accent']
@@ -1405,16 +1484,19 @@ def scene(key, lang):
     seg = 4.6
     period = n * seg
     laptop = cfg['device'] == 'laptop'
-    w, h = (1200, 900) if laptop else (1200, 800)
+    tablet = cfg['device'] == 'tablet'
+    w, h = (1200, 900) if laptop else (1200, 880) if tablet else (1200, 800)
     if laptop:
         sx, sy, sw, sh = 150, 58, 900, 563
+    elif tablet:
+        sx, sy, sw, sh = 140, 82, 920, 660
     else:
         sx, sy, sw, sh = 90, 108, 1020, 566
     defs = (linear('bg', [(0, C['night']), (.55, '#150F40'), (1, C['deep'])], x2=1, y2=1)
             + radial('g1', a1, .55) + radial('g2', a2, .4)
             + linear('sheen', [(0, '#fff', 0), (.5, '#fff', .07), (1, '#fff', 0)])
             + linear('fade', [(0, '#000', 0), (1, '#000', .35)], x2=0, y2=1)
-            + f'<clipPath id="screen"><rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="{9 if laptop else 0}"/></clipPath>')
+            + f'<clipPath id="screen"><rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="{9 if laptop else 26 if tablet else 0}"/></clipPath>')
     if laptop:
         defs += (linear('lid', [(0, '#5E636F'), (.5, '#2E3139'), (1, '#4A4E59')], x2=0, y2=1)
                  + linear('bezel', [(0, '#16171D', .9), (.5, '#000', 0), (1, '#0E0F14', .9)], x2=1, y2=1)
@@ -1429,6 +1511,14 @@ def scene(key, lang):
                  + linear('lip', [(0, '#8C919E'), (.3, '#3C3F48'), (1, '#18191E')], x2=0, y2=1)
                  + '<radialGradient id="shadow"><stop offset="0" stop-color="#000" stop-opacity=".7"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>'
                  + '<filter id="wshadow" x="-10%" y="-10%" width="120%" height="130%"><feGaussianBlur stdDeviation="12"/></filter>')
+    elif tablet:
+        defs += (linear('alu', [(0, '#A9AEB9'), (.08, '#6E737E'), (.5, '#4A4E58'), (.92, '#6E737E'), (1, '#B7BCC6')], x2=0, y2=1)
+                 + linear('bezel', [(0, '#16171D', .9), (.5, '#000', 0), (1, '#0E0F14', .9)], x2=1, y2=1)
+                 + linear('glass', [(0, '#fff', .07), (1, '#fff', 0)], x2=1, y2=1)
+                 + linear('pencil', [(0, '#FFFFFF'), (.6, '#E6E8EE'), (1, '#B9BDC7')], x2=0, y2=1)
+                 + linear('btn', [(0, '#C9CDD6'), (1, '#5E636E')], x2=0, y2=1)
+                 + linear('btnv', [(0, '#5E636E'), (1, '#C9CDD6')])
+                 + '<radialGradient id="shadow"><stop offset="0" stop-color="#000" stop-opacity=".7"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>')
     else:
         defs += linear('metal', [(0, '#3A3F55'), (.5, '#8E93A8'), (1, '#2A2E40')])
     css = ''
@@ -1458,6 +1548,13 @@ def scene(key, lang):
         b += (f'<clipPath id="content"><path d="M{cx_} {cy_}H{cx_ + cw_}V{cy_ + ch_ - 11}Q{cx_ + cw_} {cy_ + ch_} {cx_ + cw_ - 11} {cy_ + ch_}'
               f'H{cx_ + 11}Q{cx_} {cy_ + ch_} {cx_} {cy_ + ch_ - 11}Z"/></clipPath>')
         b += f'<rect x="{cx_}" y="{cy_}" width="{cw_}" height="{ch_}" fill="#121116"/><g clip-path="url(#content)">'
+    elif tablet:
+        b += f'<ellipse cx="{w / 2}" cy="{sy + sh + 46}" rx="560" ry="22" fill="url(#shadow)"/>'
+        chrome, (cx_, cy_, cw_, ch_) = ipad_back(sx, sy, sw, sh, cfg, lang)
+        b += chrome
+        b += (f'<clipPath id="content"><path d="M{cx_} {cy_}H{cx_ + cw_}V{cy_ + ch_ - 26}Q{cx_ + cw_} {cy_ + ch_} {cx_ + cw_ - 26} {cy_ + ch_}'
+              f'H{cx_ + 26}Q{cx_} {cy_ + ch_} {cx_} {cy_ + ch_ - 26}Z"/></clipPath>')
+        b += f'<rect x="{cx_}" y="{cy_}" width="{cw_}" height="{ch_}" fill="#0A0B12"/><g clip-path="url(#content)">'
     else:
         b += (f'<ellipse cx="{w / 2}" cy="{sy + sh + 40}" rx="540" ry="22" fill="#000" opacity=".45"/>'
               f'<rect x="{sx - 2}" y="{sy - 46}" width="{sw + 4}" height="{sh + 48}" rx="18" fill="#0B0D18" stroke="#33395A" stroke-width="2"/>'
@@ -1476,12 +1573,22 @@ def scene(key, lang):
         scroll = (f'.sc{i}{{animation:scroll{i} {period:.1f}s ease-in-out infinite}}@keyframes scroll{i}{{0%,{i / n * 100 + 8:.1f}%{{transform:translateY(0)}}'
                   f'{(i + 1) / n * 100 - 4:.1f}%,100%{{transform:translateY(-{overflow:.0f}px)}}}}') if overflow > 12 else ''
         motion += scroll
-        b += (f'<g class="s{i}"><g class="sc{i}"><image href="{href}" x="{cx_}" y="{cy_}" width="{cw_}" height="{dh:.0f}" preserveAspectRatio="xMidYMin meet"/></g></g>')
+        page, tail = '', ''
+        if tablet and dh < ch_:
+            col = page_color(name)
+            defs += linear(f'pf{i}', [(0, col, 0), (1, col, 1)], x2=0, y2=1)
+            page = f'<rect x="{cx_}" y="{cy_}" width="{cw_}" height="{ch_}" fill="{col}"/>'
+            tail = f'<rect x="{cx_}" y="{cy_ + dh - 90:.0f}" width="{cw_}" height="91" fill="url(#pf{i})"/>'
+        b += (f'<g class="s{i}">{page}<g class="sc{i}"><image href="{href}" x="{cx_}" y="{cy_}" width="{cw_}" height="{dh:.0f}" preserveAspectRatio="xMidYMin meet"/></g>{tail}</g>')
     if laptop:
         b += f'<rect x="{cx_}" y="{cy_ + ch_ - 70}" width="{cw_}" height="70" fill="url(#fade)"/></g>'
         b += f'<g class="live" clip-path="url(#screen)"><rect class="sheen" x="{sx - 200}" y="{sy}" width="220" height="{sh}" fill="url(#sheen)" transform="skewX(-14)"/></g>'
         front, _bottom = macbook_front(sx, sy, sw, sh, a1, a2, w)
         b += front
+    elif tablet:
+        b += '</g>'
+        b += f'<g class="live" clip-path="url(#screen)"><rect class="sheen" x="{sx - 200}" y="{sy}" width="220" height="{sh}" fill="url(#sheen)" transform="skewX(-14)"/></g>'
+        b += ipad_front(sx, sy, sw, sh)
     else:
         b += f'<rect x="{sx}" y="{sy + sh - 120}" width="{sw}" height="120" fill="url(#fade)"/>'
         b += f'<g class="live"><rect class="sheen" x="{sx - 200}" y="{sy}" width="220" height="{sh}" fill="url(#sheen)" transform="skewX(-14)"/></g></g>'

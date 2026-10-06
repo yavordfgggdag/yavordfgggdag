@@ -10,6 +10,10 @@
 <img src="assets/motion/hero-bg.svg" alt="Явор (Yavor Yakow), независим разработчик. Продукти със системи зад тях: сайтове, онлайн магазини, уеб и настолен софтуер, админ панели, Discord ботове, игри и FiveM, API и AI. Избрано: Before I Deploy, TLR Police Portal, The Last Republic. Контакт: Fraisbg1@gmail.com · Discord Fraisbg · Instagram @y.yakowvw.sales." width="100%" />
 </picture>
 
+<a href="https://github.com/yyakowvw/yyakowvw/blob/main/assets/video/portfolio-tour.mp4"><img src="assets/video/portfolio-tour-bg.jpg" alt="Пуснете 75-секундното видео с портфолиото: Before I Deploy на MacBook Pro, TLR Police Portal на iPad Pro, The Last Republic, readme-studio, услуги, технологии, сертификати и контакт." width="100%" /></a>
+
+<p align="center"><sub>▶ <b>75-секундно видео с портфолиото</b> · Before I Deploy · TLR Police Portal · The Last Republic · readme-studio</sub></p>
+
 <p align="center"><b><a href="#проекти">Проекти</a> · <a href="#услуги">Услуги</a> · <a href="#технологии">Технологии</a> · <a href="#сертификати">Сертификати</a> · <a href="#активност">Активност</a> · <a href="#процес">Процес</a> · <a href="#контакт">Контакт</a></b></p>
 
 ## 👋 Здравейте, аз съм Явор
