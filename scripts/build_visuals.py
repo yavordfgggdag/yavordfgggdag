@@ -1811,7 +1811,7 @@ BENTO = {
            'police': ('FIVEM OPERATIONS', 'TLR Police Portal', 'Roster, ranks and handbook synced with Discord.', ['role-ID access', 'audit records']),
            'tlr': ('COMMUNITY PLATFORM', 'The Last Republic', 'Site, rules and a timed exam reviewed in Discord.', ['23 API routes', 'signed Discord flow']),
            'loc': ('42.6k', 'lines of code in Before I Deploy'),
-           'certs': ('6 + 129', 'certificates and Google lessons'),
+           'certs': ('135', 'certificates · 129 of them from Google'),
            'stack': ('68', 'technologies · 12 in shipped products'),
            'hire': ('AVAILABLE', 'Paid projects', 'websites · software · bots', 'Fraisbg1@gmail.com')},
     'bg': {'title': 'Избрана работа накратко', 'kicker': 'ИЗБРАНА РАБОТА',
@@ -1819,7 +1819,7 @@ BENTO = {
            'police': ('FIVEM ОПЕРАЦИИ', 'TLR Police Portal', 'Състав, звания и наръчник, свързани с Discord.', ['достъп по ID на роля', 'журнал']),
            'tlr': ('ОБЩНОСТНА ПЛАТФОРМА', 'The Last Republic', 'Сайт, правила и изпит с решения в Discord.', ['23 API маршрута', 'подписан Discord поток']),
            'loc': ('42.6k', 'реда код в Before I Deploy'),
-           'certs': ('6 + 129', 'сертификата и Google урока'),
+           'certs': ('135', 'сертификата · 129 от тях от Google'),
            'stack': ('68', 'технологии · 12 в готови продукти'),
            'hire': ('СВОБОДЕН', 'Платени проекти', 'сайтове · софтуер · ботове', 'Fraisbg1@gmail.com')},
 }
