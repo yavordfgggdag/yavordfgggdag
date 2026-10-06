@@ -158,3 +158,7 @@ Regenerating the visuals needs Pillow and fontTools (`pip install pillow fonttoo
 ## Bento overview and services
 
 `motion/bento-*.svg` replaces the plain "Selected Work" table with a bento composition: real thumbnails of Before I Deploy, TLR Police Portal and The Last Republic, plus measured facts (tests, checks, lines of code, certificates, technologies). `motion/services-*.svg` presents the six service areas from `data/services.json` (the same wording as before). Both have narrow-screen variants and follow the reduced-motion contract.
+
+## Certificate gallery
+
+`assets/certificates/` holds an image of every certificate, rendered from the issued files: 6 featured certificates (`featured/`, numbered by importance) and the 129 unique Google Applied Digital Skills lessons (`lessons/`, duplicates removed). Completion IDs, certification codes, certificate IDs and QR codes are covered before publishing; names and dates are kept. `scripts/certificate_gallery.py` writes the "All 135 certificates" section, with every certificate behind its own click.
