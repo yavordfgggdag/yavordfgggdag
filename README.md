@@ -310,27 +310,986 @@ The 69 technologies below are the original technology collection: additional int
 <img src="assets/motion/lessons-en.svg" alt="129 Google Applied Digital Skills lessons completed 23–27 Jul 2026: Creative & research 47, Google Workspace 38, Career & professional 21, Data & logic 13, AI & digital safety 10." width="100%" />
 </picture>
 
+### 🏅 All 135 certificates
+
+Sorted by importance. Click a title to open the certificate.
+
 <details>
-<summary><b>All 129 Google Applied Digital Skills lessons</b></summary>
+<summary><b>1 · Gemini Certified Educator</b> — Google for Education · issued 23 Jul 2026 · valid until 23 Jul 2029</summary>
 
-**Creative & research · 47**<br>
-Build a Logo to Express Who You Are · Create a Brochure · Create a Collaborative Study Guide · Create a Community My Map · Create a Crossword Puzzle · Create a Digital Picture Book · Create a Digital Postcard · Create a Flyer for a Juneteenth Celebration · Create a Guide to an Area · Create a Presentation "All About a Topic" · Create a Scrapbook · Create a Slogan for Earth Day · Create a Travel Brochure for an Exoplanet · Create a Vision Board · Create an Annotated Playlist · Design a Poster About You · Design a Website to Promote a Project · Design and Share a Digital Badge · Explore a Topic: Celebrate Black History · Explore a Topic: Celebrate Latinx History · Explore a Topic: Earth Day · Explore a Topic: Equal Access to Technology · Explore a Topic: Innovators · Explore a Topic: Technology at Work · Explore a Topic: Technology's Role in Current Events · Explore a Topic: Women's History · Explore the History of Humankind in Kenya · Go on a Scavenger Hunt Through Italy · Learn New Vocabulary with Flash cards · Make Art Inspired by Frida Kahlo and Mexico · Make Your Own Space Shuttle Adventure · Make a Promotional Flyer · Memorize Facts with a Visual Mnemonic · Organize Your Time with a Digital Agenda · Plan and Promote an Event · Present Your Ideas for Classroom Expectations · Quiz Your Classmates About the Palace of Versailles · Research and Develop a Topic · Respond to a Question in Google Classroom · Schedule Emails for Goal-Setting · Take Notes in a Table · Welcome New Students with a Presentation · Write Effectively for Your Audience · Write a Press Release · Write a Story Using Emojis · Write an If-Then Adventure Story · Write the Lyrics for a Song
-
-**Google Workspace · 38**<br>
-Annotate Text in Google Docs · Create Papel Picado in Google Slides · Create Quizzes in Google Forms · Create a Clickable Map in Google Slides · Create a Collage in Google Drawings · Create a Comic Strip in Google Drawings · Create a Meme with Google Drawings · Create a Mind Map in Google Drawings · Create a Personal Timeline in Google Drawings · Create a Photo Journal in Google Docs · Create a Schedule to Meet Your Goals · Create a Virtual Family Reunion in Google Slides · Create an Animation in Google Slides · Design an Infographic in Google Drawings · Gmail for Beginners · Google Calendar for Beginners · Google Docs for Beginners · Google Drive for Beginners · Google Meet for Beginners · Google Search for Beginners · Google Sheets for Beginners · Google Workspace: Docs - Part 1 · Google Workspace: Docs - Part 2 · Google Workspace: Drive · Google Workspace: Gmail · Google Workspace: Sheets - Part 1 · Google Workspace: Sheets - Part 2 · Google Workspace: Sheets - Part 3 · Google Workspace: Slides - Part 1 · Google Workspace: Slides - Part 2 · Google Workspace: Slides - Part 3 · Introduce Yourself in Google Slides · Make Art with Google Sheets · Make Pop Art in Google Drawings · Manage Your Time With Google Sheets · Show Appreciation with Google Slides · Track Due Dates and Tasks in Gmail · Use Drive to Organize Files
-
-**Career & professional · 21**<br>
-Ask Someone to Be a Reference · Ask for Feedback · Build Your Professional Brand · Build Your Professional Network · Build a Portfolio with Google Sites · Create a Resume in Google Docs · Draft an Application Essay · Explore Careers by Interviewing Professionals · Introduce Yourself to Potential Employers · Organize College Applications in Google Sheets · Organize College Information in Google Sheets · Prepare for Your First Day of Work · Prepare for a College Interview · Prepare for the FAFSA · Research Career Paths · Research and Interview a Person From History · Search for Colleges Online · Search for Scholarships · Search for a Part-Time or Summer Job · Track Graduation Requirements · Write a Cover Letter for Your First Job
-
-**Data & logic · 13**<br>
-Analyze Data from Images in Google Earth Engine · Calculate Percentages in Google Sheets · Calculate Probability with Google Sheets · Code a Joke-Telling Talkbot · Create a Budget in Google Sheets · Create a Guessing Game · Find the Mean, Median, or Mode of a Data Set · Make a Flowchart · Make a Word Game · Pick the Next Box Office Hit · Program a Progress Bar · Wage a Sea Battle with Google Sheets · Work with Fractions In Google Sheets
-
-**AI & digital safety · 10**<br>
-Avoid Online Scams · Build Healthy Digital Habits · Create a Responsible Blog with Google Sites · Create and Safeguard Passwords · Discover AI in Daily Life · Evaluate Credibility of Online Sources · Explore a Topic: Generative AI · Explore a Topic: Technology, Ethics, and Security · Identify Cyberbullying · Understand Your Digital Footprint
+<img src="assets/certificates/featured/1-gemini-certified-educator.jpg" width="100%" alt="Certificate: Gemini Certified Educator, Google for Education" />
 
 </details>
 
-<sub>Original certificate files are kept privately; certificate IDs and verification details are available on request.</sub>
+<details>
+<summary><b>2 · AI-Powered Performance Ads</b> — Google Ads · issued 21 Jul 2026 · valid until 21 Jul 2027</summary>
+
+<img src="assets/certificates/featured/2-google-ads-ai-powered-performance-ads.jpg" width="100%" alt="Certificate: AI-Powered Performance Ads, Google Ads" />
+
+</details>
+
+<details>
+<summary><b>3 · Digital Marketing Certified</b> — HubSpot Academy · issued 24 Jul 2026 · valid until 23 Aug 2027</summary>
+
+<img src="assets/certificates/featured/3-hubspot-digital-marketing.jpg" width="100%" alt="Certificate: Digital Marketing Certified, HubSpot Academy" />
+
+</details>
+
+<details>
+<summary><b>4 · Digital Marketing Specialist</b> — Advance Academy · program Feb–Apr 2026 · issued 30 Apr 2026</summary>
+
+<img src="assets/certificates/featured/4-advance-academy-digital-marketing-specialist.jpg" width="100%" alt="Certificate: Digital Marketing Specialist, Advance Academy" />
+
+</details>
+
+<details>
+<summary><b>5 · Fundamentals of Digital Marketing</b> — Google · completed 27 Jul 2026</summary>
+
+<img src="assets/certificates/featured/5-google-fundamentals-of-digital-marketing.jpg" width="100%" alt="Certificate: Fundamentals of Digital Marketing, Google" />
+
+</details>
+
+<details>
+<summary><b>6 · Intro to Gemini</b> — Google AI Educator Series · foundational badge</summary>
+
+<img src="assets/certificates/featured/6-google-intro-to-gemini.jpg" width="100%" alt="Certificate: Intro to Gemini, Google AI Educator Series" />
+
+</details>
+
+<details>
+<summary><b>7–135 · 129 Google Applied Digital Skills lessons</b> — completed 23–27 Jul 2026 · click a topic, then a lesson</summary>
+
+<details>
+<summary><b>Creative & research · 47</b></summary>
+
+<details>
+<summary>Build a Logo to Express Who You Are · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/build-a-logo-to-express-who-you-are.jpg" width="420" alt="Certificate: Build a Logo to Express Who You Are, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Brochure · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-brochure.jpg" width="420" alt="Certificate: Create a Brochure, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Collaborative Study Guide · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-collaborative-study-guide.jpg" width="420" alt="Certificate: Create a Collaborative Study Guide, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Community My Map · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-community-my-map.jpg" width="420" alt="Certificate: Create a Community My Map, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Crossword Puzzle · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-crossword-puzzle.jpg" width="420" alt="Certificate: Create a Crossword Puzzle, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Digital Picture Book · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-digital-picture-book.jpg" width="420" alt="Certificate: Create a Digital Picture Book, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Digital Postcard · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-digital-postcard.jpg" width="420" alt="Certificate: Create a Digital Postcard, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Flyer for a Juneteenth Celebration · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-flyer-for-a-juneteenth-celebration.jpg" width="420" alt="Certificate: Create a Flyer for a Juneteenth Celebration, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Guide to an Area · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-guide-to-an-area.jpg" width="420" alt="Certificate: Create a Guide to an Area, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Presentation "All About a Topic" · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-presentation-all-about-a-topic.jpg" width="420" alt="Certificate: Create a Presentation "All About a Topic", Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Scrapbook · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-scrapbook.jpg" width="420" alt="Certificate: Create a Scrapbook, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Slogan for Earth Day · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-slogan-for-earth-day.jpg" width="420" alt="Certificate: Create a Slogan for Earth Day, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Travel Brochure for an Exoplanet · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-travel-brochure-for-an-exoplanet.jpg" width="420" alt="Certificate: Create a Travel Brochure for an Exoplanet, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Vision Board · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-vision-board.jpg" width="420" alt="Certificate: Create a Vision Board, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create an Annotated Playlist · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-an-annotated-playlist.jpg" width="420" alt="Certificate: Create an Annotated Playlist, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Design a Poster About You · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/design-a-poster-about-you.jpg" width="420" alt="Certificate: Design a Poster About You, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Design a Website to Promote a Project · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/design-a-website-to-promote-a-project.jpg" width="420" alt="Certificate: Design a Website to Promote a Project, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Design and Share a Digital Badge · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/design-and-share-a-digital-badge.jpg" width="420" alt="Certificate: Design and Share a Digital Badge, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Explore a Topic: Celebrate Black History · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/explore-a-topic-celebrate-black-history.jpg" width="420" alt="Certificate: Explore a Topic: Celebrate Black History, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Explore a Topic: Celebrate Latinx History · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/explore-a-topic-celebrate-latinx-history.jpg" width="420" alt="Certificate: Explore a Topic: Celebrate Latinx History, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Explore a Topic: Earth Day · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/explore-a-topic-earth-day.jpg" width="420" alt="Certificate: Explore a Topic: Earth Day, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Explore a Topic: Equal Access to Technology · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/explore-a-topic-equal-access-to-technology.jpg" width="420" alt="Certificate: Explore a Topic: Equal Access to Technology, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Explore a Topic: Innovators · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/explore-a-topic-innovators.jpg" width="420" alt="Certificate: Explore a Topic: Innovators, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Explore a Topic: Technology at Work · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/explore-a-topic-technology-at-work.jpg" width="420" alt="Certificate: Explore a Topic: Technology at Work, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Explore a Topic: Technology's Role in Current Events · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/explore-a-topic-technology-s-role-in-current-events.jpg" width="420" alt="Certificate: Explore a Topic: Technology's Role in Current Events, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Explore a Topic: Women's History · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/explore-a-topic-women-s-history.jpg" width="420" alt="Certificate: Explore a Topic: Women's History, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Explore the History of Humankind in Kenya · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/explore-the-history-of-humankind-in-kenya.jpg" width="420" alt="Certificate: Explore the History of Humankind in Kenya, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Go on a Scavenger Hunt Through Italy · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/go-on-a-scavenger-hunt-through-italy.jpg" width="420" alt="Certificate: Go on a Scavenger Hunt Through Italy, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Learn New Vocabulary with Flash cards · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/learn-new-vocabulary-with-flash-cards.jpg" width="420" alt="Certificate: Learn New Vocabulary with Flash cards, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Make Art Inspired by Frida Kahlo and Mexico · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/make-art-inspired-by-frida-kahlo-and-mexico.jpg" width="420" alt="Certificate: Make Art Inspired by Frida Kahlo and Mexico, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Make Your Own Space Shuttle Adventure · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/make-your-own-space-shuttle-adventure.jpg" width="420" alt="Certificate: Make Your Own Space Shuttle Adventure, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Make a Promotional Flyer · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/make-a-promotional-flyer.jpg" width="420" alt="Certificate: Make a Promotional Flyer, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Memorize Facts with a Visual Mnemonic · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/memorize-facts-with-a-visual-mnemonic.jpg" width="420" alt="Certificate: Memorize Facts with a Visual Mnemonic, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Organize Your Time with a Digital Agenda · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/organize-your-time-with-a-digital-agenda.jpg" width="420" alt="Certificate: Organize Your Time with a Digital Agenda, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Plan and Promote an Event · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/plan-and-promote-an-event.jpg" width="420" alt="Certificate: Plan and Promote an Event, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Present Your Ideas for Classroom Expectations · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/present-your-ideas-for-classroom-expectations.jpg" width="420" alt="Certificate: Present Your Ideas for Classroom Expectations, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Quiz Your Classmates About the Palace of Versailles · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/quiz-your-classmates-about-the-palace-of-versailles.jpg" width="420" alt="Certificate: Quiz Your Classmates About the Palace of Versailles, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Research and Develop a Topic · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/research-and-develop-a-topic.jpg" width="420" alt="Certificate: Research and Develop a Topic, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Respond to a Question in Google Classroom · 26 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/respond-to-a-question-in-google-classroom.jpg" width="420" alt="Certificate: Respond to a Question in Google Classroom, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Schedule Emails for Goal-Setting · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/schedule-emails-for-goal-setting.jpg" width="420" alt="Certificate: Schedule Emails for Goal-Setting, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Take Notes in a Table · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/take-notes-in-a-table.jpg" width="420" alt="Certificate: Take Notes in a Table, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Welcome New Students with a Presentation · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/welcome-new-students-with-a-presentation.jpg" width="420" alt="Certificate: Welcome New Students with a Presentation, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Write Effectively for Your Audience · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/write-effectively-for-your-audience.jpg" width="420" alt="Certificate: Write Effectively for Your Audience, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Write a Press Release · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/write-a-press-release.jpg" width="420" alt="Certificate: Write a Press Release, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Write a Story Using Emojis · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/write-a-story-using-emojis.jpg" width="420" alt="Certificate: Write a Story Using Emojis, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Write an If-Then Adventure Story · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/write-an-if-then-adventure-story.jpg" width="420" alt="Certificate: Write an If-Then Adventure Story, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Write the Lyrics for a Song · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/write-the-lyrics-for-a-song.jpg" width="420" alt="Certificate: Write the Lyrics for a Song, Google Applied Digital Skills" />
+
+</details>
+
+</details>
+
+<details>
+<summary><b>Google Workspace · 38</b></summary>
+
+<details>
+<summary>Annotate Text in Google Docs · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/annotate-text-in-google-docs.jpg" width="420" alt="Certificate: Annotate Text in Google Docs, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create Papel Picado in Google Slides · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-papel-picado-in-google-slides.jpg" width="420" alt="Certificate: Create Papel Picado in Google Slides, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create Quizzes in Google Forms · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-quizzes-in-google-forms.jpg" width="420" alt="Certificate: Create Quizzes in Google Forms, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Clickable Map in Google Slides · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-clickable-map-in-google-slides.jpg" width="420" alt="Certificate: Create a Clickable Map in Google Slides, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Collage in Google Drawings · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-collage-in-google-drawings.jpg" width="420" alt="Certificate: Create a Collage in Google Drawings, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Comic Strip in Google Drawings · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-comic-strip-in-google-drawings.jpg" width="420" alt="Certificate: Create a Comic Strip in Google Drawings, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Meme with Google Drawings · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-meme-with-google-drawings.jpg" width="420" alt="Certificate: Create a Meme with Google Drawings, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Mind Map in Google Drawings · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-mind-map-in-google-drawings.jpg" width="420" alt="Certificate: Create a Mind Map in Google Drawings, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Personal Timeline in Google Drawings · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-personal-timeline-in-google-drawings.jpg" width="420" alt="Certificate: Create a Personal Timeline in Google Drawings, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Photo Journal in Google Docs · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-photo-journal-in-google-docs.jpg" width="420" alt="Certificate: Create a Photo Journal in Google Docs, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Schedule to Meet Your Goals · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-schedule-to-meet-your-goals.jpg" width="420" alt="Certificate: Create a Schedule to Meet Your Goals, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Virtual Family Reunion in Google Slides · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-virtual-family-reunion-in-google-slides.jpg" width="420" alt="Certificate: Create a Virtual Family Reunion in Google Slides, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create an Animation in Google Slides · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-an-animation-in-google-slides.jpg" width="420" alt="Certificate: Create an Animation in Google Slides, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Design an Infographic in Google Drawings · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/design-an-infographic-in-google-drawings.jpg" width="420" alt="Certificate: Design an Infographic in Google Drawings, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Gmail for Beginners · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/gmail-for-beginners.jpg" width="420" alt="Certificate: Gmail for Beginners, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Google Calendar for Beginners · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/google-calendar-for-beginners.jpg" width="420" alt="Certificate: Google Calendar for Beginners, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Google Docs for Beginners · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/google-docs-for-beginners.jpg" width="420" alt="Certificate: Google Docs for Beginners, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Google Drive for Beginners · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/google-drive-for-beginners.jpg" width="420" alt="Certificate: Google Drive for Beginners, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Google Meet for Beginners · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/google-meet-for-beginners.jpg" width="420" alt="Certificate: Google Meet for Beginners, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Google Search for Beginners · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/google-search-for-beginners.jpg" width="420" alt="Certificate: Google Search for Beginners, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Google Sheets for Beginners · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/google-sheets-for-beginners.jpg" width="420" alt="Certificate: Google Sheets for Beginners, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Google Workspace: Docs - Part 1 · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/google-workspace-docs-part-1.jpg" width="420" alt="Certificate: Google Workspace: Docs - Part 1, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Google Workspace: Docs - Part 2 · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/google-workspace-docs-part-2.jpg" width="420" alt="Certificate: Google Workspace: Docs - Part 2, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Google Workspace: Drive · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/google-workspace-drive.jpg" width="420" alt="Certificate: Google Workspace: Drive, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Google Workspace: Gmail · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/google-workspace-gmail.jpg" width="420" alt="Certificate: Google Workspace: Gmail, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Google Workspace: Sheets - Part 1 · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/google-workspace-sheets-part-1.jpg" width="420" alt="Certificate: Google Workspace: Sheets - Part 1, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Google Workspace: Sheets - Part 2 · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/google-workspace-sheets-part-2.jpg" width="420" alt="Certificate: Google Workspace: Sheets - Part 2, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Google Workspace: Sheets - Part 3 · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/google-workspace-sheets-part-3.jpg" width="420" alt="Certificate: Google Workspace: Sheets - Part 3, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Google Workspace: Slides - Part 1 · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/google-workspace-slides-part-1.jpg" width="420" alt="Certificate: Google Workspace: Slides - Part 1, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Google Workspace: Slides - Part 2 · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/google-workspace-slides-part-2.jpg" width="420" alt="Certificate: Google Workspace: Slides - Part 2, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Google Workspace: Slides - Part 3 · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/google-workspace-slides-part-3.jpg" width="420" alt="Certificate: Google Workspace: Slides - Part 3, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Introduce Yourself in Google Slides · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/introduce-yourself-in-google-slides.jpg" width="420" alt="Certificate: Introduce Yourself in Google Slides, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Make Art with Google Sheets · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/make-art-with-google-sheets.jpg" width="420" alt="Certificate: Make Art with Google Sheets, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Make Pop Art in Google Drawings · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/make-pop-art-in-google-drawings.jpg" width="420" alt="Certificate: Make Pop Art in Google Drawings, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Manage Your Time With Google Sheets · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/manage-your-time-with-google-sheets.jpg" width="420" alt="Certificate: Manage Your Time With Google Sheets, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Show Appreciation with Google Slides · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/show-appreciation-with-google-slides.jpg" width="420" alt="Certificate: Show Appreciation with Google Slides, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Track Due Dates and Tasks in Gmail · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/track-due-dates-and-tasks-in-gmail.jpg" width="420" alt="Certificate: Track Due Dates and Tasks in Gmail, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Use Drive to Organize Files · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/use-drive-to-organize-files.jpg" width="420" alt="Certificate: Use Drive to Organize Files, Google Applied Digital Skills" />
+
+</details>
+
+</details>
+
+<details>
+<summary><b>Career & professional · 21</b></summary>
+
+<details>
+<summary>Ask Someone to Be a Reference · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/ask-someone-to-be-a-reference.jpg" width="420" alt="Certificate: Ask Someone to Be a Reference, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Ask for Feedback · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/ask-for-feedback.jpg" width="420" alt="Certificate: Ask for Feedback, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Build Your Professional Brand · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/build-your-professional-brand.jpg" width="420" alt="Certificate: Build Your Professional Brand, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Build Your Professional Network · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/build-your-professional-network.jpg" width="420" alt="Certificate: Build Your Professional Network, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Build a Portfolio with Google Sites · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/build-a-portfolio-with-google-sites.jpg" width="420" alt="Certificate: Build a Portfolio with Google Sites, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Resume in Google Docs · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-resume-in-google-docs.jpg" width="420" alt="Certificate: Create a Resume in Google Docs, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Draft an Application Essay · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/draft-an-application-essay.jpg" width="420" alt="Certificate: Draft an Application Essay, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Explore Careers by Interviewing Professionals · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/explore-careers-by-interviewing-professionals.jpg" width="420" alt="Certificate: Explore Careers by Interviewing Professionals, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Introduce Yourself to Potential Employers · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/introduce-yourself-to-potential-employers.jpg" width="420" alt="Certificate: Introduce Yourself to Potential Employers, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Organize College Applications in Google Sheets · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/organize-college-applications-in-google-sheets.jpg" width="420" alt="Certificate: Organize College Applications in Google Sheets, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Organize College Information in Google Sheets · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/organize-college-information-in-google-sheets.jpg" width="420" alt="Certificate: Organize College Information in Google Sheets, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Prepare for Your First Day of Work · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/prepare-for-your-first-day-of-work.jpg" width="420" alt="Certificate: Prepare for Your First Day of Work, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Prepare for a College Interview · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/prepare-for-a-college-interview.jpg" width="420" alt="Certificate: Prepare for a College Interview, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Prepare for the FAFSA · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/prepare-for-the-fafsa.jpg" width="420" alt="Certificate: Prepare for the FAFSA, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Research Career Paths · 26 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/research-career-paths.jpg" width="420" alt="Certificate: Research Career Paths, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Research and Interview a Person From History · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/research-and-interview-a-person-from-history.jpg" width="420" alt="Certificate: Research and Interview a Person From History, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Search for Colleges Online · 26 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/search-for-colleges-online.jpg" width="420" alt="Certificate: Search for Colleges Online, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Search for Scholarships · 26 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/search-for-scholarships.jpg" width="420" alt="Certificate: Search for Scholarships, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Search for a Part-Time or Summer Job · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/search-for-a-part-time-or-summer-job.jpg" width="420" alt="Certificate: Search for a Part-Time or Summer Job, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Track Graduation Requirements · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/track-graduation-requirements.jpg" width="420" alt="Certificate: Track Graduation Requirements, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Write a Cover Letter for Your First Job · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/write-a-cover-letter-for-your-first-job.jpg" width="420" alt="Certificate: Write a Cover Letter for Your First Job, Google Applied Digital Skills" />
+
+</details>
+
+</details>
+
+<details>
+<summary><b>Data & logic · 13</b></summary>
+
+<details>
+<summary>Analyze Data from Images in Google Earth Engine · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/analyze-data-from-images-in-google-earth-engine.jpg" width="420" alt="Certificate: Analyze Data from Images in Google Earth Engine, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Calculate Percentages in Google Sheets · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/calculate-percentages-in-google-sheets.jpg" width="420" alt="Certificate: Calculate Percentages in Google Sheets, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Calculate Probability with Google Sheets · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/calculate-probability-with-google-sheets.jpg" width="420" alt="Certificate: Calculate Probability with Google Sheets, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Code a Joke-Telling Talkbot · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/code-a-joke-telling-talkbot.jpg" width="420" alt="Certificate: Code a Joke-Telling Talkbot, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Budget in Google Sheets · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-budget-in-google-sheets.jpg" width="420" alt="Certificate: Create a Budget in Google Sheets, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Guessing Game · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-guessing-game.jpg" width="420" alt="Certificate: Create a Guessing Game, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Find the Mean, Median, or Mode of a Data Set · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/find-the-mean-median-or-mode-of-a-data-set.jpg" width="420" alt="Certificate: Find the Mean, Median, or Mode of a Data Set, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Make a Flowchart · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/make-a-flowchart.jpg" width="420" alt="Certificate: Make a Flowchart, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Make a Word Game · 27 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/make-a-word-game.jpg" width="420" alt="Certificate: Make a Word Game, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Pick the Next Box Office Hit · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/pick-the-next-box-office-hit.jpg" width="420" alt="Certificate: Pick the Next Box Office Hit, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Program a Progress Bar · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/program-a-progress-bar.jpg" width="420" alt="Certificate: Program a Progress Bar, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Wage a Sea Battle with Google Sheets · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/wage-a-sea-battle-with-google-sheets.jpg" width="420" alt="Certificate: Wage a Sea Battle with Google Sheets, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Work with Fractions In Google Sheets · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/work-with-fractions-in-google-sheets.jpg" width="420" alt="Certificate: Work with Fractions In Google Sheets, Google Applied Digital Skills" />
+
+</details>
+
+</details>
+
+<details>
+<summary><b>AI & digital safety · 10</b></summary>
+
+<details>
+<summary>Avoid Online Scams · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/avoid-online-scams.jpg" width="420" alt="Certificate: Avoid Online Scams, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Build Healthy Digital Habits · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/build-healthy-digital-habits.jpg" width="420" alt="Certificate: Build Healthy Digital Habits, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create a Responsible Blog with Google Sites · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-a-responsible-blog-with-google-sites.jpg" width="420" alt="Certificate: Create a Responsible Blog with Google Sites, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Create and Safeguard Passwords · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/create-and-safeguard-passwords.jpg" width="420" alt="Certificate: Create and Safeguard Passwords, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Discover AI in Daily Life · 23 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/discover-ai-in-daily-life.jpg" width="420" alt="Certificate: Discover AI in Daily Life, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Evaluate Credibility of Online Sources · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/evaluate-credibility-of-online-sources.jpg" width="420" alt="Certificate: Evaluate Credibility of Online Sources, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Explore a Topic: Generative AI · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/explore-a-topic-generative-ai.jpg" width="420" alt="Certificate: Explore a Topic: Generative AI, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Explore a Topic: Technology, Ethics, and Security · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/explore-a-topic-technology-ethics-and-security.jpg" width="420" alt="Certificate: Explore a Topic: Technology, Ethics, and Security, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Identify Cyberbullying · 25 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/identify-cyberbullying.jpg" width="420" alt="Certificate: Identify Cyberbullying, Google Applied Digital Skills" />
+
+</details>
+
+<details>
+<summary>Understand Your Digital Footprint · 24 Jul 2026</summary>
+
+<img src="assets/certificates/lessons/understand-your-digital-footprint.jpg" width="420" alt="Certificate: Understand Your Digital Footprint, Google Applied Digital Skills" />
+
+</details>
+
+</details>
+
+</details>
+
+<sub>Certificate numbers and QR codes are hidden; verification details are available on request.</sub>
 
 <a name="activity"></a>
 
