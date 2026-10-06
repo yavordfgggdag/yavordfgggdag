@@ -10,9 +10,9 @@
 <img src="assets/motion/hero-en.svg" alt="Yavor Yakow, independent developer. Products with systems behind them: websites, online stores, web and desktop software, admin panels, Discord bots, games and FiveM, APIs and AI. Featured: Before I Deploy, TLR Police Portal, The Last Republic. Contact: Fraisbg1@gmail.com · Discord Fraisbg · Instagram @y.yakowvw.sales." width="100%" />
 </picture>
 
-<a href="https://github.com/yyakowvw/yyakowvw/blob/main/assets/video/portfolio-tour.mp4"><img src="assets/video/portfolio-tour-en.jpg" alt="Play the 75-second portfolio tour: Before I Deploy on a MacBook Pro, TLR Police Portal on an iPad Pro, The Last Republic, readme-studio, services, technology, certificates and contact." width="100%" /></a>
+<img src="assets/video/portfolio-tour.webp" alt="75-second portfolio tour: Before I Deploy on a MacBook Pro, TLR Police Portal on an iPad Pro, The Last Republic, readme-studio, services, technology, certificates and contact." width="100%" />
 
-<p align="center"><sub>▶ <b>75-second portfolio tour</b> · Before I Deploy · TLR Police Portal · The Last Republic · readme-studio</sub></p>
+<p align="center"><sub>🎬 <b>75-second portfolio tour</b> · Before I Deploy · TLR Police Portal · The Last Republic · readme-studio</sub></p>
 
 <p align="center"><b><a href="#work">Work</a> · <a href="#services">Services</a> · <a href="#technology">Technology</a> · <a href="#certificates">Certificates</a> · <a href="#activity">Activity</a> · <a href="#process">Process</a> · <a href="#contact">Contact</a></b></p>
 
@@ -203,9 +203,9 @@ An internal portal for the TLR roleplay police department. **My contribution:** 
 - **Works inside GitHub's image sanitiser:** no scripts, no remote requests, all motion inside `prefers-reduced-motion`. A linter checks every file before it ships.
 - **One command, zero code:** `curl … | bash` (or a double-click on macOS and Windows) asks a few questions, builds the profile, opens a preview and publishes it to GitHub. A reusable GitHub Action rebuilds it on every change; 17 tests and CI keep the output reproducible.
 
-<a href="https://github.com/yyakowvw/readme-studio/blob/main/docs/video/demo-en.mp4"><img src="assets/video/readme-studio-demo-en.jpg" alt="Play the 55-second demo: one command in the terminal, a few answers, and a finished animated GitHub profile." width="100%" /></a>
+<img src="assets/video/readme-studio-demo-en.webp" alt="55-second demo: one command in the terminal, a few answers, and a finished animated GitHub profile." width="100%" />
 
-<p align="center"><sub>▶ <b>See how it works</b>: a real run, from one command to a finished profile, in 55 seconds.</sub></p>
+<p align="center"><sub>🎬 <b>See how it works</b>: a real run, from one command to a finished profile, in 55 seconds.</sub></p>
 
 **Built with:** Python · fontTools · SVG + CSS animation · GitHub Actions · **[⭐ github.com/yyakowvw/readme-studio](https://github.com/yyakowvw/readme-studio)**
 
