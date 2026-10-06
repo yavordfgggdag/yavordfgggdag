@@ -10,10 +10,6 @@
 <img src="assets/motion/hero-en.svg" alt="Yavor Yakow, independent developer. Products with systems behind them: websites, online stores, web and desktop software, admin panels, Discord bots, games and FiveM, APIs and AI. Featured: Before I Deploy, TLR Police Portal, The Last Republic. Contact: Fraisbg1@gmail.com · Discord Fraisbg · Instagram @y.yakowvw.sales." width="100%" />
 </picture>
 
-<img src="assets/video/portfolio-tour.webp" alt="75-second portfolio tour: Before I Deploy on a MacBook Pro, TLR Police Portal on an iPad Pro, The Last Republic, readme-studio, services, technology, certificates and contact." width="100%" />
-
-<p align="center"><sub>🎬 <b>75-second portfolio tour</b> · Before I Deploy · TLR Police Portal · The Last Republic · readme-studio</sub></p>
-
 <p align="center"><b><a href="#work">Work</a> · <a href="#services">Services</a> · <a href="#technology">Technology</a> · <a href="#certificates">Certificates</a> · <a href="#activity">Activity</a> · <a href="#process">Process</a> · <a href="#contact">Contact</a></b></p>
 
 ## 👋 Hi, I'm Yavor
