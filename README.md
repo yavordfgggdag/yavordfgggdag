@@ -179,6 +179,28 @@ An internal portal for the TLR roleplay police department. **My contribution:** 
 
 <sub>22 pages · 23 API route handlers · 4 database migrations · 11 automated tests passing. Captured from the current codebase running locally on 5 Oct 2026; Discord sign-in is not configured locally. Source is private.</sub>
 
+<a name="readme-studio"></a>
+
+<picture>
+<source media="(max-width: 600px)" srcset="assets/motion/project-studio-en-mobile.svg" />
+<img src="assets/motion/project-studio-en.svg" alt="04 · readme-studio · open source" width="100%" />
+</picture>
+
+**The open-source engine behind this profile's style: an animated, bilingual GitHub README from one JSON file.**
+
+<a href="https://github.com/yyakowvw/readme-studio">
+<picture>
+<source media="(max-width: 600px)" srcset="assets/studio/readme-studio-en-mobile.svg" />
+<img src="assets/studio/readme-studio-en.svg" alt="readme-studio — your GitHub profile, in motion. Pure SVG, zero JavaScript, respects reduced motion." width="100%" />
+</picture>
+</a>
+
+- **Nine animated components** with 1200 px and 600 px variants, four themes, 174 bundled brand icons and Unbounded headlines outlined to SVG paths (latin + cyrillic).
+- **Works inside GitHub's image sanitiser:** no scripts, no remote requests, all motion inside `prefers-reduced-motion`. A linter checks every file before it ships.
+- **Usable without installing anything:** a reusable GitHub Action rebuilds the profile on every push. 16 tests and CI keep the output reproducible.
+
+**Built with:** Python · fontTools · SVG + CSS animation · GitHub Actions · **[⭐ github.com/yyakowvw/readme-studio](https://github.com/yyakowvw/readme-studio)**
+
 <a name="services"></a>
 
 <picture>

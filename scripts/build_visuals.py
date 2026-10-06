@@ -345,6 +345,9 @@ PROJECTS = {
     'tlr': {'n': '03', 'name': 'The Last Republic', 'accent': ('#F472B6', '#8B5CF6'), 'motif': 'network',
             'en': ('COMMUNITY INFRASTRUCTURE', 'Public interface · rules · Discord-connected applications'),
             'bg': ('ОБЩНОСТНА ИНФРАСТРУКТУРА', 'Публичен интерфейс · правила · кандидатстване чрез Discord')},
+    'studio': {'n': '04', 'name': 'readme-studio', 'accent': ('#34D399', '#22D3EE'), 'motif': 'page',
+               'en': ('OPEN SOURCE · MIT', 'Animated, bilingual GitHub profiles from one JSON file'),
+               'bg': ('ОТВОРЕН КОД · MIT', 'Анимирани двуезични GitHub профили от един JSON файл')},
 }
 
 
