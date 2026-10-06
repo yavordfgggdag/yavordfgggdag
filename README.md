@@ -291,7 +291,7 @@ The 68 technologies below are the original technology collection: additional int
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/stack-games-en-mobile.svg" />
-<img src="assets/motion/stack-games-en.svg" alt="Games, Communities & AI, 8: Discord (used in featured products), FiveM, Godot, Unity, Unreal Engine, OpenAI, Claude, Cursor." width="100%" />
+<img src="assets/motion/stack-games-en.svg" alt="Games, Communities & AI, 8: Discord (used in featured products), FiveM, Godot, Unity, Unreal Engine, OpenAI, Anthropic, Cursor." width="100%" />
 </picture>
 
 <sub>The right stack depends on the product; the panels do not imply equal specialization in every language. Specific tools and implementation scope are agreed for each engagement. Logos: original brand colours via <a href="https://simpleicons.org">Simple Icons</a> (CC0); SQL, C#, PowerShell, Objective-C and OpenAI appear as text tiles, as in the original badges.</sub>

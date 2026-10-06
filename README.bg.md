@@ -291,7 +291,7 @@
 
 <picture>
 <source media="(max-width: 600px)" srcset="assets/motion/stack-games-bg-mobile.svg" />
-<img src="assets/motion/stack-games-bg.svg" alt="Игри, общности и AI, 8: Discord (използвано в проектите), FiveM, Godot, Unity, Unreal Engine, OpenAI, Claude, Cursor." width="100%" />
+<img src="assets/motion/stack-games-bg.svg" alt="Игри, общности и AI, 8: Discord (използвано в проектите), FiveM, Godot, Unity, Unreal Engine, OpenAI, Anthropic, Cursor." width="100%" />
 </picture>
 
 <sub>Подходящият избор зависи от продукта; панелите не означават еднаква специализация. Конкретните инструменти и обхват се уточняват за всеки проект. Логата са в оригиналните цветове на марките чрез <a href="https://simpleicons.org">Simple Icons</a> (CC0); SQL, C#, PowerShell, Objective-C и OpenAI са текстови плочки, както в оригиналните значки.</sub>
