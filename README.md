@@ -201,7 +201,11 @@ An internal portal for the TLR roleplay police department. **My contribution:** 
 
 - **Nine animated components** with 1200 px and 600 px variants, four themes, 174 bundled brand icons and Unbounded headlines outlined to SVG paths (latin + cyrillic).
 - **Works inside GitHub's image sanitiser:** no scripts, no remote requests, all motion inside `prefers-reduced-motion`. A linter checks every file before it ships.
-- **Usable without installing anything:** a reusable GitHub Action rebuilds the profile on every push. 16 tests and CI keep the output reproducible.
+- **One command, zero code:** `curl … | bash` (or a double-click on macOS and Windows) asks a few questions, builds the profile, opens a preview and publishes it to GitHub. A reusable GitHub Action rebuilds it on every change; 17 tests and CI keep the output reproducible.
+
+<a href="https://github.com/yyakowvw/readme-studio/blob/main/docs/video/demo-en.mp4"><img src="assets/video/readme-studio-demo-en.jpg" alt="Play the 55-second demo: one command in the terminal, a few answers, and a finished animated GitHub profile." width="100%" /></a>
+
+<p align="center"><sub>▶ <b>See how it works</b>: a real run, from one command to a finished profile, in 55 seconds.</sub></p>
 
 **Built with:** Python · fontTools · SVG + CSS animation · GitHub Actions · **[⭐ github.com/yyakowvw/readme-studio](https://github.com/yyakowvw/readme-studio)**
 
