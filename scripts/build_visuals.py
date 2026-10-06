@@ -1264,6 +1264,139 @@ def screen_data(name):
     return 'data:image/jpeg;base64,' + base64.b64encode(buffer.getvalue()).decode(), crop.size
 
 
+MENU = {'en': (['File', 'Edit', 'View', 'Window', 'Help'], 'Mon 5 Oct  9:41'),
+        'bg': (['Файл', 'Редакция', 'Изглед', 'Прозорец', 'Помощ'], 'пн 5 окт  9:41')}
+
+
+def lerp(a, b, t):
+    return a + (b - a) * t
+
+
+def macbook_back(sx, sy, sw, sh, a1, a2, lang):
+    """Lid, bezel, wallpaper, menu bar and window chrome of a MacBook Pro.
+    Returns (svg, content rect) — the app capture is placed inside the rect."""
+    out = ''
+    # aluminium lid rim and black glass bezel
+    out += (f'<rect x="{sx - 18}" y="{sy - 18}" width="{sw + 36}" height="{sh + 38}" rx="26" fill="url(#lid)"/>'
+            f'<rect x="{sx - 18}" y="{sy - 18}" width="{sw + 36}" height="{sh + 38}" rx="26" fill="none" stroke="#9AA0AE" stroke-opacity=".55" stroke-width="1.2"/>'
+            f'<rect x="{sx - 15}" y="{sy - 15}" width="{sw + 30}" height="{sh + 32}" rx="23" fill="#040406"/>'
+            f'<rect x="{sx - 15}" y="{sy - 15}" width="{sw + 30}" height="{sh + 32}" rx="23" fill="url(#bezel)"/>')
+    # desktop wallpaper
+    out += (f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="9" fill="url(#wall)"/>'
+            f'<g clip-path="url(#screen)"><circle cx="{sx + sw * .18:.0f}" cy="{sy + sh * .95:.0f}" r="{sh * .7:.0f}" fill="url(#w1)"/>'
+            f'<circle cx="{sx + sw * .85:.0f}" cy="{sy + sh * .1:.0f}" r="{sh * .65:.0f}" fill="url(#w2)"/>'
+            f'<path d="M{sx} {sy + sh * .72:.0f}C{sx + sw * .3:.0f} {sy + sh * .5:.0f} {sx + sw * .6:.0f} {sy + sh * .95:.0f} {sx + sw} {sy + sh * .62:.0f}V{sy + sh}H{sx}Z" fill="#fff" opacity=".05"/>'
+            f'<path d="M{sx} {sy + sh * .82:.0f}C{sx + sw * .35:.0f} {sy + sh * .62:.0f} {sx + sw * .7:.0f} {sy + sh:.0f} {sx + sw} {sy + sh * .74:.0f}V{sy + sh}H{sx}Z" fill="#000" opacity=".18"/></g>')
+    # menu bar
+    items, clock = MENU[lang]
+    mb = 24
+    out += f'<rect x="{sx}" y="{sy}" width="{sw}" height="{mb}" fill="#0B0A18" fill-opacity=".55"/>'
+    out += icon('apple', sx + 14, sy + 5, 14, '#FFFFFF')
+    x = sx + 42
+    out += text(x, sy + 16.5, 'Before I Deploy', 12.5, '#FFFFFF', 700)
+    x += 112
+    notch_left = sx + sw / 2 - 54 - 14
+    for item in items:
+        width = sum(8.2 if '\u0400' <= ch <= '\u04FF' else 7.4 for ch in item)
+        if x + width > notch_left:
+            break
+        out += text(x, sy + 16.5, item, 12.5, '#FFFFFF', 400, extra='fill-opacity=".92"')
+        x += width + 18
+    rx_ = sx + sw - 14
+    out += text(rx_, sy + 16.5, clock, 12.5, '#FFFFFF', 500, anchor='end')
+    bx = rx_ - 118
+    out += (f'<g transform="translate({bx} {sy + 7})"><rect width="22" height="10.5" rx="3" fill="none" stroke="#fff" stroke-opacity=".9"/>'
+            f'<rect x="1.8" y="1.8" width="15" height="6.9" rx="1.6" fill="#fff"/><rect x="23" y="3.4" width="1.6" height="3.8" rx=".8" fill="#fff" opacity=".7"/></g>')
+    wx_ = bx - 22
+    out += (f'<g transform="translate({wx_} {sy + 18})" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round">'
+            '<path d="M-7.5 -7.5a10.6 10.6 0 0 1 15 0"/><path d="M-4.6 -4.6a6.5 6.5 0 0 1 9.2 0"/></g>'
+            f'<circle cx="{wx_}" cy="{sy + 16.5}" r="1.6" fill="#fff"/>')
+    out += (f'<g transform="translate({wx_ - 34} {sy + 12})" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round">'
+            '<circle cx="0" cy="0" r="4.6"/><path d="M3.4 3.4l3.6 3.6"/></g>')
+    # app window
+    wx, wy = sx + 30, sy + mb + 12
+    ww, wh = sw - 60, sh - mb - 12 - 18
+    tb = 30
+    out += (f'<rect x="{wx}" y="{wy + 10}" width="{ww}" height="{wh}" rx="12" fill="#000" opacity=".55" filter="url(#wshadow)"/>'
+            f'<rect x="{wx}" y="{wy}" width="{ww}" height="{wh}" rx="11" fill="#17161D"/>'
+            f'<path d="M{wx} {wy + tb}V{wy + 11}Q{wx} {wy} {wx + 11} {wy}H{wx + ww - 11}Q{wx + ww} {wy} {wx + ww} {wy + 11}V{wy + tb}Z" fill="url(#titlebar)"/>'
+            f'<path d="M{wx} {wy + tb}H{wx + ww}" stroke="#000" stroke-opacity=".6"/>')
+    for i, col in enumerate(('#FF5F57', '#FEBC2E', '#28C840')):
+        out += f'<circle cx="{wx + 18 + i * 20}" cy="{wy + tb / 2}" r="6" fill="{col}"/><circle cx="{wx + 18 + i * 20}" cy="{wy + tb / 2}" r="6" fill="none" stroke="#000" stroke-opacity=".18"/>'
+    out += text(wx + ww / 2, wy + tb / 2 + 4.5, 'Before I Deploy', 13, '#D8D7E0', 600, anchor='middle')
+    return out, (wx, wy + tb, ww, wh - tb)
+
+
+def macbook_front(sx, sy, sw, sh, a1, a2, w):
+    """Window frame highlight, notch, glass, hinge and the keyboard deck in perspective."""
+    out = f'<rect x="{sx + 30}" y="{sy + 36}" width="{sw - 60}" height="{sh - 54}" rx="11" fill="none" stroke="#fff" stroke-opacity=".14"/>'
+    # notch with camera
+    cx, nw, nh = sx + sw / 2, 108, 25
+    out += (f'<path d="M{cx - nw / 2 - 6} {sy - 1}Q{cx - nw / 2} {sy - 1} {cx - nw / 2} {sy + 5}V{sy + nh - 9}Q{cx - nw / 2} {sy + nh} {cx - nw / 2 + 9} {sy + nh}'
+            f'H{cx + nw / 2 - 9}Q{cx + nw / 2} {sy + nh} {cx + nw / 2} {sy + nh - 9}V{sy + 5}Q{cx + nw / 2} {sy - 1} {cx + nw / 2 + 6} {sy - 1}Z" fill="#040406"/>'
+            f'<circle cx="{cx}" cy="{sy + 11}" r="4.2" fill="#0B0D16" stroke="#1E2336" stroke-width="1"/>'
+            f'<circle cx="{cx}" cy="{sy + 11}" r="2" fill="#1C2850"/><circle cx="{cx - .8}" cy="{sy + 10.2}" r=".7" fill="#fff" opacity=".55"/>'
+            f'<circle cx="{cx + 14}" cy="{sy + 11}" r="1.2" fill="#14161F"/>')
+    # glass reflection
+    out += (f'<path d="M{sx} {sy}H{sx + sw * .46:.0f}L{sx + sw * .2:.0f} {sy + sh}H{sx}Z" fill="url(#glass)" clip-path="url(#screen)"/>')
+    hinge = sy + sh + 20
+    # hinge
+    out += (f'<rect x="{sx - 4}" y="{hinge - 1}" width="{sw + 8}" height="10" rx="3" fill="url(#hinge)"/>')
+    # deck (trapezoid, back edge under the hinge)
+    by, fy = hinge + 9, hinge + 98
+    bl, br = sx - 18, sx + sw + 18
+    fl, fr = 72, w - 72
+    out += (f'<path d="M{bl} {by}H{br}L{fr} {fy}H{fl}Z" fill="url(#deck)"/>'
+            f'<path d="M{bl} {by}H{br}L{fr} {fy}H{fl}Z" fill="url(#spill)"/>'
+            f'<path d="M{fl} {fy}H{fr}" stroke="#C9CDD8" stroke-opacity=".55" stroke-width="1.2"/>')
+
+    def at(t_y, t_x):
+        """Point on the deck: t_y 0 = back, 1 = front; t_x 0 = left, 1 = right."""
+        y = lerp(by, fy, t_y)
+        left, right = lerp(bl, fl, t_y), lerp(br, fr, t_y)
+        return lerp(left, right, t_x), y
+
+    def quad(t0, t1, x0, x1, fill, extra=''):
+        pts = [at(t0, x0), at(t0, x1), at(t1, x1), at(t1, x0)]
+        d = 'M' + 'L'.join(f'{px:.1f} {py:.1f}' for px, py in pts) + 'Z'
+        return f'<path d="{d}" fill="{fill}" {extra}/>'
+
+    # keyboard well
+    kx0, kx1, ky0, ky1 = .155, .845, .07, .58
+    out += quad(ky0, ky1, kx0, kx1, '#0D0E12', 'stroke="#000" stroke-opacity=".6"')
+    rows = [(.10, 14, 'fn'), (.12, 14, ''), (.12, 14, ''), (.12, 13, ''), (.12, 12, ''), (.135, 0, 'space')]
+    t = ky0 + .012
+    span = (ky1 - ky0 - .024)
+    total = sum(r[0] for r in rows)
+    for frac, count, kind in rows:
+        th = span * frac / total
+        t0, t1 = t + th * .1, t + th * .92
+        if kind == 'space':
+            keys = [(0, .07), (.075, .145), (.15, .22), (.225, .33), (.335, .665), (.67, .775), (.78, .85), (.855, .925), (.93, 1)]
+        else:
+            gap = .006
+            keys = [(i / count + gap / 2, (i + 1) / count - gap / 2) for i in range(count)]
+        for i, (k0, k1) in enumerate(keys):
+            x0 = kx0 + .006 + (kx1 - kx0 - .012) * k0
+            x1 = kx0 + .006 + (kx1 - kx0 - .012) * k1
+            fill = '#1E1F26' if not (kind == 'fn' and i == count - 1) else '#25262E'
+            out += quad(t0, t1, x0, x1, fill, 'stroke="#3A3C46" stroke-opacity=".35" stroke-width=".6"')
+        t += th
+    # speaker grilles
+    for side in ((.035, .135), (.865, .965)):
+        for r_ in range(6):
+            ty = ky0 + .03 + r_ * (ky1 - ky0 - .06) / 5
+            for c_ in range(9):
+                px, py = at(ty, lerp(side[0], side[1], c_ / 8))
+                out += f'<circle cx="{px:.1f}" cy="{py:.1f}" r="{lerp(.7, 1.05, ty):.2f}" fill="#0F1014" opacity=".85"/>'
+    # trackpad
+    out += quad(.64, .965, .335, .665, 'url(#pad)', 'stroke="#1E2027" stroke-opacity=".7" stroke-width=".8"')
+    # front lip with thumb scoop and shadow
+    out += (f'<path d="M{fl} {fy}H{fr}Q{fr + 4} {fy + 2} {fr - 6} {fy + 11}H{fl + 6}Q{fl - 4} {fy + 2} {fl} {fy}Z" fill="url(#lip)"/>'
+            f'<path d="M{w / 2 - 70} {fy + .5}Q{w / 2} {fy + 9} {w / 2 + 70} {fy + .5}Z" fill="#15161B" opacity=".75"/>')
+    return out, fy + 11
+
+
 def scene(key, lang):
     cfg = SCENES[key]
     a1, a2 = cfg['accent']
@@ -1271,33 +1404,46 @@ def scene(key, lang):
     n = len(screens)
     seg = 4.6
     period = n * seg
-    w, h = 1200, 800
-    if cfg['device'] == 'laptop':
-        sx, sy, sw, sh = 150, 74, 900, 563
+    laptop = cfg['device'] == 'laptop'
+    w, h = (1200, 900) if laptop else (1200, 800)
+    if laptop:
+        sx, sy, sw, sh = 150, 58, 900, 563
     else:
         sx, sy, sw, sh = 90, 108, 1020, 566
     defs = (linear('bg', [(0, C['night']), (.55, '#150F40'), (1, C['deep'])], x2=1, y2=1)
             + radial('g1', a1, .55) + radial('g2', a2, .4)
-            + linear('metal', [(0, '#3A3F55'), (.5, '#8E93A8'), (1, '#2A2E40')])
             + linear('sheen', [(0, '#fff', 0), (.5, '#fff', .07), (1, '#fff', 0)])
             + linear('fade', [(0, '#000', 0), (1, '#000', .35)], x2=0, y2=1)
-            + f'<clipPath id="screen"><rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="{6 if cfg["device"] == "laptop" else 0}"/></clipPath>')
+            + f'<clipPath id="screen"><rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="{9 if laptop else 0}"/></clipPath>')
+    if laptop:
+        defs += (linear('lid', [(0, '#5E636F'), (.5, '#2E3139'), (1, '#4A4E59')], x2=0, y2=1)
+                 + linear('bezel', [(0, '#16171D', .9), (.5, '#000', 0), (1, '#0E0F14', .9)], x2=1, y2=1)
+                 + linear('wall', [(0, '#1B1250'), (.45, '#4C1D95'), (.75, '#0E3A5C'), (1, '#071B2B')], x2=1, y2=1)
+                 + radial('w1', a1, .65) + radial('w2', a2, .45)
+                 + linear('titlebar', [(0, '#302F38'), (1, '#24232B')], x2=0, y2=1)
+                 + linear('glass', [(0, '#fff', .07), (1, '#fff', 0)], x2=1, y2=1)
+                 + linear('hinge', [(0, '#08090C'), (.6, '#2B2E36'), (1, '#121318')], x2=0, y2=1)
+                 + linear('deck', [(0, '#2B2E36'), (.35, '#3E424C'), (1, '#6A6F7C')], x2=0, y2=1)
+                 + linear('spill', [(0, a1, .22), (.5, a1, .05), (1, a1, 0)], x2=0, y2=1)
+                 + linear('pad', [(0, '#3A3D47'), (1, '#5D616D')], x2=0, y2=1)
+                 + linear('lip', [(0, '#8C919E'), (.3, '#3C3F48'), (1, '#18191E')], x2=0, y2=1)
+                 + '<radialGradient id="shadow"><stop offset="0" stop-color="#000" stop-opacity=".7"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>'
+                 + '<filter id="wshadow" x="-10%" y="-10%" width="120%" height="130%"><feGaussianBlur stdDeviation="12"/></filter>')
+    else:
+        defs += linear('metal', [(0, '#3A3F55'), (.5, '#8E93A8'), (1, '#2A2E40')])
     css = ''
     motion = ('.g1{animation:drift 26s ease-in-out infinite}.g2{animation:drift 34s ease-in-out infinite reverse}'
               '@keyframes drift{50%{transform:translate(-50px,30px)}}'
               f'.sheen{{animation:sheen 9s ease-in-out infinite}}@keyframes sheen{{0%,25%{{transform:translateX(-400px)}}75%,100%{{transform:translateX({sw + 400}px)}}}}')
-    fade = 0.7 / period * 100
+    # Screens dip through black instead of cross-fading, so two captures never overlap.
+    fade = 0.38 / period * 100
     for i in range(n):
         start, end = i / n * 100, (i + 1) / n * 100
         css += f'.s{i}{{opacity:{1 if i == 0 else 0}}}.d{i}{{opacity:{1 if i == 0 else .3}}}.l{i}{{opacity:{1 if i == 0 else 0}}}'
-        if i == 0:
-            frames = f'0%{{opacity:1}}{end - fade:.2f}%{{opacity:1}}{end:.2f}%{{opacity:0}}{100 - fade:.2f}%{{opacity:0}}100%{{opacity:1}}'
-            dots = f'0%{{opacity:1}}{end - fade:.2f}%{{opacity:1}}{end:.2f}%{{opacity:.3}}{100 - fade:.2f}%{{opacity:.3}}100%{{opacity:1}}'
-        else:
-            frames = (f'0%{{opacity:0}}{start - fade:.2f}%{{opacity:0}}{start:.2f}%{{opacity:1}}{end - fade:.2f}%{{opacity:1}}'
-                      f'{end:.2f}%{{opacity:0}}100%{{opacity:0}}')
-            dots = (f'0%{{opacity:.3}}{start - fade:.2f}%{{opacity:.3}}{start:.2f}%{{opacity:1}}{end - fade:.2f}%{{opacity:1}}'
-                    f'{end:.2f}%{{opacity:.3}}100%{{opacity:.3}}')
+        frames = (f'0%{{opacity:0}}{start:.2f}%{{opacity:0}}{start + fade:.2f}%{{opacity:1}}{end - fade:.2f}%{{opacity:1}}'
+                  f'{end:.2f}%{{opacity:0}}100%{{opacity:0}}')
+        dots = (f'0%{{opacity:.3}}{start:.2f}%{{opacity:.3}}{start + fade:.2f}%{{opacity:1}}{end - fade:.2f}%{{opacity:1}}'
+                f'{end:.2f}%{{opacity:.3}}100%{{opacity:.3}}')
         motion += (f'.s{i},.l{i}{{animation:show{i} {period:.1f}s linear infinite}}@keyframes show{i}{{{frames}}}'
                    f'.d{i}{{animation:dot{i} {period:.1f}s linear infinite}}@keyframes dot{i}{{{dots}}}')
     b = f'<rect width="{w}" height="{h}" rx="30" fill="url(#bg)"/>'
@@ -1305,14 +1451,13 @@ def scene(key, lang):
           f'<g class="g1"><circle cx="{w * .22:.0f}" cy="{h * .3:.0f}" r="420" fill="url(#g1)"/></g>'
           f'<g class="g2"><circle cx="{w * .82:.0f}" cy="{h * .75:.0f}" r="380" fill="url(#g2)"/></g>'
           + stars(w, h, 50, 21) + '</g>')
-    # device body
-    if cfg['device'] == 'laptop':
-        b += (f'<ellipse cx="{w / 2}" cy="{sy + sh + 66}" rx="520" ry="26" fill="#000" opacity=".45"/>'
-              f'<rect x="{sx - 22}" y="{sy - 22}" width="{sw + 44}" height="{sh + 44}" rx="28" fill="#0A0A12" stroke="#3A3F55" stroke-width="2"/>'
-              f'<circle cx="{w / 2}" cy="{sy - 11}" r="3.5" fill="#22263A"/>'
-              f'<path d="M{sx - 70} {sy + sh + 22}H{sx + sw + 70}L{sx + sw + 104} {sy + sh + 48}Q{sx + sw + 108} {sy + sh + 56} {sx + sw + 96} {sy + sh + 56}'
-              f'H{sx - 96}Q{sx - 108} {sy + sh + 56} {sx - 104} {sy + sh + 48}Z" fill="url(#metal)"/>'
-              f'<rect x="{w / 2 - 80}" y="{sy + sh + 22}" width="160" height="9" rx="4.5" fill="#1C1F2E" opacity=".7"/>')
+    if laptop:
+        b += f'<ellipse cx="{w / 2}" cy="{sy + sh + 132}" rx="600" ry="26" fill="url(#shadow)"/>'
+        chrome, (cx_, cy_, cw_, ch_) = macbook_back(sx, sy, sw, sh, a1, a2, lang)
+        b += chrome
+        b += (f'<clipPath id="content"><path d="M{cx_} {cy_}H{cx_ + cw_}V{cy_ + ch_ - 11}Q{cx_ + cw_} {cy_ + ch_} {cx_ + cw_ - 11} {cy_ + ch_}'
+              f'H{cx_ + 11}Q{cx_} {cy_ + ch_} {cx_} {cy_ + ch_ - 11}Z"/></clipPath>')
+        b += f'<rect x="{cx_}" y="{cy_}" width="{cw_}" height="{ch_}" fill="#121116"/><g clip-path="url(#content)">'
     else:
         b += (f'<ellipse cx="{w / 2}" cy="{sy + sh + 40}" rx="540" ry="22" fill="#000" opacity=".45"/>'
               f'<rect x="{sx - 2}" y="{sy - 46}" width="{sw + 4}" height="{sh + 48}" rx="18" fill="#0B0D18" stroke="#33395A" stroke-width="2"/>'
@@ -1322,17 +1467,24 @@ def scene(key, lang):
         if cfg.get('shield'):
             b += shield(w / 2 - 186, sy - 22, C['mint'])
         b += text(w / 2 + 6, sy - 17, cfg['bar'], 15, C['soft'], 600, anchor='middle')
-    # screens
-    b += f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" fill="#05060C"/><g clip-path="url(#screen)">'
+        cx_, cy_, cw_, ch_ = sx, sy, sw, sh
+        b += f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" fill="#05060C"/><g clip-path="url(#screen)">'
     for i, (name, _labels) in enumerate(screens):
         href, (iw, ih) = screen_data(name)
-        dh = ih * sw / iw
-        overflow = max(0, dh - sh)
-        scroll = f'.sc{i}{{animation:scroll{i} {period:.1f}s ease-in-out infinite}}@keyframes scroll{i}{{0%,{i / n * 100 + 8:.1f}%{{transform:translateY(0)}}{(i + 1) / n * 100 - 4:.1f}%,100%{{transform:translateY(-{overflow:.0f}px)}}}}' if overflow > 12 else ''
+        dh = ih * cw_ / iw
+        overflow = max(0, dh - ch_)
+        scroll = (f'.sc{i}{{animation:scroll{i} {period:.1f}s ease-in-out infinite}}@keyframes scroll{i}{{0%,{i / n * 100 + 8:.1f}%{{transform:translateY(0)}}'
+                  f'{(i + 1) / n * 100 - 4:.1f}%,100%{{transform:translateY(-{overflow:.0f}px)}}}}') if overflow > 12 else ''
         motion += scroll
-        b += (f'<g class="s{i}"><g class="sc{i}"><image href="{href}" x="{sx}" y="{sy}" width="{sw}" height="{dh:.0f}" preserveAspectRatio="xMidYMin meet"/></g></g>')
-    b += f'<rect x="{sx}" y="{sy + sh - 120}" width="{sw}" height="120" fill="url(#fade)"/>'
-    b += f'<g class="live"><rect class="sheen" x="{sx - 200}" y="{sy}" width="220" height="{sh}" fill="url(#sheen)" transform="skewX(-14)"/></g></g>'
+        b += (f'<g class="s{i}"><g class="sc{i}"><image href="{href}" x="{cx_}" y="{cy_}" width="{cw_}" height="{dh:.0f}" preserveAspectRatio="xMidYMin meet"/></g></g>')
+    if laptop:
+        b += f'<rect x="{cx_}" y="{cy_ + ch_ - 70}" width="{cw_}" height="70" fill="url(#fade)"/></g>'
+        b += f'<g class="live" clip-path="url(#screen)"><rect class="sheen" x="{sx - 200}" y="{sy}" width="220" height="{sh}" fill="url(#sheen)" transform="skewX(-14)"/></g>'
+        front, _bottom = macbook_front(sx, sy, sw, sh, a1, a2, w)
+        b += front
+    else:
+        b += f'<rect x="{sx}" y="{sy + sh - 120}" width="{sw}" height="120" fill="url(#fade)"/>'
+        b += f'<g class="live"><rect class="sheen" x="{sx - 200}" y="{sy}" width="220" height="{sh}" fill="url(#sheen)" transform="skewX(-14)"/></g></g>'
     # caption: current screen + progress dots
     cy = h - 46
     for i, (_name, labels) in enumerate(screens):
