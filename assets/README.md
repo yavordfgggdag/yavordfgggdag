@@ -51,7 +51,7 @@ private repositories is performed. New charts are static.
 
 ### Content retained and relocated
 
-All 68 distinct entries from the original wider technology collection remain
+All 68 distinct entries from the original wider technology collection remain (plus Higgsfield, 69 in total)
 visible as selectable text. Project-specific technology roles are added without
 promoting exploratory tools to proven experience. The full service catalogue,
 metric methodology, secondary galleries, community implementation and incomplete
@@ -131,7 +131,7 @@ On 2026-10-05 all other owned repositories were made private at the owner's requ
 - **Technologies:** all 68 technologies from the original badge collection are shown with their original badge colours. Logos come from Simple Icons 16.34.0 (CC0; trademarks belong to their owners). SQL, C#, PowerShell, Objective-C and OpenAI had no logo in the original badges and have no Simple Icons entry, so they are text tiles. F# and Cursor gained their official icons. A mint ring marks the 12 technologies verified in the featured products; the remaining ones are interests and possible project choices.
 - **Framed captures:** `screens/framed/` contains the same genuine interface areas as `screens/`, re-framed by `scripts/frame_screens.py` with a per-project accent. The original presentation caption around each capture was removed so headings are not repeated; the interface pixels are unchanged. Originals stay in `screens/`.
 - Earlier visuals (`studio/`, `contact.svg`, `technology-map.svg`, `development-flow.svg`, `section-divider.svg`, `work-*.jpg`, the original architecture diagrams) remain in the repository for history and rollback.
-- Checks: `python3 scripts/test_profile.py` verifies image paths, English/Bulgarian parity, the 68 technologies, contacts, absence of remote widgets and private repository names, and the reduced-motion contract.
+- Checks: `python3 scripts/test_profile.py` verifies image paths, English/Bulgarian parity, the 69 technologies, contacts, absence of remote widgets and private repository names, and the reduced-motion contract.
 
 ## Certificates
 

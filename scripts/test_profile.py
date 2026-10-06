@@ -36,9 +36,9 @@ class ProfileTests(unittest.TestCase):
         for token in ('<details>', '<picture>', '](mailto:', 'pomoshtotpriyatel.com', 'instagram.com/y.yakowvw.sales'):
             self.assertEqual(EN.count(token), BG.count(token), token)
 
-    def test_all_68_technologies_are_rendered(self):
+    def test_all_69_technologies_are_rendered(self):
         tech = json.loads((ROOT / 'data/technologies.json').read_text())['technologies']
-        self.assertEqual(len(tech), 68)
+        self.assertEqual(len(tech), 69)
         for item in tech:
             for lang in ('en', 'bg'):
                 for suffix in ('', '-mobile'):
