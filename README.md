@@ -205,6 +205,26 @@ An internal portal for the TLR roleplay police department. **My contribution:** 
 
 **Built with:** Python · fontTools · SVG + CSS animation · GitHub Actions · **[⭐ github.com/yyakowvw/readme-studio](https://github.com/yyakowvw/readme-studio)**
 
+
+<a name="talk-to-mac"></a>
+
+**Talk to Mac — turn your MacBook into a private intercom you run from your phone, from anywhere.**
+
+Hold a button and your voice plays on the Mac's speakers; tap to listen to the room or watch its camera. Audio and video travel end-to-end over WebRTC — a free Cloudflare Worker only introduces the two devices. **Fully open source, with a live demo.**
+
+<a href="https://github.com/yyakowvw/talk-to-mac">
+<img src="assets/video/talk-to-mac-demo-en.webp" alt="Talk to Mac demo: the iPhone (right) holding to talk, listening to the room and viewing the Mac's camera; the MacBook receiver (left) responding live." width="100%" />
+</a>
+
+<p align="center"><sub>🎬 <b>See it live</b>: push-to-talk, room audio and the Mac camera — the phone driving the Mac.</sub></p>
+
+- **Push-to-talk done right:** the microphone is attached only while the button is held, so nothing — not even silence — leaves the phone otherwise.
+- **Works across any network:** long-polling signalling survives tunnels and proxies; a free Cloudflare TURN relay carries the media when a direct path is blocked.
+- **A Mac menu-bar app that never sleeps:** the receiver runs in a hidden WKWebView, kept alive so macOS won't throttle it and drop the call.
+- **On-demand and private:** the mic and camera turn on only on request and stop the moment the phone leaves, with the macOS recording indicator always on. Nothing is recorded.
+
+**Built with:** WebRTC · Cloudflare Workers · Durable Objects · Cloudflare TURN · Swift · SwiftUI · Node.js · **[⭐ github.com/yyakowvw/talk-to-mac](https://github.com/yyakowvw/talk-to-mac)**
+
 <a name="services"></a>
 
 <picture>
